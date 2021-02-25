@@ -4,6 +4,7 @@ const mix = require('laravel-mix')
 const path = require('path')
 const purgecss = require('@fullhuman/postcss-purgecss')
 const tailwindcss = require('tailwindcss')
+let SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -15,8 +16,9 @@ const tailwindcss = require('tailwindcss')
  | file for the application as well as bundling up all the JS files.
  |
  */
-
 mix.js('resources/js/app.js', 'public/js')
+  .sass('resources/sass/main.scss', 'public/css')
+  .copy('resources/images', 'public/images')
   .postCss('resources/css/app.css', 'public/css/app.css')
   .options({
     postCss: [
@@ -33,6 +35,19 @@ mix.js('resources/js/app.js', 'public/js')
     ],
   })
   .webpackConfig({
+    plugins: [
+      new SVGSpritemapPlugin('resources/images/icons-sprite/*.svg', {
+        output: {
+          filename: '../resources/views/page/icons.blade.php'
+        },
+        sprite: {
+          generate: {
+            title: false
+          },
+          prefix: 'icon-',
+        },
+      }),
+    ],
     output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
     resolve: {
       alias: {
