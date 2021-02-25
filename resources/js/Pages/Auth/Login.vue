@@ -1,0 +1,57 @@
+<template>
+  <div class="p-6 bg-indigo-800 min-h-screen flex justify-center items-center">
+    <div class="w-full max-w-md">
+      <logo class="block mx-auto w-full max-w-xs fill-white" height="50" />
+      <form class="mt-8 bg-white rounded-lg shadow-xl overflow-hidden" @submit.prevent="submit">
+        <div class="px-10 py-12">
+          <h1 class="text-center font-bold text-3xl">Login</h1>
+          <text-input v-model="form.email" :error="errors.email" class="mt-10" label="Email" type="email" autofocus autocapitalize="off" />
+          <text-input v-model="form.password" class="mt-6" label="Password" type="password" />
+          <loading-button :loading="sending" class="mt-10 btn-indigo" type="submit">Login</loading-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+import LoadingButton from '@/Shared/LoadingButton'
+import Logo from '@/Shared/Logo'
+import TextInput from '@/Shared/TextInput'
+
+export default {
+  metaInfo: { title: 'Login' },
+  components: {
+    LoadingButton,
+    Logo,
+    TextInput,
+  },
+  props: {
+    errors: Object,
+  },
+  data() {
+    return {
+      sending: false,
+      form: {
+        email: 'admin@example.com',
+        password: 'secret',
+        remember: null,
+      },
+    }
+  },
+  methods: {
+    submit() {
+      const data = {
+        email: this.form.email,
+        password: this.form.password,
+        remember: this.form.remember,
+      }
+
+      this.$inertia.post(this.route('login.attempt'), data, {
+        onStart: () => this.sending = true,
+        onFinish: () => this.sending = false,
+      })
+    },
+  },
+}
+</script>
