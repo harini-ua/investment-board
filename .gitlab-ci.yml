@@ -2,7 +2,8 @@ before_script:
   - echo "Before script"
   - cd /var/www/devtestnet2/data/www/ #your project path
 
-stage_deploy:
+building:
+  stage: build
   when:
     - manual
   only:
