@@ -5,7 +5,7 @@ before_script:
 
 building:
   stage: build
-  when: manual
+#  when: manual
   only:
     - develop
   script:
@@ -20,7 +20,7 @@ building:
     - npm install
     - npm run dev
     - ${PHP} artisan migrate:fresh --seed
-    - ${PHP} artisan:optimaze
+    - ${PHP} artisan optimize
     - ${PHP} artisan route:cache
     - ${PHP} artisan config:cache
     - ${PHP} artisan view:cache
