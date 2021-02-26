@@ -11,6 +11,8 @@ building:
     - PHP_VER=74
     - NODE_VER=14
     - PHP=/opt/php${PHP_VER}/bin/php
+    - git reset --hard
+    - git pull origin develop
     - nvm use ${NODE_VER}
     - ${PHP} composer.phar install
     - npm ci
