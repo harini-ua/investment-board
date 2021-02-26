@@ -1,5 +1,6 @@
 before_script:
   - echo "Before script"
+  - cd /var/www/devtestnet2/data/www/kfp.devtestnet.com/ #your project path
 
 
 building:
@@ -11,7 +12,6 @@ building:
     - PHP_VER=74
     - NODE_VER=14
     - PHP=/opt/php${PHP_VER}/bin/php
-    - cd /var/www/devtestnet2/data/www/ #your project path
     - git reset --hard
     - git pull origin develop
     - nvm use ${NODE_VER}
