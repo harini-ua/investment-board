@@ -1,0 +1,12 @@
+before_script:
+  - echo "Before script"
+  - cd /var/www/devtestnet2/data/www/ #your project path
+
+building:
+  stage: build
+  when: manual
+  only:
+    - develop
+  script:
+    - nvm use 10
+    - echo `node -v` > gitlab-ci.txt

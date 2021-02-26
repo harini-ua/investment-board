@@ -1,3 +1,4 @@
+.idea
 /node_modules
 /public/css
 /public/hot
@@ -14,3 +15,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+composer.phar
+.gitlab-ci.yml
