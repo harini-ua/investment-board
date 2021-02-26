@@ -5,7 +5,6 @@ before_script:
 
 building:
   stage: build
-  when: manual
   only:
     - develop
   script:
@@ -20,4 +19,4 @@ building:
     - npm run dev
     - ${PHP} artisan key:generate
     - ${PHP} artisan migrate
-    - ${PHP} artisan db:seed
+    #- ${PHP} artisan db:seed
