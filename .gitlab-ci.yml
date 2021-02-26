@@ -13,10 +13,15 @@ building:
     - PHP=/opt/php${PHP_VER}/bin/php
     - git reset --hard
     - git pull origin develop
+    - ${PHP} artisan down || true
     - nvm use ${NODE_VER}
     - ${PHP} composer.phar install
-    - npm ci
+    - npm install
     - npm run dev
-    - ${PHP} artisan key:generate
-    - ${PHP} artisan migrate
-    #- ${PHP} artisan db:seed
+    - ${PHP} artisan migrate:fresh --seed
+    - ${PHP} artisan:optimaze
+    - ${PHP} artisan route:cache
+    - ${PHP} artisan config:cache
+    - ${PHP} artisan view:cache
+    - ${PHP} artisan up
+
