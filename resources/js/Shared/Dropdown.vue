@@ -1,5 +1,8 @@
 <template>
-  <button type="button" @click="show = true">
+  <button type="button" @click="show = true" class="user-account">
+      <div class="icon-user">
+          <img src="../../images/icon-user.png" alt="">
+      </div>
     <slot />
     <portal v-if="show" to="dropdown">
       <div>

@@ -1,45 +1,28 @@
 <template>
-  <div>
-    <div class="mb-4">
-      <inertia-link class="flex items-center group py-3" :href="route('overview')">
-        <icon name="dashboard" class="w-4 h-4 mr-2" :class="isUrl('overview') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Overview</div>
-      </inertia-link>
-    </div>
-    <div class="mb-4">
-      <inertia-link class="flex items-center group py-3" :href="route('custodian')">
-        <icon name="dashboard" class="w-4 h-4 mr-2" :class="isUrl('custodian') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('custodian') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Custodian</div>
-      </inertia-link>
-    </div>
-    <div class="mb-4">
-      <inertia-link class="flex items-center group py-3" :href="route('currency')">
-        <icon name="dashboard" class="w-4 h-4 mr-2" :class="isUrl('currency') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('currency') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Currency</div>
-      </inertia-link>
-    </div>
-    <div class="mb-4">
-      <inertia-link class="flex items-center group py-3" :href="route('details')">
-        <icon name="dashboard" class="w-4 h-4 mr-2" :class="isUrl('details') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('details') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Details</div>
-      </inertia-link>
-    </div>
-    <div class="mb-4">
-      <inertia-link class="flex items-center group py-3" :href="route('trades')">
-        <icon name="dashboard" class="w-4 h-4 mr-2" :class="isUrl('trades') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
-        <div :class="isUrl('trades') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Trades</div>
-      </inertia-link>
-    </div>
-  </div>
+  <nav class="nav-drop">
+      <ul class="menu-list">
+          <li>
+              <inertia-link :href="route('overview')"><svg class="icon icon-home"><use xlink:href="#icon-home"></use></svg>Overview</inertia-link>
+          </li>
+          <li>
+              <inertia-link :href="route('custodian')"><svg class="icon icon-custodian"><use xlink:href="#icon-custodian"></use></svg>Custodian</inertia-link>
+          </li>
+          <li>
+              <inertia-link :href="route('currency')"><svg class="icon icon-currency"><use xlink:href="#icon-currency"></use></svg>Currency</inertia-link>
+          </li>
+          <li>
+              <inertia-link :href="route('details')"><svg class="icon icon-details"><use xlink:href="#icon-details"></use></svg>Details</inertia-link>
+          </li>
+          <li>
+              <inertia-link :href="route('trades')"><svg class="icon icon-trades"><use xlink:href="#icon-trades"></use></svg>Trades</inertia-link>
+          </li>
+      </ul>
+  </nav>
 </template>
 
 <script>
-import Icon from '@/Shared/Icon'
 
 export default {
-  components: {
-    Icon,
-  },
   props: {
     url: String,
   },
