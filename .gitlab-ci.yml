@@ -4,9 +4,7 @@ before_script:
 
 building:
   stage: build
-  when:
-    - manual
-  only:
-    - develop
+  when: manual
+  only: develop
   script:
     - echo "IT WORKS" > gitlab-ci.txt
