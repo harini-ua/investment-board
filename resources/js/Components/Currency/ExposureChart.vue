@@ -7,11 +7,11 @@
 <script>
 
 export default {
-  metaInfo: { title: 'Portfolio Allocation' },
+  metaInfo: { title: 'Currency Exposure Chart' },
   data: function() {
     return {
       options: {
-        labels: ['Cash', 'Equity', 'KFP Equity', 'Bond', 'KFP Bond', 'Hedge Fund', 'Commodity', 'Private Equity', 'Real Estate'],
+        labels: ['CHF', 'EUR', 'USD', 'GBP', 'NOK', 'SEK', 'DKK', 'JPY', 'HKD', 'CAD'],
         dataLabels: {
           enabled: false,
         },
@@ -21,7 +21,7 @@ export default {
           },
         },
       },
-      series: [18.2, 23.7, 4.8, 12.5, 6.1, 1.4, 2.5, 27.5, 3.3],
+      series: [3.7, 495, 40.1, 4.1, 2.4, 0.3, 0, 0, 2.4, 2.4],
     }
   },
 }

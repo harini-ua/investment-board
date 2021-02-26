@@ -7,11 +7,11 @@
 <script>
 
 export default {
-  metaInfo: { title: 'Portfolio Allocation' },
+  metaInfo: { title: 'Private Holding' },
   data: function() {
     return {
       options: {
-        labels: ['Cash', 'Equity', 'KFP Equity', 'Bond', 'KFP Bond', 'Hedge Fund', 'Commodity', 'Private Equity', 'Real Estate'],
+        labels: ['Private Equity', 'Real Estate'],
         dataLabels: {
           enabled: false,
         },
@@ -21,7 +21,7 @@ export default {
           },
         },
       },
-      series: [18.2, 23.7, 4.8, 12.5, 6.1, 1.4, 2.5, 27.5, 3.3],
+      series: [74.6, 25.4],
     }
   },
 }
