@@ -2,19 +2,22 @@
   <div>
     <h1 class="mb-8 font-bold text-3xl">Custodian</h1>
 
-    <private-holding />
+    <custodians-table />
+    <custodian-chart />
   </div>
 </template>
 
 <script>
 import Layout from '@/Shared/Layout'
-import PrivateHolding from '@/Components/Custodian/PrivateHolding'
+import CustodianChart from '@/Components/Custodian/CustodianChart'
+import CustodiansTable from '@/Components/Custodian/CustodiansTable'
 
 export default {
   metaInfo: { title: 'Custodian' },
   layout: Layout,
   components: {
-    PrivateHolding
+    CustodianChart,
+    CustodiansTable,
   },
 }
 </script>

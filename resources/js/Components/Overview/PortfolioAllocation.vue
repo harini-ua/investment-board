@@ -15,6 +15,11 @@ export default {
         dataLabels: {
           enabled: false,
         },
+        legend: {
+          formatter: function(val, opts) {
+            return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
+          },
+        },
       },
       series: [18.2, 23.7, 4.8, 12.5, 6.1, 1.4, 2.5, 27.5, 3.3],
     }

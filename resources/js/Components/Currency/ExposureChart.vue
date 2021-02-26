@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  metaInfo: { title: 'Currency Exposure' },
+  metaInfo: { title: 'Currency Exposure Chart' },
   data: function() {
     return {
       options: {
@@ -15,8 +15,13 @@ export default {
         dataLabels: {
           enabled: false,
         },
+        legend: {
+          formatter: function(val, opts) {
+            return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
+          },
+        },
       },
-      series: [3.7, 495, 40.1, 4.1, 2.4, 0.3, 0, 2.4, 2.4],
+      series: [3.7, 495, 40.1, 4.1, 2.4, 0.3, 0, 0, 2.4, 2.4],
     }
   },
 }
