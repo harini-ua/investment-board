@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 {{--    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">--}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{ mix('/css/main.css') }}" rel="stylesheet">
 
     {{-- Inertia --}}
@@ -15,12 +17,12 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @routes
 </head>
-<body>
-<div style="position: absolute; height: 0; overflow: hidden;" class="icons-sprite">
-    @include('page.icons')
-</div>
-<svg class="icon icon-arrow-left"><use xlink:href="#icon-arrow-right"></use></svg>
-@inertia
-
+    <body>
+    <div class="wrapper">
+        <div style="position: absolute; height: 0; overflow: hidden;" class="icons-sprite">
+            @include('page.icons')
+        </div>
+        @inertia
+    </div>
 </body>
 </html>

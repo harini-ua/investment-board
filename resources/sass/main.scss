@@ -23,6 +23,11 @@ $media-expressions: (
 @import 'vendors/normalize';
 @import 'vendors/sprite';
 
+@import 'components/buttons';
+@import 'components/login';
+@import 'components/form';
+@import 'components/logo';
+
 @import 'base/functions';
 @import 'base/variables';
 @import 'base/mixins';
@@ -32,4 +37,6 @@ $media-expressions: (
 @import 'base/forms';
 
 @import 'layouts/common';
+
+@import 'layouts/responsive';
 

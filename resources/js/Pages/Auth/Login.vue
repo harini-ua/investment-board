@@ -1,16 +1,26 @@
 <template>
-  <div>
-    <div>
+  <div class="login-bg" style="background-image: url('../../images/login-bg.jpg')">
+    <div class="login-block">
       <logo/>
-
-      <form @submit.prevent="submit">
-        <div>
-          <h1>Login</h1>
-          <text-input v-model="form.email" :error="errors.email" label="Email" type="email" autofocus autocapitalize="off" />
-          <text-input v-model="form.password" label="Password" type="password" />
-          <loading-button :loading="sending" type="submit">Login</loading-button>
-        </div>
-      </form>
+      <div class="login-block__form">
+        <span class="login-block__title">Login</span>
+        <form @submit.prevent="submit">
+          <text-input
+              v-model="form.email"
+              :error="errors.email"
+              label="Email"
+              type="email"
+              autofocus autocapitalize="off" />
+          <text-input
+              v-model="form.password"
+              label="Password"
+              type="password"
+          />
+          <loading-button
+              :loading="sending"
+              type="submit">Login</loading-button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
