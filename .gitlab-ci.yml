@@ -1,0 +1,11 @@
+before_script:
+  - echo "Before script"
+  - cd /var/www/devtestnet2/data/www/ #your project path
+
+stage_deploy:
+  when:
+    - manual
+  only:
+    - develop
+  script:
+    - echo "IT WORKS" > gitlab-ci.txt
