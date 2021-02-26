@@ -8,5 +8,13 @@ building:
   only:
     - develop
   script:
-    - nvm use 10
-    - echo `node -v` > gitlab-ci.txt
+    - PHP_VER=74
+    - NODE_VER=14
+    - PHP=/opt/php${PHP_VER}/bin/php
+    - nvm use ${NODE_VER}
+    - ${PHP} composer.phar install
+    - npm ci
+    - npm run dev
+    - ${PHP} artisan key:generate
+    - ${PHP} artisan migrate
+    - ${PHP} artisan db:seed
