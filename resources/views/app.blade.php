@@ -18,11 +18,9 @@
     @routes
 </head>
     <body>
-    <div class="wrapper">
         <div style="position: absolute; height: 0; overflow: hidden;" class="icons-sprite">
             @include('page.icons')
         </div>
         @inertia
-    </div>
 </body>
 </html>
