@@ -23,35 +23,7 @@ export default {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },
         },
-          // responsive: [
-          //     {
-          //         breakpoint: 1000,
-          //         options: {
-          //             plotOptions: {
-          //                 bar: {
-          //                     horizontal: false
-          //                 }
-          //             },
-          //             legend: {
-          //                 position: "bottom"
-          //             }
-          //         }
-          //     }
-          // ]
       },
-        plotOptions: {
-            pie: {
-                donut: {
-                    size: '20%'
-                }
-            },
-        },
-
-        chart: {
-            width: "203px",
-            height: 203,
-            type: "pie"
-        },
       series: [18.2, 23.7, 4.8, 12.5, 6.1, 1.4, 2.5, 27.5, 3.3],
     }
   },

@@ -1,24 +1,25 @@
 .row-chart {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 0 30px;
 }
 
 .block-chart-wrapper {
-    width: 48.719%;
-    border-radius: 6px;
-    background-color: #fff;
-    box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05);
+  width: 48.719%;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05);
 }
 
 .block-chart {
-    padding: 30px;
+  padding: 30px;
 
-    &__title {
-        margin: 0 0 30px;
+  &__title {
+    margin: 0 0 30px;
 
-        @include media('>=tablet') {
-            margin: 0 0 20px;
-        }
+    @include media('>=tablet') {
+      margin: 0 0 20px;
     }
+  }
 }
