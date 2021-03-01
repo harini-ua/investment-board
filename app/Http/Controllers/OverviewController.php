@@ -12,7 +12,7 @@ class OverviewController extends Controller
     public function index()
     {
         return Inertia::render('Overview/Index', [
-            'filters' => Request::all(['valuation_method', 'valuation_date', 'base_currency']),
+            'filters' => Request::all(['valuationMethod', 'valuationDate', 'baseCurrency']),
             'overview' => [],
             'payload' => [
                 'valuationMethod' => ValuationMethod::asSelectArray(),
