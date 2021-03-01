@@ -1,15 +1,18 @@
 <template>
-  <div>
-    <apexchart width="500" type="pie" :options="options" :series="series"></apexchart>
+  <div class="block-chart-wrapper">
+    <div class="block-chart">
+      <h2 class="block-chart__title">{{ title }}</h2>
+      <apexchart width="500" type="pie" :options="options" :series="series"></apexchart>
+    </div>
   </div>
 </template>
 
 <script>
 
 export default {
-  metaInfo: { title: 'Currency Exposure Chart' },
   data: function() {
     return {
+      title: 'Currency Exposure Chart',
       options: {
         labels: ['CHF', 'EUR', 'USD', 'GBP', 'NOK', 'SEK', 'DKK', 'JPY', 'HKD', 'CAD'],
         dataLabels: {

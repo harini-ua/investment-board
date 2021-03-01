@@ -19,5 +19,9 @@ export default {
     CustodianChart,
     CustodiansTable,
   },
+  props: {
+    filters: Object,
+    payload: Array,
+  },
 }
 </script>

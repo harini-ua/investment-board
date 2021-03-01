@@ -22,5 +22,10 @@ export default {
     ExposureTable,
     HedgingTable,
   },
+  props: {
+    filters: Object,
+    currency: Object,
+    payload: Array,
+  },
 }
 </script>

@@ -84,15 +84,15 @@ class AppServiceProvider extends ServiceProvider
                                     'active' => $this->currentPage() === $page,
                                 ];
                             });
-                        } else {
-                            return [
-                                [
-                                    'url' => null,
-                                    'label' => '...',
-                                    'active' => false,
-                                ],
-                            ];
                         }
+
+                        return [
+                            [
+                                'url' => null,
+                                'label' => '...',
+                                'active' => false,
+                            ],
+                        ];
                     })->prepend([
                         'url' => $this->previousPageUrl(),
                         'label' => 'Previous',

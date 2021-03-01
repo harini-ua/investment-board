@@ -16,5 +16,10 @@ export default {
   component: {
     TradesTable,
   },
+  props: {
+    filters: Object,
+    trades: Object,
+    payload: Array,
+  },
 }
 </script>

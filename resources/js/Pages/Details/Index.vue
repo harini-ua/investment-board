@@ -16,5 +16,10 @@ export default {
   components: {
     ReportTotalTable,
   },
+  props: {
+    filters: Object,
+    details: Object,
+    payload: Array,
+  },
 }
 </script>

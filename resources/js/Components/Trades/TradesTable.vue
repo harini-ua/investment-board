@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h3>Trades</h3>
+    <h3>{{ title }}</h3>
   </div>
 </template>
 
 <script>
 
 export default {
-
+  data: function () {
+    return {
+      title: 'Trades',
+    }
+  },
 }
 </script>
