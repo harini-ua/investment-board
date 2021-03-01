@@ -1,12 +1,28 @@
 before_script:
   - echo "Before script"
-  - cd /var/www/devtestnet2/data/www/ #your project path
+  - cd /var/www/devtestnet2/data/www/kfp.devtestnet.com/ #your project path
+
 
 building:
   stage: build
-  when: manual
+#  when: manual
   only:
     - develop
   script:
-    - nvm use 10
-    - echo `node -v` > gitlab-ci.txt
+    - PHP_VER=74
+    - NODE_VER=14
+    - PHP=/opt/php${PHP_VER}/bin/php
+    - git reset --hard
+    - git pull origin develop
+    - ${PHP} artisan down || true
+    - nvm use ${NODE_VER}
+    - ${PHP} composer.phar install
+    - npm install
+    - npm run dev
+    - ${PHP} artisan migrate:fresh --seed
+    - ${PHP} artisan optimize
+    - ${PHP} artisan route:cache
+    - ${PHP} artisan config:cache
+    - ${PHP} artisan view:cache
+    - ${PHP} artisan up
+
