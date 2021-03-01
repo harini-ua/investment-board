@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <h1 class="mb-8 font-bold text-3xl">Overview</h1>
-
-    <portfolio-allocation />
-    <total-wealth-allocation />
-    <portfolio-assets-table />
-    <total-wealth-table />
-    <benchmarks-table />
-  </div>
+    <div class="container">
+        <div class="row-chart">
+            <portfolio-allocation />
+            <total-wealth-allocation />
+        </div>
+        <portfolio-assets-table />
+        <total-wealth-table />
+        <benchmarks-table />
+    </div>
 </template>
 
 <script>

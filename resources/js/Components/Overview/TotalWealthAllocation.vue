@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <apexchart width="500" type="pie" :options="options" :series="series"></apexchart>
-  </div>
+    <div class="block-chart-wrapper">
+        <div class="block-chart">
+            <h2>Total Wealth Allocation</h2>
+            <apexchart width="500" type="pie" :options="options" :series="series"></apexchart>
+        </div>
+    </div>
 </template>
 
 <script>
