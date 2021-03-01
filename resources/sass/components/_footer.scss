@@ -1,6 +1,10 @@
 .footer {
     background-color: #fff;
-    padding: 21px 0;
+    padding: 8px 0;
+
+    @include media('>=desktop') {
+        padding: 21px 0;
+    }
 
     p {
         margin: 0;
