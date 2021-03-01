@@ -28,6 +28,12 @@
             }
         }
     }
+
+    .nav-drop {
+        @include media('>=desktop') {
+            display: none;
+        }
+    }
 }
 
 .footer-holder {

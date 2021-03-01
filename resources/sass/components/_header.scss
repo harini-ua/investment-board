@@ -1,6 +1,12 @@
 .header {
     padding: 13px 0;
     background-color: #fff;
+
+    .nav-drop {
+        @include media('<desktop') {
+            display: none;
+        }
+    }
 }
 
 .header-holder {
