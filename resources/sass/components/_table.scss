@@ -139,6 +139,22 @@
     display: grid;
     grid-template-columns: 76px 76px 76px;
     margin: 0 0 15px;
+
+    &.visible-lg {
+      display: none;
+
+      @include media('<desktop') {
+        display: grid;
+      }
+    }
+
+    &.visible-md {
+      display: none;
+
+      @include media('<tablet') {
+        display: grid;
+      }
+    }
   }
 }
 
@@ -158,22 +174,6 @@
   display: none;
 
   @include media('>=desktop') {
-    display: block;
-  }
-}
-
-.visible-lg {
-  display: none;
-
-  @include media('<desktop') {
-    display: block;
-  }
-}
-
-.visible-md {
-  display: none;
-
-  @include media('<tablet') {
     display: block;
   }
 }
