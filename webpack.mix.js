@@ -1,10 +1,9 @@
-const cssImport = require('postcss-import')
-const cssNesting = require('postcss-nesting')
 const mix = require('laravel-mix')
 const path = require('path')
+const cssImport = require('postcss-import')
+const cssNesting = require('postcss-nesting')
 const purgecss = require('@fullhuman/postcss-purgecss')
-const tailwindcss = require('tailwindcss')
-let SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
 
 /*
  |--------------------------------------------------------------------------
@@ -19,12 +18,11 @@ let SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 mix.js('resources/js/app.js', 'public/js')
   .sass('resources/sass/main.scss', 'public/css')
   .copy('resources/images', 'public/images')
-  .postCss('resources/css/app.css', 'public/css/app.css')
+  .copy('resources/js/spritemap.js', 'public/js/spritemap.js')
   .options({
     postCss: [
       cssImport(),
       cssNesting(),
-      tailwindcss('tailwind.config.js'),
       ...mix.inProduction() ? [
         purgecss({
           content: ['./resources/views/**/*.blade.php', './resources/js/**/*.vue'],
@@ -38,17 +36,19 @@ mix.js('resources/js/app.js', 'public/js')
     plugins: [
       new SVGSpritemapPlugin('resources/images/icons-sprite/*.svg', {
         output: {
-          filename: '../resources/views/page/icons.blade.php'
+          filename: '../resources/views/page/icons.blade.php',
         },
         sprite: {
           generate: {
-            title: false
+            title: false,
           },
           prefix: 'icon-',
         },
       }),
     ],
-    output: { chunkFilename: 'js/[name].js?id=[chunkhash]' },
+    output: {
+      chunkFilename: 'js/[name].js?id=[chunkhash]',
+    },
     resolve: {
       alias: {
         vue$: 'vue/dist/vue.runtime.esm.js',
