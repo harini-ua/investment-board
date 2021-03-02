@@ -1,3 +1,7 @@
+.block-table {
+  margin: 0 0 30px;
+}
+
 .table-holder {
   box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05);
   border-radius: 6px;
@@ -29,6 +33,56 @@
         + .tr-group {
           .tr-group__title {
             width: 86%;
+          }
+        }
+      }
+
+      .tr-group-content {
+        .td + .td {
+          text-align: right;
+        }
+
+        &:not(:first-child) {
+          .td {
+            text-align: right;
+          }
+        }
+      }
+
+      .tr {
+        grid-template-columns: 1fr;
+
+        @include media('>=tablet') {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        @include media('>=desktop') {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+    }
+
+    .tbody {
+      .tr {
+        grid-template-columns: 1fr 1fr;
+
+        @include media('>=tablet') {
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        @include media('>=desktop') {
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+      }
+    }
+  }
+
+  &--total-wealth {
+    .thead  {
+      .tr-group {
+        + .tr-group {
+          .tr-group__title {
+            width: 69%;
           }
         }
       }
