@@ -18,7 +18,10 @@ const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin')
 mix.js('resources/js/app.js', 'public/js')
   .sass('resources/sass/main.scss', 'public/css')
   .copy('resources/images', 'public/images')
-  .copy('resources/js/spritemap.js', 'public/js/spritemap.js')
+  .copy([
+    'resources/js/spritemap.js',
+    'resources/js/spritemap.js.map',
+  ], 'public/js')
   .options({
     postCss: [
       cssImport(),
