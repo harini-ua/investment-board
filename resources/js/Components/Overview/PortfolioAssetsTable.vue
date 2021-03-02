@@ -6,12 +6,24 @@
       <div class="table table--portfolio-assets">
         <div class="thead">
           <div class="tr">
-            <div class="td">Asset name</div>
-            <div class="td">Value</div>
-            <div class="td hidden-sm">Month</div>
-            <div class="td hidden-sm">Year</div>
-            <div class="td hidden-lg">Month | Benchmark</div>
-            <div class="td hidden-lg">Year | Benchmark</div>
+            <div class="tr-group-content">
+              <div class="td">Asset name</div>
+              <div class="td">Value</div>
+            </div>
+            <div class="tr-group hidden-sm">
+              <span class="tr-group__title">P&L</span>
+              <div class="tr-group-content">
+                <div class="td">Month</div>
+                <div class="td">Year</div>
+              </div>
+            </div>
+            <div class="tr-group hidden-lg">
+              <span class="tr-group__title">PL %</span>
+              <div class="tr-group-content">
+                <div class="td">Month | Benchmark</div>
+                <div class="td">Year | Benchmark</div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="tbody">
