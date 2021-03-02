@@ -126,6 +126,40 @@
       }
     }
   }
+
+  &--benchmarks {
+    .thead  {
+      .tr {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .td {
+          &:not(:first-child) {
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .tbody {
+      .tr {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .td {
+        display: flex;
+        align-items: center;
+
+        &:not(:first-child) {
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    .icon-info {
+      stroke-width: 1;
+      margin: 0 6px 0 0;
+    }
+  }
 }
 
 .tr-group {
