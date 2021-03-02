@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="tbody">
-          <div class="tr">
+          <div :class="[{ active: isActive }, tr]" @click="openHiddenContent()">
             <div class="td">Cash</div>
             <div class="td"><a href="#" class="value">15 957 949</a></div>
             <div class="td hidden-sm">(200 889)</div>
@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <div class="tr">
+          <div :class="[{ active: isActive }, tr]" @click="openHiddenContent()">
             <div class="td">Equity</div>
             <div class="td"><a href="#" class="value">15 957 949</a></div>
             <div class="td hidden-sm">(200 889)</div>
@@ -251,6 +251,20 @@
 <script>
 
 export default {
+  data: function () {
+    return {
+      isActive: false,
+      tr: 'tr'
+    }
+  },
+  methods: {
+    openHiddenContent: function() {
+      let ViewportWidth = window.innerWidth;
 
+      if (ViewportWidth < 1024) {
+        this.isActive = !this.isActive;
+      }
+    },
+  }
 }
 </script>
