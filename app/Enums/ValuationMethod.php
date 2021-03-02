@@ -5,13 +5,11 @@ namespace App\Enums;
 use BenSampo\Enum\Enum;
 
 /**
- * @method static static OptionOne()
- * @method static static OptionTwo()
- * @method static static OptionThree()
+ * @method static static MarketValue()
+ * @method static static Exposure()
  */
 final class ValuationMethod extends Enum
 {
-    const OptionOne = 0;
-    const OptionTwo = 1;
-    const OptionThree = 2;
+    const MarketValue = 1;
+    const Exposure = 2;
 }
