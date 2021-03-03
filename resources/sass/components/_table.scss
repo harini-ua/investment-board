@@ -31,6 +31,14 @@
 }
 
 .table {
+  .tr-holder {
+    .active {
+      .collapse-content {
+        height: auto;
+        display: block;
+      }
+    }
+  }
   &--portfolio-assets {
     .thead  {
       .tr-group {
@@ -113,6 +121,11 @@
           }
         }
       }
+    }
+
+    .collapse-content {
+      height: 0;
+      display: none;
     }
   }
 
@@ -322,10 +335,7 @@
 }
 
 .collapse-content {
-  display: none;
-
   @include media('<desktop') {
-    display: block;
     background-color: #ebf7ff;
     padding: 10px;
     border: 1px solid #ebf2fa;

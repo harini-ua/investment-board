@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="tbody">
-          <div class="tr-holder">
+          <div :class="[{active: isActive}, 'tr-holder']" @click="openHiddenContent()">
             <div class="tr">
               <div class="td">Cash</div>
               <div class="td"><a href="#" class="value">15 957 949</a></div>
@@ -578,7 +578,6 @@ export default {
   data: function () {
     return {
       isActive: false,
-      tr: 'tr'
     }
   },
   methods: {
