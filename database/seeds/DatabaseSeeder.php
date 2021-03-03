@@ -10,10 +10,10 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        factory(User::class)->create([
-            'first_name' => 'Admin',
-            'last_name' => 'Admin',
-            'email' => 'admin@example.com',
-        ]);
+        $this->call(\Database\Seeders\UserSeeder::class);
+
+        if (app()->isLocal()) {
+            $this->call(\Database\Seeders\CurrencySeeder::class);
+        }
     }
 }

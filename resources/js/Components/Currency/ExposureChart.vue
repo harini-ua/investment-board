@@ -2,7 +2,7 @@
   <div class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">{{ title }}</h2>
-      <apexchart width="500" type="pie" :options="options" :series="series"></apexchart>
+      <apexchart type="pie" :options="options" :series="series" />
     </div>
   </div>
 </template>
