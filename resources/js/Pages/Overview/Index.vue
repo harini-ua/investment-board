@@ -4,8 +4,8 @@
       <select-input
         v-model="filtersPage.valuationMethod"
         label="Valuation Method"
-        custom_class="custom-drop"
-        :options="payload.valuationMethod"
+        :options="example"
+        custom_class="valuation-method"
       >
 <!--        <option :value="null" label="All" />-->
 <!--        <option v-for="(item, index) in payload.valuationMethod" :key="index" :value="index">{{ item }}</option>-->
@@ -14,10 +14,10 @@
       <select-input
         v-model="filtersPage.baseCurrency"
         label="Base Currency"
-        custom_class="custom-drop"
+        custom_class="base-currency"
       >
-        <option :value="null" label="All" />
-        <option v-for="(item, index) in payload.baseCurrency" :key="index" :value="index">{{ item }}</option>
+<!--        <option :value="null" label="All" />-->
+<!--        <option v-for="(item, index) in payload.baseCurrency" :key="index" :value="index">{{ item }}</option>-->
       </select-input>
     </filters-wrapper>
     <div class="row-chart">

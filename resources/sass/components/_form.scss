@@ -18,6 +18,12 @@ input {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  width: 100%;
+  max-width: 120px;
+
+  > div {
+    width: 100%;
+  }
 }
 
 .select-form-label {

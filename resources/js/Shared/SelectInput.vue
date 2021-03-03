@@ -1,14 +1,13 @@
 <template>
   <div class="select-holder">
-    <label v-if="label" class="select-form-label" :for="id">{{ label }}:</label>
-    <select :id="id" ref="input" v-model="selected" v-bind="$attrs" class="form-select">
-      <slot />
-    </select>
+<!--    <label v-if="label" class="select-form-label" :for="id">{{ label }}:</label>-->
+<!--    <select :id="id" ref="input" v-model="selected" v-bind="$attrs" class="form-select">-->
+<!--      <slot />-->
+<!--    </select>-->
     <Select2
       :id="id"
       :settings="settings"
       :options="selectOptions"
-
       v-model="selected"
     />
   </div>
