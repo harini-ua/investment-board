@@ -8,7 +8,7 @@
       :id="id"
       :settings="settings"
       :options="selectOptions"
-      :name="name"
+
       v-model="selected"
     />
   </div>
@@ -33,7 +33,6 @@ export default {
     label: String,
     placeholder: String,
     custom_class: String,
-    name: String,
   },
   data() {
     let options = this.options;
