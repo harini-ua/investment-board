@@ -13,3 +13,20 @@ input {
     color: #a2acbd;
     padding: 12px;
 }
+
+.select-holder {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.select-form-label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #a2acbd;
+}
+
+.form-select {
+  line-height: 20px;
+}

@@ -10,8 +10,12 @@
 }
 
 .table-title {
-  padding: 0 0 0 30px;
-  margin: 0 0 53px;
+  padding: 0 0 0 10px;
+  margin: 0 0 20px;
+
+  @include media('>=tablet') {
+    margin: 0 0 53px;
+  }
 
   &--benchmarks {
     margin: 0 0 5px;
@@ -39,6 +43,7 @@
       }
     }
   }
+
   &--portfolio-assets {
     .thead  {
       .tr-group {
@@ -75,6 +80,22 @@
     }
 
     .tbody {
+      .tr-holder {
+        &.active {
+          .collapse-content {
+            height: auto;
+            display: block;
+          }
+
+          .tr {
+            &:after {
+              background-color: #1974ba;
+              transform: translateY(-50%) rotate(180deg);
+            }
+          }
+        }
+      }
+
       .tr {
         grid-template-columns: 1fr 1fr 50px;
 
@@ -105,25 +126,12 @@
             width: 24px;
             height: 24px;
           }
-
-          &:hover,
-          .active {
-            &:after {
-              background-color: #1974ba;
-              transform: translateY(-50%) rotate(180deg);
-            }
-          }
-
-          .active {
-            &:after {
-              transform: translateY(-50%) rotate(90deg);
-            }
-          }
         }
       }
     }
 
     .collapse-content {
+      transition: height 0.3s;
       height: 0;
       display: none;
     }

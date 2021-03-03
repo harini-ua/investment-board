@@ -40,7 +40,8 @@
             align-items: center;
         }
 
-        &:hover {
+        &:hover,
+        &.active {
             color: #1474ba;
 
             .icon {
