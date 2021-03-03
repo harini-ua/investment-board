@@ -2,12 +2,27 @@ select + .select2-container {
   width: 100% !important;
 }
 
+//.select2-container {
+//  &--focus,
+//  &--open,
+//  &--below {
+//    .custom-select-valuation-method {
+//      border: 1px solid #acb1d9 !important;
+//    }
+//  }
+//}
+
 .select2-container {
-  &--focus,
-  &--open,
-  &--below {
-    .custom-select-valuation-method {
-      border: 1px solid #acb1d9 !important;
+  &--open {
+    .custom-select-valuation-method,
+    .custom-select-base-currency {
+      .select2-selection__arrow {
+        b {
+          &:after {
+            transform: translateY(-50%) rotate(-180deg) !important;
+          }
+        }
+      }
     }
   }
 }
@@ -40,14 +55,15 @@ select + .select2-container {
       border: none !important;
 
       &:after {
+        transition: transform 0.3s;
         content: '';
         background-image: url('../images/icons-sprite/arrow-down.svg') !important;
         position: absolute !important;
         top: 50% !important;
-        transform: translateY(-50%) rotate(-90deg) !important;
-        right: -6px !important;
-        width: 7px !important;
-        height: 14px !important;
+        transform: translateY(-50%) rotate(0deg) !important;
+        right: -11px !important;
+        width: 16px !important;
+        height: 20px !important;
         background-repeat: no-repeat !important;
         background-size: cover !important;
         background-position: 50% 50% !important;
@@ -58,7 +74,7 @@ select + .select2-container {
 
 .custom-drop-valuation-method,
 .custom-drop-base-currency {
-  border: 1px solid #dadceb !important;
+  border: 1px solid #ebf2fa !important;
 
   .select2-results__option {
     font-size: 14px !important;
@@ -66,12 +82,12 @@ select + .select2-container {
   }
 
   .select2-results__option--highlighted[aria-selected] {
-    color: #fff !important;
-    background-color: rgba(#3a7ee1, .77) !important;
+    color: #3e4756 !important;
+    background-color: #f2faff !important;
   }
 
   .select2-results__option[aria-selected=true] {
-    color: #3a7ee1 !important;
+    color: #3e4756 !important;
     background-color: transparent !important;
   }
 }

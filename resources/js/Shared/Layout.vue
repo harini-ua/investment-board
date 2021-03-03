@@ -9,8 +9,6 @@
           <div class="header-right-bar">
             <main-menu :url="url()" />
             <dropdown>
-              <span class="user user-first-name">{{ $page.auth.user.first_name }}</span>
-              <span class="user user-last-name">{{ $page.auth.user.last_name }}</span>
               <div slot="dropdown" class="mt-2 py-2 shadow-xl bg-white rounded text-sm">
                 <inertia-link :href="route('logout')" method="post">Logout</inertia-link>
               </div>
