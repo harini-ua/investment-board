@@ -6,19 +6,20 @@
         <span class="login-block__title">Login</span>
         <form @submit.prevent="submit">
           <text-input
-              v-model="form.email"
-              :error="errors.email"
-              label="Email"
-              type="email"
-              autofocus autocapitalize="off" />
+            v-model="form.email"
+            :error="errors.email"
+            label="Email"
+            type="email"
+            autofocus autocapitalize="off" />
           <text-input
-              v-model="form.password"
-              label="Password"
-              type="password"
+            v-model="form.password"
+            label="Password"
+            type="password"
           />
           <loading-button
-              :loading="sending"
-              type="submit">Login</loading-button>
+            :loading="sending"
+            type="submit"
+          >Login</loading-button>
         </form>
       </div>
     </div>
@@ -46,7 +47,6 @@ export default {
       form: {
         email: 'admin@example.com',
         password: 'secret',
-        remember: null,
       },
     }
   },
@@ -55,7 +55,6 @@ export default {
       const data = {
         email: this.form.email,
         password: this.form.password,
-        remember: this.form.remember,
       }
 
       this.$inertia.post(this.route('login.attempt'), data, {
