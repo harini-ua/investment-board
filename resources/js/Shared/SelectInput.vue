@@ -16,14 +16,11 @@
 
 <script>
 import Select2 from 'v-select2-component'
-// import PerfectScrollbar from 'vue2-perfect-scrollbar'
-import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
 
 export default {
   inheritAttrs: false,
   components: {
     Select2,
-    // PerfectScrollbar,
   },
   props: {
     id: {

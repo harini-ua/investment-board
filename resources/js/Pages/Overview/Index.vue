@@ -5,9 +5,10 @@
         v-model="filtersPage.valuationMethod"
         label="Valuation Method"
         custom_class="custom-drop"
+        :options="payload.valuationMethod"
       >
-        <option :value="null" label="All" />
-        <option v-for="(item, index) in payload.valuationMethod" :key="index" :value="index">{{ item }}</option>
+<!--        <option :value="null" label="All" />-->
+<!--        <option v-for="(item, index) in payload.valuationMethod" :key="index" :value="index">{{ item }}</option>-->
       </select-input>
       <date-picker type="date" />
       <select-input
