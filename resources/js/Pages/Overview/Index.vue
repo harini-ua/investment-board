@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <filters>
+    <filters-wrapper>
       <select-input
         v-model="filtersPage.valuationMethod"
         label="Valuation Method"
@@ -16,7 +16,7 @@
         <option :value="null" label="All" />
         <option v-for="(item, index) in payload.baseCurrency" :key="index" :value="index">{{ item }}</option>
       </select-input>
-    </filters>
+    </filters-wrapper>
     <div class="row-chart">
       <portfolio-allocation />
       <total-wealth-allocation />
@@ -34,7 +34,7 @@ import TotalWealthAllocation from '@/Components/Overview/TotalWealthAllocation'
 import PortfolioAssetsTable from '@/Components/Overview/PortfolioAssetsTable'
 import TotalWealthTable from '@/Components/Overview/TotalWealthTable'
 import BenchmarksTable from '@/Components/Overview/BenchmarksTable'
-import Filters from '@/Shared/Filters'
+import FiltersWrapper from '@/Shared/FiltersWrapper'
 import SelectInput from '@/Shared/SelectInput'
 import DatePicker from 'vue2-datepicker'
 import { pickBy, throttle } from 'lodash'
@@ -48,7 +48,7 @@ export default {
     PortfolioAssetsTable,
     TotalWealthTable,
     BenchmarksTable,
-    Filters,
+    FiltersWrapper,
     SelectInput,
     DatePicker,
   },
