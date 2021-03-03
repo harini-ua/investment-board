@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import Select2 from 'v-select2-component'
+// import Select2 from 'v-select2-component'
 
 export default {
   inheritAttrs: false,
   components: {
-    Select2,
+    // Select2,
   },
   props: {
     id: {
