@@ -24,6 +24,7 @@
       <portfolio-allocation />
       <total-wealth-allocation />
     </div>
+    <h2>Asset Classes</h2>
     <portfolio-assets-table />
     <total-wealth-table />
     <benchmarks-table />

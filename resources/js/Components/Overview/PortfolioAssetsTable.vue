@@ -1,6 +1,5 @@
 <template>
   <div class="block-table">
-    <h2>Asset Classes</h2>
     <div class="table-holder">
       <h3 class="table-title">Portfolio assets</h3>
       <div class="table table--portfolio-assets">
