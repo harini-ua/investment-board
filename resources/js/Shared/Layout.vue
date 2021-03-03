@@ -9,7 +9,7 @@
           <div class="header-right-bar">
             <main-menu :url="url()" />
             <dropdown>
-              <div slot="dropdown" class="mt-2 py-2 shadow-xl bg-white rounded text-sm">
+              <div slot="dropdown" class="logout-dropdown">
                 <inertia-link :href="route('logout')" method="post">Logout</inertia-link>
               </div>
             </dropdown>

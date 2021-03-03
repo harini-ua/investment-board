@@ -1,0 +1,26 @@
+.logout-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ebf2fa;
+  border-radius: 6px;
+  background-color: #fff;
+  min-width: 133px;
+  min-height: 74px;
+
+  a {
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1474ba;
+    text-decoration: none;
+    min-height: 44px;
+    width: 100%;
+    min-height: 44px;
+
+    &:hover {
+      background-color: #F2FAFF;
+    }
+  }
+}
