@@ -139,10 +139,10 @@
       }
 
       .tr {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 50px;
 
         @include media('>=tablet') {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr 1fr 50px;
         }
 
         @include media('>=desktop') {
@@ -153,14 +153,49 @@
 
     .tbody {
       .tr {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 50px;
 
         @include media('>=tablet') {
-          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr 1fr 50px;
         }
 
         @include media('>=desktop') {
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        @include media('<desktop') {
+          position: relative;
+
+          &:after {
+            transition: transform 0.3s;
+            content: '';
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            -webkit-mask: url("/images/icons-sprite/arrow-down.svg");
+            mask: url("/images/icons-sprite/arrow-down.svg");
+            background-color: #a2acbd;
+            width: 24px;
+            height: 24px;
+          }
+
+          &:hover,
+          .active {
+            &:after {
+              background-color: #1974ba;
+              transform: translateY(-50%) rotate(180deg);
+            }
+          }
+
+          .active {
+            &:after {
+              transform: translateY(-50%) rotate(90deg);
+            }
+          }
         }
       }
     }
