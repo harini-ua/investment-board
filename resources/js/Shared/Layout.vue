@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <portal-target name="dropdown" slim />
+
     <header class="header">
       <div class="container">
         <div class="header-holder">
@@ -60,6 +61,16 @@ export default {
       showUserMenu: false,
       accounts: null,
     }
+  },
+  created() {
+    window.addEventListener(
+      'resize',
+      () => this.$store.commit('setWindowWidth')
+    )
+    window.addEventListener(
+      'resize',
+      () => this.$store.commit('setWindowHeight')
+    )
   },
   methods: {
     url() {
