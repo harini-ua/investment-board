@@ -8,6 +8,7 @@ class DataService
 {
     private const PROCEDURE = [
         'currency' => 'fn_get_currency',
+        'custodian' => 'fn_get_custodian',
     ];
 
     /**
@@ -16,6 +17,17 @@ class DataService
     public function getCurrency(): array
     {
         $procedure = self::PROCEDURE['currency'];
+        $params = [];
+
+        return $this->callProcedure($procedure, $params);
+    }
+
+    /**
+     * Get custodian data
+     */
+    public function getCustodian(): array
+    {
+        $procedure = self::PROCEDURE['custodian'];
         $params = [];
 
         return $this->callProcedure($procedure, $params);
