@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <filters-wrapper>
       <select-input
         v-model="filtersPage.valuationMethod"
@@ -32,9 +32,9 @@ import Layout from '@/Shared/Layout'
 import ExposureChart from '@/Components/Currency/ExposureChart'
 import ExposureTable from '@/Components/Currency/ExposureTable'
 import HedgingTable from '@/Components/Currency/HedgingTable'
-import FiltersWrapper from '@/Shared/FiltersWrapper'
-import SelectInput from '@/Shared/SelectInput'
-import DatePicker from 'vue2-datepicker'
+// import FiltersWrapper from '@/Shared/FiltersWrapper'
+// import SelectInput from '@/Shared/SelectInput'
+// import DatePicker from 'vue2-datepicker'
 import { pickBy, throttle } from 'lodash'
 
 export default {
@@ -44,9 +44,9 @@ export default {
     ExposureChart,
     ExposureTable,
     HedgingTable,
-    FiltersWrapper,
-    SelectInput,
-    DatePicker,
+    // FiltersWrapper,
+    // SelectInput,
+    // DatePicker,
   },
   props: {
     filters: Object,
