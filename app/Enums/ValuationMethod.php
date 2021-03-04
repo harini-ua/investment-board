@@ -2,14 +2,17 @@
 
 namespace App\Enums;
 
+use BenSampo\Enum\Contracts\LocalizedEnum;
 use BenSampo\Enum\Enum;
 
 /**
  * @method static static MarketValue()
  * @method static static Exposure()
  */
-final class ValuationMethod extends Enum
+final class ValuationMethod extends Enum implements LocalizedEnum
 {
-    const MarketValue = 1;
-    const Exposure = 2;
+    use CollectionTrait;
+
+    const MarketValue = 'MarketValue';
+    const Exposure = 'Exposure';
 }

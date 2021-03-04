@@ -3,22 +3,15 @@
     <filters-wrapper>
       <select-input
         v-model="filtersPage.valuationMethod"
+        :options="payload.valuationMethod"
         label="Valuation Method"
-        :options="example"
-        custom_class="valuation-method"
-      >
-<!--        <option :value="null" label="All" />-->
-<!--        <option v-for="(item, index) in payload.valuationMethod" :key="index" :value="index">{{ item }}</option>-->
-      </select-input>
-      <date-picker type="date" />
+      />
+      <date-picker v-model="filtersPage.valuationDate" format="DD/MM/YYYY" type="date" />
       <select-input
         v-model="filtersPage.baseCurrency"
-        label="Base Currency"
-        custom_class="base-currency"
-      >
-<!--        <option :value="null" label="All" />-->
-<!--        <option v-for="(item, index) in payload.baseCurrency" :key="index" :value="index">{{ item }}</option>-->
-      </select-input>
+        :options="payload.baseCurrency"
+        label="Information text"
+      />
     </filters-wrapper>
     <div class="row-chart">
       <portfolio-allocation />
@@ -42,6 +35,7 @@ import FiltersWrapper from '@/Shared/FiltersWrapper'
 import SelectInput from '@/Shared/SelectInput'
 import DatePicker from 'vue2-datepicker'
 import { pickBy, throttle } from 'lodash'
+import moment from 'moment'
 
 export default {
   metaInfo: { title: 'Overview' },
@@ -74,6 +68,9 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
+        query.valuationDate = moment(String(query.valuationDate))
+          .format('MM/DD/YYYY')
+        query.valuationMethod = query.valuationMethod.code
         this.$inertia.replace(
           this.route(
             'overview',

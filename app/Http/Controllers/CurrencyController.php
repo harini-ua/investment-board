@@ -27,8 +27,8 @@ class CurrencyController extends Controller
             'filters' => Request::all(['valuationMethod', 'valuationDate', 'baseCurrency', 'asset_class', 'custodian', 'account']),
             'currency' => $this->dataService->getCurrency(),
             'payload' => [
-                'valuationMethod' => ValuationMethod::asSelectArray(),
-                'baseCurrency' => BaseCurrency::asSelectArray(),
+                'valuationMethod' => ValuationMethod::toCollection(),
+                'baseCurrency' => BaseCurrency::getKeys(),
                 'assetClass' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()

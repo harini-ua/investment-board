@@ -18,8 +18,8 @@ class DetailsController extends Controller
             'filters' => Request::all(['valuation_method', 'valuation_date', 'base_currency', 'asset_class', 'custodian', 'account']),
             'details' => [],
             'payload' => [
-                'valuationMethod' => ValuationMethod::asSelectArray(),
-                'baseCurrency' => BaseCurrency::asSelectArray(),
+                'valuationMethod' => ValuationMethod::toCollection(),
+                'baseCurrency' => BaseCurrency::getKeys(),
                 'assetClass' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()

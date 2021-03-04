@@ -2,6 +2,7 @@
 
 namespace App\Enums;
 
+use BenSampo\Enum\Contracts\LocalizedEnum;
 use BenSampo\Enum\Enum;
 
 /**
@@ -9,9 +10,11 @@ use BenSampo\Enum\Enum;
  * @method static static USD()
  * @method static static CHF()
  */
-final class BaseCurrency extends Enum
+final class BaseCurrency extends Enum implements LocalizedEnum
 {
-    const EUR = 1;
-    const USD = 2;
-    const CHF = 3;
+    use CollectionTrait;
+
+    const EUR = 'EUR';
+    const USD = 'USD';
+    const CHF = 'CHF';
 }

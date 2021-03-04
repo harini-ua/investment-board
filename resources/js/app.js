@@ -14,10 +14,6 @@ Vue.use(VueMeta)
 
 Vue.use(Vuex)
 
-import Select2 from 'v-select2-component';
-
-Vue.component('Select2', Select2);
-
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 
@@ -32,7 +28,9 @@ const store = new Vuex.Store({
   },
   mutations: {
     setWindowWidth(state) {
-      state.windowWidth = window.innerWidth;
+      state.windowHeight = window.innerHeight;
+    },
+    setWindowHeight(state) {
       state.windowHeight = window.innerHeight;
     }
   },

@@ -15,8 +15,8 @@ class OverviewController extends Controller
             'filters' => Request::all(['valuationMethod', 'valuationDate', 'baseCurrency']),
             'overview' => [],
             'payload' => [
-                'valuationMethod' => ValuationMethod::asSelectArray(),
-                'baseCurrency' => BaseCurrency::asSelectArray(),
+                'valuationMethod' => ValuationMethod::toCollection(),
+                'baseCurrency' => BaseCurrency::getKeys(),
             ]
         ]);
     }

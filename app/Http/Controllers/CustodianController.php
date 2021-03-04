@@ -14,8 +14,8 @@ class CustodianController extends Controller
         return Inertia::render('Custodian/Index', [
             'filters' => Request::all(['valuation_method', 'valuation_date', 'base_currency']),
             'payload' => [
-                'valuationMethod' => ValuationMethod::asSelectArray(),
-                'baseCurrency' => BaseCurrency::asSelectArray(),
+                'valuationMethod' => ValuationMethod::toCollection(),
+                'baseCurrency' => BaseCurrency::getKeys(),
             ]
         ]);
     }

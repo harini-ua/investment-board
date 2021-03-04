@@ -17,7 +17,7 @@ class TradesController extends Controller
             'filters' => Request::all(['valuation_method', 'valuation_date', 'base_currency', 'asset_class', 'custodian', 'account']),
             'trades' => [],
             'payload' => [
-                'baseCurrency' => BaseCurrency::asSelectArray(),
+                'baseCurrency' => BaseCurrency::getKeys(),
                 'assetClass' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()
