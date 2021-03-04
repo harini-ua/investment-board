@@ -24,7 +24,7 @@ class CurrencyController extends Controller
 
     public function index()
     {
-        $currency = Currency::getData(Request::all(['valuationMethod', 'valuationDate', 'baseCurrency']));
+//        $currency = Currency::getData(Request::all(['valuationMethod', 'valuationDate', 'baseCurrency']));
 
         return Inertia::render('Currency/Index', [
             'filters' => Request::all(['valuationMethod', 'valuationDate', 'baseCurrency', 'asset_class', 'custodian', 'account']),

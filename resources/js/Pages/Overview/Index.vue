@@ -68,9 +68,11 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
-        query.valuationDate = moment(String(query.valuationDate))
-          .format('MM/DD/YYYY')
-        query.valuationMethod = query.valuationMethod.code
+        if (query.valuationDate) {
+          query.valuationDate = moment(String(query.valuationDate))
+            .format('MM/DD/YYYY')
+        }
+        //query.valuationMethod = query.valuationMethod.code
         this.$inertia.replace(
           this.route(
             'overview',

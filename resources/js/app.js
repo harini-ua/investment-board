@@ -14,6 +14,10 @@ Vue.use(VueMeta)
 
 Vue.use(Vuex)
 
+import vSelect from "vue-select";
+Vue.component("v-select", vSelect);
+import 'vue-select/dist/vue-select.css'
+
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 
