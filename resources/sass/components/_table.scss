@@ -384,12 +384,21 @@
   &--open-position {
     .thead {
       .tr {
-        grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        grid-template-columns: minmax(154px, 1fr);
         align-items: center;
         margin: 0 -7px;
 
         @include media('>=tablet') {
           font-size: 12px;
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=desktop') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=1140px') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
         }
 
         .td {
@@ -401,10 +410,22 @@
 
     .tbody {
       .tr {
-        grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        grid-template-columns: minmax(154px, 1fr) 40px;
         margin: 0 -6px;
         position: relative;
         cursor: pointer;
+
+        @include media('>=tablet') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=desktop') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=1140px') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
 
         &:after {
           transition: transform 0.3s;
@@ -532,7 +553,29 @@
   }
 }
 
+.hidden-xl {
+  display: none;
 
+  @include media('>=1140px') {
+    display: block;
+  }
+}
+
+//.hidden-sm {
+//  display: none;
+//
+//  @include media('>=576px') {
+//    display: grid;
+//  }
+//}
+
+.visible-xl {
+  display: none;
+
+  @include media('<1140px') {
+    display: grid;
+  }
+}
 
 .visible-lg {
   display: none;
@@ -549,3 +592,11 @@
     display: grid;
   }
 }
+
+//.visible-sm {
+//  display: none;
+//
+//  @include media('<576px') {
+//    display: grid;
+//  }
+//}
