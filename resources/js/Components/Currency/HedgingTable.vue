@@ -7,7 +7,7 @@
           <div class="tr">
             <div class="td">Currency</div>
             <div class="td">Gross Assets</div>
-            <div class="td">FX Forwards</div>
+            <div class="td hidden-sm">FX Forwards</div>
             <div class="td hidden-lg">Net Assets</div>
           </div>
         </div>
@@ -19,15 +19,15 @@
               <div class="td hidden-sm">8,6%</div>
               <div class="td hidden-lg">55,6%</div>
             </div>
-            <div class="collapse-content collapse-content--general visible-lg">
+            <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
@@ -41,13 +41,13 @@
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
@@ -61,13 +61,13 @@
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
@@ -81,13 +81,13 @@
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
@@ -101,13 +101,13 @@
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
@@ -121,13 +121,13 @@
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
@@ -141,13 +141,13 @@
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
@@ -161,13 +161,13 @@
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
+                <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">42,9%</div>
+                  <div class="cell-description">55,6%</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">FX Forwards</div>
+                  <div class="cell-description">8,6%</div>
                 </div>
               </div>
             </div>
