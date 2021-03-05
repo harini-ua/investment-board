@@ -91,12 +91,6 @@
 
 export default {
   props: {
-    headers: [
-      [
-        { text: 'ID', width: '75', value: 'id' },
-      ],
-      [],
-    ],
     items: {
       type: Array,
       default: () => [],
@@ -104,7 +98,7 @@ export default {
   },
   data: function () {
     return {
-      isActive: false,
+      //
     }
   },
   methods: {

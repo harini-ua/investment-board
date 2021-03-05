@@ -31,7 +31,7 @@ class Position extends Model
     public static function open($clientCode = 'DUM', $valuationCurrency = 'EUR',
                                 $periodDate = '2020-12-31', $valuationMethod = 'VALUE')
     {
-        return self::select('instrument_name', 'quantity', 'last_purchase', 'currency', 'cost_price',
+        $result = self::select('instrument_name', 'quantity', 'last_purchase', 'currency', 'cost_price',
                             'valuation_price', 'cost_local', 'valuation_local', 'valuation_base',
                             'mtd_pl', 'ytd_pl', 'mtd_return', 'ytd_return', 'sp_return')
             ->where('client_code', $clientCode)
@@ -39,7 +39,13 @@ class Position extends Model
             ->where('period_date', $periodDate)
             ->where('valuation_method', $valuationMethod)
             ->get()
-            ->toArray()
         ;
+
+        $result->map(function ($item) {
+            $item['active'] = false;
+            return $item;
+        });
+
+        return $result->toArray();
     }
 }

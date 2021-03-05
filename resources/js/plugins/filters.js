@@ -1,4 +1,5 @@
 import numeral from 'numeral'
+import moment from 'moment'
 
 export default {
   /**
@@ -87,7 +88,18 @@ export default {
    * @param value
    * @returns {string}
    */
-  number_to_string: ( value) => {
+  number_to_string: ( value ) => {
     return value.toLocaleString()
+  },
+
+  /**
+   * Filter to converts a date into a string
+   *
+   * @param value
+   * @param format
+   * @returns {string}
+   */
+  date_format: ( value, format = 'MM/DD/YYYY' ) => {
+    return moment(value).format(format)
   },
 }

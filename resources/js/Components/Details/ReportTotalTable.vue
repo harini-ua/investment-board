@@ -21,221 +21,105 @@
             <div class="td hidden-xl">% Since Purchase</div>
           </div>
         </div>
+
         <div class="tbody">
-          <div :class="[{active: isActive}, 'tr-holder']" @click="openHiddenContent()">
+          <div v-for="(item, index) in items"
+               :id="'item-' + item.id"
+               :key="item.id"
+               class="tr-holder"
+               :class="[{active: item.active}, 'row-' + (index + 1)]"
+               @click="toggle(index)"
+          >
+
             <div class="tr">
-              <div class="td">ADANI PORTS [PIG]</div>
-              <div class="td hidden-sm">250</div>
-              <div class="td hidden-sm">11/12/2019</div>
-              <div class="td hidden-sm">USD</div>
-              <div class="td hidden-sm">1,0115</div>
-              <div class="td hidden-sm">0,9956</div>
-              <div class="td hidden-sm">252 883</div>
-              <div class="td hidden-sm">248 898</div>
-              <div class="td hidden-sm">211 264</div>
-              <div class="td hidden-xl">-3 813</div>
-              <div class="td hidden-xl">-14 726</div>
-              <div class="td hidden-xl">3,01%</div>
-              <div class="td hidden-xl">-1,79%</div>
-              <div class="td hidden-xl">-1,58%</div>
+              <div class="td">{{ item.instrument_name }}</div>
+              <div class="td hidden-sm">-</div>
+              <div class="td hidden-sm">{{ item.last_purchase | date_format }}</div>
+              <div class="td hidden-sm">-</div>
+              <div class="td hidden-sm">{{ item.cost_price | number_to_string }}</div>
+              <div class="td hidden-sm">{{ item.valuation_price | number_to_string }}</div>
+              <div class="td hidden-sm">{{ item.cost_local | number_to_string }}</div>
+              <div class="td hidden-sm">{{ item.valuation_local | number_to_string }}</div>
+              <div class="td hidden-sm">{{ item.valuation_base | number_to_string }}</div>
+              <div class="td hidden-xl">{{ item.mtd_pl | number_to_string }}</div>
+              <div class="td hidden-xl">{{ item.ytd_pl | number_to_string }}</div>
+              <div class="td hidden-xl">{{ item.mtd_return | percentage }}</div>
+              <div class="td hidden-xl">{{ item.ytd_return | percentage }}</div>
+              <div class="td hidden-xl">{{ item.sp_return | percentage }}</div>
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
                 <div class="cell-row">
                   <div class="cell-thead">Units</div>
-                  <div class="cell-description">250 000</div>
+                  <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Last Purchase</div>
-                  <div class="cell-description">50.0</div>
+                  <div class="cell-description">{{ item.last_purchase }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">CCY</div>
-                  <div class="cell-description">USD</div>
+                  <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Cost Price</div>
-                  <div class="cell-description">1,0115</div>
+                  <div class="cell-description">{{ item.cost_price }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Valuation Price</div>
-                  <div class="cell-description">0,9956</div>
+                  <div class="cell-description">{{ item.valuation_price }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Cost Local</div>
-                  <div class="cell-description">252 883</div>
+                  <div class="cell-description">{{ item.cost_local }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Value Local</div>
-                  <div class="cell-description">5248 898</div>
+                  <div class="cell-description">{{ item.valuation_local }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Value Base</div>
-                  <div class="cell-description">211 264</div>
+                  <div class="cell-description">{{ item.valuation_base }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">P&L MTD</div>
-                  <div class="cell-description">-3 813 </div>
+                  <div class="cell-description">{{ item.mtd_pl }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">P&L YTD</div>
-                  <div class="cell-description">-14 726 </div>
+                  <div class="cell-description">{{ item.ytd_pl }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">% MTD</div>
-                  <div class="cell-description">3,01%</div>
+                  <div class="cell-description">{{ item.mtd_return | percentage }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">% YTD</div>
-                  <div class="cell-description">-1,79%</div>
+                  <div class="cell-description">{{ item.ytd_return | percentage }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">% Since Purchase</div>
-                  <div class="cell-description">-1,58%</div>
+                  <div class="cell-description">{{ item.sp_return | percentage }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Interest</div>
-                  <div class="cell-description">50.0</div>
+                  <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Dividend</div>
-                  <div class="cell-description">75.0</div>
+                  <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Commissions</div>
-                  <div class="cell-description">200.0</div>
+                  <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Tax</div>
-                  <div class="cell-description">100.0</div>
+                  <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Total</div>
-                  <div class="cell-description">425.0</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">ADANI PORTS [PIG]</div>
-              <div class="td hidden-sm">250 000</div>
-              <div class="td hidden-sm">11/12/2019</div>
-              <div class="td hidden-sm">USD</div>
-              <div class="td hidden-sm">1,0115</div>
-              <div class="td hidden-sm">0,9956</div>
-              <div class="td hidden-sm">252 883</div>
-              <div class="td hidden-sm">248 898</div>
-              <div class="td hidden-sm">211 264</div>
-              <div class="td hidden-xl">-3 813</div>
-              <div class="td hidden-xl">-14 726</div>
-              <div class="td hidden-xl">3,01%</div>
-              <div class="td hidden-xl">-1,79%</div>
-              <div class="td hidden-xl">-1,58%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row">
-                  <div class="cell-thead">Units</div>
-                  <div class="cell-description">250 000</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Last Purchase</div>
-                  <div class="cell-description">50.0</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">CCY</div>
-                  <div class="cell-description">USD</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Cost Price</div>
-                  <div class="cell-description">1,0115</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Valuation Price</div>
-                  <div class="cell-description">0,9956</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Cost Local</div>
-                  <div class="cell-description">252 883</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Value Local</div>
-                  <div class="cell-description">5248 898</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Value Base</div>
-                  <div class="cell-description">211 264</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">P&L MTD</div>
-                  <div class="cell-description">-3 813 </div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">P&L YTD</div>
-                  <div class="cell-description">-14 726 </div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">% MTD</div>
-                  <div class="cell-description">3,01%</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">% YTD</div>
-                  <div class="cell-description">-1,79%</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">% Since Purchase</div>
-                  <div class="cell-description">-1,58%</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Interest</div>
-                  <div class="cell-description">50.0</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Dividend</div>
-                  <div class="cell-description">75.0</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Commissions</div>
-                  <div class="cell-description">200.0</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Tax</div>
-                  <div class="cell-description">100.0</div>
-                </div>
-                <div class="cell-row">
-                  <div class="cell-thead">Total</div>
-                  <div class="cell-description">425.0</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">ADANI PORTS [PIG]</div>
-              <div class="td">250</div>
-              <div class="td">11/12/2019</div>
-              <div class="td">USD</div>
-              <div class="td">1,0115</div>
-              <div class="td">0,9956</div>
-              <div class="td">252 883</div>
-              <div class="td">248 898</div>
-              <div class="td">211 264</div>
-              <div class="td hidden-xl">-3 813</div>
-              <div class="td hidden-xl">-14 726</div>
-              <div class="td hidden-xl">3,01%</div>
-              <div class="td hidden-xl">-1,79%</div>
-              <div class="td hidden-xl">-1,58%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
+                  <div class="cell-description">-</div>
                 </div>
               </div>
             </div>
@@ -248,14 +132,20 @@
 
 <script>
 export default {
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data: function () {
     return {
-      isActive: false,
+      //
     }
   },
   methods: {
-    openHiddenContent: function() {
-      this.isActive = !this.isActive
+    toggle(index) {
+      this.items[index]['active'] = !this.items[index]['active']
     },
   },
 }
