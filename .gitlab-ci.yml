@@ -19,7 +19,9 @@ building:
     - ${PHP} composer.phar install
     - npm install
     - npm run dev
-    - ${PHP} artisan migrate:fresh --seed
+    - ${PHP} artisan migrate:reset
+    - ${PHP} artisan migrate
+    - ${PHP} artisan db:seed
     - ${PHP} artisan optimize
     - ${PHP} artisan route:cache
     - ${PHP} artisan config:cache
