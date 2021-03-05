@@ -367,15 +367,17 @@
 
     @include media('<desktop') {
       .collapse-content {
-        padding: 10px;
+        height: 0;
+        display: none;
+        padding: 10px 30px;
+        border: 1px solid #ebf2fa;
       }
     }
 
     @include media('<tablet') {
-      height: 0;
-      display: none;
-      padding: 10px 30px;
-      border: 1px solid #ebf2fa;
+      .collapse-content {
+        padding: 10px;
+      }
     }
   }
 
@@ -529,6 +531,8 @@
     display: block;
   }
 }
+
+
 
 .visible-lg {
   display: none;
