@@ -15,11 +15,10 @@ class DetailsController extends Controller
 {
     public function index()
     {
-        $positionOpen = Position::open();
+        $positionOpen = Position::open(null, Request::get('method'), Request::get('date'), Request::get('currency'));
 
         return Inertia::render('Details/Index', [
-            'filters' => Request::all(['valuation_method', 'valuation_date', 'base_currency', 'asset_class', 'custodian', 'account']),
-            'details' => [],
+            'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
             'positionOpen' => $positionOpen,
             'payload' => [
                 'valuationMethod' => ValuationMethod::toCollection(),

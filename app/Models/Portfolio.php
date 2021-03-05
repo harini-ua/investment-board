@@ -21,24 +21,32 @@ class Portfolio extends Model
     /**
      * Get Portfolio Asset
      *
-     * @param string $clientCode
-     * @param string $valuationCurrency
-     * @param string $periodDate
-     * @param string $valuationMethod
+     * @param string|null $clientCode
+     * @param string|null $currency
+     * @param string|null $date
+     * @param string|null $method
      *
      * @return mixed
      */
-    public static function asset($clientCode = 'DUM', $valuationCurrency = 'EUR',
-                                 $periodDate = '2020-12-31', $valuationMethod = 'VALUE')
+    public static function asset($clientCode, $currency, $date, $method)
     {
-        $result = self::select('kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
-                            'ytd_percentage')
-            ->where('client_code', $clientCode)
-            ->where('valuation_currency', $valuationCurrency)
-            ->where('period_date', $periodDate)
-            ->where('valuation_method', $valuationMethod)
-            ->get()
-        ;
+        $query = self::select('kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
+                              'ytd_percentage');
+
+        if ($clientCode) {
+            $query->where('client_code', $clientCode);
+        }
+        if ($currency) {
+            $query->where('valuation_currency', $currency);
+        }
+        if ($date) {
+            $query->where('period_date', $date);
+        }
+        if ($method) {
+            $query->where('valuation_method', $method);
+        }
+
+        $result = $query->get();
 
         $result->map(function ($item) {
             $item['active'] = false;

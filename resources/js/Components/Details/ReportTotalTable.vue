@@ -33,16 +33,16 @@
 
             <div class="tr">
               <div class="td">{{ item.instrument_name }}</div>
-              <div class="td hidden-sm">-</div>
+              <div class="td hidden-sm">{{ item.quantity | numeral }}</div>
               <div class="td hidden-sm">{{ item.last_purchase | date_format }}</div>
-              <div class="td hidden-sm">-</div>
-              <div class="td hidden-sm">{{ item.cost_price | number_to_string }}</div>
-              <div class="td hidden-sm">{{ item.valuation_price | number_to_string }}</div>
-              <div class="td hidden-sm">{{ item.cost_local | number_to_string }}</div>
-              <div class="td hidden-sm">{{ item.valuation_local | number_to_string }}</div>
-              <div class="td hidden-sm">{{ item.valuation_base | number_to_string }}</div>
-              <div class="td hidden-xl">{{ item.mtd_pl | number_to_string }}</div>
-              <div class="td hidden-xl">{{ item.ytd_pl | number_to_string }}</div>
+              <div class="td hidden-sm">{{ item.currency }}</div>
+              <div class="td hidden-sm">{{ item.cost_price | numeral }}</div>
+              <div class="td hidden-sm">{{ item.valuation_price | numeral }}</div>
+              <div class="td hidden-sm">{{ item.cost_local | numeral }}</div>
+              <div class="td hidden-sm">{{ item.valuation_local | numeral }}</div>
+              <div class="td hidden-sm">{{ item.valuation_base | numeral }}</div>
+              <div class="td hidden-xl">{{ item.mtd_pl | numeral }}</div>
+              <div class="td hidden-xl">{{ item.ytd_pl | numeral }}</div>
               <div class="td hidden-xl">{{ item.mtd_return | percentage }}</div>
               <div class="td hidden-xl">{{ item.ytd_return | percentage }}</div>
               <div class="td hidden-xl">{{ item.sp_return | percentage }}</div>
@@ -51,43 +51,43 @@
               <div class="collapse-content-table">
                 <div class="cell-row">
                   <div class="cell-thead">Units</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.quantity | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Last Purchase</div>
-                  <div class="cell-description">{{ item.last_purchase }}</div>
+                  <div class="cell-description">{{ item.last_purchase | date_format }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">CCY</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.currency}}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Cost Price</div>
-                  <div class="cell-description">{{ item.cost_price }}</div>
+                  <div class="cell-description">{{ item.cost_price | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Valuation Price</div>
-                  <div class="cell-description">{{ item.valuation_price }}</div>
+                  <div class="cell-description">{{ item.valuation_price | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Cost Local</div>
-                  <div class="cell-description">{{ item.cost_local }}</div>
+                  <div class="cell-description">{{ item.cost_local | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Value Local</div>
-                  <div class="cell-description">{{ item.valuation_local }}</div>
+                  <div class="cell-description">{{ item.valuation_local | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Value Base</div>
-                  <div class="cell-description">{{ item.valuation_base }}</div>
+                  <div class="cell-description">{{ item.valuation_base | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">P&L MTD</div>
-                  <div class="cell-description">{{ item.mtd_pl }}</div>
+                  <div class="cell-description">{{ item.mtd_pl | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">P&L YTD</div>
-                  <div class="cell-description">{{ item.ytd_pl }}</div>
+                  <div class="cell-description">{{ item.ytd_pl | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">% MTD</div>

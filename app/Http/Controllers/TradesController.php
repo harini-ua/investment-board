@@ -14,10 +14,10 @@ class TradesController extends Controller
     public function index()
     {
         return Inertia::render('Trades/Index', [
-            'filters' => Request::all(['valuation_method', 'valuation_date', 'base_currency', 'asset_class', 'custodian', 'account']),
+            'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
             'trades' => [],
             'payload' => [
-                'baseCurrency' => BaseCurrency::getKeys(),
+                'currency' => BaseCurrency::getKeys(),
                 'assetClass' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()

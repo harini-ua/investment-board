@@ -24,14 +24,14 @@ class CurrencyController extends Controller
 
     public function index()
     {
-//        $currency = Currency::getData(Request::all(['valuationMethod', 'valuationDate', 'baseCurrency']));
+//        $currency = Currency::getData(Request::all(['method', 'date', 'currency']));
 
         return Inertia::render('Currency/Index', [
-            'filters' => Request::all(['valuationMethod', 'valuationDate', 'baseCurrency', 'asset_class', 'custodian', 'account']),
+            'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
             'currency' => [],
             'payload' => [
-                'valuationMethod' => ValuationMethod::toCollection(),
-                'baseCurrency' => BaseCurrency::getKeys(),
+                'method' => ValuationMethod::toCollection(),
+                'currency' => BaseCurrency::getKeys(),
                 'assetClass' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()

@@ -35,9 +35,9 @@
           >
             <div class="tr">
               <div class="td">{{ item.kfp_asset_class }}</div>
-              <div class="td"><a :href="route('details')" class="value">{{ item.mtd_value | number_to_string }}</a></div>
-              <div class="td hidden-sm">{{ item.mtd_pl | number_to_string }}</div>
-              <div class="td hidden-sm">{{ item.ytd_pl | number_to_string }}</div>
+              <div class="td"><a :href="route('details')" class="value">{{ item.mtd_value | numeral }}</a></div>
+              <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>
+              <div class="td hidden-sm">{{ item.ytd_pl | numeral | is_negative}}</div>
               <div class="td hidden-lg">
                 <div class="double-value-holder">
                   <span class="double-value">{{ item.mtd_percentage | percentage }}</span>
@@ -60,12 +60,12 @@
                 </div>
                 <div class="row visible-md">
                   <div class="cell cell-description">P&L MTD</div>
-                  <div class="cell">{{ item.mtd_pl | number_to_string }}</div>
+                  <div class="cell">{{ item.mtd_pl | numeral | is_negative }}</div>
                   <div class="cell"></div>
                 </div>
                 <div class="row visible-md">
                   <div class="cell cell-description">P&L YTD</div>
-                  <div class="cell">{{ item.ytd_pl | number_to_string }}</div>
+                  <div class="cell">{{ item.ytd_pl | numeral | is_negative }}</div>
                   <div class="cell"></div>
                 </div>
                 <div class="row visible-lg">

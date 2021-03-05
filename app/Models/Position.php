@@ -21,25 +21,33 @@ class Position extends Model
     /**
      * Get Open Position
      *
-     * @param string $clientCode
-     * @param string $valuationCurrency
-     * @param string $periodDate
-     * @param string $valuationMethod
+     * @param string|null $clientCode
+     * @param string|null $currency
+     * @param string|null $date
+     * @param string|null $method
      *
      * @return mixed
      */
-    public static function open($clientCode = 'DUM', $valuationCurrency = 'EUR',
-                                $periodDate = '2020-12-31', $valuationMethod = 'VALUE')
+    public static function open($clientCode, $currency, $date, $method)
     {
-        $result = self::select('instrument_name', 'quantity', 'last_purchase', 'currency', 'cost_price',
-                            'valuation_price', 'cost_local', 'valuation_local', 'valuation_base',
-                            'mtd_pl', 'ytd_pl', 'mtd_return', 'ytd_return', 'sp_return')
-            ->where('client_code', $clientCode)
-            ->where('valuation_currency', $valuationCurrency)
-            ->where('period_date', $periodDate)
-            ->where('valuation_method', $valuationMethod)
-            ->get()
-        ;
+        $query = self::select('instrument_name', 'quantity', 'currency', 'last_purchase', 'currency', 'cost_price',
+                              'valuation_price', 'cost_local', 'valuation_local', 'valuation_base',
+                              'mtd_pl', 'ytd_pl', 'mtd_return', 'ytd_return', 'sp_return');
+
+        if ($clientCode) {
+            $query->where('client_code', $clientCode);
+        }
+        if ($currency) {
+            $query->where('valuation_currency', $currency);
+        }
+        if ($date) {
+            $query->where('period_date', $date);
+        }
+        if ($method) {
+            $query->where('valuation_method', $method);
+        }
+
+        $result = $query->get();
 
         $result->map(function ($item) {
             $item['active'] = false;

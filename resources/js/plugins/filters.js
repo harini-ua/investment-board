@@ -79,7 +79,7 @@ export default {
    * @returns {*}
    */
   numeral: ( value, format = '0,0' ) => {
-    return numeral(value).format(format)
+    return numeral(value).format(format).replace(/,/g, ' ')
   },
 
   /**
@@ -101,5 +101,15 @@ export default {
    */
   date_format: ( value, format = 'MM/DD/YYYY' ) => {
     return moment(value).format(format)
+  },
+
+  /**
+   * Filter to converts a date into a string
+   *
+   * @param value
+   * @returns {string}
+   */
+  is_negative: ( value ) => {
+    return (Number.parseInt(value) < 0) ? '('+value.substring(1)+')' : value
   },
 }

@@ -12,10 +12,10 @@ class CustodianController extends Controller
     public function index()
     {
         return Inertia::render('Custodian/Index', [
-            'filters' => Request::all(['valuation_method', 'valuation_date', 'base_currency']),
+            'filters' => Request::all(['method', 'date', 'currency']),
             'payload' => [
-                'valuationMethod' => ValuationMethod::toCollection(),
-                'baseCurrency' => BaseCurrency::getKeys(),
+                'method' => ValuationMethod::toCollection(),
+                'currency' => BaseCurrency::getKeys(),
             ]
         ]);
     }

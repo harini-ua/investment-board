@@ -2,15 +2,15 @@
   <div class="container">
     <filters-wrapper>
       <select-input
-        v-model="filtersPage.valuationMethod"
-        :options="payload.valuationMethod"
+        v-model="filtersPage.method"
+        :options="payload.method"
         label="Valuation Method"
         info="Tooltip text"
       />
-      <date-picker v-model="filtersPage.valuationDate" format="DD/MM/YYYY" type="date" />
+      <date-picker v-model="filtersPage.date" format="DD/MM/YYYY" type="date" />
       <select-input
-        v-model="filtersPage.baseCurrency"
-        :options="payload.baseCurrency"
+        v-model="filtersPage.currency"
+        :options="payload.currency"
         label="Information text"
       />
     </filters-wrapper>
@@ -51,9 +51,9 @@ export default {
   data() {
     return {
       filtersPage: {
-        valuationMethod: this.filters.valuationMethod,
-        valuationDate:   this.filters.valuationDate,
-        baseCurrency:    this.filters.baseCurrency,
+        method:   this.filters.method,
+        date:     this.filters.date,
+        currency: this.filters.currency,
       },
     }
   },
@@ -77,12 +77,12 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
-        if (query.valuationDate) {
-          query.valuationDate = moment(String(query.valuationDate))
+        if (query.date) {
+          query.date = moment(String(query.date))
             .format('YYYY-MM-DD')
         }
-        if (query.valuationMethod) {
-          query.valuationMethod = query.valuationMethod.code
+        if (query.method) {
+          query.method = query.method.code
         }
         this.$inertia.replace(
           this.route(
