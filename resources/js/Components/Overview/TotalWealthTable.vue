@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="tbody">
-          <div class="tr-holder">
+          <div :class="[{active: isActive}, 'tr-holder']" @click="openHiddenContent()">
             <div class="tr">
               <div class="td">Cash</div>
               <div class="td"><a href="#" class="value">15 957 949</a></div>
@@ -234,6 +234,19 @@
 <script>
 
 export default {
+  data: function () {
+    return {
+      isActive: false,
+    }
+  },
+  methods: {
+    openHiddenContent: function() {
+      let ViewportWidth = window.innerWidth;
 
+      if (ViewportWidth < 1024) {
+        this.isActive = !this.isActive;
+      }
+    },
+  }
 }
 </script>
