@@ -12,8 +12,11 @@ class OverviewController extends Controller
 {
     public function index()
     {
+        $portfolioAsset = Portfolio::asset();
+
         return Inertia::render('Overview/Index', [
             'filters' => Request::all(['valuationMethod', 'valuationDate', 'baseCurrency']),
+            'portfolioAsset' => $portfolioAsset,
             'overview' => [],
             'payload' => [
                 'valuationMethod' => ValuationMethod::toCollection(),

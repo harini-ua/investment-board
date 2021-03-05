@@ -5,6 +5,7 @@
         v-model="filtersPage.valuationMethod"
         :options="payload.valuationMethod"
         label="Valuation Method"
+        info="Tooltip text"
       />
       <date-picker v-model="filtersPage.valuationDate" format="DD/MM/YYYY" type="date" />
       <select-input
@@ -18,7 +19,7 @@
       <total-wealth-allocation />
     </div>
     <h2>Asset Classes</h2>
-    <portfolio-assets-table />
+    <portfolio-assets-table :items="portfolioAsset" />
     <total-wealth-table />
     <benchmarks-table />
   </div>
@@ -52,6 +53,7 @@ export default {
   },
   props: {
     filters: Object,
+    portfolioAsset: Array,
     //overview: Object,
     payload: Object,
   },
@@ -70,9 +72,11 @@ export default {
         let query = pickBy(this.filtersPage)
         if (query.valuationDate) {
           query.valuationDate = moment(String(query.valuationDate))
-            .format('MM/DD/YYYY')
+            .format('YYYY-MM-DD')
         }
-        //query.valuationMethod = query.valuationMethod.code
+        if (query.valuationMethod) {
+          query.valuationMethod = query.valuationMethod.code
+        }
         this.$inertia.replace(
           this.route(
             'overview',

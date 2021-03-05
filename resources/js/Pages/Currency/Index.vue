@@ -3,22 +3,16 @@
     <filters-wrapper>
       <select-input
         v-model="filtersPage.valuationMethod"
+        :options="payload.valuationMethod"
         label="Valuation Method"
-      >
-        <option :value="null" label="All" />
-        <option v-for="(item, index) in payload.valuationMethod" :key="index" :value="index">{{ item }}</option>
-      </select-input>
-      <date-picker
-        v-model="filtersPage.valuationDate"
-        type="date"
+        info="Tooltip text"
       />
+      <date-picker v-model="filtersPage.valuationDate" format="DD/MM/YYYY" type="date" />
       <select-input
         v-model="filtersPage.baseCurrency"
-        label="Base Currency"
-      >
-        <option :value="null" label="All" />
-        <option v-for="(item, index) in payload.baseCurrency" :key="index" :value="index">{{ item }}</option>
-      </select-input>
+        :options="payload.baseCurrency"
+        label="Information text"
+      />
     </filters-wrapper>
 
     <exposure-chart />
@@ -32,10 +26,11 @@ import Layout from '@/Shared/Layout'
 import ExposureChart from '@/Components/Currency/ExposureChart'
 import ExposureTable from '@/Components/Currency/ExposureTable'
 import HedgingTable from '@/Components/Currency/HedgingTable'
-// import FiltersWrapper from '@/Shared/FiltersWrapper'
-// import SelectInput from '@/Shared/SelectInput'
-// import DatePicker from 'vue2-datepicker'
+import FiltersWrapper from '@/Shared/FiltersWrapper'
+import SelectInput from '@/Shared/SelectInput'
+import DatePicker from 'vue2-datepicker'
 import { pickBy, throttle } from 'lodash'
+import moment from 'moment'
 
 export default {
   metaInfo: { title: 'Currency' },
@@ -44,9 +39,9 @@ export default {
     ExposureChart,
     ExposureTable,
     HedgingTable,
-    // FiltersWrapper,
-    // SelectInput,
-    // DatePicker,
+    FiltersWrapper,
+    SelectInput,
+    DatePicker,
   },
   props: {
     filters: Object,
@@ -82,6 +77,13 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
+        if (query.valuationDate) {
+          query.valuationDate = moment(String(query.valuationDate))
+            .format('YYYY-MM-DD')
+        }
+        if (query.valuationMethod) {
+          query.valuationMethod = query.valuationMethod.code
+        }
         this.$inertia.replace(
           this.route(
             'currency',

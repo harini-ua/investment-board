@@ -31,14 +31,20 @@ class Portfolio extends Model
     public static function asset($clientCode = 'DUM', $valuationCurrency = 'EUR',
                                  $periodDate = '2020-12-31', $valuationMethod = 'VALUE')
     {
-        return self::select('kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
+        $results = self::select('kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
                             'ytd_percentage')
             ->where('client_code', $clientCode)
             ->where('valuation_currency', $valuationCurrency)
             ->where('period_date', $periodDate)
             ->where('valuation_method', $valuationMethod)
             ->get()
-            ->toArray()
         ;
+
+        $results->map(function ($item) {
+            $item['active'] = false;
+            return $item;
+        });
+
+        return $results->toArray();
     }
 }

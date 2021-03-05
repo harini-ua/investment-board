@@ -28,6 +28,19 @@ export default {
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },
+          markers: {
+            width:  16,
+            height: 16,
+          },
+          itemMargin: {
+            vertical: 5,
+          },
+          fontSize: '14px',
+          fontFamily: 'Inter',
+          fontWeight: 500,
+          labels: {
+            colors: '#3E4756',
+          },
         },
       },
       series: [34.9, 34.1, 31],

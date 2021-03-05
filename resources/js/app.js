@@ -5,6 +5,7 @@ import PortalVue from 'portal-vue'
 import { InertiaApp } from '@inertiajs/inertia-vue'
 import { InertiaProgress } from '@inertiajs/progress/src'
 import VueApexCharts from 'vue-apexcharts'
+import filters from './plugins/filters'
 
 Vue.config.productionTip = false
 Vue.mixin({ methods: { route: window.route } })
@@ -39,6 +40,8 @@ const store = new Vuex.Store({
     }
   },
 })
+
+Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 
 new Vue({
   store,

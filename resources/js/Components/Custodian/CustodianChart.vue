@@ -14,18 +14,59 @@ export default {
     return {
       title: 'Private Holding',
       options: {
+        chart: {
+          id: 'currency-exposure-chart',
+        },
         labels: ['Private Equity', 'Real Estate'],
         dataLabels: {
           enabled: false,
         },
         legend: {
+          position: this.legendPosition(),
+          horizontalAlign: 'left',
+          width: 200,
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
+          },
+          markers: {
+            width:  16,
+            height: 16,
+          },
+          itemMargin: {
+            vertical: 5,
+          },
+          fontSize: '14px',
+          fontFamily: 'Inter',
+          fontWeight: 500,
+          labels: {
+            colors: '#3E4756',
           },
         },
       },
       series: [74.6, 25.4],
     }
+  },
+  computed: {
+    windowWidth() {
+      return this.$store.state.windowWidth
+    },
+    windowHeight() {
+      return this.$store.state.windowHeight
+    },
+  },
+  watch: {
+    windowWidth(newWidth) {
+      this.options = {
+        legend: {
+          position: newWidth < 700 ? 'bottom' : 'right',
+        },
+      }
+    },
+  },
+  methods : {
+    legendPosition: function () {
+      return window.innerWidth < 700 ? 'bottom' : 'right'
+    },
   },
 }
 </script>
