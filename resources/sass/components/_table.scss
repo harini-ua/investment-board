@@ -107,7 +107,6 @@
   }
 }
 
-
 .tbody {
   .tr-holder {
     &.active {
@@ -198,6 +197,21 @@
         }
       }
     }
+
+    @include media('<desktop') {
+      .collapse-content {
+        height: 0;
+        display: none;
+        padding: 10px 30px;
+        border: 1px solid #ebf2fa;
+      }
+    }
+
+    @include media('<tablet') {
+      .collapse-content {
+        padding: 10px;
+      }
+    }
   }
 
   &--total-wealth {
@@ -255,6 +269,21 @@
             height: 24px;
           }
         }
+      }
+    }
+
+    @include media('<desktop') {
+      .collapse-content {
+        height: 0;
+        display: none;
+        padding: 10px 30px;
+        border: 1px solid #ebf2fa;
+      }
+    }
+
+    @include media('<tablet') {
+      .collapse-content {
+        padding: 10px;
       }
     }
   }
@@ -335,6 +364,85 @@
         }
       }
     }
+
+    @include media('<desktop') {
+      .collapse-content {
+        padding: 10px;
+      }
+    }
+
+    @include media('<tablet') {
+      height: 0;
+      display: none;
+      padding: 10px 30px;
+      border: 1px solid #ebf2fa;
+    }
+  }
+
+  &--open-position {
+    .thead {
+      .tr {
+        grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        align-items: center;
+        margin: 0 -7px;
+
+        @include media('>=tablet') {
+          font-size: 12px;
+        }
+
+        .td {
+          line-height: 18px;
+          padding: 0 7px;
+        }
+      }
+    }
+
+    .tbody {
+      .tr {
+        grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        margin: 0 -6px;
+        position: relative;
+        cursor: pointer;
+
+        &:after {
+          transition: transform 0.3s;
+          content: '';
+          position: absolute;
+          right: 37px;
+          top: 50%;
+          transform: translateY(-50%);
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          -webkit-mask: url("/images/icons-sprite/arrow-down.svg");
+          mask: url("/images/icons-sprite/arrow-down.svg");
+          background-color: #a2acbd;
+          width: 24px;
+          height: 24px;
+        }
+
+        @include media('>=tablet') {
+          font-size: 12px;
+        }
+
+        .td {
+          padding: 0 6px;
+        }
+      }
+
+      .collapse-content {
+        height: 0;
+        display: none;
+        padding: 10px 30px;
+        border: 1px solid #ebf2fa;
+      }
+
+      @include media('<tablet') {
+        .collapse-content {
+          padding: 10px;
+        }
+      }
+    }
   }
 }
 
@@ -364,15 +472,9 @@
 }
 
 .collapse-content {
-  @include media('<desktop') {
-    transition: height 0.3s;
-    height: 0;
-    display: none;
-    background-color: #ebf7ff;
-    padding: 10px;
-    border: 1px solid #ebf2fa;
-    border-radius: 0 0 2px 2px;
-  }
+  transition: height 0.3s;
+  background-color: #ebf7ff;
+  border-radius: 0 0 2px 2px;
 }
 
 .collapse-content-table {
@@ -404,6 +506,12 @@
 
 .cell-description {
   color: #a2acbd;
+}
+
+.cell-row {
+  display: grid;
+  grid-template-columns: 187px 120px;
+  margin: 0 0 10px;
 }
 
 .hidden-sm {

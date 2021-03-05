@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1 class="mb-8 font-bold text-3xl">Details</h1>
-
+  <div class="container">
     <report-total-table />
   </div>
 </template>
