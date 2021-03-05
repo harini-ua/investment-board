@@ -21,6 +21,9 @@
 <script>
 import Layout from '@/Shared/Layout'
 import ReportTotalTable from '@/Components/Details/ReportTotalTable'
+import FiltersWrapper from '@/Shared/FiltersWrapper'
+import SelectInput from '@/Shared/SelectInput'
+import DatePicker from 'vue2-datepicker'
 import {pickBy, throttle} from 'lodash'
 import moment from 'moment'
 
@@ -29,12 +32,15 @@ export default {
   layout: Layout,
   components: {
     ReportTotalTable,
+    FiltersWrapper,
+    SelectInput,
+    DatePicker,
   },
   props: {
     filters: Object,
-    details: Object,
+    //details: Object,
     positionOpen: Array,
-    payload: Array,
+    payload: Object,
   },
   data() {
     return {
@@ -58,7 +64,7 @@ export default {
         }
         this.$inertia.replace(
           this.route(
-            'overview',
+            'details',
             Object.keys(query).length ? query : { remember: 'forget' }
           )
         )
