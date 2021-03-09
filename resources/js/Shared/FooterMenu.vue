@@ -1,24 +1,26 @@
 <template>
-  <ul class="footer__right-bar">
-    <li>
-      <inertia-link
-        :href="route('page.privacy')"
-        :class="{ active: isUrl('page.privacy') }"
-        method="get"
-      >
-        Privacy policy
-      </inertia-link>
-    </li>
-    <li>
-      <inertia-link
-        :href="route('page.terms')"
-        :class="{ active: isUrl('page.privacy') }"
-        method="get"
-      >
-        Terms & conditions
-      </inertia-link>
-    </li>
-  </ul>
+  <div>
+    <ul class="footer__right-bar">
+      <li>
+        <inertia-link
+          :href="route('page.privacy')"
+          :class="{ active: isUrl('privacy') }"
+          method="get"
+        >
+          Privacy policy
+        </inertia-link>
+      </li>
+      <li>
+        <inertia-link
+          :href="route('page.terms')"
+          :class="{ active: isUrl('terms') }"
+          method="get"
+        >
+          Terms & conditions
+        </inertia-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>

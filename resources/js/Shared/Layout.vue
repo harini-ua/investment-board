@@ -5,7 +5,7 @@
     <header class="header">
       <div class="container">
         <div class="header-holder">
-          <logo />
+          <a :href="route('overview')"><logo /></a>
           <div class="header-right-bar">
             <main-menu :url="url()" />
             <dropdown>
