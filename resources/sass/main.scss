@@ -19,6 +19,8 @@ $media-expressions: (
 
 // // ligatured operators ≥ ≤
 
+@import "node_modules/vue-select/src/scss/vue-select.scss";
+
 @import 'vendors/include-media';
 @import 'vendors/normalize';
 @import 'vendors/sprite';
