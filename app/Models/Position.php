@@ -29,7 +29,7 @@ class Position extends Model
      *
      * @return mixed
      */
-    public static function open($clientCode, $method, $currency, $date)
+    public static function open($clientCode, $method, $date, $currency)
     {
         $query = self::query();
         $query->select('instrument_name', 'quantity', 'currency', 'last_purchase', 'currency', 'cost_price',
