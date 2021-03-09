@@ -31,20 +31,48 @@
           >
 
             <div class="tr">
-              <div class="td">{{ item.instrument_name }}</div>
-              <div class="td hidden-sm">{{ item.quantity | numeral }}</div>
-              <div class="td hidden-sm">{{ item.last_purchase | date_format }}</div>
-              <div class="td hidden-sm">{{ item.currency }}</div>
-              <div class="td hidden-sm">{{ item.cost_price | numeral }}</div>
-              <div class="td hidden-sm">{{ item.valuation_price | numeral }}</div>
-              <div class="td hidden-sm">{{ item.cost_local | numeral }}</div>
-              <div class="td hidden-sm">{{ item.valuation_local | numeral }}</div>
-              <div class="td hidden-sm">{{ item.valuation_base | numeral }}</div>
-              <div class="td hidden-xl">{{ item.mtd_pl | numeral }}</div>
-              <div class="td hidden-xl">{{ item.ytd_pl | numeral }}</div>
-              <div class="td hidden-xl">{{ item.mtd_return | percentage }}</div>
-              <div class="td hidden-xl">{{ item.ytd_return | percentage }}</div>
-              <div class="td hidden-xl">{{ item.sp_return | percentage }}</div>
+              <div class="td" :title="item.instrument_name">
+                <span class="td-cell">{{ item.instrument_name }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.quantity">
+                <span class="td-cell">{{ item.quantity | numeral }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.last_purchase">
+                <span class="td-cell">{{ item.last_purchase | date_format }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.currency">
+                <span class="td-cell">{{ item.currency }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.cost_price">
+                <span class="td-cell">{{ item.cost_price | numeral }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.valuation_price">
+                <span class="td-cell">{{ item.valuation_price | numeral }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.cost_local">
+                <span class="td-cell">{{ item.cost_local | numeral }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.valuation_local">
+                <span class="td-cell">{{ item.valuation_local | numeral }}</span>
+              </div>
+              <div class="td hidden-sm" :title="item.valuation_base">
+                <span class="td-cell">{{ item.valuation_base | numeral }}</span>
+              </div>
+              <div class="td hidden-xl" :title="item.mtd_pl">
+                <span class="td-cell">{{ item.mtd_pl | numeral }}</span>
+              </div>
+              <div class="td hidden-xl" :title="item.ytd_pl">
+                <span class="td-cell">{{ item.ytd_pl | numeral }}</span>
+              </div>
+              <div class="td hidden-xl" :title="item.mtd_return">
+                <span class="td-cell">{{ item.mtd_return | percentage }}</span>
+              </div>
+              <div class="td hidden-xl" :title="item.ytd_return">
+                <span class="td-cell">{{ item.ytd_return | percentage }}</span>
+              </div>
+              <div class="td hidden-xl" :title="item.sp_return">
+                <span class="td-cell">{{ item.sp_return | percentage }}</span>
+              </div>
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
