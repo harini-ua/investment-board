@@ -30,10 +30,7 @@
         <main-menu :url="url()" />
         <div class="footer-holder">
           <p>Key Family Partners © {{ new Date().getFullYear() }} All rights reserved.</p>
-          <ul class="footer__right-bar">
-            <li><inertia-link :href="route('page.privacy')" method="get">Privacy policy</inertia-link></li>
-            <li><inertia-link :href="route('page.terms')" method="get">Terms & conditions</inertia-link></li>
-          </ul>
+          <footer-menu :url="url()" />
         </div>
       </div>
     </footer>
@@ -46,9 +43,11 @@ import Dropdown from '@/Shared/Dropdown'
 import FlashMessages from '@/Shared/FlashMessages'
 import Logo from '@/Shared/Logo'
 import MainMenu from '@/Shared/MainMenu'
+import FooterMenu from './FooterMenu'
 
 export default {
   components: {
+    FooterMenu,
     Dropdown,
     FlashMessages,
     Logo,

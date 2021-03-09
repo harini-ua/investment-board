@@ -38,7 +38,7 @@ const store = new Vuex.Store({
     setWindowHeight(state) {
       state.windowHeight = window.innerHeight;
     }
-  },
+  }
 })
 
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
