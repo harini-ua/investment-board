@@ -25,6 +25,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `wa_benchmark`
+--
+
+CREATE TABLE `wa_benchmark` (
+  `benchmark_date` date NOT NULL,
+  `indice` varchar(20) NOT NULL,
+  `mtd_percentage` double NOT NULL,
+  `ytd_percentage` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wa_benchmark`
+--
+
+INSERT INTO `wa_benchmark` (`benchmark_date`, `indice`, `mtd_percentage`, `ytd_percentage`) VALUES
+('2020-12-31', 'Equity', 0.0521, -0.015),
+('2020-12-31', 'Fixed Income', 0.0423, 0.0124),
+('2020-12-31', 'Huge Fund', 0.0127, -0.005),
+('2020-12-31', 'Balanced', 0.0472, -0.0013),
+('2020-12-31', 'KFP Asset Allocation', 0.0368, -0.0552);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `wa_currency`
 --
 
@@ -132,10 +156,61 @@ END;
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `wa_par_base_currency`
+--
+
+CREATE TABLE `wa_par_base_currency` (
+    `base_currency` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wa_par_base_currency`
+--
+
+INSERT INTO `wa_par_base_currency` (`base_currency`) VALUES
+('EUR');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `wa_par_valuation_date`
+--
+
+CREATE TABLE `wa_par_valuation_date` (
+    `valuation_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wa_par_valuation_date`
+--
+
+INSERT INTO `wa_par_valuation_date` (`valuation_date`) VALUES
+('2021-12-31');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `wa_par_valuation_method`
+--
+
+CREATE TABLE `wa_par_valuation_method` (
+    `valuation_method` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wa_par_valuation_method`
+--
+
+INSERT INTO `wa_par_valuation_method` (`valuation_method`) VALUES
+('Market value'),
+('Exposure delta');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `wa_portfolio`
 --
 
-DROP TABLE IF EXISTS `wa_portfolio`;
 CREATE TABLE `wa_portfolio` (
   `client_code` varchar(3) NOT NULL,
   `period_date` date NOT NULL,
@@ -146,22 +221,24 @@ CREATE TABLE `wa_portfolio` (
   `mtd_pl` double NOT NULL,
   `ytd_pl` double NOT NULL,
   `mtd_percentage` double NOT NULL,
-  `ytd_percentage` double NOT NULL
+  `ytd_percentage` double NOT NULL,
+  `mtd_benchmark` double NOT NULL DEFAULT '0',
+  `ytd_benchmark` double NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `wa_portfolio`
 --
 
-INSERT INTO `wa_portfolio` (`client_code`, `period_date`, `valuation_currency`, `valuation_method`, `kfp_asset_class`, `mtd_value`, `mtd_pl`, `ytd_pl`, `mtd_percentage`, `ytd_percentage`) VALUES
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Bond', 2856720.42525, -17268.39165, -34536.7833, -0.006044, -0.012056),
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Cash', 1276817.295455, -11600.6395033, -23201.2790066, -0.009085, -0.018068),
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Commodity', 2480646.544009, 91950.597393, 183901.194786, 0.037067, 0.076994),
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Equity', 2657607.690775, 24338.261717, 48676.523434, 0.009157, 0.018526),
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Fx', 1059000, 23900, 47800, 0.0225684608120869, 0.0451369216241738),
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Hedge Fund', 3765239.537602, 445170.563693, 890341.127386, 0.118231, 0.266277),
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Private Equity', 6089445.348036, -155492.28927, -310984.57854, -0.025534, -0.050038),
-('DUM', '2020-12-31', 'EUR', 'VALUE', 'Real Estate', 2118721.98694, 24135.344497, 48270.688994, 0.011391, 0.023086);
+INSERT INTO `wa_portfolio` (`client_code`, `period_date`, `valuation_currency`, `valuation_method`, `kfp_asset_class`, `mtd_value`, `mtd_pl`, `ytd_pl`, `mtd_percentage`, `ytd_percentage`, `mtd_benchmark`, `ytd_benchmark`) VALUES
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Bond', 2856720.42525, -17268.39165, -34536.7833, -0.006044, -0.012056, 0, 0),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Cash', 1276817.295455, -11600.6395033, -23201.2790066, -0.009085, -0.018068, 0, 0),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Commodity', 2480646.544009, 91950.597393, 183901.194786, 0.037067, 0.076994, 0, 0),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Equity', 2657607.690775, 24338.261717, 48676.523434, 0.009157, 0.018526, 0, 0),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Fx', 1059000, 23900, 47800, 0.0225684608120869, 0.0451369216241738, 0, 0),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Hedge Fund', 3765239.537602, 445170.563693, 890341.127386, 0.118231, 0.266277, 0, 0),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Private Equity', 6089445.348036, -155492.28927, -310984.57854, -0.025534, -0.050038, 0, 0),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Real Estate', 2118721.98694, 24135.344497, 48270.688994, 0.011391, 0.023086, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -249,6 +326,36 @@ INSERT INTO `wa_position` (`client_code`, `period_date`, `valuation_currency`, `
 ('DUM', '2020-12-31', 'EUR', 'VALUE', 'SPDR GOLD SHARES [CRS]', 11475.814412636, '2020-11-30', 'USD', 337.8764, 177.3622, 3877406.86081, 2035375.691017, 1801511.024119, 76572.177452, 153144.354904, 0.072592, 0.243505, -0.475068),
 ('DUM', '2020-12-31', 'EUR', 'VALUE', 'USD / CHF PURCHASE / VALUE DATE 08.01.2021 [UBS]', -10000000, '2020-11-30', 'USD', 1, 1, -10000000, -10000000, -8851000, 239000, 478000, 0, 0, 0),
 ('DUM', '2020-12-31', 'EUR', 'VALUE', 'USD / CHF PURCHASE / VALUE DATE 08.01.2021 [UBS]', 10000000, '2020-11-30', 'CHF', 1, 1, 10000000, 10000000, 10000000, 0, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `wa_wealth`
+--
+
+CREATE TABLE `wa_wealth` (
+  `client_code` varchar(3) NOT NULL,
+  `period_date` date NOT NULL,
+  `valuation_currency` varchar(5) NOT NULL,
+  `valuation_method` varchar(5) NOT NULL,
+  `category` varchar(20) NOT NULL,
+  `mtd_value` double NOT NULL,
+  `mtd_pl` double NOT NULL,
+  `ytd_pl` double NOT NULL,
+  `mtd_percentage` double NOT NULL,
+  `ytd_percentage` double NOT NULL,
+  `mtd_benchmark` double NOT NULL,
+  `ytd_benchmark` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wa_wealth`
+--
+
+INSERT INTO `wa_wealth` (`client_code`, `period_date`, `valuation_currency`, `valuation_method`, `category`, `mtd_value`, `mtd_pl`, `ytd_pl`, `mtd_percentage`, `ytd_percentage`, `mtd_benchmark`, `ytd_benchmark`) VALUES
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Portfolio Assets', 22304198.828067, 425133.4468767, 850266.8937534, 0.0190606912247269, 0.0381213824494537, 0.0521, 0.0521),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Category A', 20821134, 149811, -2013957, 0.0072, -0.0551, 0.0521, 0.0521),
+('DUM', '2020-12-31', 'EUR', 'VALUE', 'Category B', 4187355, 116185, -457289, 0.0306, -0.094, 0.0521, 0.0521);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
