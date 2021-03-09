@@ -29,22 +29,27 @@
           </div>
         </div>
         <div class="tbody">
-          <div :class="[{active: isActive}, 'tr-holder']" @click="openHiddenContent()">
+          <div v-for="(item, index) in items"
+               :key="item.id"
+               class="tr-holder"
+               :class="[{active: item.active}, 'row-' + (index + 1)]"
+               @click="toggle(index)"
+          >
             <div class="tr">
-              <div class="td">Cash</div>
-              <div class="td"><a href="#" class="value">15 957 949</a></div>
-              <div class="td hidden-sm">(200 889)</div>
-              <div class="td hidden-sm">(200 889)</div>
+              <div class="td">{{ item.category }}</div>
+              <div class="td"><a href="#" class="value">{{ item.mtd_value | numeral }}</a></div>
+              <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>
+              <div class="td hidden-sm">{{ item.ytd_pl | numeral | is_negative}}</div>
               <div class="td hidden-lg">
                 <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
+                  <span class="double-value">{{ item.mtd_percentage | percentage }}</span>
+                  <span class="double-value">{{ item.mtd_benchmark | percentage }}</span>
                 </div>
               </div>
               <div class="td hidden-lg">
                 <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
+                  <span class="double-value">{{ item.ytd_percentage | percentage }}</span>
+                  <span class="double-value">{{ item.ytd_benchmark | percentage }}</span>
                 </div>
               </div>
             </div>
@@ -57,170 +62,23 @@
                 </div>
                 <div class="row visible-md">
                   <div class="cell cell-description">P&L MTD</div>
-                  <div class="cell">149 811</div>
+                  <div class="cell">{{ item.mtd_pl | numeral | is_negative }}</div>
                   <div class="cell"></div>
                 </div>
                 <div class="row visible-md">
                   <div class="cell cell-description">P&L YTD</div>
-                  <div class="cell">(2 013 957)</div>
+                  <div class="cell">{{ item.ytd_pl | numeral | is_negative}}</div>
                   <div class="cell"></div>
                 </div>
                 <div class="row visible-lg">
                   <div class="cell cell-description">% MTD</div>
-                  <div class="cell">0.72%</div>
-                  <div class="cell">5.21%</div>
+                  <div class="cell">{{ item.mtd_percentage | percentage }}</div>
+                  <div class="cell">{{ item.mtd_benchmark | percentage }}</div>
                 </div>
                 <div class="row visible-lg">
                   <div class="cell cell-description">% YTD</div>
-                  <div class="cell">-5.51%</div>
-                  <div class="cell">-1.50%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">Equity</div>
-              <div class="td"><a href="#" class="value">15 957 949</a></div>
-              <div class="td hidden-sm">(200 889)</div>
-              <div class="td hidden-sm">(200 889)</div>
-              <div class="td hidden-lg">
-                <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
-                </div>
-              </div>
-              <div class="td hidden-lg">
-                <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
-                </div>
-              </div>
-            </div>
-            <div class="collapse-content collapse-content--portfolio-assets">
-              <div class="collapse-content-table">
-                <div class="row visible-lg">
-                  <div class="cell"></div>
-                  <div class="cell cell-description">Category</div>
-                  <div class="cell cell-description">Benchmark</div>
-                </div>
-                <div class="row visible-md">
-                  <div class="cell cell-description">P&L MTD</div>
-                  <div class="cell">149 811</div>
-                  <div class="cell"></div>
-                </div>
-                <div class="row visible-md">
-                  <div class="cell cell-description">P&L YTD</div>
-                  <div class="cell">(2 013 957)</div>
-                  <div class="cell"></div>
-                </div>
-                <div class="row visible-lg">
-                  <div class="cell cell-description">% MTD</div>
-                  <div class="cell">0.72%</div>
-                  <div class="cell">5.21%</div>
-                </div>
-                <div class="row visible-lg">
-                  <div class="cell cell-description">% YTD</div>
-                  <div class="cell">-5.51%</div>
-                  <div class="cell">-1.50%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">KFP Equity </div>
-              <div class="td"><a href="#" class="value">15 957 949</a></div>
-              <div class="td hidden-sm">(200 889)</div>
-              <div class="td hidden-sm">(200 889)</div>
-              <div class="td hidden-lg">
-                <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
-                </div>
-              </div>
-              <div class="td hidden-lg">
-                <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
-                </div>
-              </div>
-            </div>
-            <div class="collapse-content collapse-content--portfolio-assets">
-              <div class="collapse-content-table">
-                <div class="row visible-lg">
-                  <div class="cell"></div>
-                  <div class="cell cell-description">Category</div>
-                  <div class="cell cell-description">Benchmark</div>
-                </div>
-                <div class="row visible-md">
-                  <div class="cell cell-description">P&L MTD</div>
-                  <div class="cell">149 811</div>
-                  <div class="cell"></div>
-                </div>
-                <div class="row visible-md">
-                  <div class="cell cell-description">P&L YTD</div>
-                  <div class="cell">(2 013 957)</div>
-                  <div class="cell"></div>
-                </div>
-                <div class="row visible-lg">
-                  <div class="cell cell-description">% MTD</div>
-                  <div class="cell">0.72%</div>
-                  <div class="cell">5.21%</div>
-                </div>
-                <div class="row visible-lg">
-                  <div class="cell cell-description">% YTD</div>
-                  <div class="cell">-5.51%</div>
-                  <div class="cell">-1.50%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">Bond</div>
-              <div class="td"><a href="#" class="value">15 957 949</a></div>
-              <div class="td hidden-sm">(200 889)</div>
-              <div class="td hidden-sm">(200 889)</div>
-              <div class="td hidden-lg">
-                <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
-                </div>
-              </div>
-              <div class="td hidden-lg">
-                <div class="double-value-holder">
-                  <span class="double-value">-1.26%</span>
-                  <span class="double-value">5.21%</span>
-                </div>
-              </div>
-            </div>
-            <div class="collapse-content collapse-content--portfolio-assets">
-              <div class="collapse-content-table">
-                <div class="row visible-lg">
-                  <div class="cell"></div>
-                  <div class="cell cell-description">Category</div>
-                  <div class="cell cell-description">Benchmark</div>
-                </div>
-                <div class="row visible-md">
-                  <div class="cell cell-description">P&L MTD</div>
-                  <div class="cell">149 811</div>
-                  <div class="cell"></div>
-                </div>
-                <div class="row visible-md">
-                  <div class="cell cell-description">P&L YTD</div>
-                  <div class="cell">(2 013 957)</div>
-                  <div class="cell"></div>
-                </div>
-                <div class="row visible-lg">
-                  <div class="cell cell-description">% MTD</div>
-                  <div class="cell">0.72%</div>
-                  <div class="cell">5.21%</div>
-                </div>
-                <div class="row visible-lg">
-                  <div class="cell cell-description">% YTD</div>
-                  <div class="cell">-5.51%</div>
-                  <div class="cell">-1.50%</div>
+                  <div class="cell">{{ item.ytd_percentage | percentage }}</div>
+                  <div class="cell">{{ item.ytd_benchmark | percentage }}</div>
                 </div>
               </div>
             </div>
@@ -234,19 +92,23 @@
 <script>
 
 export default {
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data: function () {
     return {
-      isActive: false,
+      //
     }
   },
   methods: {
-    openHiddenContent: function() {
-      let ViewportWidth = window.innerWidth;
-
-      if (ViewportWidth < 1024) {
-        this.isActive = !this.isActive;
+    toggle(index) {
+      if (window.innerWidth < 1024) {
+        this.items[index]['active'] = !this.items[index]['active']
       }
     },
-  }
+  },
 }
 </script>

@@ -6,11 +6,11 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Portfolio extends Model
+class Wealth extends Model
 {
     use HasFactory;
 
-    public const TABLE_NAME = 'portfolio';
+    public const TABLE_NAME = 'wealth';
 
     /**
      * The table associated with the model.
@@ -20,7 +20,7 @@ class Portfolio extends Model
     protected $table = self::TABLE_NAME;
 
     /**
-     * Get Portfolio Asset
+     * Get Total Wealth
      *
      * @param string|null $clientCode
      * @param string|null $method
@@ -29,12 +29,12 @@ class Portfolio extends Model
      *
      * @return mixed
      */
-    public static function asset($clientCode, $method, $date, $currency)
+    public static function total($clientCode, $method, $date, $currency)
     {
         $query = self::query();
 
         $query->select([
-           'kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
+           'category', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
            'ytd_percentage', 'mtd_benchmark', 'ytd_benchmark'
         ]);
 

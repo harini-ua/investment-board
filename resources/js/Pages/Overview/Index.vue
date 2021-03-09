@@ -20,8 +20,8 @@
     </div>
     <h2>Asset Classes</h2>
     <portfolio-assets-table :items="portfolioAsset" />
-    <total-wealth-table />
-    <benchmarks-table />
+    <total-wealth-table :items="totalWealth" />
+    <benchmarks-table :items="benchmarks" />
   </div>
 </template>
 
@@ -54,6 +54,8 @@ export default {
   props: {
     filters: Object,
     portfolioAsset: Array,
+    totalWealth: Array,
+    benchmarks: Array,
     payload: Object,
   },
   data() {
