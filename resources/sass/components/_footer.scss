@@ -19,6 +19,12 @@
             display: inline-block;
             vertical-align: top;
             padding: 0 35px;
+
+          &.active {
+            a {
+              color: #1474BA;
+            }
+          }
         }
 
         a {

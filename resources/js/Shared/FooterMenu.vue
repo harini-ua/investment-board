@@ -1,19 +1,17 @@
 <template>
   <div>
     <ul class="footer__right-bar">
-      <li>
+      <li :class="{ active: isUrl('privacy') }">
         <inertia-link
           :href="route('page.privacy')"
-          :class="{ active: isUrl('privacy') }"
           method="get"
         >
           Privacy policy
         </inertia-link>
       </li>
-      <li>
+      <li :class="{ active: isUrl('terms') }">
         <inertia-link
           :href="route('page.terms')"
-          :class="{ active: isUrl('terms') }"
           method="get"
         >
           Terms & conditions
