@@ -21,8 +21,8 @@ class DetailsController extends Controller
             'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
             'positionOpen' => $positionOpen,
             'payload' => [
-                'valuationMethod' => ValuationMethod::toCollection(),
-                'baseCurrency' => BaseCurrency::getKeys(),
+                'method' => ValuationMethod::toCollection(),
+                'currency' => BaseCurrency::getKeys(),
                 'assetClass' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()

@@ -5,6 +5,7 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustodianController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\OverviewController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TradesController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +34,6 @@ Route::middleware(['auth'])->group(static function () {
         Route::get('details', [DetailsController::class, 'index'])->name('details');
         Route::get('trades', [TradesController::class, 'index'])->name('trades');
     });
+    Route::get('privacy', [PagesController::class, 'privacy'])->name('page.privacy');
+    Route::get('terms', [PagesController::class, 'terms'])->name('page.terms');
 });

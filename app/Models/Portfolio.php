@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,25 +23,23 @@ class Portfolio extends Model
      * Get Portfolio Asset
      *
      * @param string|null $clientCode
+     * @param string|null $method
      * @param string|null $currency
      * @param string|null $date
-     * @param string|null $method
      *
      * @return mixed
      */
-    public static function asset($clientCode, $currency, $date, $method)
+    public static function asset($clientCode, $method, $date, $currency)
     {
-        $query = self::select('kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
+        $query = self::query();
+        $query->select('kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
                               'ytd_percentage');
 
-        if ($clientCode) {
-            $query->where('client_code', $clientCode);
-        }
         if ($currency) {
             $query->where('valuation_currency', $currency);
         }
         if ($date) {
-            $query->where('period_date', $date);
+            $query->whereDate('period_date', Carbon::parse($date)->toDateString());
         }
         if ($method) {
             $query->where('valuation_method', $method);

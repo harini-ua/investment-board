@@ -31,8 +31,8 @@
         <div class="footer-holder">
           <p>Key Family Partners © {{ new Date().getFullYear() }} All rights reserved.</p>
           <ul class="footer__right-bar">
-            <li><inertia-link :href="route('overview')" method="get">Privacy policy</inertia-link></li>
-            <li><inertia-link :href="route('overview')" method="get">Terms & conditions</inertia-link></li>
+            <li><inertia-link :href="route('page.privacy')" method="get">Privacy policy</inertia-link></li>
+            <li><inertia-link :href="route('page.terms')" method="get">Terms & conditions</inertia-link></li>
           </ul>
         </div>
       </div>

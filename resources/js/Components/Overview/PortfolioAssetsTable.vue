@@ -27,7 +27,6 @@
         </div>
         <div class="tbody">
           <div v-for="(item, index) in items"
-               :id="'item-' + item.id"
                :key="item.id"
                class="tr-holder"
                :class="[{active: item.active}, 'row-' + (index + 1)]"

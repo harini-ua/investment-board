@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,15 +23,16 @@ class Position extends Model
      * Get Open Position
      *
      * @param string|null $clientCode
+     * @param string|null $method
      * @param string|null $currency
      * @param string|null $date
-     * @param string|null $method
      *
      * @return mixed
      */
-    public static function open($clientCode, $currency, $date, $method)
+    public static function open($clientCode, $method, $currency, $date)
     {
-        $query = self::select('instrument_name', 'quantity', 'currency', 'last_purchase', 'currency', 'cost_price',
+        $query = self::query();
+        $query->select('instrument_name', 'quantity', 'currency', 'last_purchase', 'currency', 'cost_price',
                               'valuation_price', 'cost_local', 'valuation_local', 'valuation_base',
                               'mtd_pl', 'ytd_pl', 'mtd_return', 'ytd_return', 'sp_return');
 
@@ -41,7 +43,7 @@ class Position extends Model
             $query->where('valuation_currency', $currency);
         }
         if ($date) {
-            $query->where('period_date', $date);
+            $query->where('period_date', Carbon::parse($date)->toDateString());
         }
         if ($method) {
             $query->where('valuation_method', $method);
