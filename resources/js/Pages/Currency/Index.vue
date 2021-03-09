@@ -5,13 +5,13 @@
         v-model="filtersPage.method"
         :options="payload.method"
         label="Valuation Method"
-        info="Tooltip text"
+        info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
       />
-      <date-picker v-model="filtersPage.date" format="DD/MM/YYYY" type="date" />
+      <date-picker v-model="filtersPage.date" value-type="YYYY-MM-DD" format="DD/MM/YYYY" type="date" />
       <select-input
         v-model="filtersPage.currency"
         :options="payload.currency"
-        label="Information text"
+        label="Base currency"
       />
       <select-input label="Asset Class" />
       <select-input label="Custodian" />

@@ -31,34 +31,6 @@
               <div class="td">{{ item.ytd_percentage | percentage }}</div>
             </div>
           </div>
-<!--          <div class="tr-holder">-->
-<!--            <div class="tr">-->
-<!--              <div class="td">-->
-<!--                <div class="tooltip">-->
-<!--                  <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>-->
-<!--                  <div class="tooltip__content">-->
-<!--                    Perfomance of KFP dynamic asset allocation-->
-<!--                  </div>-->
-<!--                </div>Cash-->
-<!--              </div>-->
-<!--              <div class="td">15 957 949</div>-->
-<!--              <div class="td">200 889</div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="tr-holder">-->
-<!--            <div class="tr">-->
-<!--              <div class="td">-->
-<!--                <div class="tooltip">-->
-<!--                  <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>-->
-<!--                  <div class="tooltip__content">-->
-<!--                    Perfomance of KFP dynamic asset allocation-->
-<!--                  </div>-->
-<!--                </div>Cash-->
-<!--              </div>-->
-<!--              <div class="td">15 957 949</div>-->
-<!--              <div class="td">200 889</div>-->
-<!--            </div>-->
-<!--          </div>-->
         </div>
       </div>
     </div>
