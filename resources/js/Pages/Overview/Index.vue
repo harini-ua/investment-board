@@ -15,8 +15,8 @@
       />
     </filters-wrapper>
     <div class="row-chart">
-      <portfolio-allocation />
-      <total-wealth-allocation />
+      <portfolio-allocation :data="portfolioAllocation" />
+      <total-wealth-allocation :data="totalWealthAllocation" />
     </div>
     <h2>Asset Classes</h2>
     <portfolio-assets-table :items="portfolioAsset" />
@@ -54,7 +54,9 @@ export default {
   props: {
     filters: Object,
     portfolioAsset: Array,
+    portfolioAllocation: Object,
     totalWealth: Array,
+    totalWealthAllocation: Object,
     benchmarks: Array,
     payload: Object,
   },

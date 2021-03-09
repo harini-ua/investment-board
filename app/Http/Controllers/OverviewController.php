@@ -20,8 +20,10 @@ class OverviewController extends Controller
 
         return Inertia::render('Overview/Index', [
             'filters' => Request::all(['method', 'date', 'currency']),
-            'portfolioAsset' => $portfolioAsset,
-            'totalWealth' => $totalWealth,
+            'portfolioAsset' => $portfolioAsset->toArray(),
+            'portfolioAllocation' => $portfolioAsset->pluck('mtd_percentage', 'kfp_asset_class'),
+            'totalWealth' => $totalWealth->toArray(),
+            'totalWealthAllocation' => $totalWealth->pluck('mtd_percentage', 'category'),
             'benchmarks' => $benchmarks,
             'payload' => [
                 'method' => ValuationMethod::toCollection(),
