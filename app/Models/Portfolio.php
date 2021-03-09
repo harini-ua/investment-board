@@ -50,11 +50,14 @@ class Portfolio extends Model
 
         $result = $query->get();
 
-        $result->map(function ($item) {
+        $sum = $result->sum('mtd_value');
+
+        $result->map(function ($item) use ($sum) {
             $item['active'] = false;
+            $item['mtd_percentage'] = round( $item['mtd_value'] / $sum * 100, 2);
             return $item;
         });
 
-        return $result->toArray();
+        return $result;
     }
 }

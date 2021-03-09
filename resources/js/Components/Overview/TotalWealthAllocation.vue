@@ -11,6 +11,9 @@
 
 export default {
   metaInfo: { title: 'Total Wealth Allocation' },
+  props: {
+    data: Object,
+  },
   data: function() {
     return {
       options: {

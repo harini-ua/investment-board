@@ -13,6 +13,9 @@
         :options="payload.currency"
         label="Information text"
       />
+      <select-input label="Asset Class" />
+      <select-input label="Custodian" />
+      <select-input label="Account" />
     </filters-wrapper>
 
     <exposure-chart />

@@ -2,7 +2,7 @@
   <div class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">Portfolio Allocation</h2>
-      <apexchart height="500" type="pie" :options="options" :series="series" />
+      <apexchart ref="portfolio-allocation-chart" height="500" type="pie" :options="options" :series="series" />
     </div>
   </div>
 </template>
@@ -11,18 +11,21 @@
 
 export default {
   metaInfo: { title: 'Portfolio Allocation' },
+  props: {
+    data: Object,
+  },
   data: function() {
     return {
       options: {
         chart: {
           id: 'portfolio-allocation-chart',
         },
-        labels: ['Cash', 'Equity', 'KFP Equity', 'Bond', 'KFP Bond', 'Hedge Fund', 'Commodity', 'Private Equity', 'Real Estate'],
+        labels: this.chartLabels(),
         dataLabels: {
           enabled: false,
         },
         legend: {
-          position: this.legendPosition(),
+          position: 'right',
           horizontalAlign: 'left',
           width: 200,
           formatter: function(val, opts) {
@@ -43,29 +46,28 @@ export default {
           },
         },
       },
-      series: [18.2, 23.7, 4.8, 12.5, 6.1, 1.4, 2.5, 27.5, 3.3],
+      series: this.chartSeries(),
     }
   },
   computed: {
-    windowWidth() {
-      return this.$store.state.windowWidth
-    },
-    windowHeight() {
-      return this.$store.state.windowHeight
-    },
+    //
   },
   watch: {
-    windowWidth(newWidth) {
+    data() {
       this.options = {
-        legend: {
-          position: newWidth < 700 ? 'bottom' : 'right',
-        },
+        labels: [...Object.keys(this.data)],
       }
+      //this.series = {
+      //  data: [...Object.keys(this.data)],
+      //}
     },
   },
   methods : {
-    legendPosition: function () {
-      return window.innerWidth < 700 ? 'bottom' : 'right'
+    chartLabels() {
+      return [...Object.keys(this.data)]
+    },
+    chartSeries() {
+      return [...Object.values(this.data)]
     },
   },
 }

@@ -20,12 +20,22 @@ class Custodian extends Model
     protected $table = self::TABLE_NAME;
 
     /**
-     * Get currency data
+     * Get Custodian data
+     *
+     * @param string|null $clientCode
+     * @param string|null $method
+     * @param string|null $currency
+     * @param string|null $date
+     *
+     * @return mixed
      */
-    static function getData($filter): array
+    static function data($clientCode, $method, $date, $currency): array
     {
         $params = [
-
+            'client_code' => 'DUM',
+            'valuation_method' => 'VALUE',
+            'valuation_date' => '2020-12-31',
+            'valuation_currency' => 'EUR',
         ];
 
         return callProcedure(self::PROCEDURE_NAME, $params);
