@@ -11,7 +11,12 @@
           </div>
         </div>
         <div class="tbody">
-          <div class="tr-holder">
+          <div v-for="(item, index) in items"
+               :key="item.id"
+               class="tr-holder"
+               :class="[{active: item.active}, 'row-' + (index + 1)]"
+               @click="toggle(index)"
+          >
             <div class="tr">
               <div class="td">
                 <div class="tooltip">
@@ -19,40 +24,41 @@
                   <div class="tooltip__content">
                     Perfomance of KFP dynamic asset allocation
                   </div>
-                </div>Cash
+                </div>
+                {{ item.indice }}
               </div>
-              <div class="td">15 957 949</div>
-              <div class="td">200 889</div>
+              <div class="td">{{ item.mtd_percentage | percentage }}</div>
+              <div class="td">{{ item.ytd_percentage | percentage }}</div>
             </div>
           </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">
-                <div class="tooltip">
-                  <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>
-                  <div class="tooltip__content">
-                    Perfomance of KFP dynamic asset allocation
-                  </div>
-                </div>Cash
-              </div>
-              <div class="td">15 957 949</div>
-              <div class="td">200 889</div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">
-                <div class="tooltip">
-                  <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>
-                  <div class="tooltip__content">
-                    Perfomance of KFP dynamic asset allocation
-                  </div>
-                </div>Cash
-              </div>
-              <div class="td">15 957 949</div>
-              <div class="td">200 889</div>
-            </div>
-          </div>
+<!--          <div class="tr-holder">-->
+<!--            <div class="tr">-->
+<!--              <div class="td">-->
+<!--                <div class="tooltip">-->
+<!--                  <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>-->
+<!--                  <div class="tooltip__content">-->
+<!--                    Perfomance of KFP dynamic asset allocation-->
+<!--                  </div>-->
+<!--                </div>Cash-->
+<!--              </div>-->
+<!--              <div class="td">15 957 949</div>-->
+<!--              <div class="td">200 889</div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="tr-holder">-->
+<!--            <div class="tr">-->
+<!--              <div class="td">-->
+<!--                <div class="tooltip">-->
+<!--                  <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>-->
+<!--                  <div class="tooltip__content">-->
+<!--                    Perfomance of KFP dynamic asset allocation-->
+<!--                  </div>-->
+<!--                </div>Cash-->
+<!--              </div>-->
+<!--              <div class="td">15 957 949</div>-->
+<!--              <div class="td">200 889</div>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
     </div>
@@ -62,6 +68,23 @@
 <script>
 
 export default {
-
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data: function () {
+    return {
+      //
+    }
+  },
+  methods: {
+    toggle(index) {
+      if (window.innerWidth < 1024) {
+        this.items[index]['active'] = !this.items[index]['active']
+      }
+    },
+  },
 }
 </script>

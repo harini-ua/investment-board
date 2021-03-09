@@ -36,17 +36,17 @@
               <div class="td">{{ item.kfp_asset_class }}</div>
               <div class="td"><a :href="route('details')" class="value">{{ item.mtd_value | numeral }}</a></div>
               <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>
-              <div class="td hidden-sm">{{ item.ytd_pl | numeral | is_negative}}</div>
+              <div class="td hidden-sm">{{ item.ytd_pl | numeral | is_negative }}</div>
               <div class="td hidden-lg">
                 <div class="double-value-holder">
                   <span class="double-value">{{ item.mtd_percentage | percentage }}</span>
-                  <span class="double-value">0%</span>
+                  <span class="double-value">{{ item.mtd_benchmark | percentage }}</span>
                 </div>
               </div>
               <div class="td hidden-lg">
                 <div class="double-value-holder">
                   <span class="double-value">{{ item.ytd_percentage | percentage }}</span>
-                  <span class="double-value">0%</span>
+                  <span class="double-value">{{ item.ytd_benchmark | percentage }}</span>
                 </div>
               </div>
             </div>
@@ -70,12 +70,12 @@
                 <div class="row visible-lg">
                   <div class="cell cell-description">% MTD</div>
                   <div class="cell">{{ item.mtd_percentage | percentage }}</div>
-                  <div class="cell">0%</div>
+                  <div class="cell">{{ item.mtd_benchmark | percentage }}</div>
                 </div>
                 <div class="row visible-lg">
                   <div class="cell cell-description">% YTD</div>
                   <div class="cell">{{ item.ytd_percentage | percentage }}</div>
-                  <div class="cell">0%</div>
+                  <div class="cell">{{ item.ytd_benchmark | percentage }}</div>
                 </div>
               </div>
             </div>
