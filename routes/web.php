@@ -27,7 +27,7 @@ Route::middleware(['guest'])->group(static function () {
 
 Route::middleware(['auth'])->group(static function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::middleware(['remember'])->group(static function () {
+    Route::middleware('remember')->group(static function () {
         Route::get('/', [OverviewController::class, 'index'])->name('overview');
         Route::get('custodian', [CustodianController::class, 'index'])->name('custodian');
         Route::get('currency', [CurrencyController::class, 'index'])->name('currency');
