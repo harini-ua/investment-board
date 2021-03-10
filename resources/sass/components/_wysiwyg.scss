@@ -1,0 +1,57 @@
+.wysiwyg {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+
+    li {
+      position: relative;
+      padding: 0 0 0 15px;
+      margin: 0 0 10px;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #3e4756;
+      }
+    }
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+
+    counter-reset: li;
+
+    li {
+      position: relative;
+      padding: 0 0 0 25px;
+      margin: 0 0 10px;
+
+      &:before {
+        content: counter(li)'.';
+        counter-increment: li;
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #3e4756;
+      }
+    }
+  }
+
+  a {
+    transition: color 0.3s;
+    color: #1474ba;
+    text-decoration: none;
+
+    &:hover {
+      color: #3e4756;
+    }
+  }
+}

@@ -303,6 +303,11 @@
       .tr {
         grid-template-columns: 1fr 1fr 1fr;
       }
+
+      .td {
+        display: flex;
+        align-items: center;
+      }
     }
 
     .icon-info {

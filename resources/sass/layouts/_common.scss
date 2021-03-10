@@ -42,7 +42,7 @@ h2 {
     line-height: 1;
 
     @include media('>=tablet') {
-        font-size: 24px;
+        font-size: 20px;
         line-height: 30px;
     }
 }
@@ -57,7 +57,34 @@ h3 {
   }
 }
 
+h4 {
+  font-size: 15px;
+  line-height: 1;
+
+  @include media('>=tablet') {
+    font-size: 17px;
+    line-height: 20px;
+  }
+}
+
+h5,
+h6 {
+  font-size: 14px;
+  line-height: 1;
+
+  @include media('>=tablet') {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
 .form-error {
   color: red;
   margin: 5px 0 0;
+}
+
+.row-total {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
