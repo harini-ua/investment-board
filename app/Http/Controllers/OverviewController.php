@@ -15,6 +15,7 @@ class OverviewController extends Controller
     public function index()
     {
         $portfolioAsset = Portfolio::asset(null, Request::get('method'), Request::get('date'), Request::get('currency'));
+        $portfolioAllocation = $portfolioAsset->pluck('mtd_percentage', 'kfp_asset_class');
 
         // Total
         $portfolioAsset->push([
@@ -34,7 +35,7 @@ class OverviewController extends Controller
         return Inertia::render('Overview/Index', [
             'filters' => Request::all(['method', 'date', 'currency']),
             'portfolioAsset' => $portfolioAsset->toArray(),
-            'portfolioAllocation' => $portfolioAsset->pluck('mtd_percentage', 'kfp_asset_class'),
+            'portfolioAllocation' => $portfolioAllocation,
             'totalWealth' => $totalWealth->toArray(),
             'totalWealthAllocation' => $totalWealth->pluck('mtd_percentage', 'category'),
             'benchmarks' => $benchmarks,
