@@ -18,7 +18,7 @@
       <select-input label="Account" />
     </filters-wrapper>
 
-    <custodians-table />
+    <custodians-table :items="custodians" />
     <custodian-chart />
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
   },
   props: {
     filters: Object,
-    custodian: Array,
+    custodians: Array,
     payload: Array,
   },
   data() {

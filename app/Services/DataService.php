@@ -13,22 +13,40 @@ class DataService
 
     /**
      * Get currency data
+     *
+     * @param string|null $clientCode
+     * @param string|null $method
+     * @param string|null $currency
+     * @param string|null $date
+     *
+     * @return mixed
      */
-    public function getCurrency(): array
+    public function getCurrency($clientCode = 'DUM', $date = '2020-12-31', $currency = 'EUR', $method = 'VALUE'): array
     {
         $procedure = self::PROCEDURE['currency'];
-        $params = [];
+        $params = [
+            $clientCode, $date, $currency, $method
+        ];
 
         return $this->callProcedure($procedure, $params);
     }
 
     /**
      * Get custodian data
+     *
+     * @param string|null $clientCode
+     * @param string|null $method
+     * @param string|null $currency
+     * @param string|null $date
+     *
+     * @return mixed
      */
-    public function getCustodian(): array
+    public function getCustodian($clientCode = 'DUM', $date = '2020-12-31', $currency = 'EUR', $method = 'VALUE'): array
     {
         $procedure = self::PROCEDURE['custodian'];
-        $params = [];
+        $params = [
+            $clientCode, $date, $currency, $method
+        ];
 
         return $this->callProcedure($procedure, $params);
     }

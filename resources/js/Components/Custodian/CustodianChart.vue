@@ -2,7 +2,7 @@
   <div class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">{{ title }}</h2>
-      <apexchart type="pie" :options="options" :series="series" />
+      <apexchart ref="currency-exposure-chart" type="pie" :options="options" :series="series" />
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
           enabled: false,
         },
         legend: {
-          position: this.legendPosition(),
+          position: 'right',
           horizontalAlign: 'left',
           width: 200,
           formatter: function(val, opts) {
@@ -47,26 +47,13 @@ export default {
     }
   },
   computed: {
-    windowWidth() {
-      return this.$store.state.windowWidth
-    },
-    windowHeight() {
-      return this.$store.state.windowHeight
-    },
+    //
   },
   watch: {
-    windowWidth(newWidth) {
-      this.options = {
-        legend: {
-          position: newWidth < 700 ? 'bottom' : 'right',
-        },
-      }
-    },
+    //
   },
   methods : {
-    legendPosition: function () {
-      return window.innerWidth < 700 ? 'bottom' : 'right'
-    },
+    //
   },
 }
 </script>

@@ -86,8 +86,8 @@ INSERT INTO `wa_currency` (`client_code`, `period_date`, `valuation_currency`, `
 DROP PROCEDURE IF EXISTS `fn_get_currency`;
 CREATE PROCEDURE `fn_get_currency`(
     IN clientCode VARCHAR(20),
-    IN valuationCurrency VARCHAR(20),
     IN periodDate DATE,
+    IN valuationCurrency VARCHAR(20),
     IN valuationMethod VARCHAR(20)
 )
 BEGIN
@@ -139,8 +139,8 @@ INSERT INTO `wa_custodian` (`client_code`, `period_date`, `valuation_currency`, 
 DROP PROCEDURE IF EXISTS `fn_get_custodian`;
 CREATE PROCEDURE `fn_get_custodian`(
     IN clientCode VARCHAR(20),
-    IN valuationCurrency VARCHAR(20),
     IN periodDate DATE,
+    IN valuationCurrency VARCHAR(20),
     IN valuationMethod VARCHAR(20)
 )
 BEGIN
