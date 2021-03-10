@@ -21,7 +21,7 @@
             <div class="collapse-content collapse-content--custodians">
               <div class="collapse-content-table">
                 <div class="row">
-<!--                  cart-->
+<!--                  <custodian-chart />-->
                 </div>
               </div>
             </div>
@@ -34,7 +34,13 @@
 
 <script>
 
+import CustodianChart from '@/Components/Custodian/CustodianChart'
+import DatePicker from 'vue2-datepicker'
+
 export default {
+  components: {
+    CustodianChart,
+  },
   props: {
     items: {
       type: Array,
