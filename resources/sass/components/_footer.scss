@@ -1,6 +1,6 @@
 .footer {
     background-color: #fff;
-    padding: 8px 0;
+    padding: 8px 0 61px;
 
     @include media('>=desktop') {
         padding: 21px 0;
@@ -40,12 +40,37 @@
     }
 
     .nav-drop {
-        @include media('>=desktop') {
-            display: none;
-        }
+      @include media('>=widescreen') {
+          display: none;
+      }
+
+      @include media('<widescreen') {
+        background-color: #fff;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px 15px;
+      }
     }
 }
 
 .footer-holder {
-    display: none;
+  padding: 0 0 15px;
+  border-bottom: 1px solid #A2ACBD;
+
+  @include media('>=tablet') {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include media('<tablet') {
+    text-align: center;
+  }
+
+  p {
+    margin: 0 0 10px;
+  }
 }
