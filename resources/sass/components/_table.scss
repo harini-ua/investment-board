@@ -134,6 +134,7 @@
     .td {
       &:not(:first-child) {
         text-align: right;
+        justify-content: flex-end;
       }
     }
   }
