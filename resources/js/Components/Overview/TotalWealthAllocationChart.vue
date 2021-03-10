@@ -20,7 +20,7 @@ export default {
         chart: {
           id: 'total-wealth-allocation-chart',
         },
-        labels: ['Portfolio Assets', 'Category A', 'Category B'],
+        labels: this.chartLabels(),
         dataLabels: {
           enabled: false,
         },
@@ -98,17 +98,29 @@ export default {
           },
         ],
       },
-      series: [34.9, 34.1, 31],
+      series: this.chartSeries(),
     }
   },
   computed: {
     //
   },
   watch: {
-    //
+    data() {
+      this.options = {
+        labels: [...Object.keys(this.data)],
+      }
+      this.series = {
+        data: [...Object.keys(this.data)],
+      }
+    },
   },
   methods : {
-    //
+    chartLabels() {
+      return [...Object.keys(this.data)]
+    },
+    chartSeries() {
+      return [...Object.values(this.data)]
+    },
   },
 }
 </script>

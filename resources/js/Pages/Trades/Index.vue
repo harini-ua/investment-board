@@ -17,6 +17,7 @@
       <select-input label="Custodian" />
       <select-input label="Account" />
     </filters-wrapper>
+    <trades-table :items="trades" />
   </div>
 </template>
 
@@ -24,6 +25,7 @@
 
 import Layout from '@/Shared/Layout'
 import FiltersWrapper from '@/Shared/FiltersWrapper'
+import TradesTable from '@/Components/Trades/TradesTable'
 import SelectInput from '@/Shared/SelectInput'
 import DatePicker from 'vue2-datepicker'
 import {pickBy, throttle} from 'lodash'
@@ -34,12 +36,13 @@ export default {
   layout: Layout,
   components: {
     FiltersWrapper,
+    TradesTable,
     SelectInput,
     DatePicker,
   },
   props: {
     filters: Object,
-    positionOpen: Array,
+    trades: Array,
     payload: Object,
   },
   data() {
