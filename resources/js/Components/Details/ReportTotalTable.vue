@@ -1,5 +1,7 @@
 <template>
   <div class="block-table">
+    <h2>Report Total (base):</h2>
+    <h2>{{ total | numeral }}</h2>
     <div class="table-holder">
       <h3 class="table-title">Open positions</h3>
       <div class="table table--open-position">
@@ -34,43 +36,43 @@
               <div class="td" :title="item.instrument_name">
                 <span class="td-cell">{{ item.instrument_name }}</span>
               </div>
-              <div class="td hidden-sm" :title="item.quantity">
+              <div class="td hidden-sm" :title="$options.filters.numeral(item.quantity)">
                 <span class="td-cell">{{ item.quantity | numeral }}</span>
               </div>
-              <div class="td hidden-sm" :title="item.last_purchase">
+              <div class="td hidden-sm" :title="$options.filters.date_format(item.last_purchase)">
                 <span class="td-cell">{{ item.last_purchase | date_format }}</span>
               </div>
               <div class="td hidden-sm" :title="item.currency">
                 <span class="td-cell">{{ item.currency }}</span>
               </div>
-              <div class="td hidden-sm" :title="item.cost_price">
+              <div class="td hidden-sm" :title="$options.filters.numeral(item.cost_price)">
                 <span class="td-cell">{{ item.cost_price | numeral }}</span>
               </div>
-              <div class="td hidden-sm" :title="item.valuation_price">
+              <div class="td hidden-sm" :title="$options.filters.numeral(item.valuation_price)">
                 <span class="td-cell">{{ item.valuation_price | numeral }}</span>
               </div>
-              <div class="td hidden-sm" :title="item.cost_local">
+              <div class="td hidden-sm" :title="$options.filters.numeral(item.cost_local)">
                 <span class="td-cell">{{ item.cost_local | numeral }}</span>
               </div>
-              <div class="td hidden-sm" :title="item.valuation_local">
+              <div class="td hidden-sm" :title="$options.filters.numeral(item.valuation_local)">
                 <span class="td-cell">{{ item.valuation_local | numeral }}</span>
               </div>
-              <div class="td hidden-xl" :title="item.valuation_base">
+              <div class="td hidden-xl" :title="$options.filters.numeral(item.valuation_base)">
                 <span class="td-cell">{{ item.valuation_base | numeral }}</span>
               </div>
-              <div class="td hidden-xl" :title="item.mtd_pl">
+              <div class="td hidden-xl" :title="$options.filters.numeral(item.mtd_pl)">
                 <span class="td-cell">{{ item.mtd_pl | numeral }}</span>
               </div>
-              <div class="td hidden-xl" :title="item.ytd_pl">
+              <div class="td hidden-xl" :title="$options.filters.numeral(item.ytd_pl)">
                 <span class="td-cell">{{ item.ytd_pl | numeral }}</span>
               </div>
-              <div class="td hidden-xl" :title="item.mtd_return">
+              <div class="td hidden-xl" :title="$options.filters.percentage(item.mtd_return)">
                 <span class="td-cell">{{ item.mtd_return | percentage }}</span>
               </div>
-              <div class="td hidden-xl" :title="item.ytd_return">
+              <div class="td hidden-xl" :title="$options.filters.percentage(item.ytd_return)">
                 <span class="td-cell">{{ item.ytd_return | percentage }}</span>
               </div>
-              <div class="td hidden-xl" :title="item.sp_return">
+              <div class="td hidden-xl" :title="$options.filters.percentage(item.sp_return)">
                 <span class="td-cell">{{ item.sp_return | percentage }}</span>
               </div>
             </div>
@@ -169,6 +171,11 @@ export default {
     return {
       //
     }
+  },
+  computed: {
+    total: function () {
+      return this.items.reduce((prev, cur) => prev + cur.quantity, 0)
+    },
   },
   methods: {
     toggle(index) {
