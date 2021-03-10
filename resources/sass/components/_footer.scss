@@ -40,11 +40,11 @@
     }
 
     .nav-drop {
-      @include media('>=widescreen') {
+      @include media('>=desktop') {
           display: none;
       }
 
-      @include media('<widescreen') {
+      @include media('<desktop') {
         background-color: #fff;
         position: fixed;
         bottom: 0;
@@ -64,6 +64,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    border: none;
+    padding: 0;
   }
 
   @include media('<tablet') {
@@ -72,5 +74,9 @@
 
   p {
     margin: 0 0 10px;
+
+    @include media('>=desktop') {
+      margin: 0;
+    }
   }
 }
