@@ -572,6 +572,92 @@
       }
     }
   }
+
+  &--trades {
+    .thead {
+      .tr {
+        grid-template-columns: minmax(154px, 1fr) 1fr;
+        align-items: center;
+        margin: 0 -7px;
+
+        @include media('>=tablet') {
+          font-size: 12px;
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=1140px') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        .td {
+          line-height: 18px;
+          padding: 0 7px;
+        }
+      }
+    }
+
+    .tbody {
+      .tr {
+        grid-template-columns: minmax(154px, 1fr) 40px;
+        margin: 0 -6px;
+        position: relative;
+        cursor: pointer;
+
+        @include media('>=tablet') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=1140px') {
+          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        &:after {
+          transition: transform 0.3s;
+          content: '';
+          position: absolute;
+          right: 37px;
+          top: 50%;
+          transform: translateY(-50%);
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          -webkit-mask: url("/images/icons-sprite/arrow-down.svg");
+          mask: url("/images/icons-sprite/arrow-down.svg");
+          background-color: #a2acbd;
+          width: 24px;
+          height: 24px;
+        }
+
+        @include media('>=tablet') {
+          font-size: 12px;
+        }
+
+        .td {
+          padding: 0 6px;
+
+          &:nth-child(3) {
+            .td-cell {
+              max-width: 143px;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .collapse-content {
+        height: 0;
+        display: none;
+        padding: 10px 30px;
+        border: 1px solid #ebf2fa;
+      }
+
+      @include media('<tablet') {
+        .collapse-content {
+          padding: 10px;
+        }
+      }
+    }
+  }
 }
 
 .double-value-holder {
