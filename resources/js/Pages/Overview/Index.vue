@@ -15,8 +15,8 @@
       />
     </filters-wrapper>
     <div class="row-chart">
-      <portfolio-allocation :data="portfolioAllocation" />
-      <total-wealth-allocation :data="totalWealthAllocation" />
+      <portfolio-allocation-chart :data="portfolioAllocation" />
+      <total-wealth-allocation-chart :data="totalWealthAllocation" />
     </div>
     <h2>Asset Classes</h2>
     <portfolio-assets-table :items="portfolioAsset" />
@@ -27,8 +27,8 @@
 
 <script>
 import Layout from '@/Shared/Layout'
-import PortfolioAllocation from '@/Components/Overview/PortfolioAllocation'
-import TotalWealthAllocation from '@/Components/Overview/TotalWealthAllocation'
+import PortfolioAllocationChart from '@/Components/Overview/PortfolioAllocationChart'
+import TotalWealthAllocationChart from '@/Components/Overview/TotalWealthAllocationChart'
 import PortfolioAssetsTable from '@/Components/Overview/PortfolioAssetsTable'
 import TotalWealthTable from '@/Components/Overview/TotalWealthTable'
 import BenchmarksTable from '@/Components/Overview/BenchmarksTable'
@@ -42,8 +42,8 @@ export default {
   metaInfo: { title: 'Overview' },
   layout: Layout,
   components: {
-    PortfolioAllocation,
-    TotalWealthAllocation,
+    PortfolioAllocationChart,
+    TotalWealthAllocationChart,
     PortfolioAssetsTable,
     TotalWealthTable,
     BenchmarksTable,
