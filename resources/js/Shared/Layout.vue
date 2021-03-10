@@ -10,7 +10,7 @@
             <main-menu :url="url()" />
             <dropdown>
               <div slot="dropdown" class="logout-dropdown">
-                <inertia-link :href="route('logout')" method="post">Logout</inertia-link>
+                <inertia-link :href="route('logout')" method="post"><svg class="icon icon-log-out"><use xlink:href="#icon-log-out"></use></svg> Logout</inertia-link>
               </div>
             </dropdown>
           </div>
