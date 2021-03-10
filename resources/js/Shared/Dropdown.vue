@@ -1,12 +1,12 @@
 <template>
   <button type="button" @click="show = true" class="user-account">
-      <div class="icon-user">
-          <img src="../../images/icon-user.png" alt="">
-      </div>
+    <div class="icon-user">
+      <img src="../../images/icon-user.png" alt="">
+    </div>
     <slot />
     <portal v-if="show" to="dropdown">
       <div>
-        <div @click="show = false" />
+        <div style="position: fixed; top: 0; right: 0; left: 0; bottom: 0; z-index: 99998;" @click="show = false" />
         <div ref="dropdown" style="position: absolute; z-index: 99999;" @click.stop="show = autoClose ? false : true">
           <slot name="dropdown" />
         </div>
