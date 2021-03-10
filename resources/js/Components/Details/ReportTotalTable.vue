@@ -1,7 +1,9 @@
 <template>
   <div class="block-table">
-    <h2>Report Total (base):</h2>
-    <h2>{{ total | numeral }}</h2>
+    <div class="row-total">
+      <h2>Report Total (base):</h2>
+      <h2>{{ total | numeral }}</h2>
+    </div>
     <div class="table-holder">
       <h3 class="table-title">Open positions</h3>
       <div class="table table--open-position">
