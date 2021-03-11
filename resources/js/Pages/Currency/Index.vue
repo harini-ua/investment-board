@@ -17,9 +17,10 @@
       <select-input label="Custodian" />
       <select-input label="Account" />
     </filters-wrapper>
-
-    <exposure-chart />
-    <exposure-table />
+    <div class="row-chart">
+      <exposure-chart />
+      <exposure-table />
+    </div>
     <hedging-table />
   </div>
 </template>
