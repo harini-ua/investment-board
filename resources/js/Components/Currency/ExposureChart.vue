@@ -22,7 +22,7 @@ export default {
           enabled: false,
         },
         legend: {
-          position: this.legendPosition(),
+          position: 'bottom',
           horizontalAlign: 'left',
           width: 200,
           formatter: function(val, opts) {
@@ -47,26 +47,13 @@ export default {
     }
   },
   computed: {
-    windowWidth() {
-      return this.$store.state.windowWidth
-    },
-    windowHeight() {
-      return this.$store.state.windowHeight
-    },
+    //
   },
   watch: {
-    windowWidth(newWidth) {
-      this.options = {
-        legend: {
-          position: newWidth < 700 ? 'bottom' : 'right',
-        },
-      }
-    },
+    //
   },
   methods : {
-    legendPosition: function () {
-      return window.innerWidth < 700 ? 'bottom' : 'right'
-    },
+    //
   },
 }
 </script>
