@@ -23,13 +23,27 @@ class OverviewController extends Controller
             'mtd_value' => $portfolioAsset->sum('mtd_value'),
             'mtd_pl' => $portfolioAsset->sum('mtd_pl'),
             'ytd_pl' => $portfolioAsset->sum('ytd_pl'),
-            'mtd_percentage' => $portfolioAsset->sum('mtd_percentage'),
+            'mtd_percentage' => round($portfolioAsset->sum('mtd_percentage')),
             'mtd_benchmark' => $portfolioAsset->sum('mtd_benchmark'),
             'ytd_percentage' => $portfolioAsset->sum('ytd_percentage'),
             'ytd_benchmark' => $portfolioAsset->sum('ytd_benchmark'),
         ]);
 
         $totalWealth = Wealth::total(null, Request::get('method'), Request::get('date'), Request::get('currency'));
+        $totalWealthAllocation = $totalWealth->pluck('mtd_percentage', 'category');
+
+        // Total
+        $totalWealth->push([
+            'category' => 'Grant Total',
+            'mtd_value' => $totalWealth->sum('mtd_value'),
+            'mtd_pl' => $totalWealth->sum('mtd_pl'),
+            'ytd_pl' => $totalWealth->sum('ytd_pl'),
+            'mtd_percentage' => round($totalWealth->sum('mtd_percentage')),
+            'ytd_percentage' => $totalWealth->sum('ytd_percentage'),
+            'mtd_benchmark' => $totalWealth->sum('mtd_benchmark'),
+            'ytd_benchmark' => $totalWealth->sum('ytd_benchmark')
+        ]);
+
         $benchmarks = Benchmark::data();
 
         return Inertia::render('Overview/Index', [
@@ -37,7 +51,7 @@ class OverviewController extends Controller
             'portfolioAsset' => $portfolioAsset->toArray(),
             'portfolioAllocation' => $portfolioAllocation,
             'totalWealth' => $totalWealth->toArray(),
-            'totalWealthAllocation' => $totalWealth->pluck('mtd_percentage', 'category'),
+            'totalWealthAllocation' => $totalWealthAllocation,
             'benchmarks' => $benchmarks,
             'payload' => [
                 'method' => ValuationMethod::toCollection(),

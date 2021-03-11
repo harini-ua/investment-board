@@ -21,7 +21,7 @@ class TradesController extends Controller
             'trades' => [],
             'payload' => [
                 'currency' => BaseCurrency::getKeys(),
-                'assetClass' => AssetClass::asSelectArray(),
+                'asset_class' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()
             ]

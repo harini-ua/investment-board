@@ -54,7 +54,7 @@ class Portfolio extends Model
 
         $result->map(function ($item) use ($sum) {
             $item['active'] = false;
-            $item['mtd_percentage'] = round( $item['mtd_value'] / $sum * 100, 2);
+            $item['mtd_percentage'] = round( $item['mtd_value'] / $sum * 100, 1);
             return $item;
         });
 

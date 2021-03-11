@@ -23,7 +23,7 @@ class DetailsController extends Controller
             'payload' => [
                 'method' => ValuationMethod::toCollection(),
                 'currency' => BaseCurrency::getKeys(),
-                'assetClass' => AssetClass::asSelectArray(),
+                'asset_class' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()
             ]

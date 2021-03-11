@@ -28,7 +28,6 @@ class CurrencyController extends Controller
 
     public function index()
     {
-
         $currencyExposure = $this->dataService->getCurrency('DUM', '2020-12-31', 'EUR', 'VALUE');
 
         $sum = collect($currencyExposure)->sum('value');
@@ -44,7 +43,7 @@ class CurrencyController extends Controller
             'payload' => [
                 'method' => ValuationMethod::toCollection(),
                 'currency' => BaseCurrency::getKeys(),
-                'assetClass' => AssetClass::asSelectArray(),
+                'asset_class' => AssetClass::asSelectArray(),
                 'custodian' => Custodian::asSelectArray(),
                 'account' => Account::asSelectArray()
             ]

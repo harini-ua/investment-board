@@ -7,15 +7,33 @@
         label="Valuation Method"
         info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
       />
-      <date-picker v-model="filtersPage.date" value-type="YYYY-MM-DD" format="DD/MM/YYYY" type="date" />
+      <date-picker
+        v-model="filtersPage.date"
+        label="Date"
+        value-type="YYYY-MM-DD"
+        format="DD/MM/YYYY"
+        type="date"
+      />
       <select-input
         v-model="filtersPage.currency"
         :options="payload.currency"
         label="Base currency"
       />
-      <select-input label="Asset Class" />
-      <select-input label="Custodian" />
-      <select-input label="Account" />
+      <select-input
+        v-model="filtersPage.asset_class"
+        :options="payload.asset_class"
+        label="Asset Class"
+      />
+      <select-input
+        v-model="filtersPage.custodian"
+        :options="payload.custodian"
+        label="Custodian"
+      />
+      <select-input
+        v-model="filtersPage.account"
+        :options="payload.account"
+        label="Account"
+      />
     </filters-wrapper>
 
     <exposure-chart />
@@ -54,9 +72,12 @@ export default {
   data() {
     return {
       filtersPage: {
-        method:   this.filters.method,
-        date:     this.filters.date,
-        currency: this.filters.currency,
+        method:      this.filters.method,
+        date:        this.filters.date,
+        currency:    this.filters.currency,
+        asset_class: this.filters.asset_class,
+        custodian:   this.filters.custodian,
+        account:     this.filters.account,
       },
     }
   },
@@ -95,6 +116,11 @@ export default {
         )
       }, 150),
       deep: true,
+    },
+  },
+  methods: {
+    options(options) {
+      return options.shift([])
     },
   },
 }

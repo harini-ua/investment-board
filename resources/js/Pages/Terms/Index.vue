@@ -1,12 +1,12 @@
 <template>
   <div class="wysiwyg">
     <div class="container">
-      <h1><!--    <h2>Terms & conditions</h2>--></h1>
-      <h2>Privacy policy</h2>
-      <h3>Privacy policy</h3>
-      <h4>Privacy policy</h4>
-      <h5>Privacy policy</h5>
-      <h6>Privacy policy</h6>
+      <h1>Terms & conditions</h1>
+      <h2>Terms & conditions</h2>
+      <h3>Terms & conditions</h3>
+      <h4>Terms & conditions</h4>
+      <h5>Terms & conditions</h5>
+      <h6>Terms & conditions</h6>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ea, eveniet ipsa libero nihil ut voluptas voluptatibus. Aliquid dignissimos esse eveniet iure magni molestiae molestias nihil non unde voluptate. Quaerat.</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ea, eveniet ipsa libero nihil ut voluptas voluptatibus. Aliquid dignissimos esse eveniet iure magni molestiae molestias nihil non unde voluptate. Quaerat.</p>
       <p>Lorem <a href="#">ipsum dolor sit amet</a> ipsum dolor sit amet, consectetur adipisicing elit. Dolorem ea, eveniet ipsa libero nihil ut voluptas voluptatibus. Aliquid dignissimos esse eveniet iure magni molestiae molestias nihil non unde voluptate. Quaerat.</p>

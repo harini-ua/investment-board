@@ -13,7 +13,7 @@ export default {
     if (!value) value = 0
     if (!decimals) decimals = 0
 
-    value = value * 100
+    //value = value * 10 // TODO: Need test
     value = Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals)
     value = value + '%'
 
