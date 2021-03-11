@@ -2,7 +2,13 @@
   <div class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">Portfolio Allocation</h2>
-      <apexchart ref="portfolio-allocation-chart" type="pie" :options="options" :series="series" />
+      <apexchart
+        ref="portfolio-allocation-chart"
+        class="chart-wrapper"
+        type="pie"
+        :options="options"
+        :series="series"
+      />
     </div>
   </div>
 </template>

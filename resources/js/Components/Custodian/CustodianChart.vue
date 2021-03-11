@@ -2,7 +2,13 @@
   <div class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">{{ title }}</h2>
-      <apexchart ref="currency-exposure-chart" type="pie" :options="options" :series="series" />
+      <apexchart
+        ref="currency-exposure-chart"
+        class="chart-wrapper"
+        type="pie"
+        :options="options"
+        :series="series"
+      />
     </div>
   </div>
 </template>

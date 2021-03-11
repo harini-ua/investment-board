@@ -12,162 +12,27 @@
           </div>
         </div>
         <div class="tbody">
-          <div :class="[{active: isActive}, 'tr-holder']" @click="openHiddenContent()">
+          <div v-for="(item, index) in items"
+               :key="item.id"
+               class="tr-holder"
+               :class="[{active: item.active}, 'row-' + (index + 1)]"
+               @click="toggle(index)"
+          >
             <div class="tr">
-              <div class="td">EUR</div>
-              <div class="td">47,0%</div>
-              <div class="td hidden-sm">8,6%</div>
-              <div class="td hidden-lg">55,6%</div>
+              <div class="td">{{ item.currency }}</div>
+              <div class="td">{{ item.gross_assets }}%</div>
+              <div class="td hidden-sm">{{ item.fx }}%</div>
+              <div class="td hidden-lg">{{ item.net_assets }}%</div>
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
+                  <div class="cell-description">{{ item.fx }}%</div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">USD</div>
-              <div class="td">42,9%</div>
-              <div class="td hidden-sm">42,9%</div>
-              <div class="td hidden-lg">42,9%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
                 <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">GBP</div>
-              <div class="td">4,7%</div>
-              <div class="td hidden-sm">0,0%</div>
-              <div class="td hidden-lg">4,7%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">NOK</div>
-              <div class="td">2,7%</div>
-              <div class="td hidden-sm">0,0%</div>
-              <div class="td hidden-lg">2,7%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">SEK</div>
-              <div class="td">0,3%</div>
-              <div class="td hidden-sm">0,0%</div>
-              <div class="td hidden-lg">0,3%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">CAD</div>
-              <div class="td">0,1%</div>
-              <div class="td hidden-sm">0,0%</div>
-              <div class="td hidden-lg">0,1%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">HKD</div>
-              <div class="td">0,0%</div>
-              <div class="td hidden-sm">-12,7%</div>
-              <div class="td hidden-lg">-12,7%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tr-holder">
-            <div class="tr">
-              <div class="td">Total</div>
-              <div class="td">99,4%</div>
-              <div class="td hidden-sm">0,6%</div>
-              <div class="td hidden-lg">100,0%</div>
-            </div>
-            <div class="collapse-content collapse-content--general">
-              <div class="collapse-content-table">
-                <div class="cell-row visible-lg">
-                  <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">55,6%</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">8,6%</div>
+                  <div class="cell-description">{{ item.net_assets }}%</div>
                 </div>
               </div>
             </div>
@@ -181,19 +46,32 @@
 <script>
 
 export default {
+  props: {
+    items: {
+      type: Array,
+      default: () => [
+        {'currency': 'EUR', 'gross_assets': '47,0', 'fx': '8,6', 'net_assets': '55,6', 'active': false},
+        {'currency': 'USD', 'gross_assets': '42,9', 'fx': '42,9', 'net_assets': '42,9', 'active': false},
+        {'currency': 'GBP', 'gross_assets': '4,7', 'fx': '0,0', 'net_assets': '4,7', 'active': false},
+        {'currency': 'NOK', 'gross_assets': '2,7', 'fx': '0,0', 'net_assets': '2,7', 'active': false},
+        {'currency': 'SEK', 'gross_assets': '0,3', 'fx': '0,0', 'net_assets': '0,3', 'active': false},
+        {'currency': 'CAD', 'gross_assets': '0,1', 'fx': '0,0', 'net_assets': '0,1', 'active': false},
+        {'currency': 'HKD', 'gross_assets': '0,0', 'fx': '-12,7', 'net_assets': '-12,7', 'active': false},
+        {'currency': 'Total', 'gross_assets': '99,4', 'fx': '0,6', 'net_assets': '100', 'active': false},
+      ],
+    },
+  },
   data: function () {
     return {
-      isActive: false,
+      //
     }
   },
   methods: {
-    openHiddenContent: function() {
-      let ViewportWidth = window.innerWidth;
-
-      if (ViewportWidth < 1024) {
-        this.isActive = !this.isActive;
+    toggle(index) {
+      if (window.innerWidth < 1024) {
+        this.items[index]['active'] = !this.items[index]['active']
       }
     },
-  }
+  },
 }
 </script>
