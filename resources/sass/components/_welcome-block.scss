@@ -20,5 +20,19 @@
   &__row-actions {
     display: flex;
     flex-wrap: wrap;
+
+    .select-holder {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .form-select {
+      margin: 0 0 0 15px;
+    }
+
+    .tooltip {
+      margin: 0 0 0 6px;
+    }
   }
 }
