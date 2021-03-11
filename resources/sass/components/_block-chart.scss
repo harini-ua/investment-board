@@ -21,7 +21,9 @@
   }
 
   &--currency-exposure-chart {
-    width: 28.2%;
+    @include media('>=tablet') {
+      width: 28.2%;
+    }
   }
 }
 
