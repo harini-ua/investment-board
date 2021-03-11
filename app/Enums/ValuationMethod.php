@@ -14,5 +14,5 @@ final class ValuationMethod extends Enum implements LocalizedEnum
     use CollectionTrait;
 
     const MarketValue = 'VALUE';
-    const Exposure = 'Exposure';
+    const Exposure = 'EX';
 }

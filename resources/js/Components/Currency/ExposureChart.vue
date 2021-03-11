@@ -24,7 +24,7 @@ export default {
         legend: {
           position: 'bottom',
           horizontalAlign: 'left',
-          width: 200,
+          //width: 200,
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },

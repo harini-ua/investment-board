@@ -23,9 +23,9 @@ class DetailsController extends Controller
             'payload' => [
                 'method' => ValuationMethod::toCollection(),
                 'currency' => BaseCurrency::getKeys(),
-                'asset_class' => AssetClass::asSelectArray(),
-                'custodian' => Custodian::asSelectArray(),
-                'account' => Account::asSelectArray()
+                'asset_class' => AssetClass::toCollection(true),
+                'custodian' => Custodian::toCollection(true),
+                'account' => Account::toCollection(true)
             ]
         ]);
     }

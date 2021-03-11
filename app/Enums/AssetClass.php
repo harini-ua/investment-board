@@ -11,6 +11,8 @@ use BenSampo\Enum\Enum;
  */
 final class AssetClass extends Enum
 {
+    use CollectionTrait;
+
     const OptionOne = 0;
     const OptionTwo = 1;
     const OptionThree = 2;

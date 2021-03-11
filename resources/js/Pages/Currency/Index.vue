@@ -119,10 +119,5 @@ export default {
       deep: true,
     },
   },
-  methods: {
-    options(options) {
-      return options.shift([])
-    },
-  },
 }
 </script>

@@ -21,17 +21,17 @@
       />
       <select-input
         v-model="filtersPage.asset_class"
-        :options="options(payload.asset_class)"
+        :options="payload.asset_class"
         label="Asset Class"
       />
       <select-input
         v-model="filtersPage.custodian"
-        :options="options(payload.custodian)"
+        :options="payload.custodian"
         label="Custodian"
       />
       <select-input
         v-model="filtersPage.account"
-        :options="options(payload.account)"
+        :options="payload.account"
         label="Account"
       />
     </filters-wrapper>
@@ -93,11 +93,6 @@ export default {
         )
       }, 150),
       deep: true,
-    },
-  },
-  methods: {
-    options(options) {
-      return options.shift([])
     },
   },
 }
