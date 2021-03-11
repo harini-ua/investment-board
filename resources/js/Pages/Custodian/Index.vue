@@ -8,7 +8,6 @@
           label="Valuation Method"
           info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
         />
-        <select-input label="Asset Class" />
       </div>
       <div class="column-filter">
         <date-input label="Date">
@@ -19,7 +18,6 @@
             type="date"
           />
         </date-input>
-        <select-input label="Custodian" />
       </div>
       <div class="column-filter">
         <select-input
@@ -27,7 +25,6 @@
           :options="payload.currency"
           label="Base currency"
         />
-        <select-input label="Account" />
       </div>
     </filters-wrapper>
     <custodians-table :items="custodians" />
