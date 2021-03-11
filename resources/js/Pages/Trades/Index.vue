@@ -1,19 +1,22 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <date-picker
-        v-model="filtersPage.from"
-        label="From"
-        value-type="YYYY-MM-DD"
-        format="DD/MM/YYYY" type="date"
-      />
-      <date-picker
-        v-model="filtersPage.to"
-        label="To"
-        value-type="YYYY-MM-DD"
-        format="DD/MM/YYYY"
-        type="date"
-      />
+      <date-input label="From">
+        <date-picker
+          v-model="filtersPage.from"
+          value-type="YYYY-MM-DD"
+          format="DD/MM/YYYY"
+          type="date"
+        />
+      </date-input>
+      <date-input label="To">
+        <date-picker
+          v-model="filtersPage.to"
+          value-type="YYYY-MM-DD"
+          format="DD/MM/YYYY"
+          type="date"
+        />
+      </date-input>
       <select-input
         v-model="filtersPage.currency"
         :options="payload.currency"
@@ -48,11 +51,13 @@ import SelectInput from '@/Shared/SelectInput'
 import DatePicker from 'vue2-datepicker'
 import {pickBy, throttle} from 'lodash'
 import moment from 'moment'
+import DateInput from '../../Shared/DateInput'
 
 export default {
   metaInfo: { title: 'Trades' },
   layout: Layout,
   components: {
+    DateInput,
     FiltersWrapper,
     TradesTable,
     SelectInput,

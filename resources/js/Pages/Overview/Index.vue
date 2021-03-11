@@ -7,13 +7,14 @@
         label="Valuation Method"
         info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
       />
-      <date-picker
-        v-model="filtersPage.date"
-        label="Date"
-        vlue-type="YYYY-MM-DD"
-        format="DD/MM/YYYY"
-        type="date"
-      />
+      <date-input label="Date">
+        <date-picker
+          v-model="filtersPage.date"
+          vlue-type="YYYY-MM-DD"
+          format="DD/MM/YYYY"
+          type="date"
+        />
+      </date-input>
       <select-input
         v-model="filtersPage.currency"
         :options="payload.currency"
@@ -43,11 +44,13 @@ import SelectInput from '@/Shared/SelectInput'
 import DatePicker from 'vue2-datepicker'
 import { pickBy, throttle } from 'lodash'
 import moment from 'moment'
+import DateInput from '../../Shared/DateInput'
 
 export default {
   metaInfo: { title: 'Overview' },
   layout: Layout,
   components: {
+    DateInput,
     PortfolioAllocationChart,
     TotalWealthAllocationChart,
     PortfolioAssetsTable,

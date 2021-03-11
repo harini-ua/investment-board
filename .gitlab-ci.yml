@@ -27,4 +27,3 @@ building:
     - ${PHP} artisan config:cache
     - ${PHP} artisan view:cache
     - ${PHP} artisan up
-
