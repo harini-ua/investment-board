@@ -1,31 +1,25 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <div class="column-filter">
         <select-input
           v-model="filtersPage.method"
           :options="payload.method"
-          label="Valuation date:"
+          label="Valuation method:"
           info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
         />
-      </div>
-      <div class="column-filter">
-        <date-input label="Valuation method:">
-          <date-picker
-            v-model="filtersPage.date"
-            vlue-type="YYYY-MM-DD"
-            format="DD/MM/YYYY"
-            type="date"
-          />
-        </date-input>
-      </div>
-      <div class="column-filter">
-        <select-input
-          v-model="filtersPage.currency"
-          :options="payload.currency"
-          label="Base currency:"
+      <date-input label="Valuation Date:">
+        <date-picker
+          v-model="filtersPage.date"
+          value-type="YYYY-MM-DD"
+          format="DD/MM/YYYY"
+          type="date"
         />
-      </div>
+      </date-input>
+      <select-input
+        v-model="filtersPage.currency"
+        :options="payload.currency"
+        label="Base currency:"
+      />
     </filters-wrapper>
     <div class="row-chart">
       <portfolio-allocation-chart :data="portfolioAllocation" />
@@ -78,9 +72,9 @@ export default {
   data() {
     return {
       filtersPage: {
-        method:   this.filters.method,
-        date:     this.filters.date,
-        currency: this.filters.currency,
+        method:   this.filters.method ? this.filters.method : this.payload.method[0],
+        date:     this.filters.date ? this.filters.method : '2020-12-31',
+        currency: this.filters.currency ? this.filters.currency : this.payload.currency[0],
       },
     }
   },
