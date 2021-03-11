@@ -20,9 +20,6 @@
         :options="payload.currency"
         label="Base currency"
       />
-      <select-input label="Asset Class" />
-      <select-input label="Custodian" />
-      <select-input label="Account" />
     </filters-wrapper>
 
     <custodians-table :items="custodians" />

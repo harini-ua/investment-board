@@ -23,7 +23,7 @@ class OverviewController extends Controller
             'mtd_value' => $portfolioAsset->sum('mtd_value'),
             'mtd_pl' => $portfolioAsset->sum('mtd_pl'),
             'ytd_pl' => $portfolioAsset->sum('ytd_pl'),
-            'mtd_percentage' => round($portfolioAsset->sum('mtd_percentage')),
+            'mtd_percentage' => $portfolioAsset->sum('mtd_percentage'),
             'mtd_benchmark' => $portfolioAsset->sum('mtd_benchmark'),
             'ytd_percentage' => $portfolioAsset->sum('ytd_percentage'),
             'ytd_benchmark' => $portfolioAsset->sum('ytd_benchmark'),
@@ -38,7 +38,7 @@ class OverviewController extends Controller
             'mtd_value' => $totalWealth->sum('mtd_value'),
             'mtd_pl' => $totalWealth->sum('mtd_pl'),
             'ytd_pl' => $totalWealth->sum('ytd_pl'),
-            'mtd_percentage' => round($totalWealth->sum('mtd_percentage')),
+            'mtd_percentage' => $totalWealth->sum('mtd_percentage'),
             'ytd_percentage' => $totalWealth->sum('ytd_percentage'),
             'mtd_benchmark' => $totalWealth->sum('mtd_benchmark'),
             'ytd_benchmark' => $totalWealth->sum('ytd_benchmark')
