@@ -1,8 +1,16 @@
 <template>
   <div class="block-chart-wrapper block-chart-wrapper--currency-exposure-chart">
     <div class="block-chart">
-      <h2 class="block-chart__title">{{ title }}</h2>
-      <apexchart type="pie" :options="options" :series="series" />
+      <h2 class="block-chart__title">Currency Exposure Chart</h2>
+      <apexchart
+        ref="currency-exposure-chart"
+        class="chart-wrapper"
+        :height="800"
+        :width="300"
+        type="pie"
+        :options="options"
+        :series="series"
+      />
     </div>
   </div>
 </template>
@@ -12,19 +20,24 @@
 export default {
   data: function() {
     return {
-      title: 'Currency Exposure Chart',
       options: {
         chart: {
           id: 'currency-exposure-chart',
+          //width:  'auto',
+          //height: 400,
         },
         labels: ['CHF', 'EUR', 'USD', 'GBP', 'NOK', 'SEK', 'DKK', 'JPY', 'HKD', 'CAD'],
         dataLabels: {
           enabled: false,
         },
         legend: {
+          floating: false,
           position: 'bottom',
           horizontalAlign: 'left',
-          //width: 200,
+          width: 200,
+          height: 'auto',
+          offsetX: 0,
+          offsetY: 0,
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },

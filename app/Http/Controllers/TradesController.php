@@ -17,7 +17,7 @@ class TradesController extends Controller
 //        $trades = Trades::data();
 
         return Inertia::render('Trades/Index', [
-            'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
+            'filters' => Request::all(['from', 'to', 'currency', 'asset_class', 'custodian', 'account']),
             'trades' => [],
             'payload' => [
                 'currency' => BaseCurrency::getKeys(),

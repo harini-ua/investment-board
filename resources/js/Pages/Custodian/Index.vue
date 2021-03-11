@@ -10,7 +10,7 @@
         />
       </div>
       <div class="column-filter">
-        <date-input label="Date">
+        <date-input label="Valuation Date">
           <date-picker
             v-model="filtersPage.date"
             value-type="YYYY-MM-DD"
@@ -62,9 +62,9 @@ export default {
   data() {
     return {
       filtersPage: {
-        method:   this.filters.method,
-        date:     this.filters.date,
-        currency: this.filters.currency,
+        method:   this.filters.method ? this.filters.method : this.payload.method[0],
+        date:     this.filters.date ? this.filters.method : '2020-12-31',
+        currency: this.filters.currency ? this.filters.currency : this.payload.currency[0],
       },
     }
   },
