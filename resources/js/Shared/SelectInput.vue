@@ -1,5 +1,5 @@
 <template>
-  <div class="select-holder">
+  <div class="filter-wrapper">
     <label v-if="label" class="select-form-label" :for="id">{{ label }}</label>
     <div v-if="info" class="tooltip">
       <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>

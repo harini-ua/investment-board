@@ -1,25 +1,31 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <select-input
-        v-model="filtersPage.method"
-        :options="payload.method"
-        label="Valuation Method"
-        info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
-      />
-      <date-input label="Date">
-        <date-picker
-          v-model="filtersPage.date"
-          vlue-type="YYYY-MM-DD"
-          format="DD/MM/YYYY"
-          type="date"
+      <div class="column-filter">
+        <select-input
+          v-model="filtersPage.method"
+          :options="payload.method"
+          label="Valuation Method"
+          info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
         />
-      </date-input>
-      <select-input
-        v-model="filtersPage.currency"
-        :options="payload.currency"
-        label="Base currency"
-      />
+      </div>
+      <div class="column-filter">
+        <date-input label="Date">
+          <date-picker
+            v-model="filtersPage.date"
+            vlue-type="YYYY-MM-DD"
+            format="DD/MM/YYYY"
+            type="date"
+          />
+        </date-input>
+      </div>
+      <div class="column-filter">
+        <select-input
+          v-model="filtersPage.currency"
+          :options="payload.currency"
+          label="Base currency"
+        />
+      </div>
     </filters-wrapper>
     <div class="row-chart">
       <portfolio-allocation-chart :data="portfolioAllocation" />

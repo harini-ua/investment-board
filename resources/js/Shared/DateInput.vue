@@ -1,5 +1,5 @@
 <template>
-  <div class="input-holder">
+  <div class="filter-wrapper filter-wrapper--datapicker">
     <label v-if="label" class="form-label" :for="id">{{ label }}</label>
     <slot />
     <div v-if="error" class="form-error">{{ error }}</div>
