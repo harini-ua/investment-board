@@ -1,5 +1,5 @@
 .input-holder {
-    margin: 0 0 30px;
+    //margin: 0 0 30px;
 }
 
 input {
@@ -14,9 +14,7 @@ input {
     padding: 12px;
 }
 
-.select-form-label {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+.select-form-label,
+.form-label {
   color: #a2acbd;
 }

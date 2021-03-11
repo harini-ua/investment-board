@@ -1,40 +1,46 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <select-input
-        v-model="filtersPage.method"
-        :options="payload.method"
-        label="Valuation Method"
-        info="Valuation method can be changed to see impact of derivatives.  Market value is the standard accounting value of the securities.  Exposure changes only for derivatives; delta is used for options, and notional value for futures."
-      />
-      <date-input label="Date">
-        <date-picker
-          v-model="filtersPage.date"
-          value-type="YYYY-MM-DD"
-          format="DD/MM/YYYY"
-          type="date"
+      <div class="column-filter">
+        <select-input
+          v-model="filtersPage.method"
+          :options="payload.method"
+          label="Valuation Method"
+          info="Valuation method can be changed to see impact of derivatives.  Market value is the standard accounting value of the securities.  Exposure changes only for derivatives; delta is used for options, and notional value for futures."
         />
-      </date-input>
-      <select-input
-        v-model="filtersPage.currency"
-        :options="payload.currency"
-        label="Base currency"
-      />
-      <select-input
-        v-model="filtersPage.asset_class"
-        :options="payload.asset_class"
-        label="Asset Class"
-      />
-      <select-input
-        v-model="filtersPage.custodian"
-        :options="payload.custodian"
-        label="Custodian"
-      />
-      <select-input
-        v-model="filtersPage.account"
-        :options="payload.account"
-        label="Account"
-      />
+        <select-input
+          v-model="filtersPage.asset_class"
+          :options="payload.asset_class"
+          label="Asset Class"
+        />
+      </div>
+      <div class="column-filter">
+        <date-input label="Date">
+          <date-picker
+            v-model="filtersPage.date"
+            value-type="YYYY-MM-DD"
+            format="DD/MM/YYYY"
+            type="date"
+          />
+        </date-input>
+        <select-input
+          v-model="filtersPage.custodian"
+          :options="payload.custodian"
+          label="Custodian"
+        />
+      </div>
+      <div class="column-filter">
+        <select-input
+          v-model="filtersPage.currency"
+          :options="payload.currency"
+          label="Base currency"
+        />
+        <select-input
+          v-model="filtersPage.account"
+          :options="payload.account"
+          label="Account"
+        />
+      </div>
     </filters-wrapper>
     <report-total-table :items="positionOpen" />
   </div>
