@@ -1,17 +1,14 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <div class="column-filter">
         <select-input
           v-model="filtersPage.method"
           :options="payload.method"
-          label="Valuation Method"
+          label="Valuation Method:"
           info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
         />
-        <select-input label="Asset Class" />
-      </div>
-      <div class="column-filter">
-        <date-input label="Date">
+        <select-input label="Asset Class:" />
+        <date-input label="Valuation date:">
           <date-picker
             v-model="filtersPage.date"
             value-type="YYYY-MM-DD"
@@ -19,18 +16,14 @@
             type="date"
           />
         </date-input>
-        <select-input label="Custodian" />
-      </div>
-      <div class="column-filter">
+        <select-input label="Custodian:" />
         <select-input
           v-model="filtersPage.currency"
           :options="payload.currency"
-          label="Base currency"
+          label="Base currency:"
         />
-        <select-input label="Account" />
-      </div>
+        <select-input label="Account:" />
     </filters-wrapper>
-
     <custodians-table :items="custodians" />
     <custodian-chart />
   </div>
@@ -61,7 +54,7 @@ export default {
   props: {
     filters: Object,
     custodians: Array,
-    payload: Array,
+    payload: Object,
   },
   data() {
     return {

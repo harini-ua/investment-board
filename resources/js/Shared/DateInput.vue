@@ -12,6 +12,7 @@ export default {
   props: {
     label: String,
     error: String,
+    id: String,
   },
   methods: {
     //

@@ -1,48 +1,42 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <div class="column-filter">
-        <date-input label="From">
-          <date-picker
-            v-model="filtersPage.from"
-            value-type="YYYY-MM-DD"
-            format="DD/MM/YYYY"
-            type="date"
-          />
-        </date-input>
-        <select-input
-          v-model="filtersPage.asset_class"
-          :options="payload.asset_class"
-          label="Asset Class"
+      <date-input label="Date from:">
+        <date-picker
+          v-model="filtersPage.from"
+          value-type="YYYY-MM-DD"
+          format="DD/MM/YYYY"
+          type="date"
         />
-      </div>
-      <div class="column-filter">
-        <date-input label="To">
-          <date-picker
-            v-model="filtersPage.to"
-            value-type="YYYY-MM-DD"
-            format="DD/MM/YYYY"
-            type="date"
-          />
-        </date-input>
-        <select-input
-          v-model="filtersPage.custodian"
-          :options="payload.custodian"
-          label="Custodian"
+      </date-input>
+      <date-input label="Date to:">
+        <date-picker
+          v-model="filtersPage.to"
+          value-type="YYYY-MM-DD"
+          format="DD/MM/YYYY"
+          type="date"
         />
-      </div>
-      <div class="column-filter">
-        <select-input
-          v-model="filtersPage.currency"
-          :options="payload.currency"
-          label="Base currency"
-        />
-        <select-input
-          v-model="filtersPage.account"
-          :options="payload.account"
-          label="Account"
-        />
-      </div>
+      </date-input>
+      <select-input
+        v-model="filtersPage.currency"
+        :options="payload.currency"
+        label="Base currency:"
+      />
+      <select-input
+        v-model="filtersPage.asset_class"
+        :options="payload.asset_class"
+        label="Asset class:"
+      />
+      <select-input
+        v-model="filtersPage.custodian"
+        :options="payload.custodian"
+        label="Custodian:"
+      />
+      <select-input
+        v-model="filtersPage.account"
+        :options="payload.account"
+        label="Account:"
+      />
     </filters-wrapper>
     <trades-table :items="trades" />
   </div>

@@ -17,4 +17,12 @@ input {
 .select-form-label,
 .form-label {
   color: #a2acbd;
+  font-size: 11px;
+  width: 196px;
+  display: inline-block;
+
+  @include media('>=576px') {
+    font-size: 12px;
+    width: auto;
+  }
 }
