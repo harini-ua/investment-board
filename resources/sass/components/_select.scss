@@ -9,12 +9,11 @@
 
 .v-select {
   width: 100%;
-  max-width: 120px;
+  max-width: 160px;
 }
 
 .vs__search,
 .vs__search:focus {
-  width: 120px !important;
   height: 32px !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -34,6 +33,11 @@
   border: 0;
 }
 
+//.vs__dropdown-menu {
+//  width: 120px !important;
+//  border: none !important;
+//}
+
 .form-select {
   line-height: 20px;
 }
@@ -51,7 +55,7 @@
 }
 
 .vs__selected-options {
-  max-width: 120px;
+  max-width: 160px;
   width: 100%;
 }
 

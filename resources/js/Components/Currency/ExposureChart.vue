@@ -1,5 +1,5 @@
 <template>
-  <div class="block-chart-wrapper">
+  <div class="block-chart-wrapper block-chart-wrapper--currency-exposure-chart">
     <div class="block-chart">
       <h2 class="block-chart__title">{{ title }}</h2>
       <apexchart type="pie" :options="options" :series="series" />
