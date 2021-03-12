@@ -16,10 +16,10 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
     @routes
 </head>
-    <body>
-        <div style="position: absolute; height: 0; overflow: hidden;" class="icons-sprite">
-            @include('page.icons')
-        </div>
-        @inertia
+<body>
+    <div style="position: absolute; height: 0; overflow: hidden;" class="icons-sprite">
+        @include('page.icons')
+    </div>
+    @inertia
 </body>
 </html>

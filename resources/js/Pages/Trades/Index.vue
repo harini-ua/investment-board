@@ -35,7 +35,7 @@
       <select-input
         v-model="filtersPage.account"
         :options="payload.account"
-        label="Account:"
+        label="Account"
       />
     </filters-wrapper>
     <trades-table :items="trades" />

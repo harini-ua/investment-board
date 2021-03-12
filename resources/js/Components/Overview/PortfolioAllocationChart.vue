@@ -16,7 +16,6 @@
 <script>
 
 export default {
-  metaInfo: { title: 'Portfolio Allocation' },
   props: {
     data: Object,
   },

@@ -18,6 +18,9 @@ Vue.use(Vuex)
 import vSelect from "vue-select";
 Vue.component("v-select", vSelect);
 
+import vClickOutside from 'v-click-outside'
+Vue.use(vClickOutside)
+
 Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 
@@ -39,6 +42,7 @@ const store = new Vuex.Store({
     }
   }
 })
+
 
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 

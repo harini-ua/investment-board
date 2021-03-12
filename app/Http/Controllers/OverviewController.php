@@ -27,6 +27,7 @@ class OverviewController extends Controller
             'mtd_benchmark' => $portfolioAsset->sum('mtd_benchmark'),
             'ytd_percentage' => $portfolioAsset->sum('ytd_percentage'),
             'ytd_benchmark' => $portfolioAsset->sum('ytd_benchmark'),
+            'active' => false,
         ]);
 
         $totalWealth = Wealth::total(null, Request::get('method'), Request::get('date'), Request::get('currency'));
@@ -41,7 +42,8 @@ class OverviewController extends Controller
             'mtd_percentage' => $totalWealth->sum('mtd_percentage'),
             'ytd_percentage' => $totalWealth->sum('ytd_percentage'),
             'mtd_benchmark' => $totalWealth->sum('mtd_benchmark'),
-            'ytd_benchmark' => $totalWealth->sum('ytd_benchmark')
+            'ytd_benchmark' => $totalWealth->sum('ytd_benchmark'),
+            'active' => false,
         ]);
 
         $benchmarks = Benchmark::data();

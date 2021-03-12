@@ -18,7 +18,7 @@
       <select-input
         v-model="filtersPage.currency"
         :options="payload.currency"
-        label="Base currency:"
+        label="Base currency"
       />
     </filters-wrapper>
     <custodians-table :items="custodians" />

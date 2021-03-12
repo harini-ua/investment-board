@@ -4,10 +4,10 @@
         <select-input
           v-model="filtersPage.method"
           :options="payload.method"
-          label="Valuation method:"
+          label="Valuation method"
           info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
         />
-      <date-input label="Valuation Date:">
+      <date-input label="Valuation date">
         <date-picker
           v-model="filtersPage.date"
           value-type="YYYY-MM-DD"
@@ -18,7 +18,7 @@
       <select-input
         v-model="filtersPage.currency"
         :options="payload.currency"
-        label="Base currency:"
+        label="Base currency"
       />
     </filters-wrapper>
     <div class="row-chart">

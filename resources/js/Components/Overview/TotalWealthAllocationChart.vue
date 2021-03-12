@@ -16,7 +16,6 @@
 <script>
 
 export default {
-  metaInfo: { title: 'Total Wealth Allocation' },
   props: {
     data: Object,
   },
