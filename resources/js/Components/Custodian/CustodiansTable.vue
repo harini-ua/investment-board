@@ -1,5 +1,5 @@
 <template>
-  <div class="block-table">
+  <div class="block-table block-table--custodians">
     <div class="table-holder">
       <h3 class="table-title table-title--custodians">Custodians</h3>
       <div class="table table--custodians">
@@ -23,7 +23,7 @@
             <div class="collapse-content collapse-content--custodians">
               <div class="collapse-content-table">
                 <div class="row">
-<!--                  <custodian-chart />-->
+                  <custodian-chart />
                 </div>
               </div>
             </div>
@@ -48,11 +48,19 @@ export default {
       type: Array,
       default: () => [],
     },
+
   },
   data: function () {
     return {
       //
     }
+  },
+  methods: {
+    toggle(index) {
+      if (window.innerWidth < 1024) {
+        this.items[index]['active'] = !this.items[index]['active']
+      }
+    },
   },
 }
 </script>

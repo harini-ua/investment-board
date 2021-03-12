@@ -21,8 +21,10 @@
         label="Base currency"
       />
     </filters-wrapper>
-    <custodians-table :items="custodians" />
-    <custodian-chart />
+    <div class="row-chart">
+      <custodians-table :items="custodians" />
+      <custodian-chart />
+    </div>
   </div>
 </template>
 
