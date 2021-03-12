@@ -25,6 +25,12 @@
       width: 28.2%;
     }
   }
+
+  &--custodians-chart {
+    @include media('<tablet') {
+      display: none;
+    }
+  }
 }
 
 .block-chart {

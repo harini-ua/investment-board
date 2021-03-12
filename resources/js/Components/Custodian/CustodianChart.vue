@@ -1,5 +1,5 @@
 <template>
-  <div class="block-chart-wrapper">
+  <div class="block-chart-wrapper block-chart-wrapper--custodians-chart">
     <div class="block-chart">
       <h2 class="block-chart__title">{{ title }}</h2>
       <apexchart
