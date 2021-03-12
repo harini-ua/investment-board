@@ -18,7 +18,7 @@
           >
             <div class="tr">
               <div class="td">{{ item.custodian_name }}</div>
-              <div class="td">{{ item.value | numeral }}</div>
+              <div class="td"><a href="#" class="value">{{ item.value | numeral }}</a></div>
             </div>
             <div class="collapse-content collapse-content--custodians">
               <div class="collapse-content-table">
