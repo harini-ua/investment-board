@@ -16,8 +16,10 @@
                :class="[{active: item.active}, 'row-' + (index + 1)]"
                @click="toggle(index)"
           >
-            <div class="td">{{ item.custodian_name }}</div>
-            <div class="td">{{ item.value | numeral }}</div>
+            <div class="tr">
+              <div class="td">{{ item.custodian_name }}</div>
+              <div class="td">{{ item.value | numeral }}</div>
+            </div>
             <div class="collapse-content collapse-content--custodians">
               <div class="collapse-content-table">
                 <div class="row">
