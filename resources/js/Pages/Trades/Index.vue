@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <date-input label="Date from:">
+      <date-input label="Date From">
         <date-picker
           v-model="filtersPage.from"
           value-type="YYYY-MM-DD"
@@ -9,7 +9,7 @@
           type="date"
         />
       </date-input>
-      <date-input label="Date to:">
+      <date-input label="Date To">
         <date-picker
           v-model="filtersPage.to"
           value-type="YYYY-MM-DD"
@@ -20,17 +20,17 @@
       <select-input
         v-model="filtersPage.currency"
         :options="payload.currency"
-        label="Base currency:"
+        label="Base currency"
       />
       <select-input
         v-model="filtersPage.asset_class"
         :options="payload.asset_class"
-        label="Asset class:"
+        label="Asset Class"
       />
       <select-input
         v-model="filtersPage.custodian"
         :options="payload.custodian"
-        label="Custodian:"
+        label="Custodian"
       />
       <select-input
         v-model="filtersPage.account"

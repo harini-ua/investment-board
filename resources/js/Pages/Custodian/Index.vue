@@ -1,28 +1,25 @@
 <template>
   <div class="container">
     <filters-wrapper>
-        <select-input
-          v-model="filtersPage.method"
-          :options="payload.method"
-          label="Valuation Method:"
-          info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
+      <select-input
+        v-model="filtersPage.method"
+        :options="payload.method"
+        label="Valuation Method"
+        info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
+      />
+      <date-input label="Valuation date">
+        <date-picker
+          v-model="filtersPage.date"
+          value-type="YYYY-MM-DD"
+          format="DD/MM/YYYY"
+          type="date"
         />
-        <select-input label="Asset Class:" />
-        <date-input label="Valuation date:">
-          <date-picker
-            v-model="filtersPage.date"
-            value-type="YYYY-MM-DD"
-            format="DD/MM/YYYY"
-            type="date"
-          />
-        </date-input>
-        <select-input label="Custodian:" />
-        <select-input
-          v-model="filtersPage.currency"
-          :options="payload.currency"
-          label="Base currency:"
-        />
-        <select-input label="Account:" />
+      </date-input>
+      <select-input
+        v-model="filtersPage.currency"
+        :options="payload.currency"
+        label="Base currency:"
+      />
     </filters-wrapper>
     <custodians-table :items="custodians" />
     <custodian-chart />
