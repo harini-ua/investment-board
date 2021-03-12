@@ -28,7 +28,7 @@
 
 .vs__search,
 .vs__search:focus {
-  height: 32px !important;
+  height: 20px !important;
   padding: 0 !important;
   margin: 0 !important;
 }
@@ -48,10 +48,10 @@
   border: 0;
 }
 
-//.vs__dropdown-menu {
-//  width: 120px !important;
-//  border: none !important;
-//}
+.vs__dropdown-menu {
+  border: none !important;
+  box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05) !important;
+}
 
 .vs__actions {
   padding: 0 !important;
@@ -64,10 +64,10 @@
   padding: 0 !important;
   color: #3e4756 !important;
   align-items: normal;
+  height: 20px !important;
 }
 
 .vs__selected-options {
-  //max-width: 160px;
   width: 100%;
 }
 
