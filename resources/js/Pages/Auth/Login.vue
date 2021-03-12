@@ -1,7 +1,7 @@
 <template>
   <div class="login-bg" style="background-image: url('../../images/login-bg.jpg')">
     <div class="login-block">
-      <logo/>
+      <logo />
       <div class="login-block__form">
         <span class="login-block__title">Login</span>
         <form @submit.prevent="submit">
@@ -10,7 +10,8 @@
             :error="errors.email"
             label="Email"
             type="email"
-            autofocus autocapitalize="off" />
+            autofocus autocapitalize="off"
+          />
           <text-input
             v-model="form.password"
             label="Password"
@@ -19,7 +20,9 @@
           <loading-button
             :loading="sending"
             type="submit"
-          >Login</loading-button>
+          >
+            Login
+          </loading-button>
         </form>
       </div>
     </div>

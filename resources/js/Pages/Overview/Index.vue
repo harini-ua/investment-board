@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <filters-wrapper>
-        <select-input
-          v-model="filtersPage.method"
-          :options="payload.method"
-          label="Valuation method"
-          info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
-        />
+      <select-input
+        v-model="filtersPage.method"
+        :options="payload.method"
+        label="Valuation method"
+        info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
+      />
       <date-input label="Valuation date">
         <date-picker
           v-model="filtersPage.date"

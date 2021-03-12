@@ -1,13 +1,12 @@
 <template>
-  <div class="block-chart-wrapper block-chart-wrapper--custodians-chart">
-    <div class="block-chart">
-      <apexchart
-        class="chart-wrapper"
-        type="pie"
-        :options="options"
-        :series="series"
-      />
-    </div>
+  <div class="">
+    <apexchart
+      width="300"
+      class="chart-wrapper"
+      type="pie"
+      :options="options"
+      :series="series"
+    />
   </div>
 </template>
 
