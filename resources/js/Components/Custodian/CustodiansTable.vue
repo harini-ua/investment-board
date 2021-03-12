@@ -22,9 +22,7 @@
             </div>
             <div class="collapse-content collapse-content--custodians">
               <div class="collapse-content-table">
-                <div class="row">
-                  <custodian-item-chart :data="items[index]['asset']" />
-                </div>
+                <custodian-item-chart :data="items[index]['asset']" />
               </div>
             </div>
           </div>

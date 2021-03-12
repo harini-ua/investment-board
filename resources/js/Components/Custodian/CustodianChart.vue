@@ -10,6 +10,32 @@
         :series="series"
       />
     </div>
+    <div class="block-table">
+      <div class="table-holder table-holder--custodians-chart-table">
+        <div class="table table--custodians-chart-table">
+          <div class="thead">
+            <div class="tr">
+              <div class="td">Asset name</div>
+              <div class="td">Value</div>
+            </div>
+          </div>
+          <div class="tbody">
+            <div class="tr-holder">
+              <div class="tr">
+                <div class="td">Private Equity</div>
+                <div class="td">6 584 366,34</div>
+              </div>
+            </div>
+            <div class="tr-holder">
+              <div class="tr">
+                <div class="td">Real Estate</div>
+                <div class="td">2 241 671,53</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
