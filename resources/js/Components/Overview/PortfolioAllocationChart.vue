@@ -114,7 +114,7 @@ export default {
         labels: [...Object.keys(this.data)],
       }
       this.series = {
-        data: [...Object.keys(this.data)],
+        data: [...Object.values(this.data)],
       }
     },
   },

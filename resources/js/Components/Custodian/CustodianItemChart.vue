@@ -1,9 +1,7 @@
 <template>
   <div class="block-chart-wrapper block-chart-wrapper--custodians-chart">
     <div class="block-chart">
-      <h2 class="block-chart__title">{{ title }}</h2>
       <apexchart
-        ref="currency-exposure-chart"
         class="chart-wrapper"
         type="pie"
         :options="options"
@@ -17,24 +15,17 @@
 
 export default {
   props: {
-    title: {
-      type: String,
-      default: 'Chart',
-    },
     data: Object,
   },
   data: function() {
     return {
       options: {
-        chart: {
-          id: 'currency-exposure-chart',
-        },
         labels: this.chartLabels(),
         dataLabels: {
           enabled: false,
         },
         legend: {
-          position: 'right',
+          position: 'bottom',
           horizontalAlign: 'left',
           width: 200,
           formatter: function(val, opts) {
@@ -57,17 +48,6 @@ export default {
       },
       series: this.chartSeries(),
     }
-  },
-  computed: {
-    //
-  },
-  watch: {
-    data() {
-      this.options = {
-        labels: [...Object.keys(this.data)],
-      }
-      this.series = [...Object.values(this.data)]
-    },
   },
   methods : {
     chartLabels() {

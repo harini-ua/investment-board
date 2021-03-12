@@ -22,8 +22,8 @@
       />
     </filters-wrapper>
     <div class="row-chart">
-      <custodians-table :items="custodians" />
-      <custodian-chart />
+      <custodians-table ref="table" :items="custodians" />
+      <custodian-chart ref="chart" :title="custodians[index]['custodian_name']" :data="custodians[index]['asset']" />
     </div>
   </div>
 </template>
@@ -62,9 +62,25 @@ export default {
         date:     this.filters.date ? this.filters.method : '2020-12-31',
         currency: this.filters.currency ? this.filters.currency : this.payload.currency[0],
       },
+      //chart: {
+      //  title: this.chartTitle(),
+      //  data:  this.chartData(),
+      //},
+      index: 0,
     }
   },
+  //computed: {
+  //  chartTitle: function (index = 0) {
+  //    return this.custodians[index]['custodian_name']
+  //  },
+  //  chartData: function (index = 0) {
+  //    return this.custodians[index]['asset']
+  //  },
+  //},
   watch: {
+    //index: {
+    //
+    //},
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
@@ -84,6 +100,16 @@ export default {
       }, 150),
       deep: true,
     },
+  },
+  mounted() {
+    this.$watch(
+      () => {
+        return this.$refs.table.index
+      },
+      (val) => {
+        this.index = val
+      }
+    )
   },
 }
 </script>

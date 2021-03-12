@@ -18,12 +18,12 @@
           >
             <div class="tr">
               <div class="td">{{ item.custodian_name }}</div>
-              <div class="td"><a href="#" class="value">{{ item.value | numeral }}</a></div>
+              <div class="td"><a href="/" class="value" @click.prevent="selected(index)">{{ item.value | numeral }}</a></div>
             </div>
             <div class="collapse-content collapse-content--custodians">
               <div class="collapse-content-table">
                 <div class="row">
-                  <custodian-chart />
+                  <custodian-item-chart :data="items[index]['asset']" />
                 </div>
               </div>
             </div>
@@ -36,23 +36,21 @@
 
 <script>
 
-import CustodianChart from '@/Components/Custodian/CustodianChart'
-import DatePicker from 'vue2-datepicker'
+import CustodianItemChart from './CustodianItemChart'
 
 export default {
   components: {
-    CustodianChart,
+    CustodianItemChart,
   },
   props: {
     items: {
       type: Array,
       default: () => [],
     },
-
   },
   data: function () {
     return {
-      //
+      index: 0,
     }
   },
   methods: {
@@ -60,6 +58,9 @@ export default {
       if (window.innerWidth < 1024) {
         this.items[index]['active'] = !this.items[index]['active']
       }
+    },
+    selected(index) {
+      this.index = index
     },
   },
 }

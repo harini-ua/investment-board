@@ -35,12 +35,11 @@
         </div>
       </div>
     </footer>
-
   </div>
 </template>
 
 <script>
-import Dropdown from '@/Shared/Dropdown'
+//import Dropdown from '@/Shared/Dropdown'
 import FlashMessages from '@/Shared/FlashMessages'
 import Logo from '@/Shared/Logo'
 import MainMenu from '@/Shared/MainMenu'
@@ -51,7 +50,7 @@ export default {
   components: {
     ProfileMenu,
     FooterMenu,
-    Dropdown,
+    //Dropdown,
     FlashMessages,
     Logo,
     MainMenu,
@@ -76,9 +75,9 @@ export default {
     url() {
       return location.pathname.substr(1)
     },
-    hideDropdownMenus() {
-      this.showUserMenu = false
-    },
+    //hideDropdownMenus() {
+    //  this.showUserMenu = false
+    //},
   },
 }
 </script>

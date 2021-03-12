@@ -33,17 +33,13 @@ class CustodianController extends Controller
         foreach ($results as $name => $custodian) {
             $custodians[$i] = [
                 'custodian_name' => $name,
-                'value' => $custodian->sum('value')
+                'value' => $custodian->sum('value'),
+                'active' => false,
             ];
 
             foreach ($custodian as  $item) {
                 $sum = $custodians[$i]['value'];
-
-                $custodians[$i]['asset'][] = [
-                    'kfp_asset_class' => $item->kfp_asset_class,
-                    'value' => $item->value,
-                    'percentage' => round( $item->value / $sum * 100, 2),
-                ];
+                $custodians[$i]['asset'][$item->kfp_asset_class] = round( $item->value / $sum * 100, 2);
             }
             $i++;
         }
