@@ -1,10 +1,18 @@
 .user-account {
+  display: flex;
+  align-items: center;
   background-color: transparent;
   border: none;
   margin: 0 0 0 60px;
   padding: 0;
   position: relative;
   cursor: pointer;
+
+  &.active {
+    .icon-arrow-down {
+      transform: rotate(-180deg);
+    }
+  }
 
   .user {
     transition: color 0.3s;
@@ -14,6 +22,10 @@
     &:hover {
       color: #1474ba;
     }
+  }
+
+  .icon-arrow-down {
+    font-size: 22px;
   }
 }
 
