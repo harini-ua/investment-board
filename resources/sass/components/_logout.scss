@@ -1,4 +1,36 @@
+.user-account {
+  background-color: transparent;
+  border: none;
+  margin: 0 0 0 60px;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+
+  .user {
+    transition: color 0.3s;
+    color: #a2acbd;
+    font-weight: 600;
+
+    &:hover {
+      color: #1474ba;
+    }
+  }
+}
+
+.icon-user {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+}
+
 .logout-dropdown {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,7 +39,7 @@
   background-color: #fff;
   min-width: 133px;
   min-height: 74px;
-  margin: 5px 0 0;
+  margin: 30px 0 0;
 
   a {
     transition: background-color 0.3s;
