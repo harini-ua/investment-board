@@ -65,7 +65,7 @@ export default {
         {'currency': 'DKK', 'cash': null, 'investments': '300000', 'fx': null, 'total': '286271', 'active': false},
         {'currency': 'JPY', 'cash': null, 'investments': '300000', 'fx': null, 'total': '286271', 'active': false},
         {'currency': 'HKD', 'cash': null, 'investments': '20298', 'fx': '-11122612', 'total': '-11122612', 'active': false},
-        {'currency': 'CAD', 'cash': null, 'investments': '49997', 'fx': null, 'total': '49997'},
+        {'currency': 'CAD', 'cash': null, 'investments': '49997', 'fx': null, 'total': '49997', 'active': false},
         {'currency': 'Total', 'cash': '17500516', 'investments': '69699846', 'fx': '535525', 'total': '87735886', 'active': false},
       ],
     },

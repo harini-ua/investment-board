@@ -15,7 +15,12 @@
           </div>
         </div>
         <div class="tbody">
-          <div class="tr-holder">
+          <div v-for="(item, index) in items"
+               :key="item.id"
+               class="tr-holder"
+               :class="[{active: item.active}, 'row-' + (index + 1)]"
+               @click="toggle(index)"
+          >
             <div class="tr">
               <div class="td">
                 <span class="td-cell">7/15/2020</span>
@@ -124,18 +129,36 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => [],
+      default: () => [
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+        {'active': false},
+      ],
     },
   },
   data: function () {
     return {
       //
     }
-  },
-  computed: {
-    total: function () {
-      return this.items.reduce((prev, cur) => prev + cur.quantity, 0)
-    },
   },
   methods: {
     toggle(index) {
