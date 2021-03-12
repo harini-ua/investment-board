@@ -3,6 +3,7 @@
   line-height: 1;
 
   &__content {
+    -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 
     position: absolute;

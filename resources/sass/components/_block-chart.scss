@@ -2,8 +2,13 @@
   margin: 0 0 30px;
 
   @include media('>=tablet') {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
   }
 }
@@ -12,6 +17,7 @@
   width: 100%;
   border-radius: 6px;
   background-color: #fff;
+  -webkit-box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05);
   box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05);
   margin: 0 0 20px;
 

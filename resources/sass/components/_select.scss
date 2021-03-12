@@ -1,5 +1,9 @@
 .filter-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin: 0 0 20px;
   width: 100%;
@@ -50,6 +54,7 @@
 
 .vs__dropdown-menu {
   border: none !important;
+  -webkit-box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05) !important;
   box-shadow: 0 8px 24px rgba(20, 116, 186, 0.05) !important;
 }
 
@@ -63,6 +68,8 @@
   margin: 0 !important;
   padding: 0 !important;
   color: #3e4756 !important;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
   align-items: normal;
   height: 20px !important;
 }
@@ -74,6 +81,7 @@
 .mx-input {
   height: 32px !important;
   border: 2px solid #F2FAFF !important;
+  -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 

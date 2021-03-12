@@ -44,14 +44,16 @@
         }
 
         a {
-            transition: color 0.3s;
-            text-decoration: none;
-            color: #A2ACBD;
-            font-weight: 600;
+          -webkit-transition: color 0.3s;
+          -o-transition: color 0.3s;
+          transition: color 0.3s;
+          text-decoration: none;
+          color: #A2ACBD;
+          font-weight: 600;
 
-            &:hover {
-                color: #1474BA;
-            }
+          &:hover {
+              color: #1474BA;
+          }
         }
     }
 
@@ -76,9 +78,16 @@
   border-bottom: 1px solid #A2ACBD;
 
   @include media('>=576px') {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 

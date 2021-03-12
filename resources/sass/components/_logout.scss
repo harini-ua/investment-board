@@ -1,5 +1,9 @@
 .user-account {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   background-color: transparent;
   border: none;
@@ -10,11 +14,15 @@
 
   &.active {
     .icon-arrow-down {
+      -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
       transform: rotate(-180deg);
     }
   }
 
   .user {
+    -webkit-transition: color 0.3s;
+    -o-transition: color 0.3s;
     transition: color 0.3s;
     color: #a2acbd;
     font-weight: 600;
@@ -43,8 +51,14 @@
   position: absolute;
   top: 0;
   right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   border: 1px solid #ebf2fa;
   border-radius: 6px;
@@ -54,9 +68,17 @@
   margin: 30px 0 0;
 
   a {
+    -webkit-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
     transition: background-color 0.3s;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     color: #1474ba;
     text-decoration: none;
