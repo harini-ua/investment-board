@@ -10,21 +10,21 @@
           </div>
         </div>
         <div class="tbody">
-          <div v-for="(item, index) in items"
+          <div v-for="(item, i) in items"
                :key="item.id"
                class="tr-holder"
-               :class="[{active: item.active}, 'row-' + (index + 1)]"
+               :class="[{active: item.active}, 'row-' + (i + 1)]"
           >
-            <div class="tr" @click="toggle(index)">
+            <div class="tr" @click="toggle(i)">
               <div class="td">{{ item.custodian_name }}</div>
               <div class="td">
-                <a v-if="!item.total" href="/" class="value" @click.prevent="selected(index)">{{ item.value | numeral }}</a>
+                <a v-if="!item.total" href="/" class="value" @click.prevent="selected(i)">{{ item.value | numeral }}</a>
                 <span v-else>{{ item.value | numeral }}</span>
               </div>
             </div>
-            <div class="collapse-content collapse-content--custodians">
+            <div v-if="!item.total" class="collapse-content collapse-content--custodians">
               <div class="collapse-content-table">
-                <custodian-item-chart :data="items[index]['asset']" />
+                <custodian-item-chart :data="items[i]['asset']" />
               </div>
             </div>
           </div>
@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     toggle(index) {
-      console.log('--->')
       if (window.innerWidth < 768) {
         this.items[index]['active'] = !this.items[index]['active']
       }

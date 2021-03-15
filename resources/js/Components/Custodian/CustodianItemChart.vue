@@ -2,6 +2,7 @@
   <div class="">
     <div style="width: 100%; height: auto">
       <apexchart
+        ref="currency-exposure-item-chart"
         class="chart-wrapper"
         type="pie"
         :options="options"
