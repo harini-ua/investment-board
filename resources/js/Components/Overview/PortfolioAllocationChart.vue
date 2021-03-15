@@ -2,7 +2,7 @@
   <div class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">Portfolio Allocation</h2>
-      <div style="width: 100%; height: 240px">
+      <div style="width: 100%; height: auto">
         <apexchart
           ref="portfolio-allocation-chart"
           class="chart-wrapper"
@@ -26,9 +26,6 @@ export default {
       options: {
         chart: {
           id: 'portfolio-allocation-chart',
-          offsetX: -30,
-          //width: 200,
-          //height: 200,
         },
         labels: this.chartLabels(),
         dataLabels: {
@@ -61,49 +58,71 @@ export default {
           {
             breakpoint: 1023,
             options: {
+              chart: {
+                width: '100%',
+                height: 500,
+              },
               legend: {
+                offsetX: -30,
                 position: 'bottom',
-                fontSize: 14,
+                fontSize: 12,
+                width: 200,
               },
             },
           },{
             breakpoint: 767,
             options: {
+              chart: {
+                width: '100%',
+                height: 500,
+              },
               legend: {
                 offsetX: -30,
-                offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },{
             breakpoint: 424,
             options: {
+              chart: {
+                width: '100%',
+                height: 500,
+              },
               legend: {
                 offsetX: -30,
-                offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },{
             breakpoint: 374,
             options: {
+              chart: {
+                width: '100%',
+                height: 500,
+              },
               legend: {
                 offsetX: -30,
-                offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },{
             breakpoint: 319,
             options: {
+              chart: {
+                width: '100%',
+                height: 500,
+              },
               legend: {
                 offsetX: -30,
-                offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },
