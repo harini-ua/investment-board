@@ -1,7 +1,7 @@
 <template>
   <div class="block-table block-table--currency-exposure">
     <div class="table-holder">
-      <h3 class="table-title table-title--currency-exposure">Currency Exposure</h3>
+      <h3 class="table-title">Currency Exposure</h3>
       <div class="table table--currency-exposure">
         <div class="thead">
           <div class="tr">

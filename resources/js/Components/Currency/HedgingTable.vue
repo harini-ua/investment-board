@@ -1,7 +1,7 @@
 <template>
   <div class="block-table">
     <div class="table-holder">
-      <h3 class="table-title table-title--currency-hedging">Currency Hedging</h3>
+      <h3 class="table-title">Currency Hedging</h3>
       <div class="table table--currency-hedging">
         <div class="thead">
           <div class="tr">

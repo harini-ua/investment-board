@@ -1,7 +1,7 @@
 <template>
   <div class="block-table">
     <div class="table-holder">
-      <h3 class="table-title table-title--benchmarks">Benchmarks</h3>
+      <h3 class="table-title">Benchmarks</h3>
       <div class="table table--benchmarks">
         <div class="thead">
           <div class="tr">

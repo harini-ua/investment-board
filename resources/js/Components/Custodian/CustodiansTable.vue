@@ -1,7 +1,7 @@
 <template>
   <div class="block-table block-table--custodians">
     <div class="table-holder">
-      <h3 class="table-title table-title--custodians">Custodians</h3>
+      <h3 class="table-title">Custodians</h3>
       <div class="table table--custodians">
         <div class="thead">
           <div class="tr">
