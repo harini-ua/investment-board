@@ -53,7 +53,7 @@ export default {
           horizontalAlign: 'left',
           width: 250,
           formatter: function(val, opts) {
-            return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
+            return '<span class="font-weight-500">' + val + '</span> <span class="font-weight-400">(' + opts.w.globals.series[opts.seriesIndex] + '%)</span>'
           },
           markers: {
             width:  16,
@@ -64,7 +64,6 @@ export default {
           },
           fontSize: '14px',
           fontFamily: 'Inter',
-          fontWeight: 500,
           labels: {
             colors: '#3E4756',
           },

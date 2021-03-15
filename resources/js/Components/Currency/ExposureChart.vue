@@ -1,7 +1,7 @@
 <template>
   <div class="block-chart-wrapper block-chart-wrapper--currency-exposure-chart">
     <div class="block-chart">
-      <h2 class="block-chart__title">Currency Exposure Chart</h2>
+      <h3 class="block-chart__title">Currency Exposure Chart</h3>
       <apexchart
         ref="currency-exposure-chart"
         class="chart-wrapper"
@@ -39,7 +39,7 @@ export default {
           offsetX: -10,
           offsetY: 0,
           formatter: function(val, opts) {
-            return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
+            return '<span class="font-weight-500">' + val + '</span> <span class="font-weight-400">(' + opts.w.globals.series[opts.seriesIndex] + '%)</span>'
           },
           markers: {
             width:  16,
@@ -50,7 +50,6 @@ export default {
           },
           fontSize: '14px',
           fontFamily: 'Inter',
-          fontWeight: 500,
           labels: {
             colors: '#3E4756',
           },

@@ -5,6 +5,15 @@
                 .apexcharts-legend-marker {
                     top: 2px !important;
                 }
+                .apexcharts-legend-text {
+                    left: 10px;
+                    .font-weight-500 {
+                        font-weight: 500;
+                    }
+                    .font-weight-40 {
+                        font-weight: 400;
+                    }
+                }
             }
         }
     }
