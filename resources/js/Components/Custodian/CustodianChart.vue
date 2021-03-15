@@ -2,7 +2,7 @@
   <div class="block-chart-wrapper block-chart-wrapper--custodians-chart">
     <div class="block-chart">
       <h2 class="block-chart__title">{{ title }}</h2>
-      <div style="width: 100%; height: 240px">
+      <div style="width: 100%; height: auto">
         <apexchart
           ref="currency-exposure-chart"
           class="chart-wrapper"
@@ -54,17 +54,13 @@ export default {
         chart: {
           id: 'currency-exposure-chart',
           offsetX: -30,
-          width: 270,
-          height: 270,
         },
         labels: this.chartLabels(),
         dataLabels: { enabled: false },
         theme: { palette: 'palette6' },
         legend: {
-          offsetY: -15,
           position: 'right',
           horizontalAlign: 'left',
-          width: 250,
           formatter: function(val, opts) {
             return '<span class="font-weight-500">' + val + '</span> <span class="font-weight-400">(' + opts.w.globals.series[opts.seriesIndex] + '%)</span>'
           },
@@ -85,49 +81,16 @@ export default {
           {
             breakpoint: 1023,
             options: {
-              legend: {
-                position: 'bottom',
-                fontSize: 14,
+              chart: {
+                width: '100%',
+                height: 500,
+                offsetX: -23,
               },
-            },
-          },{
-            breakpoint: 767,
-            options: {
               legend: {
-                //offsetX: -30,
-                //offsetY: 0,
+                offsetX: -10,
                 position: 'bottom',
                 fontSize: 12,
-              },
-            },
-          },{
-            breakpoint: 424,
-            options: {
-              legend: {
-                //offsetX: -30,
-                //offsetY: 0,
-                position: 'bottom',
-                fontSize: 12,
-              },
-            },
-          },{
-            breakpoint: 374,
-            options: {
-              legend: {
-                //offsetX: -30,
-                //offsetY: 0,
-                position: 'bottom',
-                fontSize: 12,
-              },
-            },
-          },{
-            breakpoint: 319,
-            options: {
-              legend: {
-                //offsetX: -30,
-                //offsetY: 0,
-                position: 'bottom',
-                fontSize: 12,
+                width: 200,
               },
             },
           },

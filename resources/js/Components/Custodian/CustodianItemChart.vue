@@ -1,11 +1,13 @@
 <template>
   <div class="">
-    <apexchart
-      class="chart-wrapper"
-      type="pie"
-      :options="options"
-      :series="series"
-    />
+    <div style="width: 100%; height: auto">
+      <apexchart
+        class="chart-wrapper"
+        type="pie"
+        :options="options"
+        :series="series"
+      />
+    </div>
     <div class="block-table block-table--custodians-chart-inner">
       <div class="table-holder table-holder--custodians-chart-inner">
         <div class="table table--custodians-chart-inner">
@@ -45,8 +47,7 @@ export default {
         dataLabels: { enabled: false },
         theme: { palette: 'palette6' },
         chart: {
-          width: 300,
-          height: 300,
+          //
         },
         legend: {
           position: 'bottom',
@@ -72,61 +73,71 @@ export default {
           {
             breakpoint: 1023,
             options: {
+              chart: {
+                width: '100%',
+                height: 360,
+              },
               legend: {
+                offsetX: -30,
                 position: 'bottom',
-                fontSize: 14,
+                fontSize: 12,
+                width: 200,
               },
             },
           },{
             breakpoint: 767,
             options: {
+              chart: {
+                width: '100%',
+                height: 500,
+              },
               legend: {
                 offsetX: -30,
-                //offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },{
-            breakpoint: 425,
+            breakpoint: 424,
             options: {
               chart: {
-                width: 300,
-                height: 300,
+                width: '100%',
+                height: 500,
               },
               legend: {
                 offsetX: -30,
-                //offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },{
             breakpoint: 374,
             options: {
               chart: {
-                width: 300,
-                height: 300,
+                width: '100%',
+                height: 500,
               },
               legend: {
-                offsetX: -35,
-                //offsetY: 0,
+                offsetX: -30,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },{
             breakpoint: 319,
             options: {
               chart: {
-                width: 300,
-                height: 300,
+                width: '100%',
+                height: 360,
               },
               legend: {
-                offsetX: -35,
-                //offsetY: 0,
+                offsetX: -30,
                 position: 'bottom',
                 fontSize: 12,
+                width: 200,
               },
             },
           },
