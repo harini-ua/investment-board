@@ -15,9 +15,8 @@
                :key="item.id"
                class="tr-holder"
                :class="[{active: item.active}, 'row-' + (index + 1)]"
-               @click="toggle(index)"
           >
-            <div class="tr">
+            <div class="tr" @click="toggle(index)">
               <div class="td">
                 <div class="tooltip">
                   <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>

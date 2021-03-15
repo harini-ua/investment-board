@@ -33,9 +33,8 @@
                :key="item.id"
                class="tr-holder"
                :class="[{active: item.active}, 'row-' + (index + 1)]"
-               @click="toggle(index)"
           >
-            <div class="tr">
+            <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.category }}</div>
               <div class="td"><a href="#" class="value">{{ item.mtd_value | numeral }}</a></div>
               <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>

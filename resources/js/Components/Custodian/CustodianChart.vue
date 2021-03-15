@@ -60,6 +60,7 @@ export default {
           position: 'right',
           horizontalAlign: 'left',
           width: 200,
+          height: '100%',
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },
@@ -77,6 +78,57 @@ export default {
             colors: '#3E4756',
           },
         },
+        responsive: [
+          {
+            breakpoint: 1023,
+            options: {
+              legend: {
+                position: 'bottom',
+                fontSize: 14,
+              },
+            },
+          },{
+            breakpoint: 767,
+            options: {
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },{
+            breakpoint: 424,
+            options: {
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },{
+            breakpoint: 374,
+            options: {
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },{
+            breakpoint: 319,
+            options: {
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },
+        ],
       },
       series: this.chartSeries(),
     }

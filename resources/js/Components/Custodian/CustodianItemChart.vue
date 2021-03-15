@@ -1,7 +1,6 @@
 <template>
   <div class="">
     <apexchart
-      width="300"
       class="chart-wrapper"
       type="pie"
       :options="options"
@@ -46,6 +45,10 @@ export default {
         dataLabels: {
           enabled: false,
         },
+        chart: {
+          width: 300,
+          height: 300,
+        },
         legend: {
           position: 'bottom',
           horizontalAlign: 'left',
@@ -67,6 +70,69 @@ export default {
             colors: '#3E4756',
           },
         },
+        responsive: [
+          {
+            breakpoint: 1023,
+            options: {
+              legend: {
+                position: 'bottom',
+                fontSize: 14,
+              },
+            },
+          },{
+            breakpoint: 767,
+            options: {
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },{
+            breakpoint: 424,
+            options: {
+              chart: {
+                width: 300,
+                height: 300,
+              },
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },{
+            breakpoint: 374,
+            options: {
+              chart: {
+                width: 300,
+                height: 300,
+              },
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },{
+            breakpoint: 319,
+            options: {
+              chart: {
+                width: 300,
+                height: 300,
+              },
+              legend: {
+                //offsetX: -30,
+                //offsetY: 0,
+                position: 'bottom',
+                fontSize: 12,
+              },
+            },
+          },
+        ],
       },
       series: this.chartSeries(),
     }

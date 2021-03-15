@@ -19,9 +19,8 @@
                :key="item.id"
                class="tr-holder"
                :class="[{active: item.active}, 'row-' + (index + 1)]"
-               @click="toggle(index)"
           >
-            <div class="tr">
+            <div class="tr" @click="toggle(index)">
               <div class="td">
                 <span class="td-cell">7/15/2020</span>
               </div>

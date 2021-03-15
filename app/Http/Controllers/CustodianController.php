@@ -34,6 +34,7 @@ class CustodianController extends Controller
             $custodians[$i] = [
                 'custodian_name' => $name,
                 'value' => $custodian->sum('value'),
+                'total' => false,
                 'active' => false,
             ];
 
@@ -46,6 +47,13 @@ class CustodianController extends Controller
             }
             $i++;
         }
+
+        $custodians[] = [
+            'custodian_name' => 'Total',
+            'value' => collect($custodians)->sum('value'),
+            'total' => true,
+            'active' => false,
+        ];
 
         return Inertia::render('Custodian/Index', [
             'filters' => Request::all(['method', 'date', 'currency']),

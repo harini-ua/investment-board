@@ -17,9 +17,8 @@
                :key="item.id"
                class="tr-holder"
                :class="[{active: item.active}, 'row-' + (index + 1)]"
-               @click="toggle(index)"
           >
-            <div class="tr">
+            <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.currency }}</div>
               <div class="td hidden-sm"><a v-if="item.cash" href="#">{{ item.cash | numeral | is_negative }}</a><span v-else>-</span></div>
               <div class="td hidden-sm"><a v-if="item.investments" href="#">{{ item.investments | numeral | is_negative }}</a><span v-else>-</span></div>

@@ -16,9 +16,8 @@
                :key="item.id"
                class="tr-holder"
                :class="[{active: item.active}, 'row-' + (index + 1)]"
-               @click="toggle(index)"
           >
-            <div class="tr">
+            <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.currency }}</div>
               <div class="td">{{ item.gross_assets }}%</div>
               <div class="td hidden-sm">{{ item.fx }}%</div>
