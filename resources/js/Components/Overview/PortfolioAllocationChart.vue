@@ -2,13 +2,15 @@
   <div class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">Portfolio Allocation</h2>
-      <apexchart
-        ref="portfolio-allocation-chart"
-        class="chart-wrapper"
-        type="pie"
-        :options="options"
-        :series="series"
-      />
+      <div style="width: 100%; height: 240px">
+        <apexchart
+          ref="portfolio-allocation-chart"
+          class="chart-wrapper"
+          type="pie"
+          :options="options"
+          :series="series"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -24,10 +26,16 @@ export default {
       options: {
         chart: {
           id: 'portfolio-allocation-chart',
+          offsetX: -30,
+          //width: 200,
+          //height: 200,
         },
         labels: this.chartLabels(),
         dataLabels: {
           enabled: false,
+        },
+        theme: {
+          palette: 'palette6',
         },
         legend: {
           position: 'right',
@@ -35,7 +43,7 @@ export default {
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },
-          offsetY: -25,
+          offsetY: -15,
           markers: {
             width:  16,
             height: 16,

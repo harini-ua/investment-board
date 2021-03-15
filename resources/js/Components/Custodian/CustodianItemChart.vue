@@ -42,9 +42,8 @@ export default {
     return {
       options: {
         labels: this.chartLabels(),
-        dataLabels: {
-          enabled: false,
-        },
+        dataLabels: { enabled: false },
+        theme: { palette: 'palette6' },
         chart: {
           width: 300,
           height: 300,
@@ -52,7 +51,7 @@ export default {
         legend: {
           position: 'bottom',
           horizontalAlign: 'left',
-          width: 200,
+          width: 250,
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },
@@ -83,21 +82,21 @@ export default {
             breakpoint: 767,
             options: {
               legend: {
-                //offsetX: -30,
+                offsetX: -30,
                 //offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
               },
             },
           },{
-            breakpoint: 424,
+            breakpoint: 425,
             options: {
               chart: {
                 width: 300,
                 height: 300,
               },
               legend: {
-                //offsetX: -30,
+                offsetX: -30,
                 //offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
@@ -111,7 +110,7 @@ export default {
                 height: 300,
               },
               legend: {
-                //offsetX: -30,
+                offsetX: -35,
                 //offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,
@@ -125,7 +124,7 @@ export default {
                 height: 300,
               },
               legend: {
-                //offsetX: -30,
+                offsetX: -35,
                 //offsetY: 0,
                 position: 'bottom',
                 fontSize: 12,

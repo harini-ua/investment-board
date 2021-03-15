@@ -1,14 +1,16 @@
 <template>
-  <div class="block-chart-wrapper">
+  <div style="height: 380px;" class="block-chart-wrapper">
     <div class="block-chart">
       <h2 class="block-chart__title">Total Wealth Allocation</h2>
-      <apexchart
-        ref="total-wealth-allocation-chart"
-        class="chart-wrapper"
-        type="pie"
-        :options="options"
-        :series="series"
-      />
+      <div style="width: 100%; height: 240px">
+        <apexchart
+          ref="total-wealth-allocation-chart"
+          class="chart-wrapper"
+          type="pie"
+          :options="options"
+          :series="series"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -24,18 +26,20 @@ export default {
       options: {
         chart: {
           id: 'total-wealth-allocation-chart',
+          offsetX: -30,
+          width: 200,
+          height: 200,
         },
         labels: this.chartLabels(),
-        dataLabels: {
-          enabled: false,
-        },
+        dataLabels: { enabled: false },
+        theme: { palette: 'palette6' },
         legend: {
           position: 'right',
           horizontalAlign: 'left',
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },
-          offsetY: -25,
+          offsetY: -15,
           markers: {
             width:  16,
             height: 16,

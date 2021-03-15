@@ -23,20 +23,20 @@ export default {
       options: {
         chart: {
           id: 'currency-exposure-chart',
-          //width:  'auto',
-          //height: 400,
+          offsetX: -25,
+          width: 200,
+          height: 200,
         },
         labels: ['CHF', 'EUR', 'USD', 'GBP', 'NOK', 'SEK', 'DKK', 'JPY', 'HKD', 'CAD'],
-        dataLabels: {
-          enabled: false,
-        },
+        dataLabels: { enabled: false },
+        theme: { palette: 'palette6' },
         legend: {
           floating: false,
           position: 'bottom',
           horizontalAlign: 'left',
           width: 200,
           height: 'auto',
-          offsetX: 0,
+          offsetX: -10,
           offsetY: 0,
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'

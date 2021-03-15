@@ -2,13 +2,15 @@
   <div class="block-chart-wrapper block-chart-wrapper--custodians-chart">
     <div class="block-chart">
       <h2 class="block-chart__title">{{ title }}</h2>
-      <apexchart
-        ref="currency-exposure-chart"
-        class="chart-wrapper"
-        type="pie"
-        :options="options"
-        :series="series"
-      />
+      <div style="width: 100%; height: 240px">
+        <apexchart
+          ref="currency-exposure-chart"
+          class="chart-wrapper"
+          type="pie"
+          :options="options"
+          :series="series"
+        />
+      </div>
     </div>
     <div class="block-table">
       <div class="table-holder table-holder--custodians-chart-table">
@@ -51,16 +53,18 @@ export default {
       options: {
         chart: {
           id: 'currency-exposure-chart',
+          offsetX: -30,
+          width: 270,
+          height: 270,
         },
         labels: this.chartLabels(),
-        dataLabels: {
-          enabled: false,
-        },
+        dataLabels: { enabled: false },
+        theme: { palette: 'palette6' },
         legend: {
+          offsetY: -15,
           position: 'right',
           horizontalAlign: 'left',
-          width: 200,
-          height: '100%',
+          width: 250,
           formatter: function(val, opts) {
             return val + ' (' + opts.w.globals.series[opts.seriesIndex]+'%)'
           },
