@@ -874,6 +874,12 @@
         position: relative;
         cursor: pointer;
 
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+
         @include media('>=tablet') {
           -ms-grid-columns: 1fr 1fr;
           grid-template-columns: 1fr 1fr;
