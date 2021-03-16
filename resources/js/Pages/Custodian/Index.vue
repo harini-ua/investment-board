@@ -62,25 +62,10 @@ export default {
         date:     this.filters.date ? this.filters.method : '2020-12-31',
         currency: this.filters.currency ? this.filters.currency : this.payload.currency[0],
       },
-      //chart: {
-      //  title: this.chartTitle(),
-      //  data:  this.chartData(),
-      //},
       index: 0,
     }
   },
-  //computed: {
-  //  chartTitle: function (index = 0) {
-  //    return this.custodians[index]['custodian_name']
-  //  },
-  //  chartData: function (index = 0) {
-  //    return this.custodians[index]['asset']
-  //  },
-  //},
   watch: {
-    //index: {
-    //
-    //},
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
