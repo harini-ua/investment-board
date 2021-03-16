@@ -524,7 +524,7 @@
           -webkit-transform 0.3s;
           content: '';
           position: absolute;
-          right: 37px;
+          right: 16px;
           top: 50%;
           -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -540,6 +540,10 @@
 
         @include media('>=tablet') {
           font-size: 12px;
+
+          &:after {
+            right: 37px;
+          }
         }
 
         .td {
@@ -548,13 +552,6 @@
           &:not(:first-child) {
             .td-cell {
               margin: 0 0 0 auto;
-            }
-          }
-
-          &:nth-child(1) {
-            .td-cell {
-              max-width: 145px;
-              width: 100%;
             }
           }
 
