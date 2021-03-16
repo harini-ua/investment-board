@@ -27,7 +27,7 @@
               <div class="td hidden-sm">
                 <span class="td-cell">Buy</span>
               </div>
-              <div class="td hidden-sm" title="ASML HOLDING">
+              <div class="td" title="ASML HOLDING">
                 <span class="td-cell">Xtrackers ESG MSCI Japan UCITS ETF 1C</span>
               </div>
               <div class="td hidden-sm">
