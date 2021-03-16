@@ -23,8 +23,6 @@ export default {
       options: {
         chart: {
           id: 'currency-exposure-chart',
-          width: '100%',
-          height: 600,
         },
         labels: ['CHF', 'EUR', 'USD', 'GBP', 'NOK', 'SEK', 'DKK', 'JPY', 'HKD', 'CAD'],
         dataLabels: { enabled: false },
@@ -35,6 +33,7 @@ export default {
           formatter: function(val, opts) {
             return '<span class="font-weight-500">' + val + '</span> <span class="font-weight-400">(' + opts.w.globals.series[opts.seriesIndex] + '%)</span>'
           },
+          width: 150,
           markers: {
             width:  16,
             height: 16,
@@ -50,6 +49,20 @@ export default {
         },
         responsive: [
           {
+            breakpoint: 2560,
+            options: {
+              chart: {
+                width: '100%',
+                height: 600,
+              },
+              legend: {
+                offsetX: -33,
+                position: 'bottom',
+                fontSize: 12,
+                width: 150,
+              },
+            },
+          },{
             breakpoint: 1440,
             options: {
               chart: {
