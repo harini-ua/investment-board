@@ -14,6 +14,7 @@
       <select-input
         v-model="filtersPage.currency"
         :disabled="true"
+        :no-drap="true"
         :options="payload.currency"
         label="Base currency"
       />
@@ -44,7 +45,6 @@ import FiltersWrapper from '@/Shared/FiltersWrapper'
 import TradesTable from '@/Components/Trades/TradesTable'
 import SelectInput from '@/Shared/SelectInput'
 import {pickBy, throttle} from 'lodash'
-import moment from 'moment'
 
 export default {
   metaInfo: { title: 'Trades' },
@@ -64,7 +64,7 @@ export default {
       filtersPage: {
         from:        this.filters.from ? this.filters.from : this.payload.from[0],
         to:          this.filters.date ? this.filters.to : this.payload.to[0],
-        currency:    this.payload.currency ? this.filters.currency : this.payload.currency[0],
+        currency:    this.filters.currency ? this.filters.currency : this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
@@ -75,13 +75,13 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
-        if (query.date) {
-          query.date = moment(String(query.date))
-            .format('YYYY-MM-DD')
-        }
-        if (query.method) {
-          query.method = query.method.code
-        }
+        if (query.from) query.from = query.from.code
+        if (query.to) query.to = query.to.code
+        if (query.currency) query.currency = query.currency.code
+        if (query.asset_class) query.asset_class = query.asset_class.code
+        if (query.custodian) query.custodian = query.custodian.code
+        if (query.account) query.account = query.account.code
+
         this.$inertia.replace(
           this.route(
             'trades',

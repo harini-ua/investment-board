@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Account;
-use App\Enums\AssetClass;
-use App\Enums\BaseCurrency;
-use App\Enums\Custodian;
-use App\Enums\ValuationMethod;
+use App\Models\Custodian;
+use App\Models\Portfolio;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -44,8 +42,8 @@ class CurrencyController extends Controller
                 'method' => $this->dataService->getValuationMethod(),
                 'date' => $this->dataService->getValuationDate(),
                 'currency' => $this->dataService->getBaseCurrency(),
-                'asset_class' => AssetClass::toCollection(true),
-                'custodian' => Custodian::toCollection(true),
+                'asset_class' => Portfolio::assetClass(),
+                'custodian' => Custodian::names(),
                 'account' => Account::toCollection(true)
             ]
         ]);
