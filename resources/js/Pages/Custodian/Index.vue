@@ -7,16 +7,14 @@
         label="Valuation Method"
         info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
       />
-      <date-input label="Valuation date">
-        <date-picker
-          v-model="filtersPage.date"
-          value-type="YYYY-MM-DD"
-          format="DD/MM/YYYY"
-          type="date"
-        />
-      </date-input>
+      <select-input
+        v-model="filtersPage.date"
+        :options="payload.date"
+        label="Valuation date"
+      />
       <select-input
         v-model="filtersPage.currency"
+        :disabled="true"
         :options="payload.currency"
         label="Base currency"
       />
@@ -34,21 +32,19 @@ import CustodianChart from '@/Components/Custodian/CustodianChart'
 import CustodiansTable from '@/Components/Custodian/CustodiansTable'
 import FiltersWrapper from '@/Shared/FiltersWrapper'
 import SelectInput from '@/Shared/SelectInput'
-import DatePicker from 'vue2-datepicker'
 import { pickBy, throttle } from 'lodash'
 import moment from 'moment'
-import DateInput from '../../Shared/DateInput'
+import TextInput from '../../Shared/TextInput'
 
 export default {
   metaInfo: { title: 'Custodian' },
   layout: Layout,
   components: {
-    DateInput,
+    TextInput,
     CustodianChart,
     CustodiansTable,
     FiltersWrapper,
     SelectInput,
-    DatePicker,
   },
   props: {
     filters: Object,
@@ -59,7 +55,7 @@ export default {
     return {
       filtersPage: {
         method:   this.filters.method ? this.filters.method : this.payload.method[0],
-        date:     this.filters.date ? this.filters.method : '2020-12-31',
+        date:     this.filters.date ? this.filters.date : this.payload.date[0],
         currency: this.filters.currency ? this.filters.currency : this.payload.currency[0],
       },
       index: 0,

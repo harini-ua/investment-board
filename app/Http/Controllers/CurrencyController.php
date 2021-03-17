@@ -41,8 +41,9 @@ class CurrencyController extends Controller
             'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
             'currency' => $currencyExposure,
             'payload' => [
-                'method' => ValuationMethod::toCollection(),
-                'currency' => BaseCurrency::getKeys(),
+                'method' => $this->dataService->getValuationMethod(),
+                'date' => $this->dataService->getValuationDate(),
+                'currency' => $this->dataService->getBaseCurrency(),
                 'asset_class' => AssetClass::toCollection(true),
                 'custodian' => Custodian::toCollection(true),
                 'account' => Account::toCollection(true)

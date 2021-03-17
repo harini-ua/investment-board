@@ -1,24 +1,19 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <date-input label="Date From">
-        <date-picker
-          v-model="filtersPage.from"
-          value-type="YYYY-MM-DD"
-          format="DD/MM/YYYY"
-          type="date"
-        />
-      </date-input>
-      <date-input label="Date To">
-        <date-picker
-          v-model="filtersPage.to"
-          value-type="YYYY-MM-DD"
-          format="DD/MM/YYYY"
-          type="date"
-        />
-      </date-input>
+      <select-input
+        v-model="filtersPage.from"
+        :options="payload.from"
+        label="Date From"
+      />
+      <select-input
+        v-model="filtersPage.to"
+        :options="payload.to"
+        label="Date To"
+      />
       <select-input
         v-model="filtersPage.currency"
+        :disabled="true"
         :options="payload.currency"
         label="Base currency"
       />
@@ -48,20 +43,16 @@ import Layout from '@/Shared/Layout'
 import FiltersWrapper from '@/Shared/FiltersWrapper'
 import TradesTable from '@/Components/Trades/TradesTable'
 import SelectInput from '@/Shared/SelectInput'
-import DatePicker from 'vue2-datepicker'
 import {pickBy, throttle} from 'lodash'
 import moment from 'moment'
-import DateInput from '../../Shared/DateInput'
 
 export default {
   metaInfo: { title: 'Trades' },
   layout: Layout,
   components: {
-    DateInput,
     FiltersWrapper,
     TradesTable,
     SelectInput,
-    DatePicker,
   },
   props: {
     filters: Object,
@@ -71,9 +62,9 @@ export default {
   data() {
     return {
       filtersPage: {
-        from:      this.filters.method ? this.filters.from : '2020-12-31',
-        to:        this.filters.date ? this.filters.to : '2020-12-31',
-        currency:    this.filters.currency ? this.filters.currency : this.payload.currency[0],
+        from:        this.filters.from ? this.filters.from : this.payload.from[0],
+        to:          this.filters.date ? this.filters.to : this.payload.to[0],
+        currency:    this.payload.currency ? this.filters.currency : this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],

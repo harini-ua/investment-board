@@ -8,6 +8,7 @@
     <v-select
       :id="id"
       v-model="selected"
+      :disabled="disabled"
       :options="options"
       class="form-select"
       :class="{ error: error }"
@@ -26,6 +27,10 @@ export default {
       default() {
         return `select-input-${this._uid}`
       },
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     value: [String, Number, Boolean, Object],
     label: String,

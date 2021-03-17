@@ -7,8 +7,6 @@ return [
 
     BaseCurrency::class => [
         BaseCurrency::EUR => 'EUR',
-        BaseCurrency::USD => 'USD',
-        BaseCurrency::CHF => 'CHF',
     ],
 
     ValuationMethod::class => [

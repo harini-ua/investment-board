@@ -59,8 +59,9 @@ class CustodianController extends Controller
             'filters' => Request::all(['method', 'date', 'currency']),
             'custodians' => $custodians,
             'payload' => [
-                'method' => ValuationMethod::toCollection(),
-                'currency' => BaseCurrency::getKeys(),
+                'method' => $this->dataService->getValuationMethod(),
+                'date' => $this->dataService->getValuationDate(),
+                'currency' => $this->dataService->getBaseCurrency(),
             ]
         ]);
     }

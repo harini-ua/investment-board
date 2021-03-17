@@ -7,11 +7,25 @@ use App\Enums\ValuationMethod;
 use App\Models\Benchmark;
 use App\Models\Portfolio;
 use App\Models\Wealth;
+use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class OverviewController extends Controller
 {
+    /** @var DataService $dataService */
+    protected $dataService;
+
+    /**
+     * CurrencyController constructor.
+     *
+     * @param DataService $dataService
+     */
+    public function __construct(DataService $dataService)
+    {
+        $this->dataService = $dataService;
+    }
+
     public function index()
     {
         $portfolioAsset = Portfolio::asset(null, Request::get('method'), Request::get('date'), Request::get('currency'));
@@ -56,8 +70,9 @@ class OverviewController extends Controller
             'totalWealthAllocation' => $totalWealthAllocation,
             'benchmarks' => $benchmarks,
             'payload' => [
-                'method' => ValuationMethod::toCollection(),
-                'currency' => BaseCurrency::getKeys(),
+                'method' => $this->dataService->getValuationMethod(),
+                'date' => $this->dataService->getValuationDate(),
+                'currency' => $this->dataService->getBaseCurrency(),
             ]
         ]);
     }
