@@ -72,6 +72,11 @@
   -ms-flex-align: normal;
   align-items: normal;
   height: 20px !important;
+  line-height: 1.7;
+
+  @include media('>=desktop') {
+    line-height: 1.4 !important;
+  }
 }
 
 .vs__selected-options {
@@ -97,7 +102,7 @@
 .vs--disabled {
   .vs__search,
   .vs__search:focus {
-    margin: -5px !important;
+    margin: -5px -5px -5px -31px !important;
     max-width: none;
   }
 
