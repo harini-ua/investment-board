@@ -94,6 +94,22 @@
   fill: #A2ACBD;
 }
 
+.vs--disabled {
+  .vs__search,
+  .vs__search:focus {
+    margin: -5px !important;
+    max-width: none;
+  }
+
+  .vs__selected-options {
+    padding: 0;
+  }
+
+  input[disabled] {
+    background-color: rgba(242, 250, 255, 0.5);
+    height: 30px !important;
+  }
+}
 
 
 
