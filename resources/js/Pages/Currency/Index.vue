@@ -50,7 +50,6 @@ import HedgingTable from '@/Components/Currency/HedgingTable'
 import FiltersWrapper from '@/Shared/FiltersWrapper'
 import SelectInput from '@/Shared/SelectInput'
 import { pickBy, throttle } from 'lodash'
-import moment from 'moment'
 
 export default {
   metaInfo: { title: 'Currency' },

@@ -63,20 +63,6 @@ export default {
               },
             },
           },{
-            breakpoint: 1440,
-            options: {
-              chart: {
-                width: '100%',
-                height: 600,
-              },
-              legend: {
-                offsetX: -33,
-                position: 'bottom',
-                fontSize: 12,
-                width: 150,
-              },
-            },
-          },{
             breakpoint: 1023,
             options: {
               chart: {

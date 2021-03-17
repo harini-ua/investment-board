@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\BaseCurrency;
-use App\Enums\ValuationMethod;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;

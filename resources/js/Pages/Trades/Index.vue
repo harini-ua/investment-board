@@ -14,7 +14,6 @@
       <select-input
         v-model="filtersPage.currency"
         :disabled="true"
-        :no-drap="false"
         :options="payload.currency"
         label="Base currency"
       />

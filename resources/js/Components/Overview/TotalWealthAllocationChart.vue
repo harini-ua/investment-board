@@ -53,11 +53,25 @@ export default {
         },
         responsive: [
           {
+            breakpoint: 2560,
+            options: {
+              chart: {
+                width: '100%',
+                height: 400,
+              },
+              legend: {
+                offsetX: 10,
+                position: 'right',
+                fontSize: 12,
+                width: 200,
+              },
+            },
+          },{
             breakpoint: 1023,
             options: {
               chart: {
                 width: '100%',
-                height: 360,
+                height: 365,
               },
               legend: {
                 offsetX: -30,
@@ -71,7 +85,7 @@ export default {
             options: {
               chart: {
                 width: '100%',
-                height: 360,
+                height: 365,
               },
               legend: {
                 offsetX: -30,
@@ -85,7 +99,7 @@ export default {
             options: {
               chart: {
                 width: '100%',
-                height: 360,
+                height: 365,
               },
               legend: {
                 offsetX: -30,
@@ -99,7 +113,7 @@ export default {
             options: {
               chart: {
                 width: '100%',
-                height: 360,
+                height: 380,
               },
               legend: {
                 offsetX: -30,
@@ -113,7 +127,7 @@ export default {
             options: {
               chart: {
                 width: '100%',
-                height: 360,
+                height: 380,
               },
               legend: {
                 offsetX: -30,

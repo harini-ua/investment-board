@@ -10,6 +10,7 @@
       v-model="selected"
       :disabled="disabled"
       :no-drop="noDrap"
+      :searchable="false"
       :options="options"
       class="form-select"
       :class="{ error: error }"
