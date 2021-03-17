@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\BaseCurrency;
-use App\Enums\ValuationMethod;
 use App\Models\Benchmark;
 use App\Models\Portfolio;
 use App\Models\Wealth;

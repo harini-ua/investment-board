@@ -60,4 +60,31 @@ class Portfolio extends Model
 
         return $result;
     }
+
+    /**
+     * Get asset class
+     *
+     * @return array
+     */
+    public static function assetClass()
+    {
+        $query = self::query();
+
+        $query->select(['kfp_asset_class']);
+        $query->orderBy('kfp_asset_class');
+        $query->groupBy('kfp_asset_class');
+        $results = $query->get()->pluck('kfp_asset_class');
+
+        $results = $results->map(function ($value) {
+            return [
+                'code' => $value,
+                'label' => $value,
+            ];
+        });
+
+        $results = $results->toArray();
+        array_unshift($results, ['code' => null, 'label' => 'All']);
+
+        return $results;
+    }
 }

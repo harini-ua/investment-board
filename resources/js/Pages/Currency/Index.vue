@@ -99,13 +99,8 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
-        if (query.date) {
-          query.date = moment(String(query.date))
-            .format('YYYY-MM-DD')
-        }
-        if (query.method) {
-          query.method = query.method.code
-        }
+        if (query.date) query.date = query.date.code
+        if (query.method) query.method = query.method.code
         this.$inertia.replace(
           this.route(
             'currency',

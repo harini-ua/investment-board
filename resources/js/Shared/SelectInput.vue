@@ -9,6 +9,7 @@
       :id="id"
       v-model="selected"
       :disabled="disabled"
+      :no-drop="noDrap"
       :options="options"
       class="form-select"
       :class="{ error: error }"
@@ -29,6 +30,10 @@ export default {
       },
     },
     disabled: {
+      type: Boolean,
+      default: false,
+    },
+    noDrap: {
       type: Boolean,
       default: false,
     },

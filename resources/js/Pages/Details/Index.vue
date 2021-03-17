@@ -15,6 +15,7 @@
       <select-input
         v-model="filtersPage.currency"
         :disabled="true"
+        :no-drap="true"
         :options="payload.currency"
         label="Base currency"
       />
@@ -75,13 +76,12 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
-        if (query.date) {
-          query.date = moment(String(query.date))
-            .format('YYYY-MM-DD')
-        }
-        if (query.method) {
-          query.method = query.method.code
-        }
+        if (query.date) query.date = query.date.code
+        if (query.method) query.method = query.method.code
+        if (query.currency) query.currency = query.currency.code
+        if (query.asset_class) query.asset_class = query.asset_class.code
+        if (query.custodian) query.custodian = query.custodian.code
+        if (query.account) query.account = query.account.code
         this.$inertia.replace(
           this.route(
             'details',

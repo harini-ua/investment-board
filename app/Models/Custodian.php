@@ -17,4 +17,31 @@ class Custodian extends Model
      * @var string
      */
     protected $table = self::TABLE_NAME;
+
+    /**
+     * Get asset class
+     *
+     * @return array
+     */
+    public static function names()
+    {
+        $query = self::query();
+
+        $query->select(['custodian_name']);
+        $query->orderBy('custodian_name');
+        $query->groupBy('custodian_name');
+        $results = $query->get()->pluck('custodian_name');
+
+        $results = $results->map(function ($value) {
+            return [
+                'code' => $value,
+                'label' => $value,
+            ];
+        });
+
+        $results = $results->toArray();
+        array_unshift($results, ['code' => null, 'label' => 'All']);
+
+        return $results;
+    }
 }

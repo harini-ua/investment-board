@@ -131,29 +131,4 @@ class DataService
 
         return DB::select("call $name($arg)", $params);
     }
-
-//    /**
-//     * To select formatted.
-//     *
-//     * @param bool $nullOptions
-//     *
-//     * @return Collection
-//     */
-//    private static function toSelect($results, $nullOptions = false): Collection
-//    {
-//        $values = new Collection();
-//
-//        if ($nullOptions) {
-//            $values->push((object) ['code' => null, 'label' => 'All']);
-//        }
-//
-//        foreach (self::toSelectArray() as $key => $value) {
-//            $values->push((object) [
-//                'code' => $key,
-//                'label' => $value,
-//            ]);
-//        }
-//
-//        return $values;
-//    }
 }
