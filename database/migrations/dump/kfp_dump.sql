@@ -330,6 +330,79 @@ INSERT INTO `wa_position` (`client_code`, `period_date`, `valuation_currency`, `
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `wa_trade`
+--
+
+CREATE TABLE `wa_trade` (
+    `client_code` varchar(3) DEFAULT NULL,
+    `valuation_currency` varchar(3) DEFAULT NULL,
+    `asset_class` varchar(14) DEFAULT NULL,
+    `account` varchar(16) DEFAULT NULL,
+    `date` varchar(10) DEFAULT NULL,
+    `movement` varchar(8) DEFAULT NULL,
+    `name` varchar(58) DEFAULT NULL,
+    `quantity` decimal(17,10) DEFAULT NULL,
+    `gross_price` decimal(16,10) DEFAULT NULL,
+    `net_price` decimal(16,10) DEFAULT NULL,
+    `amount_local` varchar(25) DEFAULT NULL,
+    `custodian` varchar(15) DEFAULT NULL,
+    `isin` varchar(12) DEFAULT NULL,
+    `issuer` varchar(36) DEFAULT NULL,
+    `instrument` varchar(6) DEFAULT NULL,
+    `ccy` varchar(3) DEFAULT NULL,
+    `realized_base` decimal(11,10) DEFAULT NULL,
+    `amount_base` varchar(17) DEFAULT NULL,
+    `fx_rate` double DEFAULT NULL,
+    `comission` double DEFAULT NULL,
+    `tax` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `wa_trade`
+--
+
+INSERT INTO `wa_trade` (`client_code`, `valuation_currency`, `asset_class`, `account`, `date`, `movement`, `name`, `quantity`, `gross_price`, `net_price`, `amount_local`, `custodian`, `isin`, `issuer`, `instrument`, `ccy`, `realized_base`, `amount_base`, `fx_rate`, `comission`, `tax`) VALUES
+('DUM', 'CHF', 'Real Estate', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'Mansford Opportunity Fund III', '605261.4179110000', '0.9600000000', '0.9600000000', '-581050.961195', 'Private Holding', 'KF0706000001', '', 'Fund', 'GBP', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Private Equity', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'General Atlantic Invt Partners I', '2361720.8955230000', '0.9600000000', '0.9600000000', '-2267252.059702', 'Private Holding', 'KF0706000002', '', 'Fund', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Private Equity', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'Strategic Value Global Opportunities', '2052963.8059700000', '0.9600000000', '0.9600000000', '-1970845.253731', 'Private Holding', 'KF0703000005', '', 'Equity', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Private Equity', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'TrueNoord', '920902.9616670000', '1.1371267664', '1.1371267664', '-1047183.406969', 'Private Holding', 'KF0703000018', '', 'Equity', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Real Estate', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'Belval', '400876.1194030000', '0.9600000000', '0.9600000000', '-384841.074627', 'Private Holding', 'KF0703000021', '', 'Equity', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Real Estate', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'MS Real Estate Offshore VII', '1082589.2954650000', '60909.1200000000', '60909.1200000000', '-65939561308.193141', 'Private Holding', 'KF0906000001', '', 'Fund', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Real Estate', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'Kremmergaarden Invest AS', '300747.3134330000', '254400.0000000000', '254400.0000000000', '-76510116537.355200', 'Private Holding', 'KF0903000002', '', 'Equity', 'NOK', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Private Equity', 'DUM PE 00', '2021-10-31', 'PURCHASE', 'Nerdwallet', '1782124.2537320000', '0.9600000000', '0.9600000000', '-1710839.283583', 'Private Holding', 'KF0703000030', 'Innovius Capital Sirius I, L.P.', 'SPV', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Hedge Fund', '0240-123456-01', '2021-10-31', 'PURCHASE', 'Protea UCITS II-ECO Advisors ESG Absolute Return F EUR Acc', '242214.6586930000', '101.5872000000', '101.5872000000', '-24605908.975578', 'UBS', 'LU2002381171', '', 'Fund', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Hedge Fund', '0240-123456-01', '2021-10-31', 'PURCHASE', 'AKO GLOBAL UCITS -A2- USD 02.01.19', '139185.1912440000', '160.9837593600', '160.9837593600', '-22406555.333700', 'UBS', 'KF0106000003', '', 'Fund', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Hedge Fund', '0240-123456-01', '2021-10-31', 'PURCHASE', 'KNIGHTHEAD OFFS B1 SUB-CL 2 $', '1601177.8297750000', '2352.8297280000', '2352.8297280000', '-3767298797.709144', 'UBS', 'XD0248258416', '', 'Fund', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Hedge Fund', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'RAGING CAP OFF 1 B 35 USD UNR', '1862999.2988240000', '892.4064000000', '892.4064000000', '-1662552497.466050', 'Crédit Suisse', 'XD0556957062', '', 'Fund', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'SWISS LIFE HLD', '331204.4117650000', '389.5680000000', '389.5680000000', '-129026640.282468', 'UBS', 'CH0014852781', '', 'Equity', 'CHF', '0.0000000000', '-129026640.282468', 1, 0, 0),
+('DUM', 'CHF', 'Equity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'TOTAL', '57458.3477210000', '34.3920000000', '34.3920000000', '-1976107.494821', 'UBS', 'FR0000120271', '', 'Equity', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'Xtrackers MSCI World Information Technology UCITS ETF 1C', '121886.6266820000', '47.3520000000', '47.3520000000', '-5771575.546646', 'UBS', 'IE00BM67HT60', '', 'ETF', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'SPDR® S&P® U.S. Health Care Select Sector UCITS ETF (Acc)', '65892.8391250000', '30.3904320000', '30.3904320000', '-2002511.846715', 'UBS', 'IE00BWBXM617', '', 'ETF', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'Lumyna - Ramius Merger Arbitrage UCITS Fund', '231439.4968560000', '105.3216000000', '105.3216000000', '-24375578.112069', 'UBS', 'LU1438658517', '', 'Fund', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'ISHARES US HEALTHCARE ETF', '363586.6442980000', '228.2688000000', '228.2688000000', '-82995486.989931', 'UBS', 'US4642877629', '', 'ETF', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'VISA INC', '48274.6289890000', '201.9360000000', '201.9360000000', '-9748385.479523', 'UBS', 'US92826C8394', '', 'Equity', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'APRILA BANK', '120.7844670000', '7.2000000000', '7.2000000000', '-869.648162', 'Crédit Suisse', 'NO0010816473', '', 'Equity', 'NOK', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'AB SICAV I-Eurozone Equity Portfolio A EUR', '64597.4177100000', '100.1184000000', '100.1184000000', '-6467390.105257', 'Crédit Suisse', 'LU1955076861', '', 'Fund', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'AMAZON COM', '1462563.5194190000', '3041.3184000000', '3041.3184000000', '-4448121342.777762', 'Crédit Suisse', 'US0231351067', '', 'Equity', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'UBISOFT Entertainment', '124613.9548680000', '76.5888000000', '76.5888000000', '-9544033.266594', 'Crédit Suisse', 'FR0000054470', '', 'Equity', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Equity', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'Unibail-Rodamco-Westfield SE', '103797.6843750000', '57.1200000000', '57.1200000000', '-5928923.731500', 'Crédit Suisse', 'FR0013326246', '', 'Equity', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', '0240-123456-01', '2021-10-31', 'PURCHASE', 'Pareto Nordic Corporate Bond H - EUR', '297018.4261000000', '105.1005120000', '105.1005120000', '-31216788.656544', 'UBS', 'LU1311575093', '', 'Fund', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', '0240-123456-01', '2021-10-31', 'PURCHASE', 'PIMCO GIS Glo Invt Grd Crdt ECl USD Inc', '268478.4800000000', '11.8752000000', '11.8752000000', '-3188235.645696', 'UBS', 'IE00B3D1YW09', '', 'Fund', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', '0240-123456-01', '2021-10-31', 'PURCHASE', 'GENERAL FINAN', '243500.8995000000', '96.6153600000', '96.6153600000', '-235259.270655', 'UBS', 'US37045XBR61', 'GENERAL MOTORS FINANCIAL COMPANY INC', 'Bond', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', '0240-123456-01', '2021-10-31', 'PURCHASE', 'SOTHEBYS', '237715.8750000000', '94.3200000000', '94.3200000000', '-224213.613300', 'UBS', 'USU83574AC43', 'SOTHEBY\'S', 'Bond', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', '0240-123456-01', '2021-10-31', 'PURCHASE', 'UKREXIMBANK', '191624.4000000000', '95.0400000000', '95.0400000000', '-182119.829760', 'UBS', 'XS1261825894', 'BIZ FINANCE PLC', 'Bond', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', '0240-123456-01', '2021-10-31', 'PURCHASE', 'GRAY TELEVISIO', '101377.0500000000', '100.5600000000', '100.5600000000', '-101944.761480', 'UBS', 'USU42511AE27', 'GRAY TELEVISION INC', 'Bond', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'iShares $Corp Bd Interest Rate Hgd UCITS ETF USD(Dist)', '662858.3175000000', '5.2601280000', '5.2601280000', '-3486719.595915', 'Crédit Suisse', 'IE00BZ173W74', '', 'ETF', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'Vontobel Fund Emerging Markets Debt B (USD)', '527787.0200000000', '93.3792000000', '93.3792000000', '-49284329.697984', 'Crédit Suisse', 'LU1991126514', '', 'Fund', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'UNIFIN', '180010.8000000000', '89.2800000000', '89.2800000000', '-160713.642240', 'Crédit Suisse', 'USP94461AB96', 'UNIFIN FINANCIERA SAB DE CV', 'Bond', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'Nuance Communications Inc', '409379.4000000000', '101.5200000000', '101.5200000000', '-415601.966880', 'Crédit Suisse', 'US67020YAQ35', 'NUANCE COMMUNICATIONS INC', 'Bond', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Bond', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'Novo Nordisk A/S', '110831.4760000000', '98.0448000000', '98.0448000000', '-108664.498981', 'Crédit Suisse', 'XS1991114858', 'DOMETIC GROUP AB (PUBL)', 'Bond', 'EUR', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Commodity', '0240-123456-01', '2021-10-31', 'PURCHASE', 'VanEck Vectors Gold Miners UCITS ETF', '921596.0493000000', '35.1276480000', '35.1276480000', '-32373501.618001', 'UBS', 'IE00BQQP9F84', '', 'ETF', 'USD', '0.0000000000', '', 1, 0, 0),
+('DUM', 'CHF', 'Commodity', 'S 0947-123456-01', '2021-10-31', 'PURCHASE', 'SPDR Gold Shares', '1836519.0492900000', '158.7440793600', '158.7440793600', '-291536525.706644', 'Crédit Suisse', 'US78463V1070', '', 'ETF', 'USD', '0.0000000000', '', 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `wa_wealth`
 --
 

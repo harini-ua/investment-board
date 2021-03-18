@@ -104,12 +104,23 @@ export default {
   },
 
   /**
-   * Filter to converts a date into a string
+   * Filter to converts a negative numbers
    *
    * @param value
    * @returns {string}
    */
   is_negative: ( value ) => {
     return (Number.parseInt(value) < 0) ? '('+value.substring(1)+')' : value
+  },
+
+  /**
+   * Filter to converts a price
+   *
+   * @param value
+   * @returns {string}
+   */
+  price: ( value ) => {
+    let val = (value/1).toFixed(2).replace('.', ',')
+    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   },
 }

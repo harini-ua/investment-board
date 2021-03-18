@@ -33,7 +33,7 @@
         label="Account"
       />
     </filters-wrapper>
-    <trades-table />
+    <trades-table :items="trades" />
   </div>
 </template>
 

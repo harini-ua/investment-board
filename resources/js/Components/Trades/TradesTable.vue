@@ -22,96 +22,96 @@
           >
             <div class="tr" @click="toggle(index)">
               <div class="td">
-                <span class="td-cell">7/15/2020</span>
+                <span class="td-cell">{{ item.date | date_format }}</span>
               </div>
               <div class="td hidden-sm">
-                <span class="td-cell">Buy</span>
+                <span class="td-cell">{{ item.movement }}</span>
               </div>
-              <div class="td" title="ASML HOLDING">
-                <span class="td-cell">Xtrackers ESG MSCI Japan UCITS ETF 1C</span>
-              </div>
-              <div class="td hidden-sm">
-                <span class="td-cell">395</span>
+              <div class="td" :title="item.name">
+                <span class="td-cell">{{ item.name }}</span>
               </div>
               <div class="td hidden-sm">
-                <span class="td-cell">0,95</span>
+                <span class="td-cell">{{ item.quantity | numeral }}</span>
               </div>
               <div class="td hidden-sm">
-                <span class="td-cell">0,95</span>
+                <span class="td-cell">-</span>
               </div>
               <div class="td hidden-sm">
-                <span class="td-cell">131 525</span>
+                <span class="td-cell">{{ item.net_price | price }}</span>
+              </div>
+              <div class="td hidden-sm">
+                <span class="td-cell">{{ item.amount_base | numeral }}</span>
               </div>
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
                 <div class="cell-row visible-md">
-                  <div class="cell-thead">Interest</div>
+                  <div class="cell-thead">Movement</div>
+                  <div class="cell-description">{{ item.movement }}</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">Quantity</div>
+                  <div class="cell-description">{{ item.quantity | numeral }}</div>
+                </div>
+                <div class="cell-row visible-md">
+                  <div class="cell-thead">Cost Price</div>
                   <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row visible-md">
-                  <div class="cell-thead">Dividend</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-thead">Net Price</div>
+                  <div class="cell-description">{{ item.net_price | price }}</div>
                 </div>
                 <div class="cell-row visible-md">
-                  <div class="cell-thead">Commissions</div>
-                  <div class="cell-description">-</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">Tax</div>
-                  <div class="cell-description">-</div>
-                </div>
-                <div class="cell-row visible-md">
-                  <div class="cell-thead">Total</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-thead">Amount Local</div>
+                  <div class="cell-description">{{ item.amount_base | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Custodian</div>
-                  <div class="cell-description">Crédit Suisse</div>
+                  <div class="cell-description">{{ item.custodian }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">ISIN</div>
-                  <div class="cell-description">NL0010273215</div>
+                  <div class="cell-description">{{ item.isin }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Issuer</div>
-                  <div class="cell-description">Whirlpool</div>
+                  <div class="cell-description">{{ item.issuer }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Instrument</div>
-                  <div class="cell-description">Equity</div>
+                  <div class="cell-description">{{ item.instrument }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">CCY</div>
-                  <div class="cell-description">EUR</div>
+                  <div class="cell-description">{{ item.ccy }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Realised Local</div>
-                  <div class="cell-description">6.890</div>
+                  <div class="cell-description">-</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Realised Base</div>
-                  <div class="cell-description">5.954</div>
+                  <div class="cell-description">{{ item.realized_base }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Amount Base</div>
-                  <div class="cell-description">131.525</div>
+                  <div class="cell-description">{{ item.amount_base }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">FX Rate</div>
-                  <div class="cell-description">1.2</div>
+                  <div class="cell-description">{{ item.fx_rate }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Gross Price</div>
-                  <div class="cell-description">1.0</div>
+                  <div class="cell-description">{{ item.gross_price }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Commissions</div>
-                  <div class="cell-description">500.0</div>
+                  <div class="cell-description">{{ item.comission }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Tax</div>
-                  <div class="cell-description">615.0</div>
+                  <div class="cell-description">{{ item.tax }}</div>
                 </div>
               </div>
             </div>
@@ -128,30 +128,7 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => [
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-        {'active': false},
-      ],
+      default: () => [],
     },
   },
   data: function () {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Account;
 use App\Models\Custodian;
 use App\Models\Portfolio;
+use App\Models\Trades;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -26,11 +27,19 @@ class TradesController extends Controller
 
     public function index()
     {
-//        $trades = Trades::data();
+        $trades = Trades::data(
+            null,
+            Request::get('from'),
+            Request::get('to'),
+            Request::get('currency'),
+            Request::get('asset_class'),
+            Request::get('custodian'),
+            Request::get('account')
+        );
 
         return Inertia::render('Trades/Index', [
             'filters' => Request::all(['from', 'to', 'currency', 'asset_class', 'custodian', 'account']),
-            'trades' => [],
+            'trades' => $trades,
             'payload' => [
                 'from' => $this->dataService->getValuationDate(),
                 'to' => $this->dataService->getValuationDate(),
