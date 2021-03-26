@@ -27,7 +27,15 @@ class DetailsController extends Controller
 
     public function index()
     {
-        $positionOpen = Position::open(null, Request::get('method'), Request::get('date'), Request::get('currency'));
+        $positionOpen = Position::open(
+            'DUM',
+            Request::get('method'),
+            Request::get('date'),
+            Request::get('currency'),
+            Request::get('asset_class'),
+            Request::get('custodian'),
+            Request::get('account')
+        );
 
         return Inertia::render('Details/Index', [
             'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),

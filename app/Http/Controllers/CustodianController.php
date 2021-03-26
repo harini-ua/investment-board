@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Custodian;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -23,7 +24,13 @@ class CustodianController extends Controller
 
     public function index()
     {
-        $results = $this->dataService->getCustodian('DUM', '2020-12-31', 'EUR', 'VALUE');
+        $results = Custodian::data(
+            'DUM',
+            Request::get('method'),
+            Request::get('date'),
+            Request::get('currency')
+        );
+
         $results = collect($results)->groupBy('custodian_name');
 
         $custodians = [];

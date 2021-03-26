@@ -132,19 +132,19 @@
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Interest</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.interest | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Dividend</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.dividend | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Commissions</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.commission | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Tax</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.tax | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Total</div>

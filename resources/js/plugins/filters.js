@@ -117,10 +117,11 @@ export default {
    * Filter to converts a price
    *
    * @param value
+   * @param fraction
    * @returns {string}
    */
-  price: ( value ) => {
-    let val = (value/1).toFixed(2).replace('.', ',')
+  price: ( value, fraction = 2 ) => {
+    let val = (value/1).toFixed(fraction).replace('.', ',')
     return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   },
 }

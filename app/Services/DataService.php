@@ -62,18 +62,19 @@ class DataService
      */
     public function getValuationMethod()
     {
-        $results =  DB::table('par_valuation_method')
-            ->pluck('valuation_method')
+        $results = DB::table('par_valuation_method')
+            ->pluck('method', 'value')
         ;
 
-        $results = $results->map(function ($value) {
-            return [
+        $methods = [];
+        foreach ($results as $value => $method) {
+            $methods[] = [
                 'code' => $value,
-                'label' => $value,
+                'label' => $method,
             ];
-        });
+        }
 
-        return $results->toArray();
+        return $methods;
     }
 
     /**
@@ -86,7 +87,7 @@ class DataService
      *
      * @return mixed
      */
-    public function getCurrency($clientCode = 'DUM', $date = '2020-12-31', $currency = 'EUR', $method = 'VALUE'): array
+    public function getCurrency($clientCode = 'DUM', $date = '2020-12-31', $currency = 'CHF', $method = 'VALUE'): array
     {
         $procedure = self::PROCEDURE['currency'];
         $params = [
@@ -106,7 +107,7 @@ class DataService
      *
      * @return mixed
      */
-    public function getCustodian($clientCode = 'DUM', $date = '2020-12-31', $currency = 'EUR', $method = 'VALUE'): array
+    public function getCustodian($clientCode, $date, $currency, $method): array
     {
         $procedure = self::PROCEDURE['custodian'];
         $params = [

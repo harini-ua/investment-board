@@ -81,6 +81,7 @@ export default {
         if (query.asset_class) query.asset_class = query.asset_class.code
         if (query.custodian) query.custodian = query.custodian.code
         if (query.account) query.account = query.account.code
+
         this.$inertia.replace(
           this.route(
             'details',

@@ -28,7 +28,7 @@ class TradesController extends Controller
     public function index()
     {
         $trades = Trades::data(
-            null,
+            'DUM',
             Request::get('from'),
             Request::get('to'),
             Request::get('currency'),

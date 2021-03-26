@@ -38,14 +38,16 @@ class Portfolio extends Model
            'ytd_percentage', 'mtd_benchmark', 'ytd_benchmark'
         ]);
 
-        if ($currency) {
-            $query->where('valuation_currency', $currency);
-        }
+        $query->where('client_code', $clientCode);
+
         if ($date) {
             $query->whereDate('period_date', Carbon::parse($date)->toDateString());
         }
         if ($method) {
             $query->where('valuation_method', $method);
+        }
+        if ($currency) {
+            $query->where('valuation_currency', $currency);
         }
 
         $result = $query->get();

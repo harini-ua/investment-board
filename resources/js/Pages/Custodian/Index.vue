@@ -64,6 +64,8 @@ export default {
         let query = pickBy(this.filtersPage)
         if (query.date) query.date = query.date.code
         if (query.method) query.method = query.method.code
+        if (query.currency) query.currency = query.currency.code
+
         this.$inertia.replace(
           this.route(
             'custodian',

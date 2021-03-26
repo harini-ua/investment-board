@@ -31,9 +31,19 @@ class CurrencyController extends Controller
         $sum = collect($currencyExposure)->sum('value');
         collect($currencyExposure)->map(function ($item) use ($sum) {
             $item->active = false;
+            $item->grant_total = false;
             $item->percentage = round( $item->value / $sum * 100, 2);
             return $item;
         });
+
+//        collect($currencyExposure)->push([
+//           'currency' => 'Total',
+//           'cash' => $currencyExposure->sum('cash'),
+//           'investments' => $currencyExposure->sum('investments'),
+//           'total' => $currencyExposure->sum('total'),
+//           'grant_total' => true,
+//           'active' => false,
+//        ]);
 
         return Inertia::render('Currency/Index', [
             'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),

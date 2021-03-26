@@ -26,7 +26,7 @@ class OverviewController extends Controller
 
     public function index()
     {
-        $portfolioAsset = Portfolio::asset(null, Request::get('method'), Request::get('date'), Request::get('currency'));
+        $portfolioAsset = Portfolio::asset('DUM', Request::get('method'), Request::get('date'), Request::get('currency'));
         $portfolioAllocation = $portfolioAsset->pluck('mtd_percentage', 'kfp_asset_class');
 
         // Total
@@ -39,10 +39,11 @@ class OverviewController extends Controller
             'mtd_benchmark' => $portfolioAsset->sum('mtd_benchmark'),
             'ytd_percentage' => $portfolioAsset->sum('ytd_percentage'),
             'ytd_benchmark' => $portfolioAsset->sum('ytd_benchmark'),
+            'total' => true,
             'active' => false,
         ]);
 
-        $totalWealth = Wealth::total(null, Request::get('method'), Request::get('date'), Request::get('currency'));
+        $totalWealth = Wealth::total('DUM', Request::get('method'), Request::get('date'), Request::get('currency'));
         $totalWealthAllocation = $totalWealth->pluck('mtd_percentage', 'category');
 
         // Total
@@ -55,10 +56,11 @@ class OverviewController extends Controller
             'ytd_percentage' => $totalWealth->sum('ytd_percentage'),
             'mtd_benchmark' => $totalWealth->sum('mtd_benchmark'),
             'ytd_benchmark' => $totalWealth->sum('ytd_benchmark'),
+            'total' => true,
             'active' => false,
         ]);
 
-        $benchmarks = Benchmark::data();
+        $benchmarks = Benchmark::data(Request::get('date'));
 
         return Inertia::render('Overview/Index', [
             'filters' => Request::all(['method', 'date', 'currency']),

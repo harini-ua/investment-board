@@ -34,10 +34,10 @@
                 <span class="td-cell">{{ item.quantity | numeral }}</span>
               </div>
               <div class="td hidden-sm">
-                <span class="td-cell">-</span>
+                <span class="td-cell">{{ item.cost_price | round(4) }}</span>
               </div>
               <div class="td hidden-sm">
-                <span class="td-cell">{{ item.net_price | price }}</span>
+                <span class="td-cell">{{ item.net_price | round(4) }}</span>
               </div>
               <div class="td hidden-sm">
                 <span class="td-cell">{{ item.amount_base | numeral }}</span>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Cost Price</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.cost_price | price }}</div>
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Net Price</div>
@@ -87,31 +87,31 @@
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Realised Local</div>
-                  <div class="cell-description">-</div>
+                  <div class="cell-description">{{ item.realized_local | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Realised Base</div>
-                  <div class="cell-description">{{ item.realized_base }}</div>
+                  <div class="cell-description">{{ item.realized_base | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Amount Base</div>
-                  <div class="cell-description">{{ item.amount_base }}</div>
+                  <div class="cell-description">{{ item.amount_base | numeral }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">FX Rate</div>
-                  <div class="cell-description">{{ item.fx_rate }}</div>
+                  <div class="cell-description">{{ item.fx_rate | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Gross Price</div>
-                  <div class="cell-description">{{ item.gross_price }}</div>
+                  <div class="cell-description">{{ item.gross_price | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Commissions</div>
-                  <div class="cell-description">{{ item.comission }}</div>
+                  <div class="cell-description">{{ item.comission | round(4) }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Tax</div>
-                  <div class="cell-description">{{ item.tax }}</div>
+                  <div class="cell-description">{{ item.tax | round(4) }}</div>
                 </div>
               </div>
             </div>

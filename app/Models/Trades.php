@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,9 +36,31 @@ class Trades extends Model
     {
         $query = self::query();
         $query->select([
-            'date', 'movement', 'name', 'quantity', 'net_price', 'amount_base',
-            'custodian', 'isin', 'issuer', 'instrument', 'ccy', 'realized_base', 'amount_base', 'fx_rate', 'gross_price', 'comission', 'tax'
+            'date', 'movement', 'name', 'quantity', 'cost_price', 'net_price', 'amount_base',
+            'custodian', 'isin', 'issuer', 'instrument', 'ccy', 'realized_local',
+            'realized_base', 'amount_base', 'fx_rate', 'gross_price', 'comission', 'tax'
         ]);
+
+        $query->where('client_code', $clientCode);
+
+        if ($from) {
+            $query->whereDate('date', '>=', Carbon::parse($from)->toDateString());
+        }
+        if ($to) {
+            $query->where('date', '<=', Carbon::parse($from)->toDateString());
+        }
+        if ($currency) {
+            $query->where('valuation_currency', $currency);
+        }
+        if ($assetClass) {
+            $query->where('asset_class', $assetClass);
+        }
+        if ($custodian) {
+            $query->where('custodian', $custodian);
+        }
+        if ($account) {
+            $query->where('account', $account);
+        }
 
         $result = $query->get();
 

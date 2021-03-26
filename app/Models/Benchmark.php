@@ -22,12 +22,18 @@ class Benchmark extends Model
     /**
      * Get Benchmarks
      *
+     * @param string|null $date
+     *
      * @return mixed
      */
-    public static function data()
+    public static function data($date)
     {
         $query = self::query();
         $query->select(['benchmark_date', 'indice', 'mtd_percentage', 'ytd_percentage']);
+
+        if ($date) {
+            $query->whereDate('benchmark_date', Carbon::parse($date)->toDateString());
+        }
 
         $result = $query->get();
 
