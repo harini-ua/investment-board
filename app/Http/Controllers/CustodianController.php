@@ -69,7 +69,7 @@ class CustodianController extends Controller
             'custodians' => $custodians,
             'payload' => [
                 'method' => $this->dataService->getValuationMethod(),
-                'date' => $this->dataService->getValuationDate(),
+                'date' => '2020-12-31',
                 'currency' => $this->dataService->getBaseCurrency(),
             ]
         ]);

@@ -7,9 +7,8 @@
         label="Valuation Method"
         info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
       />
-      <select-input
+      <date-input
         v-model="filtersPage.date"
-        :options="payload.date"
         label="Valuation date"
       />
       <select-input
@@ -49,6 +48,8 @@ import ExposureTable from '@/Components/Currency/ExposureTable'
 import HedgingTable from '@/Components/Currency/HedgingTable'
 import FiltersWrapper from '@/Shared/FiltersWrapper'
 import SelectInput from '@/Shared/SelectInput'
+import moment from 'moment'
+import DateInput from '../../Shared/DateInput'
 import { pickBy, throttle } from 'lodash'
 
 export default {
@@ -60,6 +61,7 @@ export default {
     HedgingTable,
     FiltersWrapper,
     SelectInput,
+    DateInput,
   },
   props: {
     filters: Object,
@@ -71,7 +73,7 @@ export default {
     return {
       filtersPage: {
         method:      this.filters.method ? this.filters.method : this.payload.method[0],
-        date:        this.filters.date ? this.filters.date : this.payload.date[0],
+        date:     this.filters.date ? this.filters.date : this.payload.date,
         currency:    this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
@@ -83,7 +85,7 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
-        if (query.date) query.date = query.date.code
+        if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
         if (query.method) query.method = query.method.code
         delete query.currency
 

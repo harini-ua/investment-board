@@ -1,14 +1,12 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <select-input
+      <date-input
         v-model="filtersPage.from"
-        :options="payload.from"
         label="Date From"
       />
-      <select-input
+      <date-input
         v-model="filtersPage.to"
-        :options="payload.to"
         label="Date To"
       />
       <select-input
@@ -43,6 +41,8 @@ import Layout from '@/Shared/Layout'
 import FiltersWrapper from '@/Shared/FiltersWrapper'
 import TradesTable from '@/Components/Trades/TradesTable'
 import SelectInput from '@/Shared/SelectInput'
+import moment from 'moment'
+import DateInput from '../../Shared/DateInput'
 import {pickBy, throttle} from 'lodash'
 
 export default {
@@ -52,6 +52,7 @@ export default {
     FiltersWrapper,
     TradesTable,
     SelectInput,
+    DateInput,
   },
   props: {
     filters: Object,
@@ -61,8 +62,8 @@ export default {
   data() {
     return {
       filtersPage: {
-        from:        this.filters.from ? this.filters.from : this.payload.from[0],
-        to:          this.filters.date ? this.filters.to : this.payload.to[0],
+        from:        this.filters.from ? this.filters.from : this.payload.from,
+        to:          this.filters.to ? this.filters.to : this.payload.to,
         currency:    this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
@@ -74,8 +75,8 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
-        if (query.from) query.from = query.from.code
-        if (query.to) query.to = query.to.code
+        if (query.from) query.from = moment(String(query.from)).format('YYYY-MM-DD')
+        if (query.to) query.to = moment(String(query.to)).format('YYYY-MM-DD')
         delete query.currency
         if (query.asset_class) query.asset_class = query.asset_class.code
         if (query.custodian) query.custodian = query.custodian.code

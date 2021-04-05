@@ -45,8 +45,8 @@ class TradesController extends Controller
             'filters' => Request::all(['from', 'to', 'currency', 'asset_class', 'custodian', 'account']),
             'trades' => $trades,
             'payload' => [
-                'from' => $this->dataService->getValuationDate(),
-                'to' => $this->dataService->getValuationDate(),
+                'from' => '2020-12-31',
+                'to' => '2020-12-31',
                 'currency' => $this->dataService->getBaseCurrency(),
                 'asset_class' => Portfolio::assetClass(),
                 'custodian' => Custodian::names(),

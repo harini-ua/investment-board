@@ -46,7 +46,7 @@ class DetailsController extends Controller
             'positionOpen' => $positionOpen,
             'payload' => [
                 'method' => $this->dataService->getValuationMethod(),
-                'date' => $this->dataService->getValuationDate(),
+                'date' => '2020-12-31',
                 'currency' => $this->dataService->getBaseCurrency(),
                 'asset_class' => Portfolio::assetClass(),
                 'custodian' => Custodian::names(),

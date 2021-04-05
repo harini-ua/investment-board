@@ -81,7 +81,7 @@ class OverviewController extends Controller
             'benchmarks' => $benchmarks,
             'payload' => [
                 'method' => $this->dataService->getValuationMethod(),
-                'date' => $this->dataService->getValuationDate(),
+                'date' => '2020-12-31',
                 'currency' => $this->dataService->getBaseCurrency(),
             ]
         ]);
