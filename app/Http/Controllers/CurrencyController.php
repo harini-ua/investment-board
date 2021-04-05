@@ -8,7 +8,6 @@ use App\Models\Custodian;
 use App\Models\Portfolio;
 use App\Models\User;
 use App\Services\DataService;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -30,12 +29,12 @@ class CurrencyController extends Controller
     public function index()
     {
         /** @var User $user */
-        $user = Auth::user();
+        $user = auth()->user();
 
         $results = Currency::data(
             $user->client_code,
-            Request::get('method'),
-            Request::get('date'),
+            'VALUE',
+            '2020-12-31',
             $user->base_currency
         );
 

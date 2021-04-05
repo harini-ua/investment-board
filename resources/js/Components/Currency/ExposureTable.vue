@@ -21,31 +21,19 @@
             <div class="tr" @click="toggle(i)">
               <div class="td">{{ item.currency }}</div>
               <div class="td hidden-sm">
-                <p v-if="!item.grant_total">
-                  <a v-if="item.cash" :href="route('details')">{{ item.cash | numeral | is_negative }}</a>
-                  <span v-else>-</span>
-                </p>
-                <p v-if="item.grant_total">
+                <p>
                   <span v-if="item.cash">{{ item.cash | numeral | is_negative }}</span>
                   <span v-else>-</span>
                 </p>
               </div>
               <div class="td hidden-sm">
-                <p v-if="!item.grant_total">
-                  <a v-if="item.investment" :href="route('details')">{{ item.investment | numeral | is_negative }}</a>
-                  <span v-else>-</span>
-                </p>
-                <p v-if="item.grant_total">
+                <p>
                   <span v-if="item.investment">{{ item.investment | numeral | is_negative }}</span>
                   <span v-else>-</span>
                 </p>
               </div>
               <div class="td hidden-lg">
-                <p v-if="!item.grant_total">
-                  <a v-if="item.fx" :href="route('details')">{{ item.fx | numeral | is_negative }}</a>
-                  <span v-else>-</span>
-                </p>
-                <p v-if="item.grant_total">
+                <p>
                   <span v-if="item.fx">{{ item.fx | numeral | is_negative }}</span>
                   <span v-else>-</span>
                 </p>
