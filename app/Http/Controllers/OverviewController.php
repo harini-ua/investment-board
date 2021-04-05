@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Benchmark;
 use App\Models\Portfolio;
+use App\Models\User;
 use App\Models\Wealth;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
@@ -26,7 +27,16 @@ class OverviewController extends Controller
 
     public function index()
     {
-        $portfolioAsset = Portfolio::asset('DUM', Request::get('method'), Request::get('date'), Request::get('currency'));
+        /** @var User $user */
+        $user = auth()->user();
+
+        $portfolioAsset = Portfolio::asset(
+            $user->client_code,
+            'VALUE',
+            '2020-12-31',
+            $user->base_currency
+        );
+
         $portfolioAllocation = $portfolioAsset->pluck('mtd_percentage', 'kfp_asset_class');
 
         // Total
