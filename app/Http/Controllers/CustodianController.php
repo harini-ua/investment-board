@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Custodian;
+use App\Models\User;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -24,11 +25,14 @@ class CustodianController extends Controller
 
     public function index()
     {
+        /** @var User $user */
+        $user = auth()->user();
+
         $results = Custodian::data(
-            'DUM',
-            Request::get('method'),
-            Request::get('date'),
-            Request::get('currency')
+            $user->client_code,
+            'VALUE',
+            '2020-12-31',
+            $user->base_currency
         );
 
         $results = collect($results)->groupBy('custodian_name');

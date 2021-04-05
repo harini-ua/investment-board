@@ -16,9 +16,11 @@
                :class="[{active: item.active}, 'row-' + (i + 1)]"
           >
             <div class="tr" @click="toggle(i)">
-              <div class="td">{{ item.custodian_name }}</div>
               <div class="td">
-                <a v-if="!item.total" href="/" class="value" @click.prevent="selected(i)">{{ item.value | numeral }}</a>
+                <span @click.prevent="selected(i)">{{ item.custodian_name }}</span>
+              </div>
+              <div class="td">
+                <a v-if="!item.total" :href="route('details')" class="value" target="_blank">{{ item.value | numeral }}</a>
                 <span v-else>{{ item.value | numeral }}</span>
               </div>
             </div>
@@ -60,7 +62,9 @@ export default {
       }
     },
     selected(index) {
-      this.index = index
+      if (!this.items[index]['total']) {
+        this.index = index
+      }
     },
   },
 }

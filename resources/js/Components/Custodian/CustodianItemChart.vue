@@ -47,15 +47,22 @@ export default {
         labels: this.chartLabels(),
         dataLabels: { enabled: false },
         theme: { palette: 'palette6' },
-        chart: {
-          //
+        tooltip: {
+          y: {
+            formatter: (value) => { return value + '%' },
+          },
         },
         legend: {
           position: 'bottom',
           horizontalAlign: 'left',
           width: 250,
           formatter: function(val, opts) {
-            return '<span class="font-weight-500">' + val + '</span> <span class="font-weight-400">(' + opts.w.globals.series[opts.seriesIndex] + '%)</span>'
+            let label = val
+            let value = opts.w.globals.series[opts.seriesIndex]
+
+            return '' +
+                '<span class="font-weight-500 apexcharts-legend-label">' + label + '</span>' +
+                ' <span class="font-weight-400 apexcharts-legend-value">(' + value + '%)</span>'
           },
           markers: {
             width:  16,
