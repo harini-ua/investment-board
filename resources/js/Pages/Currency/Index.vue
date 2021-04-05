@@ -35,8 +35,8 @@
       />
     </filters-wrapper>
     <div class="row-chart">
-      <exposure-chart />
-      <exposure-table />
+      <exposure-chart ref="chart" :data="currencyExposureCart" />
+      <exposure-table ref="table" :items="currencyExposureData" />
     </div>
     <hedging-table />
   </div>
@@ -63,7 +63,8 @@ export default {
   },
   props: {
     filters: Object,
-    currency: Array,
+    currencyExposureCart: Array,
+    currencyExposureData: Array,
     payload: Object,
   },
   data() {
@@ -77,22 +78,6 @@ export default {
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
       },
     }
-  },
-  computed: {
-    chartData: function () {
-      let result = {}
-      let sum = 0
-      this.currency.forEach(item => {
-        sum += item.aum
-        result[item.currency] = (isNaN(result[item.currency]) ? 0 : result[item.currency]) + item.aum
-      })
-
-      for (var prop in result) {
-        result[prop] = result[prop] / sum * 100
-      }
-
-      return result
-    },
   },
   watch: {
     filtersPage: {

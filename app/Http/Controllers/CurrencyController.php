@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Account;
+use App\Models\Currency;
 use App\Models\Custodian;
 use App\Models\Portfolio;
+use App\Models\User;
 use App\Services\DataService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -26,28 +29,64 @@ class CurrencyController extends Controller
 
     public function index()
     {
-        $currencyExposure = $this->dataService->getCurrency('DUM', '2020-12-31', 'EUR', 'VALUE');
+        /** @var User $user */
+        $user = Auth::user();
 
-        $sum = collect($currencyExposure)->sum('value');
-        collect($currencyExposure)->map(function ($item) use ($sum) {
-            $item->active = false;
-            $item->grant_total = false;
-            $item->percentage = round( $item->value / $sum * 100, 2);
-            return $item;
-        });
+        $results = Currency::data(
+            $user->client_code,
+            Request::get('method'),
+            Request::get('date'),
+            $user->base_currency
+        );
 
-//        collect($currencyExposure)->push([
-//           'currency' => 'Total',
-//           'cash' => $currencyExposure->sum('cash'),
-//           'investments' => $currencyExposure->sum('investments'),
-//           'total' => $currencyExposure->sum('total'),
-//           'grant_total' => true,
-//           'active' => false,
-//        ]);
+        $currency = [];
+        foreach ($results as $item) {
+            $currency[$item->currency][strtolower($item->category)] = $item->value;
+        }
+
+        $currencyExposureData = [];
+        $i = 0;
+        foreach ($currency as $key => $item) {
+            $currencyExposureData[$i] = [
+                'currency' => $key,
+                'cash' => $item['cash'] ?? null,
+                'fx' => $item['fx'] ?? null,
+                'investment' => $item['investment'] ?? null,
+            ];
+
+            $currencyExposureData[$i]['total'] =
+                $currencyExposureData[$i]['cash'] +
+                $currencyExposureData[$i]['fx'] +
+                $currencyExposureData[$i]['investment'];
+
+            $currencyExposureData[$i]['active'] = false;
+            $currencyExposureData[$i]['grant_total'] = false;
+
+            $i++;
+        }
+
+        $currencyExposureCart = [];
+        foreach ($currencyExposureData as $key => $item) {
+            $currencyExposureCart[] = [
+                'currency' => $item['currency'],
+                'percentage' => round($item['total'] / collect($currencyExposureData)->sum('total') * 100, 2)
+            ];
+        }
+
+        $currencyExposureData[] = [
+            'currency' => 'Total',
+            'fx' => collect($currencyExposureData)->sum('fx'),
+            'cash' => collect($currencyExposureData)->sum('cash'),
+            'investment' => collect($currencyExposureData)->sum('investment'),
+            'total' => collect($currencyExposureData)->sum('total'),
+            'grant_total' => true,
+            'active' => false,
+        ];
 
         return Inertia::render('Currency/Index', [
             'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
-            'currency' => $currencyExposure,
+            'currencyExposureCart' => $currencyExposureCart,
+            'currencyExposureData' => $currencyExposureData,
             'payload' => [
                 'method' => $this->dataService->getValuationMethod(),
                 'date' => $this->dataService->getValuationDate(),

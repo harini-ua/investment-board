@@ -85,12 +85,12 @@ class DataService
      *
      * @param string|null $clientCode
      * @param string|null $method
-     * @param string|null $currency
      * @param string|null $date
+     * @param string|null $currency
      *
      * @return mixed
      */
-    public function getCurrency($clientCode = 'DUM', $date = '2020-12-31', $currency = 'CHF', $method = 'VALUE'): array
+    public function getCurrency($clientCode, $method, $date, $currency): array
     {
         $procedure = self::PROCEDURE['currency'];
         $params = [

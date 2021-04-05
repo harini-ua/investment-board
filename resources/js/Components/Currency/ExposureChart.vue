@@ -1,7 +1,7 @@
 <template>
   <div class="block-chart-wrapper block-chart-wrapper--currency-exposure-chart">
     <div class="block-chart">
-      <h3 class="block-chart__title">Currency Exposure Chart</h3>
+      <h3 class="block-chart__title">{{ title }}</h3>
       <div style="width: 100%; height: auto">
         <apexchart
           ref="currency-exposure-chart"
@@ -18,13 +18,20 @@
 <script>
 
 export default {
+  props: {
+    title: {
+      type: String,
+      default: 'Currency Exposure Chart',
+    },
+    data: Object,
+  },
   data: function() {
     return {
       options: {
         chart: {
           id: 'currency-exposure-chart',
         },
-        labels: ['CHF', 'EUR', 'USD', 'GBP', 'NOK', 'SEK', 'DKK', 'JPY', 'HKD', 'CAD'],
+        labels: this.chartLabels(),
         dataLabels: { enabled: false },
         theme: { palette: 'palette6' },
         legend: {
@@ -135,17 +142,16 @@ export default {
           },
         ],
       },
-      series: [3.7, 49.5, 40.1, 4.1, 2.4, 0.3, 0, 0, 2.4, 2.4],
+      series: this.chartSeries(),
     }
   },
-  computed: {
-    //
-  },
-  watch: {
-    //
-  },
   methods : {
-    //
+    chartLabels() {
+      return [...Object.values(this.data).map(x => x.currency)]
+    },
+    chartSeries() {
+      return [...Object.values(this.data).map(x => x.percentage)]
+    },
   },
 }
 </script>
