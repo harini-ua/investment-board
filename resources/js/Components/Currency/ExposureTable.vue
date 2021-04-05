@@ -50,7 +50,7 @@
                   <span v-else>-</span>
                 </p>
               </div>
-              <div class="td">{{ item.total | numeral | is_negative }}-({{ item.percentage | percentage }})</div>
+              <div class="td">{{ item.total | numeral | is_negative }}</div>
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
