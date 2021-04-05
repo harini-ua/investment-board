@@ -5,3 +5,7 @@ $primary-color: #1474ba;
 
 @import '~vue2-datepicker/scss/index.scss';
 
+.date-range-wrapper {
+    display: contents;
+}
+

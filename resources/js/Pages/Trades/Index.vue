@@ -1,13 +1,11 @@
 <template>
   <div class="container">
     <filters-wrapper>
-      <date-input
-        v-model="filtersPage.from"
-        label="Date From"
-      />
-      <date-input
-        v-model="filtersPage.to"
-        label="Date To"
+      <date-range
+        :value-from="filtersPage.from"
+        :value-to="filtersPage.to"
+        label-from="Date From"
+        label-to="Date To"
       />
       <select-input
         v-model="filtersPage.currency"
@@ -42,17 +40,17 @@ import FiltersWrapper from '@/Shared/FiltersWrapper'
 import TradesTable from '@/Components/Trades/TradesTable'
 import SelectInput from '@/Shared/SelectInput'
 import moment from 'moment'
-import DateInput from '../../Shared/DateInput'
+import DateRange from '../../Shared/DateRange'
 import {pickBy, throttle} from 'lodash'
 
 export default {
   metaInfo: { title: 'Trades' },
   layout: Layout,
   components: {
+    DateRange,
     FiltersWrapper,
     TradesTable,
     SelectInput,
-    DateInput,
   },
   props: {
     filters: Object,

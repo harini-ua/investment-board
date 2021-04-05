@@ -8,6 +8,7 @@
       :format="format"
       :type="type"
       :disabled="disabled"
+      :editable="false"
       :clearable="false"
     />
     <div v-if="error" class="form-error">{{ error }}</div>
