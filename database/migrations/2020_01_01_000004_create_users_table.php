@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('last_name', 25);
             $table->string('email', 50)->unique();
             $table->string('password')->nullable();
+            $table->string('client_code',20)->default('DUM');
+            $table->string('base_currency',20)->default('CHF');
             $table->string('photo_path', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();

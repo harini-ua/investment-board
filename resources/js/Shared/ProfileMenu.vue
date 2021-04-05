@@ -6,7 +6,12 @@
       </div>
       <svg class="icon icon-arrow-down"><use xlink:href="#icon-arrow-down"></use></svg>
       <div v-if="show" class="logout-dropdown" @click.prevent="show=!show">
-        <inertia-link :href="route('logout')" method="post"><svg class="icon icon-log-out"><use xlink:href="#icon-log-out"></use></svg> Logout</inertia-link>
+        <ul>
+          <li>Currency: {{ userCurrency }}</li>
+          <li>
+            <inertia-link :href="route('logout')" method="post"><svg class="icon icon-log-out"><use xlink:href="#icon-log-out"></use></svg> Logout</inertia-link>
+          </li>
+        </ul>
       </div>
     </button>
   </div>
@@ -18,6 +23,11 @@ export default {
     return {
       show:  false,
     }
+  },
+  computed: {
+    userCurrency: function () {
+      return this.$page.auth.user.base_currency
+    },
   },
   methods: {
     closeProfileMenu () {
