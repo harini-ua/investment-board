@@ -6,6 +6,7 @@ use App\Enums\Account;
 use App\Models\Custodian;
 use App\Models\Portfolio;
 use App\Models\Position;
+use App\Models\User;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -27,11 +28,14 @@ class DetailsController extends Controller
 
     public function index()
     {
+        /** @var User $user */
+        $user = auth()->user();
+
         $positionOpen = Position::open(
-            'DUM',
-            Request::get('method'),
-            Request::get('date'),
-            Request::get('currency'),
+            $user->client_code,
+            'VALUE',
+            '2020-12-31',
+            $user->base_currency,
             Request::get('asset_class'),
             Request::get('custodian'),
             Request::get('account')
