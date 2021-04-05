@@ -6,6 +6,7 @@ use App\Enums\Account;
 use App\Models\Custodian;
 use App\Models\Portfolio;
 use App\Models\Trades;
+use App\Models\User;
 use App\Services\DataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
@@ -27,11 +28,14 @@ class TradesController extends Controller
 
     public function index()
     {
+        /** @var User $user */
+        $user = auth()->user();
+
         $trades = Trades::data(
-            'DUM',
-            Request::get('from'),
-            Request::get('to'),
-            Request::get('currency'),
+            $user->client_code,
+            '2020-12-31',
+            '2020-12-31',
+            $user->base_currency,
             Request::get('asset_class'),
             Request::get('custodian'),
             Request::get('account')

@@ -43,12 +43,12 @@ class Trades extends Model
 
         $query->where('client_code', $clientCode);
 
-        if ($from) {
-            $query->whereDate('date', '>=', Carbon::parse($from)->toDateString());
-        }
-        if ($to) {
-            $query->where('date', '<=', Carbon::parse($from)->toDateString());
-        }
+//        if ($from) {
+//            $query->whereDate('date', '>=', Carbon::parse($from)->toDateString());
+//        }
+//        if ($to) {
+//            $query->whereDate('date', '<=', Carbon::parse($to)->toDateString());
+//        }
         if ($currency) {
             $query->where('valuation_currency', $currency);
         }
