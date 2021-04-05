@@ -53,7 +53,7 @@ export default {
       filtersPage: {
         method:   this.filters.method ? this.filters.method : this.payload.method[0],
         date:     this.filters.date ? this.filters.date : this.payload.date[0],
-        currency: this.filters.currency ? this.filters.currency : this.payload.currency[0],
+        currency: this.payload.currency[0],
       },
       index: 0,
     }
@@ -64,7 +64,7 @@ export default {
         let query = pickBy(this.filtersPage)
         if (query.date) query.date = query.date.code
         if (query.method) query.method = query.method.code
-        if (query.currency) query.currency = query.currency.code
+        delete query.currency
 
         this.$inertia.replace(
           this.route(

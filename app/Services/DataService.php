@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DataService
@@ -19,9 +21,10 @@ class DataService
      */
     public function getBaseCurrency()
     {
-        $results = DB::table('par_base_currency')
-            ->pluck('base_currency')
-        ;
+        /** @var User $user */
+        $user = Auth::user();
+
+        $results = $user->pluck('base_currency');
 
         $results = $results->map(function ($value) {
             return [
