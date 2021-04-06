@@ -19,7 +19,7 @@
             <div class="tr" @click="toggle(index)">
               <div class="td">
                 <div class="tooltip">
-                  <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>
+                  <svg class="icon icon-info"><use xlink:href="#icon-info" /></svg>
                   <div class="tooltip__content">
                     Perfomance of KFP dynamic asset allocation
                   </div>

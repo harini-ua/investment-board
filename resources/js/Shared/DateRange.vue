@@ -12,7 +12,7 @@
         :editable="false"
         :clearable="false"
       />
-      <div v-if="error" class="form-error">{{ error }}</div>
+      <div v-if="errorFrom" class="form-error">{{ errorFrom }}</div>
     </div>
     <div class="filter-wrapper filter-wrapper--datapicker">
       <label v-if="labelTo" class="form-label" :for="id">{{ labelTo }}</label>
@@ -26,7 +26,7 @@
         :editable="false"
         :clearable="false"
       />
-      <div v-if="error" class="form-error">{{ error }}</div>
+      <div v-if="errorTo" class="form-error">{{ errorTo }}</div>
     </div>
   </div>
 </template>

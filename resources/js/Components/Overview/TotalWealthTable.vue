@@ -37,11 +37,11 @@
             <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.category }}</div>
               <div class="td">
-                <a v-if="!item.total" :href="route('details')" class="value">{{ item.mtd_value | numeral }}</a>
+                <inertia-link v-if="!item.total" :href="route('details')" class="value" target="_blank">{{ item.mtd_value | numeral }}</inertia-link>
                 <span v-else>{{ item.mtd_value | numeral }}</span>
               </div>
               <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>
-              <div class="td hidden-sm">{{ item.ytd_pl | numeral | is_negative}}</div>
+              <div class="td hidden-sm">{{ item.ytd_pl | numeral | is_negative }}</div>
               <div class="td hidden-lg">
                 <div class="double-value-holder">
                   <span class="double-value">{{ item.mtd_percentage | percentage }}</span>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="row visible-md">
                   <div class="cell cell-description">P&L YTD</div>
-                  <div class="cell">{{ item.ytd_pl | numeral | is_negative}}</div>
+                  <div class="cell">{{ item.ytd_pl | numeral | is_negative }}</div>
                   <div class="cell"></div>
                 </div>
                 <div class="row visible-lg">

@@ -34,7 +34,7 @@
             <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.kfp_asset_class }}</div>
               <div class="td">
-                <a v-if="!item.total" :href="route('details')" class="value">{{ item.mtd_value | numeral }}</a>
+                <inertia-link v-if="!item.total" :href="route('details')" class="value" target="_blank">{{ item.mtd_value | numeral }}</inertia-link>
                 <span v-else>{{ item.mtd_value | numeral }}</span>
               </div>
               <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>

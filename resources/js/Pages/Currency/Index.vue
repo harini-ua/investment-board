@@ -50,7 +50,7 @@ import FiltersWrapper from '@/Shared/FiltersWrapper'
 import SelectInput from '@/Shared/SelectInput'
 import moment from 'moment'
 import DateInput from '../../Shared/DateInput'
-import { pickBy, throttle } from 'lodash'
+import {pickBy, throttle} from 'lodash'
 
 export default {
   metaInfo: { title: 'Currency' },
@@ -73,7 +73,7 @@ export default {
     return {
       filtersPage: {
         method:      this.filters.method ? this.filters.method : this.payload.method[0],
-        date:     this.filters.date ? this.filters.date : this.payload.date,
+        date:        this.filters.date ? this.filters.date : this.payload.date,
         currency:    this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],

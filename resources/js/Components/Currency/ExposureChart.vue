@@ -23,7 +23,7 @@ export default {
       type: String,
       default: 'Currency Exposure Chart',
     },
-    data: Object,
+    data: Array,
   },
   data: function() {
     return {

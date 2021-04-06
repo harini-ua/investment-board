@@ -20,7 +20,7 @@
                 <span @click.prevent="selected(i)">{{ item.custodian_name }}</span>
               </div>
               <div class="td">
-                <a v-if="!item.total" :href="route('details')" class="value" target="_blank">{{ item.value | numeral }}</a>
+                <inertia-link v-if="!item.total" :href="route('details')" class="value" target="_blank">{{ item.value | numeral }}</inertia-link>
                 <span v-else>{{ item.value | numeral }}</span>
               </div>
             </div>

@@ -45,21 +45,21 @@
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Cash</div>
                   <div class="cell-description">
-                    <p v-if="!item.grant_total"><a v-if="item.cash" :href="route('details')">{{ item.cash | numeral | is_negative }}</a><span v-else>-</span></p>
+                    <p v-if="!item.grant_total"><inertia-link v-if="item.cash" :href="route('details')" class="value" target="_blank">{{ item.cash | numeral | is_negative }}</inertia-link><span v-else>-</span></p>
                     <p v-else><span v-if="item.cash">{{ item.cash | numeral | is_negative }}</span><span v-else>-</span></p>
                   </div>
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Investments</div>
                   <div class="cell-description">
-                    <p v-if="!item.grant_total"><a v-if="item.investment" :href="route('details')">{{ item.investment | numeral | is_negative }}</a><span v-else>-</span></p>
+                    <p v-if="!item.grant_total"><inertia-link v-if="item.investment" :href="route('details')" class="value" target="_blank">{{ item.investment | numeral | is_negative }}</inertia-link><span v-else>-</span></p>
                     <p v-else><span v-if="item.investment">{{ item.investment | numeral | is_negative }}</span><span v-else>-</span></p>
                   </div>
                 </div>
                 <div class="cell-row visible-lg">
                   <div class="cell-thead">FX Forwards</div>
                   <div class="cell-description">
-                    <p v-if="!item.grant_total"><a v-if="item.fx" :href="route('details')">{{ item.fx | numeral | is_negative }}</a><span v-else>-</span></p>
+                    <p v-if="!item.grant_total"><inertia-link v-if="item.fx" :href="route('details')" class="value" target="_blank">{{ item.fx | numeral | is_negative }}</inertia-link><span v-else>-</span></p>
                     <p v-else><span v-if="item.fx">{{ item.fx | numeral | is_negative }}</span><span v-else>-</span></p>
                   </div>
                 </div>

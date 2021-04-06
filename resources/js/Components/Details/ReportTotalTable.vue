@@ -88,7 +88,7 @@
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">CCY</div>
-                  <div class="cell-description">{{ item.currency}}</div>
+                  <div class="cell-description">{{ item.currency }}</div>
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Cost Price</div>
