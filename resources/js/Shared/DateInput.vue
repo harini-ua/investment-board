@@ -3,7 +3,7 @@
     <label v-if="label" class="form-label" :for="id">{{ label }}</label>
     <date-picker
       :id="id"
-      v-model="value"
+      v-model="selected"
       :value-type="valueType"
       :format="format"
       :type="type"
@@ -50,6 +50,16 @@ export default {
     label: String,
     info: String,
     error: String,
+  },
+  data() {
+    return {
+      selected: this.value,
+    }
+  },
+  watch: {
+    selected(val) {
+      this.$emit('input', val)
+    },
   },
   methods: {
     //
