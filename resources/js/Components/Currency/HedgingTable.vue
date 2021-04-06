@@ -19,19 +19,19 @@
           >
             <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.currency }}</div>
-              <div class="td">{{ item.gross_assets | percentage }}</div>
-              <div class="td hidden-sm">{{ item.fx | percentage }}</div>
-              <div class="td hidden-lg">{{ item.net_assets | percentage }}</div>
+              <div class="td">{{ item.gross_assets | percentage | fixed }}</div>
+              <div class="td hidden-sm">{{ item.fx | percentage | fixed }}</div>
+              <div class="td hidden-lg">{{ item.net_assets | percentage | fixed }}</div>
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
                 <div class="cell-row visible-md">
                   <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">{{ item.fx | percentage }}</div>
+                  <div class="cell-description">{{ item.fx | percentage | fixed }}</div>
                 </div>
                 <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">{{ item.net_assets | percentage }}</div>
+                  <div class="cell-description">{{ item.net_assets | percentage | fixed }}</div>
                 </div>
               </div>
             </div>

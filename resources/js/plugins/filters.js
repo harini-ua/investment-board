@@ -13,11 +13,25 @@ export default {
     if (!value) value = 0
     if (!decimals) decimals = 0
 
-    //value = value * 10 // TODO: Need test
     value = Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals)
     value = value + '%'
 
     return value
+  },
+
+  /**
+   * Fixed number value.
+   *
+   * @param value
+   * @param maxDecimals
+   * @returns {string}
+   */
+  fixed: ( value, maxDecimals = 1 ) => {
+    if (value.slice(-1) === '%') {
+      value = value.slice(0, -1)
+    }
+
+    return parseInt(value).toFixed(maxDecimals) + '%'
   },
 
   /**

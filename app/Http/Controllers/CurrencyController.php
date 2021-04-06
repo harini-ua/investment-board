@@ -93,7 +93,7 @@ class CurrencyController extends Controller
         foreach ($currencyExposureData as $key => $item) {
             $currencyExposureCart[] = [
                 'currency' => $item['currency'],
-                'percentage' => round($item['total'] / collect($currencyExposureData)->sum('total') * 100, 2)
+                'percentage' => round($item['total'] / collect($currencyExposureData)->sum('total') * 100, 1)
             ];
         }
 
