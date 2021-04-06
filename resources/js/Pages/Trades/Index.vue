@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <filters-wrapper>
+    <filters-wrapper description="Please pick the date range, asset class, custodians and account if you need a custom consolidated summary.">
       <date-range
         :value-from="filtersPage.from"
         :value-to="filtersPage.to"

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <filters-wrapper>
+    <filters-wrapper description="Please pick the valuation method, valuation date, asset class, custodians and account if you need a custom consolidated summary.">
       <select-input
         v-model="filtersPage.method"
         :options="payload.method"
