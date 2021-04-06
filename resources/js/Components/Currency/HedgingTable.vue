@@ -19,19 +19,19 @@
           >
             <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.currency }}</div>
-              <div class="td">{{ item.gross_assets }}%</div>
-              <div class="td hidden-sm">{{ item.fx }}%</div>
-              <div class="td hidden-lg">{{ item.net_assets }}%</div>
+              <div class="td">{{ item.gross_assets | percentage }}</div>
+              <div class="td hidden-sm">{{ item.fx | percentage }}</div>
+              <div class="td hidden-lg">{{ item.net_assets | percentage }}</div>
             </div>
             <div class="collapse-content collapse-content--general">
               <div class="collapse-content-table">
                 <div class="cell-row visible-md">
                   <div class="cell-thead">FX Forwards</div>
-                  <div class="cell-description">{{ item.fx }}%</div>
+                  <div class="cell-description">{{ item.fx | percentage }}</div>
                 </div>
                 <div class="cell-row visible-lg">
                   <div class="cell-thead">Net Assets</div>
-                  <div class="cell-description">{{ item.net_assets }}%</div>
+                  <div class="cell-description">{{ item.net_assets | percentage }}</div>
                 </div>
               </div>
             </div>
@@ -48,16 +48,7 @@ export default {
   props: {
     items: {
       type: Array,
-      default: () => [
-        {'currency': 'EUR', 'gross_assets': '47,0', 'fx': '8,6', 'net_assets': '55,6', 'active': false, 'total': false},
-        {'currency': 'USD', 'gross_assets': '42,9', 'fx': '42,9', 'net_assets': '42,9', 'active': false, 'total': false},
-        {'currency': 'GBP', 'gross_assets': '4,7', 'fx': '0,0', 'net_assets': '4,7', 'active': false, 'total': false},
-        {'currency': 'NOK', 'gross_assets': '2,7', 'fx': '0,0', 'net_assets': '2,7', 'active': false, 'total': false},
-        {'currency': 'SEK', 'gross_assets': '0,3', 'fx': '0,0', 'net_assets': '0,3', 'active': false, 'total': false},
-        {'currency': 'CAD', 'gross_assets': '0,1', 'fx': '0,0', 'net_assets': '0,1', 'active': false, 'total': false},
-        {'currency': 'HKD', 'gross_assets': '0,0', 'fx': '-12,7', 'net_assets': '-12,7', 'active': false, 'total': false},
-        {'currency': 'Total', 'gross_assets': '99,4', 'fx': '0,6', 'net_assets': '100', 'active': false, 'total': true},
-      ],
+      default: () => [],
     },
   },
   data: function () {

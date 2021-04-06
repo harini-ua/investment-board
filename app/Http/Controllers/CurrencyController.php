@@ -64,6 +64,31 @@ class CurrencyController extends Controller
             $i++;
         }
 
+        $currencyHedging = [];
+        foreach ($currencyExposureData as $key => $currencyExposure) {
+            $currencyHedging[] = [
+                'currency' => $currencyExposure['currency'],
+                'gross_assets' => (($currencyExposure['cash'] + $currencyExposure['investment']) / (
+                    collect($currencyExposureData)->sum('cash') + collect($currencyExposureData)->sum('investment')
+                )) * 100,
+                'fx' => ($currencyExposure['fx'] / (
+                    collect($currencyExposureData)->sum('cash') + collect($currencyExposureData)->sum('investment')
+                )) * 100,
+                'net_assets' => ($currencyExposure['total'] / collect($currencyExposureData)->sum('total')) * 100,
+                'active' => false,
+                'total' => false,
+            ];
+        }
+
+        $currencyHedging[] = [
+            'currency' => 'Total',
+            'gross_assets' => collect($currencyHedging)->sum('gross_assets'),
+            'fx' => collect($currencyHedging)->sum('fx'),
+            'net_assets' => collect($currencyHedging)->sum('net_assets'),
+            'active' => false,
+            'total' => true,
+        ];
+
         $currencyExposureCart = [];
         foreach ($currencyExposureData as $key => $item) {
             $currencyExposureCart[] = [
@@ -86,6 +111,7 @@ class CurrencyController extends Controller
             'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
             'currencyExposureCart' => $currencyExposureCart,
             'currencyExposureData' => $currencyExposureData,
+            'currencyHedging' => $currencyHedging,
             'payload' => [
                 'method' => $this->dataService->getValuationMethod(),
                 'date' => '2020-12-31',

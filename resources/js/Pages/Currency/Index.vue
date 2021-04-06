@@ -37,7 +37,7 @@
       <exposure-chart ref="chart" :data="currencyExposureCart" />
       <exposure-table ref="table" :items="currencyExposureData" />
     </div>
-    <hedging-table />
+    <hedging-table ref="table" :items="currencyHedging" />
   </div>
 </template>
 
@@ -67,6 +67,7 @@ export default {
     filters: Object,
     currencyExposureCart: Array,
     currencyExposureData: Array,
+    currencyHedging: Array,
     payload: Object,
   },
   data() {
