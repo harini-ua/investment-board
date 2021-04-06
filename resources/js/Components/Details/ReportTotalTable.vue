@@ -40,7 +40,7 @@
                 <span class="td-cell">{{ item.quantity | numeral }}</span>
               </div>
               <div class="td hidden-sm" :title="$options.filters.date_format(item.last_purchase)">
-                <span class="td-cell">{{ item.last_purchase | date_format }}</span>
+                <span v-if="item.last_purchase" class="td-cell">{{ item.last_purchase | date_format }}</span><span v-else class="td-cell">-</span>
               </div>
               <div class="td hidden-sm" :title="item.currency">
                 <span class="td-cell">{{ item.currency }}</span>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Last Purchase</div>
-                  <div class="cell-description">{{ item.last_purchase | date_format }}</div>
+                  <div class="cell-description"><span v-if="item.last_purchase">{{ item.last_purchase | date_format }}</span><span v-else>-</span></div>
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">CCY</div>

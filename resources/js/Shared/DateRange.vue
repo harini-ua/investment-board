@@ -55,7 +55,7 @@ export default {
     },
     format: {
       type: String,
-      default: 'DD/MM/YYYY',
+      default: 'MM/DD/YYYY',
     },
     type: {
       type: String,

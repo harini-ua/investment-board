@@ -100,7 +100,7 @@ export default {
    * @returns {string}
    */
   date_format: ( value, format = 'MM/DD/YYYY' ) => {
-    return moment(value).format(format)
+    return value ? moment(value).format(format) : null
   },
 
   /**
