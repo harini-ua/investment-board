@@ -1,11 +1,13 @@
 <template>
   <div class="container">
     <filters-wrapper description="Please pick the date range, asset class, custodians and account if you need a custom consolidated summary.">
-      <date-range
-        :value-from="filtersPage.from"
-        :value-to="filtersPage.to"
-        label-from="Date From"
-        label-to="Date To"
+      <date-input
+        v-model="filtersPage.from"
+        label="Date From"
+      />
+      <date-input
+        v-model="filtersPage.to"
+        label="Date To"
       />
       <select-input
         v-model="filtersPage.currency"
@@ -40,14 +42,14 @@ import FiltersWrapper from '@/Shared/FiltersWrapper'
 import TradesTable from '@/Components/Trades/TradesTable'
 import SelectInput from '@/Shared/SelectInput'
 import moment from 'moment'
-import DateRange from '../../Shared/DateRange'
+import DateInput from '../../Shared/DateInput'
 import {pickBy, throttle} from 'lodash'
 
 export default {
   metaInfo: { title: 'Trades' },
   layout: Layout,
   components: {
-    DateRange,
+    DateInput,
     FiltersWrapper,
     TradesTable,
     SelectInput,

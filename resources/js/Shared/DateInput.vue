@@ -4,6 +4,7 @@
     <date-picker
       :id="id"
       v-model="selected"
+      :disabled-date="disabledDate"
       :value-type="valueType"
       :format="format"
       :type="type"
@@ -17,6 +18,7 @@
 <script>
 
 import DatePicker from 'vue2-datepicker'
+import moment from 'moment'
 
 export default {
   components: {
@@ -62,7 +64,25 @@ export default {
     },
   },
   methods: {
-    //
+    disabledDate(date) {
+      let dates = ['2020-12-31']
+      let length = dates.length
+      let disabled = true
+
+      for(let i = 0; i < length; i++) {
+        let temDate = new Date(
+          moment(dates[i]).year(),
+          moment(dates[i]).month(),
+          moment(dates[i]).date()
+        )
+
+        if (date.getTime() === temDate.getTime()) {
+          disabled = false
+        }
+      }
+
+      return disabled
+    },
   },
 }
 </script>
