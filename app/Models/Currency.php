@@ -34,6 +34,7 @@ class Currency extends Model
         $query = self::query();
 
         $query->select([
+             'period_date', 'valuation_method', 'valuation_currency',
              'currency', 'category', 'value'
         ]);
 

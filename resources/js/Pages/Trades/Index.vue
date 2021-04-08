@@ -4,10 +4,12 @@
       <date-input
         v-model="filtersPage.from"
         label="Date From"
+        :options="payload.from"
       />
       <date-input
         v-model="filtersPage.to"
         label="Date To"
+        :options="payload.to"
       />
       <select-input
         v-model="filtersPage.currency"
@@ -62,8 +64,8 @@ export default {
   data() {
     return {
       filtersPage: {
-        from:        this.filters.from ? this.filters.from : this.payload.from,
-        to:          this.filters.to ? this.filters.to : this.payload.to,
+        from:        this.filters.from ? this.filters.from : this.payload.from[0],
+        to:          this.filters.to ? this.filters.to : this.payload.to[0],
         currency:    this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],

@@ -10,6 +10,7 @@
       <date-input
         v-model="filtersPage.date"
         label="Valuation date"
+        :options="payload.date"
       />
       <select-input
         v-model="filtersPage.currency"
@@ -65,7 +66,7 @@ export default {
     return {
       filtersPage: {
         method:      this.filters.method ? this.filters.method : this.payload.method[0],
-        date:        this.filters.date ? this.filters.date : this.payload.date,
+        date:        this.filters.date ? this.filters.date : this.payload.date[0],
         currency:    this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],

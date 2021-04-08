@@ -48,7 +48,7 @@ export default {
       default: 'date',
     },
     value: [String, Number, Boolean, Object],
-    select: [String, Number, Boolean, Object],
+    options: [Array],
     label: String,
     info: String,
     error: String,
@@ -65,15 +65,14 @@ export default {
   },
   methods: {
     disabledDate(date) {
-      let dates = ['2020-12-31']
-      let length = dates.length
+      let length = this.options.length
       let disabled = true
 
       for(let i = 0; i < length; i++) {
         let temDate = new Date(
-          moment(dates[i]).year(),
-          moment(dates[i]).month(),
-          moment(dates[i]).date()
+          moment(this.options[i]).year(),
+          moment(this.options[i]).month(),
+          moment(this.options[i]).date()
         )
 
         if (date.getTime() === temDate.getTime()) {

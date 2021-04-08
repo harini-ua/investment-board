@@ -36,6 +36,8 @@ class Trades extends Model
     {
         $query = self::query();
         $query->select([
+            'date', 'valuation_currency',
+            'asset_class', 'custodian', 'account',
             'date', 'movement', 'name', 'quantity', 'cost_price', 'net_price', 'amount_base',
             'custodian', 'isin', 'issuer', 'instrument', 'ccy', 'realized_local',
             'realized_base', 'amount_base', 'fx_rate', 'gross_price', 'comission', 'tax'
@@ -69,6 +71,6 @@ class Trades extends Model
             return $item;
         });
 
-        return $result->toArray();
+        return $result;
     }
 }

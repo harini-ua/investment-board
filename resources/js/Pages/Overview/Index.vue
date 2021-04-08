@@ -9,6 +9,7 @@
       />
       <date-input
         v-model="filtersPage.date"
+        :options="payload.date"
         label="Valuation date"
       />
       <select-input
@@ -68,7 +69,7 @@ export default {
     return {
       filtersPage: {
         method:   this.filters.method ? this.filters.method : this.payload.method[0],
-        date:     this.filters.date ? this.filters.date : this.payload.date,
+        date:     this.filters.date ? this.filters.date : this.payload.date[0],
         currency: this.payload.currency[0],
       },
     }

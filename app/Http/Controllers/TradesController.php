@@ -2,55 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Account;
-use App\Models\Custodian;
-use App\Models\Portfolio;
-use App\Models\Trades;
 use App\Models\User;
-use App\Services\DataService;
+use App\Services\TradesDataService;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
 class TradesController extends Controller
 {
-    /** @var DataService $dataService */
+    /** @var TradesDataService $dataService */
     protected $dataService;
 
     /**
      * CurrencyController constructor.
      *
-     * @param DataService $dataService
+     * @param TradesDataService $dataService
      */
-    public function __construct(DataService $dataService)
+    public function __construct(TradesDataService $dataService)
     {
         $this->dataService = $dataService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         /** @var User $user */
         $user = auth()->user();
+        $data = ['from' => '2020-12-31', 'to' => '2020-12-31'];
 
-        $trades = Trades::data(
-            $user->client_code,
-            '2020-12-31',
-            '2020-12-31',
-            $user->base_currency,
-            Request::get('asset_class'),
-            Request::get('custodian'),
-            Request::get('account')
-        );
+        $this->dataService->init($user, $data);
 
         return Inertia::render('Trades/Index', [
             'filters' => Request::all(['from', 'to', 'currency', 'asset_class', 'custodian', 'account']),
-            'trades' => $trades,
+            'trades' => $this->dataService->getTrades(),
             'payload' => [
-                'from' => '2020-12-31',
-                'to' => '2020-12-31',
-                'currency' => $this->dataService->getBaseCurrency(),
-                'asset_class' => Portfolio::assetClass(),
-                'custodian' => Custodian::names(),
-                'account' => Account::toCollection(true)
+                'from' => $this->dataService->getFilter('from'),
+                'to' => $this->dataService->getFilter('to'),
+                'currency' => $this->dataService->getFilter('currency'),
+                'asset_class' => $this->dataService->getFilter('asset_class'),
+                'custodian' => $this->dataService->getFilter('custodian'),
+                'account' => $this->dataService->getFilter('account'),
             ]
         ]);
     }
