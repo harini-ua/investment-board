@@ -20,7 +20,7 @@
                 <span @click.prevent="selected(i)">{{ item.custodian_name }}</span>
               </div>
               <div class="td">
-                <inertia-link v-if="!item.total" :href="urlToDetails(index)" class="value" target="_blank">{{ item.value | numeral }}</inertia-link>
+                <inertia-link v-if="!item.total" :href="urlToDetails(i)" class="value" target="_blank">{{ item.value | numeral }}</inertia-link>
                 <span v-else>{{ item.value | numeral }}</span>
               </div>
             </div>
@@ -63,6 +63,7 @@ export default {
     },
     urlToDetails(index) {
       let query = this.$parent.query
+      console.log('--->',this.items)
       query.custodian = this.items[index]['custodian_name']
 
       return this.route('details', Object.keys(query).length ? query : {})
