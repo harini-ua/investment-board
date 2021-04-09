@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\DetailsDataService;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class DetailsController extends Controller
 {
+    public const FILTER_FIELDS = [
+        'method', 'date', 'currency', 'asset_class', 'custodian', 'account'
+    ];
+
     /** @var DetailsDataService $dataService */
     protected $dataService;
 
@@ -22,16 +26,21 @@ class DetailsController extends Controller
         $this->dataService = $dataService;
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Inertia\Response
+     */
     public function index(Request $request)
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = ['from' => '2020-12-31', 'to' => '2020-12-31'];
+        $data = $request->only(self::FILTER_FIELDS);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Details/Index', [
-            'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
+            'filters' => $request->only(self::FILTER_FIELDS),
             'positionOpen' => $this->dataService->positionOpen(),
             'payload' => [
                 'method' => $this->dataService->getFilter('method'),

@@ -36,13 +36,17 @@ class Position extends Model
     {
         $query = self::query();
         $query->select(
-            'period_date', 'valuation_method', 'valuation_currency',
-            'account',
+            // Filter fields
+            'valuation_method', 'period_date', 'valuation_currency',
+            'kfp_asset_class', 'custodian', 'account',
+            // Data fields
             'instrument_name', 'quantity', 'currency', 'last_purchase', 'currency',
             'cost_price', 'valuation_price', 'cost_local', 'valuation_local', 'valuation_base',
             'mtd_pl', 'ytd_pl', 'mtd_return', 'ytd_return', 'sp_return', 'interest', 'dividend',
             'commission', 'tax'
         );
+
+        $query->selectRaw('interest + dividend + commission as total');
 
         $query->where('client_code', $clientCode);
 

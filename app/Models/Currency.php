@@ -34,8 +34,11 @@ class Currency extends Model
         $query = self::query();
 
         $query->select([
-             'period_date', 'valuation_method', 'valuation_currency',
-             'currency', 'category', 'value'
+            // Filter fields
+            'valuation_method', 'period_date', 'valuation_currency',
+            'custodian', 'account',
+            // Data fields
+            'currency', 'category', 'value'
         ]);
 
         $query->where('client_code', $clientCode);

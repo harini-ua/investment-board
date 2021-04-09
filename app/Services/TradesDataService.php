@@ -26,9 +26,9 @@ class TradesDataService extends DataServiceAbstract
     {
         $this->user = $user;
         $this->clientCode = $user->client_code;
-        $this->baseCurrency = $user->base_currency;
         $this->dateFrom = $data['from'] ?? null;
         $this->dateTo = $data['to'] ?? null;
+        $this->baseCurrency = $user->base_currency;
         $this->assetClass = $data['asset_class'] ?? null;
         $this->custodian = $data['custodian'] ?? null;
         $this->account = $data['account'] ?? null;

@@ -19,9 +19,9 @@ class OverviewDataService extends DataServiceAbstract
     {
         $this->user = $user;
         $this->clientCode = $user->client_code;
-        $this->baseCurrency = $user->base_currency;
         $this->valuationMethod = $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
+        $this->baseCurrency = $user->base_currency;
     }
 
     public function getPortfolioAllocation()

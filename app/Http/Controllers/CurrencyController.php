@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Account;
-use App\Models\Currency;
-use App\Models\Custodian;
-use App\Models\Portfolio;
 use App\Models\User;
 use App\Services\CurrencyDataService;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class CurrencyController extends Controller
 {
+    public const FILTER_FIELDS = [
+        'method', 'date', 'currency', 'custodian', 'account'
+    ];
+
     /** @var CurrencyDataService $dataService */
     protected $dataService;
 
@@ -26,16 +26,21 @@ class CurrencyController extends Controller
         $this->dataService = $dataService;
     }
 
-    public function index()
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Inertia\Response
+     */
+    public function index(Request $request)
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = ['from' => '2020-12-31', 'to' => '2020-12-31'];
+        $data = $request->only(self::FILTER_FIELDS);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Currency/Index', [
-            'filters' => Request::all(['method', 'date', 'currency', 'asset_class', 'custodian', 'account']),
+            'filters' => $request->only(self::FILTER_FIELDS),
             'currencyExposureData' => $this->dataService->exposureData(),
             'currencyExposureCart' => $this->dataService->exposureCart(),
             'currencyHedging' => $this->dataService->hedging(),
@@ -43,7 +48,6 @@ class CurrencyController extends Controller
                 'method' => $this->dataService->getFilter('method'),
                 'date' => $this->dataService->getFilter('date'),
                 'currency' => $this->dataService->getFilter('currency'),
-                'asset_class' => $this->dataService->getFilter('asset_class'),
                 'custodian' => $this->dataService->getFilter('custodian'),
                 'account' => $this->dataService->getFilter('account'),
             ]

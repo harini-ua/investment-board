@@ -57,7 +57,7 @@ export default {
     SelectInput,
   },
   props: {
-    filters: Object,
+    filters: Array,
     trades: Array,
     payload: Object,
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <filters-wrapper description="Please pick the valuation method, valuation date, asset class, custodians and account if you need a custom consolidated summary.">
+    <filters-wrapper description="Please pick the valuation method, valuation date, custodians and account if you need a custom consolidated summary.">
       <select-input
         v-model="filtersPage.method"
         :options="payload.method"
@@ -17,11 +17,6 @@
         :disabled="true"
         :options="payload.currency"
         label="Base currency"
-      />
-      <select-input
-        v-model="filtersPage.asset_class"
-        :options="payload.asset_class"
-        label="Asset Class"
       />
       <select-input
         v-model="filtersPage.custodian"
@@ -65,7 +60,7 @@ export default {
     DateInput,
   },
   props: {
-    filters: Object,
+    filters: Array,
     currencyExposureCart: Array,
     currencyExposureData: Array,
     currencyHedging: Array,
@@ -77,7 +72,6 @@ export default {
         method:      this.filters.method ? this.filters.method : this.payload.method[0],
         date:        this.filters.date ? this.filters.date : this.payload.date[0],
         currency:    this.payload.currency[0],
-        asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
       },

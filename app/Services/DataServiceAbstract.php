@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 abstract class DataServiceAbstract
 {
-    /** @var Collection */
+    /** @var Collection  */
     protected $collection;
 
     /** @var User  */
@@ -45,11 +45,13 @@ abstract class DataServiceAbstract
     /**
      * Get valuation method
      *
+     * @param string $column
+     *
      * @return array
      */
-    public function getValuationMethod()
+    public function getValuationMethod(string $column = 'valuation_method')
     {
-        $methods = array_unique($this->collection->pluck('valuation_method')->toArray());
+        $methods = array_unique($this->collection->sortBy($column)->pluck($column)->toArray());
 
         $results = DB::table('par_valuation_method')
             ->whereIn('value', $methods)
@@ -70,50 +72,70 @@ abstract class DataServiceAbstract
     /**
      * Get valuation date
      *
+     * @param string $column
+     *
      * @return array
      */
-    public function getValuationDateFrom()
+    public function getValuationDateFrom(string $column = 'date')
     {
-        return $this->collection
-            ->pluck('date')
+        $from = $this->collection
+            ->sortByDesc($column)
+            ->pluck($column)
             ->unique()
-            ->toArray();
+            ->toArray()
+        ;
+
+        return array_values($from);
     }
 
     /**
      * Get valuation date
      *
+     * @param string $column
+     *
      * @return array
      */
-    public function getValuationDateTo()
+    public function getValuationDateTo(string $column = 'date')
     {
-        return $this->collection
-            ->pluck('date')
+        $to = $this->collection
+            ->sortByDesc($column)
+            ->pluck($column)
             ->unique()
-            ->toArray();
+            ->toArray()
+        ;
+
+        return array_values($to);
     }
 
     /**
      * Get valuation date
      *
+     * @param string $column
+     *
      * @return array
      */
-    public function getValuationDate()
+    public function getValuationDate(string $column = 'period_date')
     {
-        return $this->collection
-            ->pluck('period_date')
+        $date = $this->collection
+            ->sortByDesc($column)
+            ->pluck($column)
             ->unique()
-            ->toArray();
+            ->toArray()
+        ;
+
+        return array_values($date);
     }
 
     /**
      * Get base currency
      *
+     * @param string $column
+     *
      * @return array
      */
-    public function getValuationCurrency()
+    public function getValuationCurrency(string $column = 'base_currency')
     {
-        $results = $this->user->pluck('base_currency');
+        $results = $this->user->pluck($column);
 
         $results = $results->map(function ($value) {
             return [
@@ -125,13 +147,16 @@ abstract class DataServiceAbstract
         return $results->toArray();
     }
 
-    public function getValuationAssetClass()
+    /**
+     * Get asset class
+     *
+     * @param string $column
+     *
+     * @return array
+     */
+    public function getValuationAssetClass(string $column = 'asset_class')
     {
-        $results = $this->collection
-            ->sortBy('asset_class')
-            ->unique('asset_class')
-            ->pluck('asset_class')
-        ;
+        $results = $this->collection->sortBy($column)->unique($column)->pluck($column);
 
         $results = $results->map(function ($value) {
             return [
@@ -146,13 +171,16 @@ abstract class DataServiceAbstract
         return $results;
     }
 
-    public function getValuationcCustodian()
+    /**
+     * Get custodian
+     *
+     * @param string $column
+     *
+     * @return array
+     */
+    public function getValuationcCustodian(string $column = 'custodian')
     {
-        $results = $this->collection
-            ->sortBy('custodian')
-            ->unique('custodian')
-            ->pluck('custodian')
-        ;
+        $results = $this->collection->sortBy($column)->unique($column)->pluck($column);
 
         $results = $results->map(function ($value) {
             return [
@@ -167,14 +195,16 @@ abstract class DataServiceAbstract
         return $results;
     }
 
-    public function getValuationAccount()
+    /**
+     * Get account
+     *
+     * @param string $column
+     *
+     * @return array
+     */
+    public function getValuationAccount(string $column = 'account')
     {
-        $results = $this->collection
-            ->sortBy('account')
-            ->unique('account')
-            ->pluck('account')
-        ;
-
+        $results = $this->collection->sortBy($column)->unique($column)->pluck($column);
         $results = array_unique($results->toArray());
 
         $results = collect($results)->map(function ($value) {

@@ -58,7 +58,7 @@ export default {
     DateInput,
   },
   props: {
-    filters: Object,
+    filters: Array,
     positionOpen: Array,
     payload: Object,
   },

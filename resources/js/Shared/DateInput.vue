@@ -48,7 +48,7 @@ export default {
       default: 'date',
     },
     value: [String, Number, Boolean, Object],
-    options: [Array],
+    options: Array,
     label: String,
     info: String,
     error: String,

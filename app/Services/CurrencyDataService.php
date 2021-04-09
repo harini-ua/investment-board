@@ -30,10 +30,9 @@ class CurrencyDataService extends DataServiceAbstract
     {
         $this->user = $user;
         $this->clientCode = $user->client_code;
-        $this->baseCurrency = $user->base_currency;
         $this->valuationMethod= $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
-        $this->assetClass = $data['asset_class'] ?? null;
+        $this->baseCurrency = $user->base_currency;
         $this->custodian = $data['custodian'] ?? null;
         $this->account = $data['account'] ?? null;
     }
@@ -141,7 +140,6 @@ class CurrencyDataService extends DataServiceAbstract
         $this->filters['method'] = $this->getValuationMethod();
         $this->filters['date'] = $this->getValuationDate();
         $this->filters['currency'] = $this->getValuationCurrency();
-        $this->filters['asset_class'] = $this->getValuationAssetClass();
         $this->filters['custodian'] = $this->getValuationcCustodian();
         $this->filters['account'] = $this->getValuationAccount();
     }

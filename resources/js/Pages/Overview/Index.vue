@@ -57,7 +57,7 @@ export default {
     DateInput,
   },
   props: {
-    filters: Object,
+    filters: Array,
     portfolioAsset: Array,
     portfolioAllocation: Object,
     totalWealth: Array,

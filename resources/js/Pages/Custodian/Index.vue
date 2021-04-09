@@ -47,7 +47,7 @@ export default {
     DateInput,
   },
   props: {
-    filters: Object,
+    filters: Array,
     custodians: Array,
     payload: Object,
   },

@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\OverviewDataService;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class OverviewController extends Controller
 {
+    public const FILTER_FIELDS = [
+        'method', 'date', 'currency'
+    ];
+
     /** @var OverviewDataService $dataService */
     protected $dataService;
 
@@ -22,16 +26,21 @@ class OverviewController extends Controller
         $this->dataService = $dataService;
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \Inertia\Response
+     */
     public function index(Request $request)
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = ['method' => 'VALUE', 'date' => '2020-12-31'];
+        $data = $request->only(self::FILTER_FIELDS);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Overview/Index', [
-            'filters' => Request::all(['method', 'date', 'currency']),
+            'filters' => $request->only(self::FILTER_FIELDS),
             'portfolioAsset' =>  $this->dataService->getPortfolioAsset(),
             'portfolioAllocation' => $this->dataService->getPortfolioAllocation(),
             'totalWealth' => $this->dataService->getTotalWealth(),

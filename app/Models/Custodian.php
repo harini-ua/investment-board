@@ -34,7 +34,9 @@ class Custodian extends Model
         $query = self::query();
 
         $query->select([
+            // Filter fields
             'period_date', 'valuation_method', 'valuation_currency',
+            // Data fields
             'custodian_name', 'kfp_asset_class', 'value'
         ]);
 

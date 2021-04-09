@@ -34,7 +34,9 @@ class Portfolio extends Model
         $query = self::query();
 
         $query->select([
+           // Filter fields
            'period_date', 'valuation_method', 'valuation_currency',
+           // Data fields
            'kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
            'ytd_percentage', 'mtd_benchmark', 'ytd_benchmark'
         ]);

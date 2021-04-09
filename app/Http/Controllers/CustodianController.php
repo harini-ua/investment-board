@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Custodian;
 use App\Models\User;
 use App\Services\CustodianDataService;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class CustodianController extends Controller
 {
+    public const FILTER_FIELDS = [
+        'method', 'date', 'currency'
+    ];
+
     /** @var CustodianDataService $dataService */
     protected $dataService;
 
@@ -23,16 +26,21 @@ class CustodianController extends Controller
         $this->dataService = $dataService;
     }
 
-    public function index()
+    /**
+     * @param Request $request
+     *
+     * @return \Inertia\Response
+     */
+    public function index(Request $request)
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = ['method' => 'VALUE', 'date' => '2020-12-31'];
+        $data = $request->only(self::FILTER_FIELDS);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Custodian/Index', [
-            'filters' => Request::all(['method', 'date', 'currency']),
+            'filters' => $request->only(self::FILTER_FIELDS),
             'custodians' => $this->dataService->custodians(),
             'payload' => [
                 'method' => $this->dataService->getFilter('method'),
