@@ -34,7 +34,7 @@
             <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.kfp_asset_class }}</div>
               <div class="td">
-                <inertia-link v-if="!item.total" :href="route('details')" class="value" target="_blank">{{ item.mtd_value | numeral }}</inertia-link>
+                <inertia-link v-if="!item.total" :href="urlToDetails(index)" class="value" target="_blank">{{ item.mtd_value | numeral }}</inertia-link>
                 <span v-else>{{ item.mtd_value | numeral }}</span>
               </div>
               <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>
@@ -107,6 +107,12 @@ export default {
       if (window.innerWidth < 1024) {
         this.items[index]['active'] = !this.items[index]['active']
       }
+    },
+    urlToDetails(index) {
+      let query = this.$parent.query
+      query.asset_class = this.items[index]['kfp_asset_class']
+
+      return this.route('details', Object.keys(query).length ? query : {})
     },
   },
 }

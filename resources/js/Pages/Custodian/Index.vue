@@ -61,13 +61,15 @@ export default {
       index: 0,
     }
   },
+  computed: {
+    query: function () {
+      return this.getQuery()
+    },
+  },
   watch: {
     filtersPage: {
       handler: throttle(function() {
-        let query = pickBy(this.filtersPage)
-        if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
-        if (query.method) query.method = query.method.code
-        delete query.currency
+        let query = this.getQuery()
 
         this.$inertia.replace(
           this.route(
@@ -88,6 +90,16 @@ export default {
         this.index = val
       }
     )
+  },
+  methods: {
+    getQuery() {
+      let query = pickBy(this.filtersPage)
+      if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
+      if (query.method) query.method = query.method.code
+      delete query.currency
+
+      return query
+    },
   },
 }
 </script>
