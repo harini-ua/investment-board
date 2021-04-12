@@ -60,7 +60,7 @@ class Position extends Model
             $query->where('valuation_currency', $currency);
         }
         if ($assetClass) {
-            $query->where('asset_class', $assetClass);
+            $query->where('kfp_asset_class', $assetClass);
         }
         if ($custodian) {
             $query->where('custodian', $custodian);

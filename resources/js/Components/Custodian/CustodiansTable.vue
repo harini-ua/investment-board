@@ -63,7 +63,6 @@ export default {
     },
     urlToDetails(index) {
       let query = this.$parent.query
-      console.log('--->',this.items)
       query.custodian = this.items[index]['custodian_name']
 
       return this.route('details', Object.keys(query).length ? query : {})
