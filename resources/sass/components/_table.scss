@@ -354,6 +354,16 @@
         display: none;
         padding: 10px 30px;
         border: 1px solid #ebf2fa;
+
+        .collapse-content-table .row {
+          grid-template-columns: 76px 95px 95px;
+
+          .cell {
+            &:not(:first-child) {
+              text-align: right;
+            }
+          }
+        }
       }
     }
 
