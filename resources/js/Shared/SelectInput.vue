@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      selected: this.value,
+      selected: this.getSelectedItem(),
     }
   },
   watch: {
@@ -62,6 +62,14 @@ export default {
     },
     select() {
       this.$refs.input.select()
+    },
+    getSelectedItem() {
+      for (let i = 0; i < this.options.length; i++) {
+        if (this.options[i]['code'] === this.value) {
+          return this.options[i]
+        }
+      }
+      return this.options[0] // set first default
     },
   },
 }
