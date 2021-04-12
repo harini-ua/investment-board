@@ -260,6 +260,16 @@
         padding: 10px 30px;
         border: 1px solid #ebf2fa;
       }
+
+      .collapse-content-table .row {
+        grid-template-columns: 76px 95px 95px;
+
+        .cell {
+          &:not(:first-child) {
+            text-align: right;
+          }
+        }
+      }
     }
 
     @include media('<tablet') {
@@ -482,8 +492,14 @@
 
         @include media('>=tablet') {
           font-size: 12px;
-          -ms-grid-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
-          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+          -ms-grid-columns: minmax(280px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
+          grid-template-columns: minmax(280px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=desktop') {
+          font-size: 12px;
+          -ms-grid-columns: minmax(393px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
+          grid-template-columns: minmax(393px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
         }
 
         @include media('>=1140px') {
@@ -507,8 +523,14 @@
         cursor: pointer;
 
         @include media('>=tablet') {
-          -ms-grid-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
-          grid-template-columns: minmax(154px, 1fr) 1fr 1fr 1fr 1fr 1fr 1fr 1fr 40px;
+          -ms-grid-columns: minmax(280px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
+          grid-template-columns: minmax(280px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=desktop') {
+          font-size: 12px;
+          -ms-grid-columns: minmax(393px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
+          grid-template-columns: minmax(393px, 1fr) 1fr 1fr 1fr 1fr 1fr 40px;
         }
 
         @include media('>=1140px') {
@@ -557,8 +579,11 @@
 
           &:nth-child(2) {
             .td-cell {
-              max-width: 63px;
               width: 100%;
+
+              @include media('>=1140px') {
+                max-width: 63px;
+              }
             }
           }
 
@@ -679,6 +704,12 @@
           grid-template-columns: minmax(100px, 100px) 1fr minmax(146px, 1fr) 1fr 1fr 1fr 1fr 40px;
         }
 
+        @include media('>=desktop') {
+          font-size: 12px;
+          -ms-grid-columns: minmax(100px, 100px) 1fr minmax(368px, 1fr) 1fr 1fr 1fr 1fr 40px;
+          grid-template-columns: minmax(100px, 100px) 1fr minmax(368px, 1fr) 1fr 1fr 1fr 1fr 40px;
+        }
+
         @include media('>=1140px') {
           -ms-grid-columns: minmax(100px, 100px) 1fr minmax(320px, 1fr) 1fr 1fr 1fr 1fr 40px;
           grid-template-columns: minmax(100px, 100px) 1fr minmax(320px, 1fr) 1fr 1fr 1fr 1fr 40px;
@@ -712,6 +743,12 @@
         @include media('>=tablet') {
           -ms-grid-columns: minmax(100px, 100px) 1fr minmax(146px, 1fr) 1fr 1fr 1fr 1fr 40px;
           grid-template-columns: minmax(100px, 100px) 1fr minmax(146px, 1fr) 1fr 1fr 1fr 1fr 40px;
+        }
+
+        @include media('>=desktop') {
+          font-size: 12px;
+          -ms-grid-columns: minmax(100px, 100px) 1fr minmax(368px, 1fr) 1fr 1fr 1fr 1fr 40px;
+          grid-template-columns: minmax(100px, 100px) 1fr minmax(368px, 1fr) 1fr 1fr 1fr 1fr 40px;
         }
 
         @include media('>=1140px') {

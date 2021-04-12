@@ -1,10 +1,12 @@
 <template>
   <div class="filter-wrapper">
-    <label v-if="label" class="select-form-label" :for="id">{{ label }}</label>
-    <div v-if="info" class="tooltip">
-      <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>
-      <div class="tooltip__content">{{ info }}</div>
-    </div>
+    <label v-if="label" class="select-form-label" :for="id">
+      {{ label }}
+      <div v-if="info" class="tooltip">
+        <svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg>
+        <div class="tooltip__content tooltip__filter">{{ info }}</div>
+      </div>
+    </label>
     <v-select
       :id="id"
       v-model="selected"

@@ -15,8 +15,8 @@
             <div class="td hidden-sm">CCY</div>
             <div class="td hidden-sm">Cost Price</div>
             <div class="td hidden-sm">Valuation Price</div>
-            <div class="td hidden-sm">Cost Local</div>
-            <div class="td hidden-sm">Value Local</div>
+            <div class="td hidden-xl">Cost Local</div>
+            <div class="td hidden-xl">Value Local</div>
             <div class="td hidden-xl">Value Base</div>
             <div class="td hidden-xl">P&L MTD</div>
             <div class="td hidden-xl">P&L YTD</div>
@@ -51,10 +51,10 @@
               <div class="td hidden-sm" :title="$options.filters.numeral(item.valuation_price)">
                 <span class="td-cell">{{ item.valuation_price | numeral }}</span>
               </div>
-              <div class="td hidden-sm" :title="$options.filters.numeral(item.cost_local)">
+              <div class="td hidden-xl" :title="$options.filters.numeral(item.cost_local)">
                 <span class="td-cell">{{ item.cost_local | numeral }}</span>
               </div>
-              <div class="td hidden-sm" :title="$options.filters.numeral(item.valuation_local)">
+              <div class="td hidden-xl" :title="$options.filters.numeral(item.valuation_local)">
                 <span class="td-cell">{{ item.valuation_local | numeral }}</span>
               </div>
               <div class="td hidden-xl" :title="$options.filters.numeral(item.valuation_base)">

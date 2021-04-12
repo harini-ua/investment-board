@@ -33,6 +33,28 @@
     }
   }
 
+  &__filter {
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include media('<tablet') {
+      width: 200px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -11px;
+      left: 50%;
+      transform: translate(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 11px 7.5px 0 7.5px;
+      border-color: rgba(62, 71, 86, 0.95) transparent transparent transparent;
+    }
+  }
+
   &:hover {
     .tooltip__content {
       opacity: 1;

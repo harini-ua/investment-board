@@ -36,10 +36,10 @@
     }
 
     .tooltip {
-      margin: 0 0 0 -12px;
+      margin: 0 0 0 5px;
 
       @include media('>=576px') {
-        margin: 0 0 0 6px;
+        margin: 3px 0 0 6px;
       }
     }
   }

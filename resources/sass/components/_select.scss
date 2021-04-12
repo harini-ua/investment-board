@@ -8,20 +8,18 @@
   margin: 0 0 20px;
   width: 100%;
 
-  @include media('>=375px') {
-    max-width: 90%;
-  }
-
-  @include media('>=414px') {
-    max-width: 80%;
-  }
-
   @include media('>=tablet') {
     max-width: 50%;
   }
 
   @include media('>=desktop') {
     max-width: 340px;
+  }
+
+  @include media('<tablet') {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
   }
 }
 

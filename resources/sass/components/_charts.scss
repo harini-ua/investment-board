@@ -18,3 +18,13 @@
         }
     }
 }
+
+.block-chart-wrapper--custodians-chart {
+  .apexcharts-legend {
+    margin: -21px 0 0 0 !important;
+
+    @include media('<desktop') {
+      margin: 0 !important;
+    }
+  }
+}
