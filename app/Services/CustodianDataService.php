@@ -20,6 +20,8 @@ class CustodianDataService extends DataServiceAbstract
         $this->valuationMethod = $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
         $this->baseCurrency = $user->base_currency;
+
+        $this->setFilters();
     }
 
     public function custodians()
@@ -30,10 +32,6 @@ class CustodianDataService extends DataServiceAbstract
             $this->valuationDate,
             $this->user->base_currency
         );
-
-        $this->collection = $results;
-
-        $this->setFilter();
 
         $results = collect($results)->groupBy('custodian_name');
 
@@ -67,10 +65,48 @@ class CustodianDataService extends DataServiceAbstract
         return $custodians;
     }
 
-    protected function setFilter()
+    protected function setFilters()
     {
-        $this->filters['method'] = $this->getValuationMethod();
-        $this->filters['date'] = $this->getValuationDate();
+        $this->setValuationMethod();
+        $this->setValuationDate();
+    }
+
+    protected function setValuationMethod()
+    {
+        $results = Custodian::data(
+            $this->user->client_code,
+            null,
+            null,
+            $this->user->base_currency
+        );
+
+        $this->collection = $results;
+
+        $methods = $this->getValuationMethod();
+        $this->filters['method'] = $methods;
+        if (!$this->valuationMethod) {
+            $this->valuationMethod = $methods[0]['code'];
+        }
+    }
+
+    protected function setValuationDate()
+    {
+        $results = Custodian::data(
+            $this->user->client_code,
+            $this->valuationMethod,
+            null,
+            $this->user->base_currency
+        );
+
+        $this->collection = $results;
+
+        $dates = $this->getValuationDate();
+
+        $this->filters['date'] = $dates;
+        if (!$this->valuationDate) {
+            $this->valuationDate =  $dates[0];
+        }
+
         $this->filters['currency'] = $this->getValuationCurrency();
     }
 

@@ -57,7 +57,7 @@ export default {
     SelectInput,
   },
   props: {
-    filters: Array,
+    filters: [Array, Object],
     trades: Array,
     payload: Object,
   },
@@ -80,9 +80,9 @@ export default {
         if (query.from) query.from = moment(String(query.from)).format('YYYY-MM-DD')
         if (query.to) query.to = moment(String(query.to)).format('YYYY-MM-DD')
         delete query.currency
-        if (query.asset_class) query.asset_class = query.asset_class.code
-        if (query.custodian) query.custodian = query.custodian.code
-        if (query.account) query.account = query.account.code
+        if (query.asset_class) query.asset_class = (query.asset_class.code !== undefined) ? query.asset_class.code : query.asset_class
+        if (query.custodian) query.custodian = (query.custodian.code !== undefined) ? query.custodian.code : query.custodian
+        if (query.account) query.account = (query.account.code !== undefined) ? query.account.code : query.account
 
         this.$inertia.replace(
           this.route(

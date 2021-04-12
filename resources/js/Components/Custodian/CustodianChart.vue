@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="tbody">
-            <div v-for="(custodian, asset_name) in this.data"
+            <div v-for="(custodian, asset_name) in data"
                  :key="custodian.value"
                  class="tr-holder"
             >

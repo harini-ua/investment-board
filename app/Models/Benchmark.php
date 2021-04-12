@@ -26,7 +26,7 @@ class Benchmark extends Model
      *
      * @return mixed
      */
-    public static function data($date)
+    public static function data(?string $date)
     {
         $query = self::query();
         $query->select(['benchmark_date', 'indice', 'mtd_percentage', 'ytd_percentage']);

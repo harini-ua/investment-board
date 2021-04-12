@@ -58,7 +58,7 @@ export default {
     DateInput,
   },
   props: {
-    filters: Array,
+    filters: [Array, Object],
     positionOpen: Array,
     payload: Object,
   },
@@ -78,12 +78,12 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
+        if (query.method) query.method = (query.method.code !== undefined) ? query.method.code : query.method
         if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
-        if (query.method) query.method = query.method.code
         delete query.currency
-        if (query.asset_class) query.asset_class = query.asset_class.code
-        if (query.custodian) query.custodian = query.custodian.code
-        if (query.account) query.account = query.account.code
+        if (query.asset_class) query.asset_class = (query.asset_class.code !== undefined) ? query.asset_class.code : query.asset_class
+        if (query.custodian) query.custodian = (query.custodian.code !== undefined) ? query.custodian.code : query.custodian
+        if (query.account) query.account = (query.account.code !== undefined) ? query.account.code : query.account
 
         this.$inertia.replace(
           this.route(

@@ -57,11 +57,11 @@ export default {
     DateInput,
   },
   props: {
-    filters: Array,
+    filters: [Array, Object],
     portfolioAsset: Array,
-    portfolioAllocation: Object,
+    portfolioAllocation: [Array, Object],
     totalWealth: Array,
-    totalWealthAllocation: Object,
+    totalWealthAllocation: [Array, Object],
     benchmarks: Array,
     payload: Object,
   },
@@ -97,8 +97,8 @@ export default {
   methods: {
     getQuery() {
       let query = pickBy(this.filtersPage)
+      if (query.method) query.method = (query.method.code !== undefined) ? query.method.code : query.method
       if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
-      if (query.method) query.method = query.method.code
       delete query.currency
 
       return query

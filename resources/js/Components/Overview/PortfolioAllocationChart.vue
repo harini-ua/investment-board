@@ -19,7 +19,7 @@
 
 export default {
   props: {
-    data: Object,
+    data: [Array, Object],
   },
   data: function() {
     return {
@@ -145,9 +145,7 @@ export default {
       this.options = {
         labels: [...Object.keys(this.data)],
       }
-      this.series = {
-        data: [...Object.values(this.data)],
-      }
+      this.series = [...Object.values(this.data)]
     },
   },
   methods : {
