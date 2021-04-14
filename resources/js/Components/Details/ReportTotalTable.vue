@@ -98,11 +98,11 @@
                   <div class="cell-thead">Valuation Price</div>
                   <div class="cell-description">{{ item.valuation_price | numeral }}</div>
                 </div>
-                <div class="cell-row visible-md">
+                <div class="cell-row visible-xl">
                   <div class="cell-thead">Cost Local</div>
                   <div class="cell-description">{{ item.cost_local | numeral }}</div>
                 </div>
-                <div class="cell-row visible-md">
+                <div class="cell-row visible-xl">
                   <div class="cell-thead">Value Local</div>
                   <div class="cell-description">{{ item.valuation_local | numeral }}</div>
                 </div>
