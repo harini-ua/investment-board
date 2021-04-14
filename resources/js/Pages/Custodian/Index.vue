@@ -2,21 +2,27 @@
   <div class="container">
     <filters-wrapper description="Please pick the valuation method, valuation date if you need a custom consolidated summary.">
       <select-input
+        id="method"
         v-model="filtersPage.method"
         :options="payload.method"
         label="Valuation Method"
         info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
+        @change="changeHandler"
       />
       <date-input
+        id="date"
         v-model="filtersPage.date"
         label="Valuation date"
         :options="payload.date"
+        @change="changeHandler"
       />
       <select-input
+        id="currency"
         v-model="filtersPage.currency"
         :disabled="true"
         :options="payload.currency"
         label="Base currency"
+        @change="changeHandler"
       />
     </filters-wrapper>
     <div class="row-chart">
@@ -57,6 +63,7 @@ export default {
         method:   this.filters.method ? this.filters.method : this.payload.method[0],
         date:     this.filters.date ? this.filters.date : this.payload.date[0],
         currency: this.payload.currency[0],
+        chosen:   this.filters.chosen ? this.filters.chosen : 'method',
       },
       index: 0,
     }
@@ -92,6 +99,9 @@ export default {
     )
   },
   methods: {
+    changeHandler(id) {
+      this.filtersPage.chosen = id
+    },
     getQuery() {
       let query = pickBy(this.filtersPage)
       if (query.method) query.method = (query.method.code !== undefined) ? query.method.code : query.method

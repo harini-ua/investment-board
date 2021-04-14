@@ -2,8 +2,8 @@
   <div class="filter-wrapper filter-wrapper--datapicker">
     <label v-if="label" class="form-label" :for="id">{{ label }}</label>
     <date-picker
-      :id="id"
       v-model="selected"
+      :input-attr="attrs"
       :disabled-date="disabledDate"
       :value-type="valueType"
       :format="format"
@@ -25,12 +25,7 @@ export default {
     DatePicker,
   },
   props: {
-    id: {
-      type: String,
-      default() {
-        return `date-input-${this._uid}`
-      },
-    },
+    id: String,
     disabled: {
       type: Boolean,
       default: false,
@@ -58,9 +53,18 @@ export default {
       selected: this.value,
     }
   },
+  computed: {
+    attrs: function () {
+      return {
+        id: this.id,
+        name: this.id,
+      }
+    },
+  },
   watch: {
     selected(val) {
       this.$emit('input', val)
+      this.$emit('change', this.id)
     },
   },
   methods: {

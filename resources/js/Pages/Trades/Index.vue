@@ -2,35 +2,47 @@
   <div class="container">
     <filters-wrapper description="Please pick the date range, asset class, custodians and account if you need a custom consolidated summary.">
       <date-input
+        id="from"
         v-model="filtersPage.from"
         label="Date From"
         :options="payload.from"
+        @change="changeHandler"
       />
       <date-input
+        id="to"
         v-model="filtersPage.to"
         label="Date To"
         :options="payload.to"
+        @change="changeHandler"
       />
       <select-input
+        id="currency"
         v-model="filtersPage.currency"
         :disabled="true"
         :options="payload.currency"
         label="Base currency"
+        @change="changeHandler"
       />
       <select-input
+        id="asset_class"
         v-model="filtersPage.asset_class"
         :options="payload.asset_class"
         label="Asset Class"
+        @change="changeHandler"
       />
       <select-input
+        id="custodian"
         v-model="filtersPage.custodian"
         :options="payload.custodian"
         label="Custodian"
+        @change="changeHandler"
       />
       <select-input
+        id="account"
         v-model="filtersPage.account"
         :options="payload.account"
         label="Account"
+        @change="changeHandler"
       />
     </filters-wrapper>
     <trades-table :items="trades" />
@@ -70,6 +82,7 @@ export default {
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
+        chosen:      this.filters.chosen ? this.filters.chosen : 'from',
       },
     }
   },
@@ -92,6 +105,11 @@ export default {
         )
       }, 150),
       deep: true,
+    },
+  },
+  methods: {
+    changeHandler(id) {
+      this.filtersPage.chosen = id
     },
   },
 }

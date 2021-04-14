@@ -8,10 +8,10 @@
       </div>
     </label>
     <v-select
-      :id="id"
       v-model="selected"
+      :input-id="id"
       :disabled="disabled"
-      :no-drop="noDrap"
+      :no-drop="false"
       :searchable="false"
       :options="options"
       class="form-select"
@@ -26,17 +26,8 @@
 export default {
   inheritAttrs: false,
   props: {
-    id: {
-      type: String,
-      default() {
-        return `select-input-${this._uid}`
-      },
-    },
+    id: String,
     disabled: {
-      type: Boolean,
-      default: false,
-    },
-    noDrap: {
       type: Boolean,
       default: false,
     },
@@ -54,6 +45,7 @@ export default {
   watch: {
     selected(val) {
       this.$emit('input', val)
+      this.$emit('change', this.id)
     },
   },
   methods: {

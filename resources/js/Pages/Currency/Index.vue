@@ -2,31 +2,41 @@
   <div class="container">
     <filters-wrapper description="Please pick the valuation method, valuation date, custodians and account if you need a custom consolidated summary.">
       <select-input
+        id="method"
         v-model="filtersPage.method"
         :options="payload.method"
         label="Valuation Method"
         info="Valuation method can be changed to see impact of derivatives. Market value is the standard accounting value of the securities. Exposure changes only for derivatives; delta is used for options, and notional value for futures."
+        @change="changeHandler"
       />
       <date-input
+        id="date"
         v-model="filtersPage.date"
         label="Valuation date"
         :options="payload.date"
+        @change="changeHandler"
       />
       <select-input
+        id="currency"
         v-model="filtersPage.currency"
         :disabled="true"
         :options="payload.currency"
         label="Base currency"
+        @change="changeHandler"
       />
       <select-input
+        id="custodian"
         v-model="filtersPage.custodian"
         :options="payload.custodian"
         label="Custodian"
+        @change="changeHandler"
       />
       <select-input
+        id="account"
         v-model="filtersPage.account"
         :options="payload.account"
         label="Account"
+        @change="changeHandler"
       />
     </filters-wrapper>
     <div class="row-chart">
@@ -74,6 +84,7 @@ export default {
         currency:    this.payload.currency[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
+        chosen:      this.filters.chosen ? this.filters.chosen : 'method',
       },
     }
   },
@@ -95,6 +106,11 @@ export default {
         )
       }, 150),
       deep: true,
+    },
+  },
+  methods: {
+    changeHandler(id) {
+      this.filtersPage.chosen = id
     },
   },
 }
