@@ -29,10 +29,11 @@ class Trades extends Model
      * @param string|null $assetClass
      * @param string|null $custodian
      * @param string|null $account
+     * @param boolean|null $general
      *
      * @return mixed
      */
-    public static function data($clientCode, $from, $to, $currency, $assetClass, $custodian, $account)
+    public static function data($clientCode, $from, $to, $currency, $assetClass, $custodian, $account, $general = false)
     {
         $query = self::query();
         $query->select([
@@ -47,12 +48,13 @@ class Trades extends Model
 
         $query->where('client_code', $clientCode);
 
-//        if ($from) {
-//            $query->whereDate('date', '>=', Carbon::parse($from)->toDateString());
-//        }
-//        if ($to) {
-//            $query->whereDate('date', '<=', Carbon::parse($to)->toDateString());
-//        }
+        if ($from) {
+            $query->whereDate('date', '>=', Carbon::parse($from)->toDateString());
+        }
+        if ($to) {
+            $query->whereDate('date', '<=', Carbon::parse($to)->toDateString());
+        }
+
         if ($currency) {
             $query->where('valuation_currency', $currency);
         }
@@ -67,6 +69,10 @@ class Trades extends Model
         }
 
         $result = $query->get();
+
+        if ($general) {
+            // TODO
+        }
 
         $result->map(function ($item) {
             $item['active'] = false;

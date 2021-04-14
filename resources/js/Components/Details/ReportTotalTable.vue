@@ -148,7 +148,7 @@
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Total</div>
-                  <div class="cell-description">{{ item.total | round(4) }}</div>
+                  <div class="cell-description">{{ item.interest + item.dividend + item.commission + item.tax | round(4) }}</div>
                 </div>
               </div>
             </div>

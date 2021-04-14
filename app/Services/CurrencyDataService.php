@@ -26,6 +26,9 @@ class CurrencyDataService extends DataServiceAbstract
     /** @var Collection */
     protected $exposureData;
 
+    /** @var string  */
+    protected $chosen;
+
     public function init(User $user, array $data)
     {
         $this->user = $user;
@@ -35,6 +38,7 @@ class CurrencyDataService extends DataServiceAbstract
         $this->baseCurrency = $user->base_currency;
         $this->custodian = $data['custodian'] ?? null;
         $this->account = $data['account'] ?? null;
+        $this->chosen = $data['chosen'] ?? null;
     }
 
     public function exposureData()
@@ -140,8 +144,8 @@ class CurrencyDataService extends DataServiceAbstract
         $this->filters['method'] = $this->getValuationMethod();
         $this->filters['date'] = $this->getValuationDate();
         $this->filters['currency'] = $this->getValuationCurrency();
-        $this->filters['custodian'] = $this->getValuationcCustodian();
-        $this->filters['account'] = $this->getValuationAccount();
+        $this->filters['custodian'] = $this->getCustodian();
+        $this->filters['account'] = $this->getAccount();
     }
 
     public function getFilter($name)

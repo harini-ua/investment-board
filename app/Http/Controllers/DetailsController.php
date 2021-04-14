@@ -35,12 +35,13 @@ class DetailsController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = $request->only(self::FILTER_FIELDS);
+        $fields = array_merge(self::FILTER_FIELDS, ['chosen']);
+        $data = $request->only($fields);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Details/Index', [
-            'filters' => $request->only(self::FILTER_FIELDS),
+            'filters' => $request->only($fields),
             'positionOpen' => $this->dataService->positionOpen(),
             'payload' => [
                 'method' => $this->dataService->getFilter('method'),

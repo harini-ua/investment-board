@@ -95,7 +95,13 @@ export default {
         delete query.currency
         if (query.asset_class) query.asset_class = (query.asset_class.code !== undefined) ? query.asset_class.code : query.asset_class
         if (query.custodian) query.custodian = (query.custodian.code !== undefined) ? query.custodian.code : query.custodian
-        if (query.account) query.account = (query.account.code !== undefined) ? query.account.code : query.account
+
+        if (query.chosen !== 'custodian') {
+          if (query.account) query.account = (query.account.code !== undefined) ? query.account.code : query.account
+        } else {
+          this.filtersPage.account = this.payload.account[0]
+          delete query.account
+        }
 
         this.$inertia.replace(
           this.route(

@@ -39,13 +39,16 @@ export default {
   },
   data() {
     return {
-      selected: this.getSelectedItem(),
+      selected: this.value,
     }
   },
   watch: {
     selected(val) {
       this.$emit('input', val)
       this.$emit('change', this.id)
+    },
+    value() {
+      this.selected = this.value
     },
   },
   methods: {

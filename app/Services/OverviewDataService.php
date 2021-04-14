@@ -15,6 +15,9 @@ class OverviewDataService extends DataServiceAbstract
     /** @var string  */
     protected $valuationDate;
 
+    /** @var string  */
+    protected $chosen;
+
     public function init(User $user, array $data)
     {
         $this->user = $user;
@@ -22,6 +25,7 @@ class OverviewDataService extends DataServiceAbstract
         $this->valuationMethod = $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
         $this->baseCurrency = $user->base_currency;
+        $this->chosen = $data['chosen'] ?? null;
 
         $this->setFilters();
     }

@@ -76,7 +76,7 @@ abstract class DataServiceAbstract
      *
      * @return array
      */
-    public function getValuationDateFrom(string $column = 'date')
+    public function getDateFrom(string $column = 'date')
     {
         $from = $this->collection
             ->sortByDesc($column)
@@ -95,7 +95,7 @@ abstract class DataServiceAbstract
      *
      * @return array
      */
-    public function getValuationDateTo(string $column = 'date')
+    public function getDateTo(string $column = 'date')
     {
         $to = $this->collection
             ->sortByDesc($column)
@@ -154,7 +154,7 @@ abstract class DataServiceAbstract
      *
      * @return array
      */
-    public function getValuationAssetClass(string $column = 'asset_class')
+    public function getAssetClass(string $column = 'asset_class')
     {
         $results = $this->collection->sortBy($column)->unique($column)->pluck($column);
 
@@ -178,7 +178,7 @@ abstract class DataServiceAbstract
      *
      * @return array
      */
-    public function getValuationcCustodian(string $column = 'custodian')
+    public function getCustodian(string $column = 'custodian')
     {
         $results = $this->collection->sortBy($column)->unique($column)->pluck($column);
 
@@ -202,7 +202,7 @@ abstract class DataServiceAbstract
      *
      * @return array
      */
-    public function getValuationAccount(string $column = 'account')
+    public function getAccount(string $column = 'account')
     {
         $results = $this->collection->sortBy($column)->unique($column)->pluck($column);
         $results = array_unique($results->toArray());

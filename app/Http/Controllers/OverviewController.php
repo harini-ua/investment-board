@@ -35,12 +35,13 @@ class OverviewController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = $request->only(self::FILTER_FIELDS);
+        $fields = array_merge(self::FILTER_FIELDS, ['chosen']);
+        $data = $request->only($fields);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Overview/Index', [
-            'filters' => $request->only(self::FILTER_FIELDS),
+            'filters' => $request->only($fields),
             'portfolioAsset' =>  $this->dataService->getPortfolioAsset(),
             'portfolioAllocation' => $this->dataService->getPortfolioAllocation(),
             'totalWealth' => $this->dataService->getTotalWealth(),

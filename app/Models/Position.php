@@ -46,8 +46,6 @@ class Position extends Model
             'commission', 'tax'
         );
 
-        $query->selectRaw('interest + dividend + commission as total');
-
         $query->where('client_code', $clientCode);
 
         if ($method) {

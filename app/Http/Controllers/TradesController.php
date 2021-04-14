@@ -35,12 +35,13 @@ class TradesController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = $request->only(self::FILTER_FIELDS);
+        $fields = array_merge(self::FILTER_FIELDS, ['chosen']);
+        $data = $request->only($fields);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Trades/Index', [
-            'filters' => $request->only(self::FILTER_FIELDS),
+            'filters' => $request->only($fields),
             'trades' => $this->dataService->getTrades(),
             'payload' => [
                 'from' => $this->dataService->getFilter('from'),

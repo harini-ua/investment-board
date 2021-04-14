@@ -35,12 +35,13 @@ class CurrencyController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $data = $request->only(self::FILTER_FIELDS);
+        $fields = array_merge(self::FILTER_FIELDS, ['chosen']);
+        $data = $request->only($fields);
 
         $this->dataService->init($user, $data);
 
         return Inertia::render('Currency/Index', [
-            'filters' => $request->only(self::FILTER_FIELDS),
+            'filters' => $request->only($fields),
             'currencyExposureData' => $this->dataService->exposureData(),
             'currencyExposureCart' => $this->dataService->exposureCart(),
             'currencyHedging' => $this->dataService->hedging(),
