@@ -82,11 +82,12 @@ class TradesDataService extends DataServiceAbstract
         $from = $this->filters['from'] = $this->getDateFrom();
 
         if (!$this->dateFrom) {
-            $this->dateFrom = array_pop($from);
+            $this->dateFrom = end($from);
         }
 
         if (!$this->dateTo) {
-            $this->dateTo = $from[0];
+            reset($from);
+            $this->dateTo = current($from);
         }
     }
 
