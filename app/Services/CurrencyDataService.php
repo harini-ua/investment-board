@@ -15,9 +15,6 @@ class CurrencyDataService extends DataServiceAbstract
     protected $valuationDate;
 
     /** @var string  */
-    protected $assetClass;
-
-    /** @var string  */
     protected $custodian;
 
     /** @var string  */
@@ -39,6 +36,8 @@ class CurrencyDataService extends DataServiceAbstract
         $this->custodian = $data['custodian'] ?? null;
         $this->account = $data['account'] ?? null;
         $this->chosen = $data['chosen'] ?? null;
+
+        $this->setFilters();
     }
 
     public function exposureData()
@@ -48,11 +47,9 @@ class CurrencyDataService extends DataServiceAbstract
             $this->valuationMethod,
             $this->valuationDate,
             $this->user->base_currency,
+            $this->custodian,
+            $this->account
         );
-
-        $this->collection = $results;
-
-        $this->setFilter();
 
         $currency = [];
         foreach ($results as $item) {
@@ -139,13 +136,96 @@ class CurrencyDataService extends DataServiceAbstract
         return $currencyHedging;
     }
 
-    protected function setFilter()
+    protected function setFilters()
     {
-        $this->filters['method'] = $this->getValuationMethod();
-        $this->filters['date'] = $this->getValuationDate();
+        $this->setValuationMethod();
+        $this->setValuationDate();
+        $this->setValuationCurrency();
+        $this->setCustodian();
+        $this->setAccount();
+    }
+
+    protected function setValuationMethod()
+    {
+        $results = Currency::data(
+            $this->user->client_code,
+            null,
+            null,
+            $this->user->base_currency,
+            null,
+            null
+        );
+
+        $this->collection = $results;
+        $methods = $this->filters['method'] = $this->getValuationMethod();
+
+        if (!$this->valuationMethod) {
+            $this->valuationMethod = $methods[0]['code'];
+        }
+    }
+
+    protected function setValuationDate()
+    {
+        $results = Currency::data(
+            $this->user->client_code,
+            $this->valuationMethod,
+            null,
+            $this->user->base_currency,
+            null,
+            null
+        );
+
+        $this->collection = $results;
+
+        $dates = $this->getValuationDate();
+
+        $this->filters['date'] = $dates;
+        if (!$this->valuationDate) {
+            $this->valuationDate =  $dates[0];
+        }
+    }
+
+    protected function setValuationCurrency()
+    {
         $this->filters['currency'] = $this->getValuationCurrency();
-        $this->filters['custodian'] = $this->getCustodian();
-        $this->filters['account'] = $this->getAccount();
+    }
+
+    protected function setCustodian()
+    {
+        $results = Currency::data(
+            $this->user->client_code,
+            null,
+            null,
+            $this->user->base_currency,
+            null,
+            null
+        );
+
+        $this->collection = $results;
+        $custodians = $this->filters['custodian'] = $this->getCustodian();
+
+        if (!$this->custodian) {
+            $this->custodian = $custodians[0]['code'];
+        }
+    }
+
+    protected function setAccount()
+    {
+        $results = Currency::data(
+            $this->user->client_code,
+            null,
+            null,
+            $this->user->base_currency,
+            $this->custodian,
+            null
+        );
+
+        $this->collection = $results;
+        $accounts = $this->filters['account'] = $this->getAccount();
+
+        if (!$this->account || $this->chosen === 'custodian') {
+            $this->account = $accounts[0]['code'];
+        }
     }
 
     public function getFilter($name)
