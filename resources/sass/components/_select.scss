@@ -71,6 +71,7 @@
   align-items: normal;
   height: 20px !important;
   line-height: 1.7;
+  white-space: nowrap;
 
   @include media('>=desktop') {
     line-height: 1.4 !important;
