@@ -24,6 +24,7 @@ input {
   align-items: center;
   color: #a2acbd;
   font-size: 11px;
+  pointer-events: none;
 
   @include media('>=576px') {
     font-size: 12px;

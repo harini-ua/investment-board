@@ -34,7 +34,11 @@
 
 .v-select {
   width: 100%;
-  max-width: 160px;
+  max-width: 140px;
+
+  @include media('>=tablet') {
+    max-width: 160px;
+  }
 }
 
 .vs__search,
@@ -45,9 +49,13 @@
 }
 
 .mx-datepicker {
-  max-width: 160px;
+  max-width: 140px;
   width: 100%;
   margin: 0 0 0 15px;
+
+  @include media('>=tablet') {
+    max-width: 160px;
+  }
 }
 
 
