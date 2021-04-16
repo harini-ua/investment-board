@@ -76,7 +76,7 @@ export default {
   data() {
     return {
       filtersPage: {
-        from:        this.getMethod(),
+        from:        this.filters.from ? this.filters.from : this.payload.from[0],
         to:          this.filters.to ? this.filters.to : this.payload.to[0],
         currency:    this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
@@ -115,17 +115,6 @@ export default {
     },
   },
   methods: {
-    getMethod() {
-      if (this.filters.method) {
-        for (let i=0; i < this.payload.method.length; i++) {
-          if (this.payload.method[i].code === this.filters.method) {
-            return this.payload.method[i]
-          }
-        }
-      }
-
-      return this.payload.method[0]
-    },
     changeHandler(id) {
       this.filtersPage.chosen = id
     },
