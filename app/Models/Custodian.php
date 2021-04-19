@@ -26,10 +26,11 @@ class Custodian extends Model
      * @param string|null $method
      * @param string|null $currency
      * @param string|null $date
+     * @param boolean|null $main
      *
      * @return mixed
      */
-    public static function data($clientCode, $method, $date, $currency)
+    public static function data($clientCode, $method, $date, $currency, $main = false)
     {
         $query = self::query();
 

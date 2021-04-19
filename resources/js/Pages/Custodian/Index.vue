@@ -91,7 +91,6 @@ export default {
   mounted() {
     this.$watch(
       () => {
-        console.log('--->', this.$refs.table.index)
         return this.$refs.table.index
       },
       (val) => {
