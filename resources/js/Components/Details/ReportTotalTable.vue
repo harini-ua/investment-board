@@ -45,11 +45,11 @@
               <div class="td hidden-sm" :title="item.currency">
                 <span class="td-cell">{{ item.currency }}</span>
               </div>
-              <div class="td hidden-sm" :title="$options.filters.numeral(item.cost_price)">
-                <span class="td-cell">{{ item.cost_price | numeral }}</span>
+              <div class="td hidden-sm" :title="$options.filters.price(item.cost_price)">
+                <span class="td-cell">{{ item.cost_price | price }}</span>
               </div>
-              <div class="td hidden-sm" :title="$options.filters.numeral(item.valuation_price)">
-                <span class="td-cell">{{ item.valuation_price | numeral }}</span>
+              <div class="td hidden-sm" :title="$options.filters.price(item.valuation_price)">
+                <span class="td-cell">{{ item.valuation_price | price }}</span>
               </div>
               <div class="td hidden-xl" :title="$options.filters.numeral(item.cost_local)">
                 <span class="td-cell">{{ item.cost_local | numeral }}</span>
@@ -92,11 +92,11 @@
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Cost Price</div>
-                  <div class="cell-description">{{ item.cost_price | numeral }}</div>
+                  <div class="cell-description">{{ item.cost_price | round(2) }}</div>
                 </div>
                 <div class="cell-row visible-md">
                   <div class="cell-thead">Valuation Price</div>
-                  <div class="cell-description">{{ item.valuation_price | numeral }}</div>
+                  <div class="cell-description">{{ item.valuation_price | round(2) }}</div>
                 </div>
                 <div class="cell-row visible-xl">
                   <div class="cell-thead">Cost Local</div>
@@ -132,23 +132,23 @@
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Interest</div>
-                  <div class="cell-description">{{ item.interest | round(4) }}</div>
+                  <div class="cell-description">{{ item.interest | price }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Dividend</div>
-                  <div class="cell-description">{{ item.dividend | round(4) }}</div>
+                  <div class="cell-description">{{ item.dividend | price }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Commissions</div>
-                  <div class="cell-description">{{ item.commission | round(4) }}</div>
+                  <div class="cell-description">{{ item.commission | price }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Tax</div>
-                  <div class="cell-description">{{ item.tax | round(4) }}</div>
+                  <div class="cell-description">{{ item.tax | price }}</div>
                 </div>
                 <div class="cell-row">
                   <div class="cell-thead">Total</div>
-                  <div class="cell-description">{{ Number.parseInt(item.interest) + Number.parseInt(item.dividend) + Number.parseInt(item.commission) + Number.parseInt(item.tax) | round(4) }}</div>
+                  <div class="cell-description">{{ totalRow(index) | price }}</div>
                 </div>
               </div>
             </div>
@@ -180,6 +180,12 @@ export default {
   methods: {
     toggle(index) {
       this.items[index]['active'] = !this.items[index]['active']
+    },
+    totalRow(index) {
+      return Number.parseFloat(this.items[index].interest) +
+          Number.parseFloat(this.items[index].dividend) +
+          Number.parseFloat(this.items[index].commission) +
+          Number.parseFloat(this.items[index].tax)
     },
   },
 }

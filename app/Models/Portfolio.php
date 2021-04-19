@@ -26,10 +26,11 @@ class Portfolio extends Model
      * @param string|null $method
      * @param string|null $currency
      * @param string|null $date
+     * @param boolean|null $isChart
      *
      * @return mixed
      */
-    public static function asset($clientCode, $method, $date, $currency)
+    public static function asset($clientCode, $method, $date, $currency, $isChart = false)
     {
         $query = self::query();
 
@@ -37,9 +38,19 @@ class Portfolio extends Model
            // Filter fields
            'period_date', 'valuation_method', 'valuation_currency',
            // Data fields
-           'kfp_asset_class', 'mtd_value', 'mtd_pl', 'ytd_pl', 'mtd_percentage',
-           'ytd_percentage', 'mtd_benchmark', 'ytd_benchmark'
+           'kfp_asset_class',
         ]);
+
+        $query->selectRaw("SUM(mtd_value) AS mtd_value");
+
+        if (!$isChart) {
+            $query->selectRaw("SUM(mtd_pl) AS mtd_pl");
+            $query->selectRaw("SUM(ytd_pl) AS ytd_pl");
+            $query->selectRaw("SUM(mtd_percentage) AS mtd_percentage");
+            $query->selectRaw("SUM(ytd_percentage) AS ytd_percentage");
+            $query->selectRaw("SUM(mtd_benchmark) AS mtd_benchmark");
+            $query->selectRaw("SUM(ytd_benchmark) AS ytd_benchmark");
+        }
 
         $query->where('client_code', $clientCode);
 
@@ -53,13 +64,15 @@ class Portfolio extends Model
             $query->where('valuation_currency', $currency);
         }
 
+        $query->groupBy('kfp_asset_class');
+
         $result = $query->get();
 
         $sum = $result->sum('mtd_value');
 
         $result->map(function ($item) use ($sum) {
             $item['active'] = false;
-            $item['mtd_percentage'] = round( $item['mtd_value'] / $sum * 100, 1);
+            $item['value_percentage'] = round( $item['mtd_value'] / $sum * 100, 1);
             return $item;
         });
 

@@ -36,10 +36,11 @@ class OverviewDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency
+            $this->user->base_currency,
+            true
         );
 
-        return $portfolioAsset->pluck('mtd_percentage', 'kfp_asset_class');
+        return $portfolioAsset->pluck('value_percentage', 'kfp_asset_class');
     }
 
     public function getPortfolioAsset()
@@ -48,7 +49,8 @@ class OverviewDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency
+            $this->user->base_currency,
+            false
         );
 
         $this->collection = $portfolioAsset;
