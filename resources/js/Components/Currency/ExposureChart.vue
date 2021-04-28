@@ -66,7 +66,7 @@ export default {
         },
         responsive: [
           {
-            breakpoint: 3000,
+            breakpoint: 5000,
             options: {
               chart: {
                 width: '100%',
