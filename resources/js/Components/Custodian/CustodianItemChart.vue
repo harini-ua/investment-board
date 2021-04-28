@@ -46,7 +46,7 @@ export default {
       options: {
         labels: this.chartLabels(),
         dataLabels: { enabled: false },
-        theme: { palette: 'palette6' },
+        colors: this.$store.state.chartColor,
         tooltip: {
           y: {
             formatter: (value) => { return value + '%' },
