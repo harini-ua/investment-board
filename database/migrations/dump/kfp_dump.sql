@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `bv6mw_kfp_web_app`
 --
-CREATE DATABASE IF NOT EXISTS `bv6mw_kfp_web_app` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `bv6mw_kfp_web_app`;
 
 -- --------------------------------------------------------
 
