@@ -7,6 +7,15 @@
                 }
                 .apexcharts-legend-text {
                     left: 10px;
+                    display: flex!important;
+                    flex: 1;
+                    justify-content: space-between;
+                    .apexcharts-legend-label {
+                        flex: 1;
+                    }
+                    .apexcharts-legend-value {
+                        margin-left: 5px;
+                    }
                     .font-weight-500 {
                         font-weight: 500;
                     }
@@ -17,6 +26,11 @@
             }
         }
     }
+}
+
+.apexcharts-legend-series {
+    display: flex !important;
+    overflow: visible;
 }
 
 .block-chart-wrapper--custodians-chart {
