@@ -30,7 +30,7 @@ class Portfolio extends Model
      *
      * @return mixed
      */
-    public static function asset($clientCode, $method, $date, $currency, $isChart = false)
+    public static function asset($clientCode, $method = null, $date = null, $currency = null, $isChart = false)
     {
         $query = self::query();
 

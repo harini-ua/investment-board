@@ -14,6 +14,9 @@ class CustodianDataService extends DataServiceAbstract
     protected $valuationDate;
 
     /** @var string  */
+    protected $valuationCurrency;
+
+    /** @var string  */
     protected $chosen;
 
     public function init(User $user, array $data)
@@ -22,7 +25,7 @@ class CustodianDataService extends DataServiceAbstract
         $this->clientCode = $user->client_code;
         $this->valuationMethod = $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
-        $this->baseCurrency = $user->base_currency;
+        $this->valuationCurrency = $data['currency'] ?? null;
         $this->chosen = $data['chosen'] ?? null;
 
         $this->setFilters();
@@ -34,7 +37,7 @@ class CustodianDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency,
+            $this->valuationCurrency,
             true
         );
 
@@ -74,15 +77,13 @@ class CustodianDataService extends DataServiceAbstract
     {
         $this->setValuationMethod();
         $this->setValuationDate();
+        $this->setValuationCurrency();
     }
 
     protected function setValuationMethod()
     {
         $results = Custodian::data(
             $this->user->client_code,
-            null,
-            null,
-            $this->user->base_currency
         );
 
         $this->collection = $results;
@@ -99,8 +100,6 @@ class CustodianDataService extends DataServiceAbstract
         $results = Custodian::data(
             $this->user->client_code,
             $this->valuationMethod,
-            null,
-            $this->user->base_currency
         );
 
         $this->collection = $results;
@@ -109,10 +108,26 @@ class CustodianDataService extends DataServiceAbstract
 
         $this->filters['date'] = $dates;
         if (!$this->valuationDate) {
-            $this->valuationDate =  $dates[0];
+            $this->valuationDate = $dates[0];
         }
+    }
 
-        $this->filters['currency'] = $this->getValuationCurrency();
+    public function setValuationCurrency()
+    {
+        $results = Custodian::data(
+            $this->user->client_code,
+            $this->valuationMethod,
+            $this->valuationDate
+        );
+
+        $this->collection = $results;
+
+        $currency = $this->getValuationCurrency();
+
+        $this->filters['currency'] = $currency;
+        if (!$this->valuationCurrency) {
+            $this->valuationCurrency = $currency[0];
+        }
     }
 
     public function getFilter($name)

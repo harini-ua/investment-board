@@ -36,10 +36,7 @@
           >
             <div class="tr" @click="toggle(index)">
               <div class="td">{{ item.category }}</div>
-              <div class="td">
-                <inertia-link v-if="!item.total" :href="route('details')" class="value" target="_blank">{{ item.mtd_value | numeral }}</inertia-link>
-                <span v-else>{{ item.mtd_value | numeral }}</span>
-              </div>
+              <div class="td">{{ item.mtd_value | numeral }}</div>
               <div class="td hidden-sm">{{ item.mtd_pl | numeral | is_negative }}</div>
               <div class="td hidden-sm">{{ item.ytd_pl | numeral | is_negative }}</div>
               <div class="td hidden-lg">

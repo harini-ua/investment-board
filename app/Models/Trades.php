@@ -33,16 +33,23 @@ class Trades extends Model
      *
      * @return mixed
      */
-    public static function data($clientCode, $from, $to, $currency, $assetClass, $custodian, $account, $general = false)
-    {
+    public static function data(
+        $clientCode,
+        $from = null,
+        $to = null,
+        $currency = null,
+        $assetClass = null,
+        $custodian = null,
+        $account = null,
+        $general = false
+    ) {
         $query = self::query();
         $query->select([
             // Filter fields
-            'date', 'valuation_currency',
-            'asset_class', 'custodian', 'account',
+            'date', 'ccy', 'asset_class', 'custodian', 'account',
             // Data fields
             'date', 'movement', 'name', 'quantity', 'cost_price', 'net_price', 'amount_base',
-            'custodian', 'isin', 'issuer', 'instrument', 'ccy', 'realized_local',
+            'custodian', 'isin', 'issuer', 'instrument', 'realized_local',
             'realized_base', 'amount_base', 'fx_rate', 'gross_price', 'comission', 'tax'
         ]);
 
@@ -54,9 +61,8 @@ class Trades extends Model
         if ($to) {
             $query->whereDate('date', '<=', Carbon::parse($to)->toDateString());
         }
-
         if ($currency) {
-            $query->where('valuation_currency', $currency);
+            $query->where('ccy', $currency);
         }
         if ($assetClass) {
             $query->where('asset_class', $assetClass);

@@ -10,7 +10,7 @@ use Inertia\Inertia;
 class CurrencyController extends Controller
 {
     public const FILTER_FIELDS = [
-        'method', 'date', 'currency', 'custodian', 'account'
+        'method', 'date', 'custodian', 'account'
     ];
 
     /** @var CurrencyDataService $dataService */
@@ -48,7 +48,6 @@ class CurrencyController extends Controller
             'payload' => [
                 'method' => $this->dataService->getFilter('method'),
                 'date' => $this->dataService->getFilter('date'),
-                'currency' => $this->dataService->getFilter('currency'),
                 'custodian' => $this->dataService->getFilter('custodian'),
                 'account' => $this->dataService->getFilter('account'),
             ]

@@ -25,13 +25,12 @@ class Currency extends Model
      * @param string|null $clientCode
      * @param string|null $method
      * @param string|null $date
-     * @param string|null $currency
      * @param string|null $custodian
      * @param string|null $account
      *
      * @return mixed
      */
-    public static function data($clientCode, $method, $date, $currency, $custodian, $account)
+    public static function data($clientCode, $method = null, $date = null, $custodian = null, $account = null)
     {
         $query = self::query();
 
@@ -50,9 +49,6 @@ class Currency extends Model
         }
         if ($method) {
             $query->where('valuation_method', $method);
-        }
-        if ($currency) {
-            $query->where('valuation_currency', $currency);
         }
         if ($custodian) {
             $query->where('custodian', $custodian);

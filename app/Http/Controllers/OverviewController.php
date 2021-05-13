@@ -10,7 +10,7 @@ use Inertia\Inertia;
 class OverviewController extends Controller
 {
     public const FILTER_FIELDS = [
-        'method', 'date', 'currency'
+        'method', 'date'
     ];
 
     /** @var OverviewDataService $dataService */
@@ -50,7 +50,6 @@ class OverviewController extends Controller
             'payload' => [
                 'method' => $this->dataService->getFilter('method'),
                 'date' => $this->dataService->getFilter('date'),
-                'currency' => $this->dataService->getFilter('currency'),
             ]
         ]);
     }

@@ -17,14 +17,6 @@
         @change="changeHandler"
       />
       <select-input
-        id="currency"
-        v-model="filtersPage.currency"
-        :disabled="true"
-        :options="payload.currency"
-        label="Base currency"
-        @change="changeHandler"
-      />
-      <select-input
         id="custodian"
         v-model="filtersPage.custodian"
         :options="payload.custodian"
@@ -81,7 +73,6 @@ export default {
       filtersPage: {
         method:      this.getMethod(),
         date:        this.filters.date ? this.filters.date : this.payload.date[0],
-        currency:    this.payload.currency[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
         chosen:      this.filters.chosen ? this.filters.chosen : 'method',
@@ -92,9 +83,9 @@ export default {
     filtersPage: {
       handler: throttle(function() {
         let query = pickBy(this.filtersPage)
+
         if (query.method) query.method = (query.method.code !== undefined) ? query.method.code : query.method
         if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
-        delete query.currency
         if (query.custodian) query.custodian = (query.custodian.code !== undefined) ? query.custodian.code : query.custodian
 
         if (query.chosen !== 'custodian') {

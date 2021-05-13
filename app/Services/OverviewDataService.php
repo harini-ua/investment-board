@@ -24,7 +24,6 @@ class OverviewDataService extends DataServiceAbstract
         $this->clientCode = $user->client_code;
         $this->valuationMethod = $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
-        $this->baseCurrency = $user->base_currency;
         $this->chosen = $data['chosen'] ?? null;
 
         $this->setFilters();
@@ -36,8 +35,6 @@ class OverviewDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency,
-            true
         );
 
         return $portfolioAsset->pluck('value_percentage', 'kfp_asset_class');
@@ -49,8 +46,6 @@ class OverviewDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency,
-            false
         );
 
         $this->collection = $portfolioAsset;
@@ -76,8 +71,7 @@ class OverviewDataService extends DataServiceAbstract
         $totalWealth = Wealth::total(
             $this->user->client_code,
             $this->valuationMethod,
-            $this->valuationDate,
-            $this->user->base_currency
+            $this->valuationDate
         );
 
         $totalWealth->push([
@@ -102,7 +96,6 @@ class OverviewDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency
         );
 
         return $totalWealth->pluck('mtd_percentage', 'category');
@@ -122,10 +115,7 @@ class OverviewDataService extends DataServiceAbstract
     protected function setValuationMethod()
     {
         $results = Portfolio::asset(
-            $this->user->client_code,
-            null,
-            null,
-            $this->user->base_currency
+            $this->user->client_code
         );
 
         $this->collection = $results;
@@ -140,9 +130,7 @@ class OverviewDataService extends DataServiceAbstract
     {
         $results = Portfolio::asset(
             $this->user->client_code,
-            $this->valuationMethod,
-            null,
-            $this->user->base_currency
+            $this->valuationMethod
         );
 
         $this->collection = $results;
@@ -153,8 +141,6 @@ class OverviewDataService extends DataServiceAbstract
         if (!$this->valuationDate) {
             $this->valuationDate =  $dates[0];
         }
-
-        $this->filters['currency'] = $this->getValuationCurrency();
     }
 
     public function getFilter($name)

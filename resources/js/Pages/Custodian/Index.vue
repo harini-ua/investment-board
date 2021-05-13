@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <filters-wrapper description="Please pick the valuation method, valuation date if you need a custom consolidated summary.">
+    <filters-wrapper description="Please pick the valuation method, valuation date, currency if you need a custom consolidated summary.">
       <select-input
         id="method"
         v-model="filtersPage.method"
@@ -19,9 +19,8 @@
       <select-input
         id="currency"
         v-model="filtersPage.currency"
-        :disabled="true"
         :options="payload.currency"
-        label="Base currency"
+        label="Currency"
         @change="changeHandler"
       />
     </filters-wrapper>
@@ -62,7 +61,7 @@ export default {
       filtersPage: {
         method:   this.getMethod(),
         date:     this.filters.date ? this.filters.date : this.payload.date[0],
-        currency: this.payload.currency[0],
+        currency: this.filters.currency ? this.filters.currency : this.payload.currency[0],
         chosen:   this.filters.chosen ? this.filters.chosen : 'method',
       },
       index: 0,
@@ -115,9 +114,10 @@ export default {
     },
     getQuery() {
       let query = pickBy(this.filtersPage)
+
       if (query.method) query.method = (query.method.code !== undefined) ? query.method.code : query.method
       if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
-      delete query.currency
+      if (query.currency) query.currency = (query.currency.code !== undefined) ? query.currency.code : query.currency
 
       return query
     },

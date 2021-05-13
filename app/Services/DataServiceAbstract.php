@@ -130,12 +130,24 @@ abstract class DataServiceAbstract
      * Get base currency
      *
      * @param string $column
+     * @param bool   $default
      *
      * @return array
      */
-    public function getValuationCurrency(string $column = 'base_currency')
+    public function getValuationCurrency(string $column = 'valuation_currency', $default = true)
     {
-        $results = $this->user->pluck($column);
+        if ($default) {
+            $results = $this->collection
+                ->sortByDesc($column)
+                ->pluck($column)
+                ->unique()
+                ->toArray()
+            ;
+
+            return array_values($results);
+        }
+
+        $results = $this->collection->sortBy($column)->unique($column)->pluck($column);
 
         $results = $results->map(function ($value) {
             return [
@@ -144,7 +156,10 @@ abstract class DataServiceAbstract
             ];
         });
 
-        return $results->toArray();
+        $results = $results->toArray();
+        array_unshift($results, ['code' => null, 'label' => 'All']);
+
+        return $results;
     }
 
     /**

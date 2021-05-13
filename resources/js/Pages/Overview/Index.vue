@@ -16,14 +16,6 @@
         :options="payload.date"
         @change="changeHandler"
       />
-      <select-input
-        id="currency"
-        v-model="filtersPage.currency"
-        :disabled="true"
-        :options="payload.currency"
-        label="Base currency"
-        @change="changeHandler"
-      />
     </filters-wrapper>
     <div class="row-chart">
       <portfolio-allocation-chart :data="portfolioAllocation" />
@@ -76,7 +68,6 @@ export default {
       filtersPage: {
         method:   this.getMethod(),
         date:     this.filters.date ? this.filters.date : this.payload.date[0],
-        currency: this.payload.currency[0],
         chosen:   this.filters.chosen ? this.filters.chosen : 'method',
       },
     }
@@ -118,9 +109,9 @@ export default {
     },
     getQuery() {
       let query = pickBy(this.filtersPage)
+
       if (query.method) query.method = (query.method.code !== undefined) ? query.method.code : query.method
       if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
-      delete query.currency
 
       return query
     },

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <filters-wrapper description="Please pick the valuation method, valuation date, asset class, custodians and account if you need a custom consolidated summary.">
+    <filters-wrapper description="Please pick the valuation method, valuation date, currency, asset class, custodians and account if you need a custom consolidated summary.">
       <select-input
         id="method"
         v-model="filtersPage.method"
@@ -19,9 +19,8 @@
       <select-input
         id="currency"
         v-model="filtersPage.currency"
-        :disabled="true"
         :options="payload.currency"
-        label="Base currency"
+        label="Currency"
         @change="changeHandler"
       />
       <select-input
@@ -78,7 +77,7 @@ export default {
       filtersPage: {
         method:      this.getMethod(),
         date:        this.filters.date ? this.filters.date : this.payload.date[0],
-        currency:    this.payload.currency[0],
+        currency:    this.filters.currency ? this.filters.currency : this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
@@ -92,7 +91,7 @@ export default {
         let query = pickBy(this.filtersPage)
         if (query.method) query.method = (query.method.code !== undefined) ? query.method.code : query.method
         if (query.date) query.date = moment(String(query.date)).format('YYYY-MM-DD')
-        delete query.currency
+        if (query.currency) query.currency = (query.currency.code !== undefined) ? query.currency.code : query.currency
         if (query.asset_class) query.asset_class = (query.asset_class.code !== undefined) ? query.asset_class.code : query.asset_class
         if (query.custodian) query.custodian = (query.custodian.code !== undefined) ? query.custodian.code : query.custodian
 

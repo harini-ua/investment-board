@@ -32,15 +32,15 @@ class Position extends Model
      *
      * @return mixed
      */
-    public static function open($clientCode, $method, $date, $currency, $assetClass, $custodian, $account)
+    public static function open($clientCode, $method = null, $date = null, $currency = null, $assetClass = null, $custodian = null, $account = null)
     {
         $query = self::query();
         $query->select(
             // Filter fields
-            'valuation_method', 'period_date', 'valuation_currency',
+            'valuation_method', 'period_date', 'currency',
             'kfp_asset_class', 'custodian', 'account',
             // Data fields
-            'instrument_name', 'quantity', 'currency', 'last_purchase', 'currency',
+            'instrument_name', 'quantity', 'currency', 'last_purchase',
             'cost_price', 'valuation_price', 'cost_local', 'valuation_local', 'valuation_base',
             'mtd_pl', 'ytd_pl', 'mtd_return', 'ytd_return', 'sp_return', 'interest', 'dividend',
             'commission', 'tax'
@@ -55,7 +55,7 @@ class Position extends Model
             $query->where('period_date', Carbon::parse($date)->toDateString());
         }
         if ($currency) {
-            $query->where('valuation_currency', $currency);
+            $query->where('currency', $currency);
         }
         if ($assetClass) {
             $query->where('kfp_asset_class', $assetClass);

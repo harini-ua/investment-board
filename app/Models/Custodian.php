@@ -30,7 +30,7 @@ class Custodian extends Model
      *
      * @return mixed
      */
-    public static function data($clientCode, $method, $date, $currency, $main = false)
+    public static function data($clientCode, $method = null, $date = null, $currency = null, $main = false)
     {
         $query = self::query();
 

@@ -24,12 +24,11 @@ class Wealth extends Model
      *
      * @param string|null $clientCode
      * @param string|null $method
-     * @param string|null $currency
      * @param string|null $date
      *
      * @return mixed
      */
-    public static function total($clientCode, $method, $date, $currency)
+    public static function total($clientCode, $method, $date)
     {
         $query = self::query();
 
@@ -46,10 +45,6 @@ class Wealth extends Model
 
         if ($method) {
             $query->where('valuation_method', $method);
-        }
-
-        if ($currency) {
-            $query->where('valuation_currency', $currency);
         }
 
         $result = $query->get();

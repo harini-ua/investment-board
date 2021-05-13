@@ -32,7 +32,6 @@ class CurrencyDataService extends DataServiceAbstract
         $this->clientCode = $user->client_code;
         $this->valuationMethod= $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
-        $this->baseCurrency = $user->base_currency;
         $this->custodian = $data['custodian'] ?? null;
         $this->account = $data['account'] ?? null;
         $this->chosen = $data['chosen'] ?? null;
@@ -46,7 +45,6 @@ class CurrencyDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency,
             $this->custodian,
             $this->account
         );
@@ -140,21 +138,13 @@ class CurrencyDataService extends DataServiceAbstract
     {
         $this->setValuationMethod();
         $this->setValuationDate();
-        $this->setValuationCurrency();
         $this->setCustodian();
         $this->setAccount();
     }
 
     protected function setValuationMethod()
     {
-        $results = Currency::data(
-            $this->user->client_code,
-            null,
-            null,
-            $this->user->base_currency,
-            null,
-            null
-        );
+        $results = Currency::data($this->user->client_code);
 
         $this->collection = $results;
         $methods = $this->filters['method'] = $this->getValuationMethod();
@@ -169,10 +159,6 @@ class CurrencyDataService extends DataServiceAbstract
         $results = Currency::data(
             $this->user->client_code,
             $this->valuationMethod,
-            null,
-            $this->user->base_currency,
-            null,
-            null
         );
 
         $this->collection = $results;
@@ -192,14 +178,7 @@ class CurrencyDataService extends DataServiceAbstract
 
     protected function setCustodian()
     {
-        $results = Currency::data(
-            $this->user->client_code,
-            null,
-            null,
-            $this->user->base_currency,
-            null,
-            null
-        );
+        $results = Currency::data($this->user->client_code);
 
         $this->collection = $results;
         $custodians = $this->filters['custodian'] = $this->getCustodian();
@@ -215,9 +194,7 @@ class CurrencyDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
             $this->custodian,
-            null
         );
 
         $this->collection = $results;

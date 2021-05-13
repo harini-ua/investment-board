@@ -14,6 +14,9 @@ class TradesDataService extends DataServiceAbstract
     protected $dateTo;
 
     /** @var string  */
+    protected $valuationCurrency;
+
+    /** @var string  */
     protected $assetClass;
 
     /** @var string  */
@@ -31,7 +34,7 @@ class TradesDataService extends DataServiceAbstract
         $this->clientCode = $user->client_code;
         $this->dateFrom = $data['from'] ?? null;
         $this->dateTo = $data['to'] ?? null;
-        $this->baseCurrency = $user->base_currency;
+        $this->valuationCurrency = $data['currency'] ?? null;
         $this->assetClass = $data['asset_class'] ?? null;
         $this->custodian = $data['custodian'] ?? null;
         $this->account = $data['account'] ?? null;
@@ -46,7 +49,7 @@ class TradesDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->dateFrom,
             $this->dateTo,
-            $this->user->base_currency,
+            $this->valuationCurrency,
             $this->assetClass,
             $this->custodian,
             $this->account,
@@ -72,10 +75,7 @@ class TradesDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             $this->dateTo,
-            $this->user->base_currency,
-            null,
-            null,
-            null,
+            $this->valuationCurrency,
         );
 
         $this->collection = $results;
@@ -97,10 +97,7 @@ class TradesDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->dateFrom,
             null,
-            $this->user->base_currency,
-            null,
-            null,
-            null
+            $this->valuationCurrency,
         );
 
         $this->collection = $results;
@@ -109,18 +106,23 @@ class TradesDataService extends DataServiceAbstract
 
     protected function setValuationCurrency()
     {
-        $this->filters['currency'] = $this->getValuationCurrency();
+        $results = Trades::data(
+            $this->user->client_code,
+            $this->dateFrom,
+            $this->dateTo
+        );
+
+        $this->collection = $results;
+        $this->filters['currency'] = $this->getValuationCurrency('ccy', false);
     }
+
     protected function setAssetClass()
     {
         $results = Trades::data(
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
-            null,
-            null,
-            null
+            $this->valuationCurrency,
         );
 
         $this->collection = $results;
@@ -133,10 +135,8 @@ class TradesDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
-            null,
-            null,
-            null
+            $this->valuationCurrency,
+
         );
 
         $this->collection = $results;
@@ -153,10 +153,9 @@ class TradesDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
+            $this->valuationCurrency,
             null,
             $this->custodian,
-            null
         );
 
         $this->collection = $results;

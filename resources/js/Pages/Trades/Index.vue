@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <filters-wrapper description="Please pick the date range, asset class, custodians and account if you need a custom consolidated summary.">
+    <filters-wrapper description="Please pick the date range, currency, asset class, custodians and account if you need a custom consolidated summary.">
       <date-input
         id="from"
         v-model="filtersPage.from"
@@ -18,9 +18,8 @@
       <select-input
         id="currency"
         v-model="filtersPage.currency"
-        :disabled="true"
         :options="payload.currency"
-        label="Base currency"
+        label="Currency"
         @change="changeHandler"
       />
       <select-input
@@ -78,7 +77,7 @@ export default {
       filtersPage: {
         from:        this.filters.from ? this.filters.from : this.payload.from[0],
         to:          this.filters.to ? this.filters.to : this.payload.to[0],
-        currency:    this.payload.currency[0],
+        currency:    this.filters.currency ? this.filters.currency : this.payload.currency[0],
         asset_class: this.filters.asset_class ? this.filters.asset_class : this.payload.asset_class[0],
         custodian:   this.filters.custodian ? this.filters.custodian : this.payload.custodian[0],
         account:     this.filters.account ? this.filters.account : this.payload.account[0],
@@ -92,7 +91,7 @@ export default {
         let query = pickBy(this.filtersPage)
         if (query.from) query.from = moment(String(query.from)).format('YYYY-MM-DD')
         if (query.to) query.to = moment(String(query.to)).format('YYYY-MM-DD')
-        delete query.currency
+        if (query.currency) query.currency = (query.currency.code !== undefined) ? query.currency.code : query.currency
         if (query.asset_class) query.asset_class = (query.asset_class.code !== undefined) ? query.asset_class.code : query.asset_class
         if (query.custodian) query.custodian = (query.custodian.code !== undefined) ? query.custodian.code : query.custodian
         if (query.account) query.account = (query.account.code !== undefined) ? query.account.code : query.account

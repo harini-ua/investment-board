@@ -14,6 +14,9 @@ class DetailsDataService extends DataServiceAbstract
     protected $valuationDate;
 
     /** @var string  */
+    protected $valuationCurrency;
+
+    /** @var string  */
     protected $assetClass;
 
     /** @var string  */
@@ -31,7 +34,7 @@ class DetailsDataService extends DataServiceAbstract
         $this->clientCode = $user->client_code;
         $this->valuationMethod= $data['method'] ?? null;
         $this->valuationDate = $data['date'] ?? null;
-        $this->baseCurrency = $user->base_currency;
+        $this->valuationCurrency = $data['currency'] ?? null;
         $this->assetClass = $data['asset_class'] ?? null;
         $this->custodian = $data['custodian'] ?? null;
         $this->account = $data['account'] ?? null;
@@ -46,7 +49,7 @@ class DetailsDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             $this->valuationDate,
-            $this->user->base_currency,
+            $this->valuationCurrency,
             $this->assetClass,
             $this->custodian,
             $this->account
@@ -71,10 +74,7 @@ class DetailsDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
-            null,
-            null,
-            null
+            $this->valuationCurrency
         );
 
         $this->collection = $results;
@@ -91,10 +91,7 @@ class DetailsDataService extends DataServiceAbstract
             $this->user->client_code,
             $this->valuationMethod,
             null,
-            $this->user->base_currency,
-            null,
-            null,
-            null
+            $this->valuationCurrency
         );
 
         $this->collection = $results;
@@ -103,13 +100,20 @@ class DetailsDataService extends DataServiceAbstract
 
         $this->filters['date'] = $dates;
         if (!$this->valuationDate) {
-            $this->valuationDate =  $dates[0];
+            $this->valuationDate = $dates[0];
         }
     }
 
     protected function setValuationCurrency()
     {
-        $this->filters['currency'] = $this->getValuationCurrency();
+        $results = Position::open(
+            $this->user->client_code,
+            $this->valuationMethod,
+            $this->valuationDate,
+        );
+
+        $this->collection = $results;
+        $this->filters['currency'] = $this->getValuationCurrency('currency', false);
     }
 
     protected function setAssetClass()
@@ -118,10 +122,7 @@ class DetailsDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
-            null,
-            null,
-            null
+            $this->valuationCurrency
         );
 
         $this->collection = $results;
@@ -134,10 +135,7 @@ class DetailsDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
-            null,
-            null,
-            null
+            $this->valuationCurrency
         );
 
         $this->collection = $results;
@@ -154,10 +152,9 @@ class DetailsDataService extends DataServiceAbstract
             $this->user->client_code,
             null,
             null,
-            $this->user->base_currency,
+            $this->valuationCurrency,
             null,
-            $this->custodian,
-            null
+            $this->custodian
         );
 
         $this->collection = $results;
