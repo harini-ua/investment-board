@@ -174,7 +174,7 @@ export default {
   },
   computed: {
     total: function () {
-      return this.items.reduce((prev, cur) => Number.parseInt(prev) + Number.parseInt(cur.quantity), 0)
+      return this.items.reduce((prev, cur) => Number.parseInt(prev) + Number.parseInt(cur.valuation_base), 0)
     },
   },
   methods: {
