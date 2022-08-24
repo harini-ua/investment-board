@@ -38,7 +38,7 @@ class Position extends Model
         $query->select(
             // Filter fields
             'valuation_method', 'period_date', 'currency',
-            'kfp_asset_class', 'custodian', 'account',
+            'asset_class', 'custodian', 'account',
             // Data fields
             'instrument_name', 'quantity', 'currency', 'last_purchase',
             'cost_price', 'valuation_price', 'cost_local', 'valuation_local', 'valuation_base',
@@ -58,7 +58,7 @@ class Position extends Model
             $query->where('currency', $currency);
         }
         if ($assetClass) {
-            $query->where('kfp_asset_class', $assetClass);
+            $query->where('asset_class', $assetClass);
         }
         if ($custodian) {
             $query->where('custodian', $custodian);

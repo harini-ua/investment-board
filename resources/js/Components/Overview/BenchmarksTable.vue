@@ -21,7 +21,7 @@
                 <div class="tooltip">
                   <svg class="icon icon-info"><use xlink:href="#icon-info" /></svg>
                   <div class="tooltip__content">
-                    Perfomance of KFP dynamic asset allocation
+                    Performance of dynamic asset allocation
                   </div>
                 </div>
                 {{ item.indice }}

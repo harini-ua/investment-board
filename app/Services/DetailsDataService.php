@@ -126,7 +126,7 @@ class DetailsDataService extends DataServiceAbstract
         );
 
         $this->collection = $results;
-        $this->filters['asset_class'] = $this->getAssetClass('kfp_asset_class');
+        $this->filters['asset_class'] = $this->getAssetClass('asset_class');
     }
 
     protected function setCustodian()

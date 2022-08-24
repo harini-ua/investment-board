@@ -97,7 +97,7 @@ export default {
         if (query.account) query.account = (query.account.code !== undefined) ? query.account.code : query.account
 
         if (query.chosen !== 'custodian') {
-          if (query.account) query.account = (query.account.code !== undefined) ? query.account.code : query.account
+          if (query.account) query.account = (query.ac  count.code !== undefined) ? query.account.code : query.account
         } else {
           this.filtersPage.account = this.payload.account[0]
           delete query.account

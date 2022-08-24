@@ -14,7 +14,7 @@ class CreateDumpTables extends Migration
      */
     public function up()
     {
-        DB::unprepared(file_get_contents(__DIR__.'/dump/kfp_dump.sql'));
+        DB::unprepared(file_get_contents(__DIR__.'/dump/dumpfile.sql'));
     }
 
     /**

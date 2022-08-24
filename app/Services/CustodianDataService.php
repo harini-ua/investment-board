@@ -55,7 +55,7 @@ class CustodianDataService extends DataServiceAbstract
 
             foreach ($custodian as $item) {
                 $sum = $custodians[$i]['value'];
-                $custodians[$i]['asset'][$item->kfp_asset_class] = [
+                $custodians[$i]['asset'][$item->asset_class] = [
                     'percentage' => round( $item->value / $sum * 100, 1),
                     'value' => $item->value,
                 ];

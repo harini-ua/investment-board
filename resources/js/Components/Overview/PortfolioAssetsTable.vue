@@ -32,7 +32,7 @@
                :class="[{active: item.active}, 'row-' + (index + 1)]"
           >
             <div class="tr" @click="toggle(index)">
-              <div class="td">{{ item.kfp_asset_class }}</div>
+              <div class="td">{{ item.asset_class }}</div>
               <div class="td">
                 <inertia-link v-if="!item.total" :href="urlToDetails(index)" class="value" target="_blank">{{ item.mtd_value | numeral }}</inertia-link>
                 <span v-else>{{ item.mtd_value | numeral }}</span>
@@ -110,7 +110,7 @@ export default {
     },
     urlToDetails(index) {
       let query = this.$parent.query
-      query.asset_class = this.items[index]['kfp_asset_class']
+      query.asset_class = this.items[index]['asset_class']
 
       return this.route('details', Object.keys(query).length ? query : {})
     },

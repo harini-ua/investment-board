@@ -37,7 +37,7 @@ class OverviewDataService extends DataServiceAbstract
             $this->valuationDate,
         );
 
-        return $portfolioAsset->pluck('value_percentage', 'kfp_asset_class');
+        return $portfolioAsset->pluck('value_percentage', 'asset_class');
     }
 
     public function getPortfolioAsset()
@@ -51,7 +51,7 @@ class OverviewDataService extends DataServiceAbstract
         $this->collection = $portfolioAsset;
 
         $portfolioAsset->push([
-            'kfp_asset_class' =>'Total',
+            'asset_class' =>'Total',
             'mtd_value' => $portfolioAsset->sum('mtd_value'),
             'mtd_pl' => $portfolioAsset->sum('mtd_pl'),
             'ytd_pl' => $portfolioAsset->sum('ytd_pl'),

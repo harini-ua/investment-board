@@ -38,7 +38,7 @@ class Portfolio extends Model
            // Filter fields
            'period_date', 'valuation_method', 'valuation_currency',
            // Data fields
-           'kfp_asset_class',
+           'asset_class',
         ]);
 
         $query->selectRaw("SUM(mtd_value) AS mtd_value");
@@ -64,7 +64,7 @@ class Portfolio extends Model
             $query->where('valuation_currency', $currency);
         }
 
-        $query->groupBy('kfp_asset_class');
+        $query->groupBy('asset_class');
 
         $result = $query->get();
 

@@ -53,7 +53,7 @@ Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 new Vue({
   store,
   metaInfo: {
-    titleTemplate: (title) => title ? `${title} - KFP` : 'KFP - Key Family Partners'
+    titleTemplate: (title) => title ? `${title} - iB` : 'Investment Board'
   },
   render: h => h(InertiaApp, {
     props: {

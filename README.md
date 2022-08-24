@@ -1,13 +1,12 @@
-# KFP
+# iB
 
-Key Family Partners
+Investment Board
 
 
 ### Installation
 
 ```sh
-git clone git@gitlab.com:dreamdev-solutions/key-family-partners.git kfp
-cd kfp
+git clone ...
 composer install
 npm ci
 npm run dev

@@ -38,7 +38,7 @@ class Custodian extends Model
             // Filter fields
             'period_date', 'valuation_method', 'valuation_currency',
             // Data fields
-            'custodian_name', 'kfp_asset_class', 'value'
+            'custodian_name', 'asset_class', 'value'
         ]);
 
         $query->where('client_code', $clientCode);
